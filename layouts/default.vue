@@ -2,9 +2,7 @@
   <div>
     <TheWhiteHeader />
     <TheSidenav />
-    <div class="container mx-auto">
-      <Nuxt />
-    </div>
+    <Nuxt />
     <TheFooter />
   </div>
 </template>

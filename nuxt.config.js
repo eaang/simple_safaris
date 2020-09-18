@@ -16,6 +16,11 @@ export default {
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['@/assets/sass/main.scss'],
 
+  tailwindcss: {
+    configPath: './tailwind.config.js',
+    exposeConfig: false,
+    config: {},
+  },
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [],
 
@@ -28,14 +33,24 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    [
+      '@nuxtjs/fontawesome',
+      {
+        component: 'fa',
+        suffix: true,
+        icons: {
+          solid: ['faPhoneAlt'],
+        },
+      },
+    ],
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/axios',
   ],
-
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
 

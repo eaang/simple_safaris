@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>Hi Im a footer woo</div>
 </template>
 
 <script>

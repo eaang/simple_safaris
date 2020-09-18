@@ -4,16 +4,18 @@ module.exports = {
     purgeLayersByDefault: true,
   },
   theme: {
-    colors: {
-      black: '#1a1915',
-      brown: {
-        lighter: '#aea88e',
-        default: '#9c9780',
-        dark: '#646152',
-      },
-      gray: {
-        default: '#807f7d',
-        dark: '#575446',
+    extend: {
+      colors: {
+        black: '#1a1915',
+        brown: {
+          lighter: '#aea88e',
+          default: '#9c9780',
+          dark: '#646152',
+        },
+        gray: {
+          default: '#807f7d',
+          dark: '#575446',
+        },
       },
     },
     fontFamily: {
