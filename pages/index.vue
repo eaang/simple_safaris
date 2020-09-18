@@ -1,5 +1,6 @@
 <template>
   <div class="landing-page">
+    <FullheightHero />
     <div class="container mx-auto">
       <div class="font-display">THIS IS A TITLE</div>
       <div class="font-sans">
@@ -25,11 +26,12 @@
 
 <script>
 import Icon from '@/components/Media/Icon.vue'
-
+import FullheightHero from '@/components/Hero/FullheightHero.vue'
 export default {
   layout: 'landing',
   components: {
     Icon,
+    FullheightHero,
   },
 }
 </script>
