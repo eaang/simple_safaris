@@ -1,21 +1,36 @@
 <template>
   <div class="h-screen">
     <agile>
-      <div class="slide">
-        <h3>slide 1</h3>
-      </div>
-
-      <div class="slide">
-        <h3>slide n</h3>
+      <div v-for="image in images" :key="image.pathShort" class="slide">
+        <img class="object-cover h-screen w-full" :src="image.pathLong" />
       </div>
     </agile>
   </div>
 </template>
 
 <script>
+import { VueAgile } from 'vue-agile'
+
 export default {
   components: {
-    agile: this.$VueAgile,
+    agile: VueAgile,
+  },
+  data() {
+    return {
+      images: [],
+    }
+  },
+  created() {
+    this.importImages(
+      require.context('@/assets/images/landing-page/', true, /\.jpeg$/)
+    )
+  },
+  methods: {
+    importImages(r) {
+      r.keys().forEach((key) =>
+        this.images.push({ pathLong: r(key), pathShort: key })
+      )
+    },
   },
 }
 </script>
