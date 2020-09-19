@@ -1,7 +1,7 @@
 <template>
   <div class="landing-page">
     <FullheightHero />
-    <div class="container mx-auto">
+    <!-- <div class="container mx-auto">
       <div class="font-display">THIS IS A TITLE</div>
       <div class="font-sans">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -20,17 +20,17 @@
         <li class="text-gray-dark">Test five</li>
       </ul>
       <div><Icon :icon-name="'dog-footprint'" /></div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import Icon from '@/components/Media/Icon.vue'
+// import Icon from '@/components/Media/Icon.vue'
 import FullheightHero from '@/components/Hero/FullheightHero.vue'
 export default {
   layout: 'landing',
   components: {
-    Icon,
+    // Icon,
     FullheightHero,
   },
 }

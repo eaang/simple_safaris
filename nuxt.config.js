@@ -39,7 +39,8 @@ export default {
         component: 'fa',
         suffix: true,
         icons: {
-          solid: ['faPhoneAlt'],
+          solid: ['faPhoneAlt', 'faArrowLeft', 'faArrowRight'],
+          regular: ['faCircle'],
         },
       },
     ],
