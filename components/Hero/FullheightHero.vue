@@ -3,11 +3,13 @@
     <client-only>
       <div class="relative h-screen w-full">
         <agile :options="carouselOptions">
-          <img
+          <div
             v-for="image in images"
             :key="image.pathShort"
-            class="slide block object-cover h-screen w-full z-0"
-            :src="image.pathLong" />
+            class="slide block h-screen w-full z-0 bg-center bg-cover"
+            :style="{
+              backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)), url(${image.pathLong})`,
+            }" />
 
           <template slot="prevButton"
             ><div
