@@ -1,5 +1,6 @@
 <template>
   <div class="landing-page">
+    <TheTransparentHeader />
     <div class="container mx-auto">
       <div v-for="(continent, index) in continents" :key="index">
         {{ continent.fields.name }}

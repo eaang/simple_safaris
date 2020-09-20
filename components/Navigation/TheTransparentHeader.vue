@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center h-24">
+  <div class="flex bg-green-800 items-center h-24">
     <div class="container mx-auto flex justify-between">
       <div class="left-navbar flex space-x-8">
         <div class="title text-4xl font-display text-white cursor-default">
@@ -23,27 +23,17 @@
               class="absolute nav-dropdown nav-dropdown-dark"
             >
               <ul class="nav-dropdown-list">
-                <nuxt-link
-                  tag="li"
-                  to="/about"
-                  class="nav-dropdown-item nav-dropdown-item-dark"
-                >
-                  About Us
-                </nuxt-link>
-                <nuxt-link
-                  tag="li"
-                  to="/about/privacy"
-                  class="nav-dropdown-item nav-dropdown-item-dark"
-                >
-                  개인정보처리방침
-                </nuxt-link>
-                <nuxt-link
-                  tag="li"
-                  to="/about/terms-and-conditions"
-                  class="nav-dropdown-item nav-dropdown-item-dark"
-                >
-                  해외여행약관
-                </nuxt-link>
+                <li class="nav-dropdown-item nav-dropdown-item-dark">
+                  <a href="/about">About Us </a>
+                </li>
+
+                <li class="nav-dropdown-item nav-dropdown-item-dark">
+                  <a href="/about/privacy">개인정보처리방침s </a>
+                </li>
+
+                <li class="nav-dropdown-item nav-dropdown-item-dark">
+                  <a href="/about/terms-and-conditions">해외여행약관 </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -64,7 +54,7 @@
               v-if="dropdownTwoShow"
               class="absolute nav-dropdown nav-dropdown-dark"
             >
-              <ul class="nav-dropdown-list">
+              <!-- <ul class="nav-dropdown-list">
                 <div
                   v-for="continent in continents"
                   :key="continent.fields.name"
@@ -100,7 +90,7 @@
                     </nuxt-link>
                   </div>
                 </div>
-              </ul>
+              </ul> -->
             </div>
           </div>
 
@@ -120,7 +110,7 @@
               v-if="dropdownThreeShow"
               class="absolute nav-dropdown nav-dropdown-dark"
             >
-              <ul class="nav-dropdown-list">
+              <!-- <ul class="nav-dropdown-list">
                 <div v-for="tripIdea in tripIdeas" :key="tripIdea.fields.name">
                   <nuxt-link
                     tag="li"
@@ -130,7 +120,7 @@
                     {{ tripIdea.fields.name }}
                   </nuxt-link>
                 </div>
-              </ul>
+              </ul> -->
             </div>
           </div>
 
@@ -183,16 +173,16 @@
 
 <script>
 export default {
-  props: {
-    continents: {
-      type: Array,
-      required: true,
-    },
-    tripIdeas: {
-      type: Array,
-      required: true,
-    },
-  },
+  // props: {
+  //   continents: {
+  //     type: Array,
+  //     required: true,
+  //   },
+  //   tripIdeas: {
+  //     type: Array,
+  //     required: true,
+  //   },
+  // },
   data() {
     return {
       dropdownOneShow: false,
