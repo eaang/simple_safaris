@@ -4,6 +4,8 @@ require('dotenv').config()
 const contentful = require('contentful')
 
 export default {
+  mode: 'universal',
+
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
   purgeCSS: {
