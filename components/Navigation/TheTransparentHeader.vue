@@ -6,13 +6,14 @@
           SIMPLE SAFARIS
         </div>
         <div class="flex items-center text-white text-lg space-x-8">
+          <!-- About Dropdown -->
           <div
             class="relative"
             @mouseover="dropdownOneShow = true"
             @click="dropdownOneShow = !dropdownOneShow"
             @mouseleave="dropdownOneShow = false"
           >
-            <div class="nav-link nav-link-dropdown">About</div>
+            <div class="nav-link nav-link-dropdown cursor-pointer">About</div>
             <div
               v-if="dropdownOneShow"
               class="absolute nav-dropdown nav-dropdown-dark"
@@ -42,10 +43,54 @@
               </ul>
             </div>
           </div>
-          <nuxt-link class="nav-link" to="/destinations"
-            >Destinations</nuxt-link
+
+          <!-- Destinations Dropdown -->
+          <div
+            class="relative"
+            @mouseover="dropdownTwoShow = true"
+            @click="dropdownTwoShow = !dropdownTwoShow"
+            @mouseleave="dropdownTwoShow = false"
           >
+            <div class="nav-link nav-link-dropdown cursor-pointer">
+              Destinations
+            </div>
+            <div
+              v-if="dropdownTwoShow"
+              class="absolute nav-dropdown nav-dropdown-dark"
+            >
+              <ul class="nav-dropdown-list">
+                <div
+                  v-for="continent in continents"
+                  :key="continent.fields.name"
+                >
+                  <div
+                    class="nav-dropdown-item w-full flex items-center justify-between"
+                  >
+                    <div class="w-full cursor-default">
+                      {{ continent.fields.name }}
+                    </div>
+                    <div>
+                      <fa-icon icon="caret-up" />
+                    </div>
+                  </div>
+                  <nuxt-link
+                    v-for="destination in continent.fields.destinations"
+                    :key="destination.fields.name"
+                    tag="li"
+                    to="/about"
+                    class="nav-dropdown-item nav-dropdown-item-dark"
+                  >
+                    {{ destination.fields.name }}
+                  </nuxt-link>
+                </div>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Trip Ideas Dropdown -->
           <nuxt-link class="nav-link" to="/trips">Trip Ideas</nuxt-link>
+
+          <!-- Contact Us Button -->
           <nuxt-link class="nav-button" to="/contact">Contact Us</nuxt-link>
         </div>
       </div>
@@ -94,9 +139,16 @@
 
 <script>
 export default {
+  props: {
+    continents: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
       dropdownOneShow: false,
+      dropdownTwoShow: false,
       socialOne: false,
       socialTwo: false,
     }
@@ -135,11 +187,8 @@ export default {
         @apply text-brown;
       }
       &-dark:hover {
-        @apply bg-brown text-white;
+        @apply bg-brown text-white font-bold;
       }
-    }
-    &-item:hover {
-      @apply font-bold;
     }
   }
 }

@@ -1,10 +1,4 @@
-require('dotenv').config()
-
 export default {
-  env: {
-    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
-    CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
-  },
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
@@ -35,6 +29,7 @@ export default {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
+    '@nuxtjs/dotenv',
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
@@ -45,7 +40,13 @@ export default {
         component: 'fa',
         suffix: true,
         icons: {
-          solid: ['faPhoneAlt', 'faArrowLeft', 'faArrowRight'],
+          solid: [
+            'faPhoneAlt',
+            'faArrowLeft',
+            'faArrowRight',
+            'faCaretDown',
+            'faCaretUp',
+          ],
           regular: ['faCircle'],
         },
       },
@@ -56,6 +57,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/dotenv',
   ],
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
@@ -63,5 +65,10 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     transpile: ['vue-agile'],
+    extend(config) {
+      config.node = {
+        fs: 'empty',
+      }
+    },
   },
 }

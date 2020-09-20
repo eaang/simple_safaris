@@ -1,6 +1,7 @@
 <template>
   <div class="landing-page">
     <TheFullheightHero />
+
     <!-- <div class="container mx-auto">
       <div class="font-display">THIS IS A TITLE</div>
       <div class="font-sans">
@@ -25,13 +26,22 @@
 </template>
 
 <script>
-// import Icon from '@/components/Media/Icon.vue'
 import TheFullheightHero from '@/components/Hero/TheFullheightHero.vue'
+
+// import Icon from '@/components/Media/Icon.vue'
 export default {
   layout: 'landing',
   components: {
     // Icon,
     TheFullheightHero,
+  },
+  async fetch({ store, params }) {
+    await store.dispatch('continents/getContinents', params.slug)
+  },
+  computed: {
+    continents() {
+      return this.$store.state.continents
+    },
   },
 }
 </script>
