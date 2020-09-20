@@ -58,7 +58,12 @@
 </template>
 
 <script>
+import { VueAgile } from 'vue-agile'
+
 export default {
+  components: {
+    agile: VueAgile,
+  },
   data() {
     return {
       counter: 0,
