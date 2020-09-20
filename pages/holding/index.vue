@@ -39,7 +39,6 @@ export default {
   methods: {
     clicked() {
       this.counter++
-      console.log(this.counter)
     },
   },
 }

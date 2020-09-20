@@ -117,15 +117,15 @@
               class="absolute nav-dropdown nav-dropdown-dark"
             >
               <ul class="nav-dropdown-list">
-                <div v-for="tripIdea in tripIdeas" :key="tripIdea.fields.name">
-                  <nuxt-link
-                    tag="li"
-                    :to="'/trips/' + tripIdea.fields.slug"
-                    class="nav-dropdown-item nav-dropdown-item-dark"
-                  >
+                <a
+                  v-for="tripIdea in tripIdeas"
+                  :key="tripIdea.fields.name"
+                  :href="'/trips/' + tripIdea.fields.slug"
+                >
+                  <li class="nav-dropdown-item nav-dropdown-item-dark">
                     {{ tripIdea.fields.name }}
-                  </nuxt-link>
-                </div>
+                  </li>
+                </a>
               </ul>
             </div>
           </div>
@@ -222,7 +222,7 @@ export default {
     }
   }
   &-link:hover {
-    @apply text-brown;
+    @apply opacity-50;
   }
   &-button {
     @apply border-2 border-white px-4 py-2 rounded-md;
