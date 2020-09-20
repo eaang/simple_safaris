@@ -3,9 +3,11 @@
     <div class="footer-top bg-black">
       <div class="container mx-auto py-8">
         <div class="flex">
-          <div class="text-4xl font-display text-brown w-1/3">
-            SIMPLE SAFARIS
-          </div>
+          <a href="/"
+            ><div class="text-4xl font-display text-brown w-1/3">
+              SIMPLE SAFARIS
+            </div></a
+          >
           <div class="grid grid-flow-col grid-cols-5 gap-4 w-full">
             <div>
               <div class="footer-title">About</div>
@@ -58,10 +60,15 @@
     </div>
     <div class="footer-bottom py-4">
       <div
-        class="container mx-auto justify-bewteen text-black text-center text-sm"
+        class="container mx-auto flex justify-between text-gray-dark text-center text-sm"
       >
         <div>© 2020 Simple Safaris All Rights Reserved</div>
-        <div>icons by <a href="icons8.com/">icons8</a></div>
+        <div class="text-gray-dark">
+          icons by
+          <a class="text-gray hover:text-gray-dark" href="icons8.com/"
+            >icons8</a
+          >
+        </div>
       </div>
     </div>
   </div>
