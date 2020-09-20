@@ -11,16 +11,7 @@
 </template>
 
 <script>
-import TheTransparentHeader from '@/components/Navigation/TheTransparentHeader.vue'
-import TheSidenav from '@/components/Navigation/TheSidenav.vue'
-import TheFullheightHero from '@/components/Hero/TheFullheightHero.vue'
-
 export default {
-  components: {
-    TheTransparentHeader,
-    TheSidenav,
-    TheFullheightHero,
-  },
   async asyncData({ store, params }) {
     await store.dispatch('continents/getContinents')
     await store.dispatch('tripIdeas/getTripIdeas', params.slug)
