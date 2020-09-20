@@ -9,6 +9,7 @@
 html {
   line-break: strict;
   word-break: keep-all;
+  cursor: default;
 }
 .section {
   @apply my-24 mx-auto;
