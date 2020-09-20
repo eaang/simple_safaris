@@ -24,7 +24,7 @@
       <div class="grid grid-flow-col grid-cols-3 gap-4">
         <div>
           <InfoPoint
-            icon="idea"
+            icon="meeting"
             title="사파리 여행 전문가와 함께하는 플래닝"
             content="여행 상담부터 여행 다녀오실 때까지
 전문 사파리 여행 컨설턴트가 고객님을 도와드립니다. 
@@ -34,7 +34,7 @@
         <div>
           <InfoPoint
             icon="passenger-with-baggage"
-            title="100% 맞춤형 사파리 여행"
+            title="100% 맞춤형 여행"
             content="심플 사파리는 누구나를 위해 만들어진 
 패키지 여행은 판매하지 않습니다. 
 고객의 취향을 반영해  맞춤 여행을 기획해드립니다."
@@ -42,8 +42,8 @@
         </div>
         <div>
           <InfoPoint
-            icon="coconut-cocktail"
-            title="Adventure & Relaxation"
+            icon="sunbathe"
+            title="모험과 휴양의 조화"
             content="사파리 여행 동안 모험과 휴양을 동시에 즐길 수 있도록 
 심플 사파리의 자존심을 걸고 
 가장 훌륭한 숙소에서 지내실 수 있도록 하겠습니다."
