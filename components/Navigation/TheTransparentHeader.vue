@@ -23,17 +23,23 @@
               class="absolute nav-dropdown nav-dropdown-dark"
             >
               <ul class="nav-dropdown-list">
-                <li class="nav-dropdown-item nav-dropdown-item-dark">
-                  <a href="/about">About Us </a>
-                </li>
+                <a href="/about"
+                  ><li class="nav-dropdown-item nav-dropdown-item-dark">
+                    About us
+                  </li>
+                </a>
 
-                <li class="nav-dropdown-item nav-dropdown-item-dark">
-                  <a href="/about/privacy">개인정보처리방침s </a>
-                </li>
+                <a href="/about/privacy"
+                  ><li class="nav-dropdown-item nav-dropdown-item-dark">
+                    개인정보처리방침
+                  </li></a
+                >
 
-                <li class="nav-dropdown-item nav-dropdown-item-dark">
-                  <a href="/about/terms-and-conditions">해외여행약관 </a>
-                </li>
+                <a href="/about/terms-and-conditions"
+                  ><li class="nav-dropdown-item nav-dropdown-item-dark">
+                    해외여행약관
+                  </li>
+                </a>
               </ul>
             </div>
           </div>
@@ -59,7 +65,7 @@
                   v-for="continent in continents"
                   :key="continent.fields.name"
                 >
-                  <div
+                  <li
                     class="nav-dropdown-item w-full flex items-center justify-between cursor-pointer"
                     @click="toggleRegions(continent.fields.name)"
                   >
@@ -77,17 +83,17 @@
                         class="hidden"
                       />
                     </div>
-                  </div>
+                  </li>
                   <div :id="continent.fields.name.toLowerCase() + '-dropdown'">
-                    <nuxt-link
+                    <a
                       v-for="destination in continent.fields.destinations"
                       :key="destination.fields.name"
-                      tag="li"
-                      :to="'/destinations/' + destination.fields.slug"
-                      class="nav-dropdown-item nav-dropdown-item-dark"
+                      :href="'/destinations/' + destination.fields.slug"
                     >
-                      {{ destination.fields.name }}
-                    </nuxt-link>
+                      <li class="nav-dropdown-item nav-dropdown-item-dark">
+                        {{ destination.fields.name }}
+                      </li></a
+                    >
                   </div>
                 </div>
               </ul>
