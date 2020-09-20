@@ -16,12 +16,10 @@
 
 <script>
 export default {
-  async fetch({ store, params }) {
-    await store.dispatch('continents/getContinents', params.slug)
-  },
-  computed: {
-    continents() {
-      return this.$store.getters['continents/continents']
+  props: {
+    continents: {
+      type: Object,
+      default: () => {},
     },
   },
 }

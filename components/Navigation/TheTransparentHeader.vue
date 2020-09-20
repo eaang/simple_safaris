@@ -8,12 +8,16 @@
         <div class="flex items-center text-white text-lg space-x-8">
           <!-- About Dropdown -->
           <div
-            class="relative"
+            class="relative cursor-pointer"
             @mouseover="dropdownOneShow = true"
-            @click="dropdownOneShow = !dropdownOneShow"
             @mouseleave="dropdownOneShow = false"
           >
-            <div class="nav-link nav-link-dropdown cursor-pointer">About</div>
+            <div
+              class="nav-link nav-link-dropdown"
+              @click="dropdownOneShow = !dropdownOneShow"
+            >
+              About
+            </div>
             <div
               v-if="dropdownOneShow"
               class="absolute nav-dropdown nav-dropdown-dark"
@@ -46,12 +50,14 @@
 
           <!-- Destinations Dropdown -->
           <div
-            class="relative"
+            class="relative cursor-pointer"
             @mouseover="dropdownTwoShow = true"
-            @click="dropdownTwoShow = !dropdownTwoShow"
             @mouseleave="dropdownTwoShow = false"
           >
-            <div class="nav-link nav-link-dropdown cursor-pointer">
+            <div
+              class="nav-link nav-link-dropdown"
+              @click="dropdownTwoShow = !dropdownTwoShow"
+            >
               Destinations
             </div>
             <div
@@ -64,24 +70,35 @@
                   :key="continent.fields.name"
                 >
                   <div
-                    class="nav-dropdown-item w-full flex items-center justify-between"
+                    class="nav-dropdown-item w-full flex items-center justify-between cursor-pointer"
+                    @click="toggleRegions(continent.fields.name)"
                   >
-                    <div class="w-full cursor-default">
+                    <div class="w-full">
                       {{ continent.fields.name }}
                     </div>
                     <div>
-                      <fa-icon icon="caret-up" />
+                      <fa-icon
+                        :id="continent.fields.name.toLowerCase() + '-icon-up'"
+                        icon="caret-up"
+                      />
+                      <fa-icon
+                        :id="continent.fields.name.toLowerCase() + '-icon-down'"
+                        icon="caret-down"
+                        class="hidden"
+                      />
                     </div>
                   </div>
-                  <nuxt-link
-                    v-for="destination in continent.fields.destinations"
-                    :key="destination.fields.name"
-                    tag="li"
-                    to="/about"
-                    class="nav-dropdown-item nav-dropdown-item-dark"
-                  >
-                    {{ destination.fields.name }}
-                  </nuxt-link>
+                  <div :id="continent.fields.name.toLowerCase() + '-dropdown'">
+                    <nuxt-link
+                      v-for="destination in continent.fields.destinations"
+                      :key="destination.fields.name"
+                      tag="li"
+                      to="/about"
+                      class="nav-dropdown-item nav-dropdown-item-dark"
+                    >
+                      {{ destination.fields.name }}
+                    </nuxt-link>
+                  </div>
                 </div>
               </ul>
             </div>
@@ -141,7 +158,7 @@
 export default {
   props: {
     continents: {
-      type: Object,
+      type: Array,
       required: true,
     },
   },
@@ -153,13 +170,25 @@ export default {
       socialTwo: false,
     }
   },
+  methods: {
+    toggleRegions(country) {
+      document
+        .querySelector('#' + country.toLowerCase() + '-dropdown')
+        .classList.toggle('hidden')
+      document
+        .querySelector('#' + country.toLowerCase() + '-icon-up')
+        .classList.toggle('hidden')
+      document
+        .querySelector('#' + country.toLowerCase() + '-icon-down')
+        .classList.toggle('hidden')
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .nav {
   &-link {
-    @apply cursor-default;
     &-dropdown {
       @apply py-3;
     }

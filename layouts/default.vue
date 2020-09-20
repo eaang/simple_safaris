@@ -1,7 +1,5 @@
 <template>
   <div>
-    <TheWhiteHeader />
-    <TheSidenav />
     <Nuxt />
     <TheFooter />
   </div>
