@@ -105,7 +105,34 @@
           </div>
 
           <!-- Trip Ideas Dropdown -->
-          <nuxt-link class="nav-link" to="/trips">Trip Ideas</nuxt-link>
+          <div
+            class="relative cursor-pointer"
+            @mouseover="dropdownThreeShow = true"
+            @mouseleave="dropdownThreeShow = false"
+          >
+            <div
+              class="nav-link nav-link-dropdown"
+              @click="dropdownThreeShow = !dropdownThreeShow"
+            >
+              Trip Ideas
+            </div>
+            <div
+              v-if="dropdownThreeShow"
+              class="absolute nav-dropdown nav-dropdown-dark"
+            >
+              <ul class="nav-dropdown-list">
+                <div v-for="tripIdea in tripIdeas" :key="tripIdea.fields.name">
+                  <nuxt-link
+                    tag="li"
+                    to="/about"
+                    class="nav-dropdown-item nav-dropdown-item-dark"
+                  >
+                    {{ tripIdea.fields.name }}
+                  </nuxt-link>
+                </div>
+              </ul>
+            </div>
+          </div>
 
           <!-- Contact Us Button -->
           <nuxt-link class="nav-button" to="/contact">Contact Us</nuxt-link>
@@ -161,11 +188,16 @@ export default {
       type: Array,
       required: true,
     },
+    tripIdeas: {
+      type: Array,
+      required: true,
+    },
   },
   data() {
     return {
       dropdownOneShow: false,
       dropdownTwoShow: false,
+      dropdownThreeShow: false,
       socialOne: false,
       socialTwo: false,
     }
