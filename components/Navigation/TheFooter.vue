@@ -3,11 +3,9 @@
     <div class="footer-top bg-black">
       <div class="container mx-auto py-8">
         <div class="flex">
-          <a href="/"
-            ><div class="text-4xl font-display text-brown w-1/3">
-              SIMPLE SAFARIS
-            </div></a
-          >
+          <a href="/" class="text-4xl font-display text-brown w-1/3">
+            SIMPLE SAFARIS
+          </a>
           <div class="grid grid-flow-col grid-cols-5 gap-4 w-full">
             <div>
               <div class="footer-title">About</div>
