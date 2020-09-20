@@ -9,7 +9,7 @@
     <TheSidenav class="absolute inset-x-0 top-0" />
     <TheFullheightHero class="z-40" />
 
-    <!-- Main content -->
+    <!-- Introduction -->
     <div class="section container text-center">
       <div class="title title-main">
         당신만을 위한 비스포크 럭셔리 사파리 여행!
@@ -51,6 +51,40 @@
         </div>
       </div>
     </div>
+
+    <!-- Destinations -->
+    <div class="section container text-center">
+      <div class="title title-main">Destinations</div>
+      <div class="grid grid-cols-2">
+        <div class="text-left">
+          Africa
+          <ul class="ml-2 cursor-pointer text-brown">
+            <li @mouseleave="region = null" @mouseover="region = 'kenya'">
+              케냐 (Kenya)
+            </li>
+            <li @mouseleave="region = null" @mouseover="region = 'tanzania'">
+              탄자니아 (Tanzania)
+            </li>
+            <li @mouseleave="region = null" @mouseover="region = 'botswana'">
+              보츠와나 (Botswana)
+            </li>
+            <li
+              @mouseleave="region = null"
+              @mouseover="region = 'south-africa'"
+            >
+              남아프리카 공화국 (South Africa)
+            </li>
+            <li @mouseleave="region = null" @mouseover="region = 'namibia'">
+              나미비아 (Namibia)
+            </li>
+          </ul>
+        </div>
+        <div class="relative">
+          <img class="absolute" :src="countryImage" />
+          <img src="@/assets/images/landing-map/map-africa.png" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -63,6 +97,22 @@ export default {
       continents: store.getters['continents/continents'],
       tripIdeas: store.getters['tripIdeas/tripIdeas'],
     }
+  },
+  data() {
+    return {
+      region: null,
+    }
+  },
+  computed: {
+    countryImage() {
+      if (this.region === null) {
+        return ''
+      } else {
+        return require('@/assets/images/landing-map/map-africa-' +
+          this.region +
+          '.png')
+      }
+    },
   },
 }
 </script>
