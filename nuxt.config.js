@@ -6,7 +6,9 @@ const contentful = require('contentful')
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
-
+  purgeCSS: {
+    enabled: false,
+  },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'simple_safaris',
