@@ -19,6 +19,9 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
+  router: {
+    base: '/',
+  },
   generate: {
     routes: () => {
       const client = contentful.createClient({
