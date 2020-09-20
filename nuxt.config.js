@@ -65,8 +65,7 @@ export default {
 
   tailwindcss: {
     configPath: './tailwind.config.js',
-    exposeConfig: false,
-    config: {},
+    exposeConfig: true,
   },
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [{ src: '~/plugins/vueAgile.js', ssr: false }],
