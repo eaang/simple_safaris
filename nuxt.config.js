@@ -4,10 +4,9 @@ require('dotenv').config()
 const contentful = require('contentful')
 
 export default {
-  mode: 'universal',
-
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
+
   purgeCSS: {
     enabled: false,
   },
@@ -70,7 +69,7 @@ export default {
     exposeConfig: true,
   },
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/vueAgile.js'],
+  plugins: [{ src: '~/plugins/vueAgile.js', ssr: false }],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
