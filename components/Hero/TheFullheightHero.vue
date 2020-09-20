@@ -2,19 +2,23 @@
   <div>
     <client-only>
       <div class="relative h-screen w-full">
-        <agile :options="carouselOptions">
-          <img
+        <agile ref="carousel" :options="carouselOptions">
+          <div
             v-for="image in images"
             :key="image.pathShort"
-            class="slide block object-cover h-screen w-full z-0"
-            :src="image.pathLong" />
+            class="slide block h-screen w-full z-0 bg-center bg-cover"
+            :style="{
+              backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)), url(${image.pathLong})`,
+            }" />
 
           <template slot="prevButton"
             ><div
-              class="absolute inset-y-0 left-0 flex items-center justify-around px-12 text-white text-4xl"
+              class="absolute inset-y-0 left-0 flex items-center justify-around px-12 text-4xl"
               @click="counter--"
             >
-              <div class="rounded-full border-2 border-white p-8">
+              <div
+                class="rounded-full border-2 border-white p-8 text-white hover:bg-white hover:text-brown"
+              >
                 <div class="h-6 w-6 flex items-center justify-around">
                   <fa-icon icon="arrow-left" />
                 </div>
@@ -23,10 +27,12 @@
           </template>
           <template slot="nextButton"
             ><div
-              class="absolute inset-y-0 right-0 flex items-center justify-around px-12 text-white text-4xl"
+              class="absolute inset-y-0 right-0 flex items-center justify-around px-12 text-4xl"
               @click="counter++"
             >
-              <div class="rounded-full border-2 border-white p-8">
+              <div
+                class="rounded-full border-2 border-white p-8 text-white hover:bg-white hover:text-brown"
+              >
                 <div class="h-6 w-6 flex items-center justify-around">
                   <fa-icon icon="arrow-right" />
                 </div>
@@ -42,8 +48,12 @@
           <li
             v-for="(image, i) in images"
             :key="i"
-            class="border-2 border-white rounded-full w-4 h-4 mx-2"
+            class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
             :class="{ 'bg-white': i === trueCounter }"
+            @click="
+              counter = i
+              $refs.carousel.goTo(trueCounter)
+            "
           ></li>
         </div>
       </ul>
@@ -62,8 +72,16 @@ export default {
     return {
       counter: 0,
       carouselOptions: {
-        navButtons: true,
+        navButtons: false,
         fade: true,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              navButtons: true,
+            },
+          },
+        ],
       },
       images: [],
     }

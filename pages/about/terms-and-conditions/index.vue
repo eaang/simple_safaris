@@ -1,7 +1,5 @@
 <template>
-  <div>
-    This is the page for all trips (maybe some sort of search or sort thing).
-  </div>
+  <div>Terms and conditions for travel is here</div>
 </template>
 
 <script>

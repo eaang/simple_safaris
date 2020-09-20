@@ -1,7 +1,5 @@
 <template>
-  <div>
-    This is the page for all countries (talks about different destinations).
-  </div>
+  <div>Privacy policy page is here</div>
 </template>
 
 <script>
