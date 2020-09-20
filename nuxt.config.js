@@ -1,5 +1,8 @@
 require('dotenv').config()
 
+// eslint-disable-next-line nuxt/no-cjs-in-config
+const contentful = require('contentful')
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -15,7 +18,42 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
   generate: {
-    routes: () => {},
+    routes: () => {
+      const client = contentful.createClient({
+        space: process.env.CTF_SPACE_ID,
+        accessToken: process.env.CTF_CD_ACCESS_TOKEN,
+      })
+
+      const destinations = client
+        .getEntries({
+          content_type: 'destination',
+        })
+        .then((response) => {
+          return response.items.map((entry) => {
+            return {
+              route: '/destinations/' + entry.fields.slug,
+              payload: entry,
+            }
+          })
+        })
+
+      const tripIdeas = client
+        .getEntries({
+          content_type: 'tripIdea',
+        })
+        .then((response) => {
+          return response.items.map((entry) => {
+            return {
+              route: '/trips/' + entry.fields.slug,
+              payload: entry,
+            }
+          })
+        })
+
+      return Promise.all([destinations, tripIdeas]).then((values) => {
+        return [...values[0], ...values[1]]
+      })
+    },
   },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['@/assets/sass/main.scss'],
