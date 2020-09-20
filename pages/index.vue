@@ -1,14 +1,12 @@
 <template>
   <div class="relative landing-page">
-    <client-only>
-      <TheTransparentHeader
-        :continents="continents"
-        :trip-ideas="tripIdeas"
-        class="absolute w-screen z-50"
-      />
-      <TheSidenav class="absolute inset-x-0 top-0" />
-      <TheFullheightHero class="z-40" />
-    </client-only>
+    <TheTransparentHeader
+      :continents="continents"
+      :trip-ideas="tripIdeas"
+      class="absolute w-screen z-50"
+    />
+    <TheSidenav class="absolute inset-x-0 top-0" />
+    <TheFullheightHero class="z-40" />
   </div>
 </template>
 
