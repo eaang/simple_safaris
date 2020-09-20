@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-=======
 require('dotenv').config()
 
 // eslint-disable-next-line nuxt/no-cjs-in-config
 const contentful = require('contentful')
 
->>>>>>> cc848f3379bab0e88e208d2772bec796ff531a18
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
