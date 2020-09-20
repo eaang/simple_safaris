@@ -54,7 +54,7 @@
               v-if="dropdownTwoShow"
               class="absolute nav-dropdown nav-dropdown-dark"
             >
-              <!-- <ul class="nav-dropdown-list">
+              <ul class="nav-dropdown-list">
                 <div
                   v-for="continent in continents"
                   :key="continent.fields.name"
@@ -90,7 +90,7 @@
                     </nuxt-link>
                   </div>
                 </div>
-              </ul> -->
+              </ul>
             </div>
           </div>
 
@@ -110,7 +110,7 @@
               v-if="dropdownThreeShow"
               class="absolute nav-dropdown nav-dropdown-dark"
             >
-              <!-- <ul class="nav-dropdown-list">
+              <ul class="nav-dropdown-list">
                 <div v-for="tripIdea in tripIdeas" :key="tripIdea.fields.name">
                   <nuxt-link
                     tag="li"
@@ -120,7 +120,7 @@
                     {{ tripIdea.fields.name }}
                   </nuxt-link>
                 </div>
-              </ul> -->
+              </ul>
             </div>
           </div>
 
@@ -173,16 +173,16 @@
 
 <script>
 export default {
-  // props: {
-  //   continents: {
-  //     type: Array,
-  //     required: true,
-  //   },
-  //   tripIdeas: {
-  //     type: Array,
-  //     required: true,
-  //   },
-  // },
+  props: {
+    continents: {
+      type: Array,
+      required: true,
+    },
+    tripIdeas: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
       dropdownOneShow: false,
