@@ -70,6 +70,7 @@ export default {
       carouselOptions: {
         navButtons: false,
         fade: true,
+        infinite: true,
         autoplay: false,
         dots: false,
         responsive: [
@@ -100,9 +101,11 @@ export default {
     this.importImages(
       require.context('@/assets/images/landing-page/', true, /\.jpeg$/)
     )
+  },
+  mounted() {
     setInterval(() => {
-      this.counter++
       this.$refs.carousel.goToNext()
+      this.counter++
     }, 4000)
   },
   methods: {

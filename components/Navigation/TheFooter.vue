@@ -26,12 +26,10 @@
               <a href="/trips"><div class="footer-title">Trip Ideas</div></a>
               <a href="/contact"><div class="footer-title">Contact Us</div></a>
             </div>
-            <div></div>
-            <div></div>
             <div>
               <div class="footer-title">Stay in Touch</div>
               <ul class="footer-list">
-                <div class="flex">
+                <div class="flex w-1/2 justify-between mb-1">
                   <li class="footer-list-item">
                     <img
                       class="h-5"
@@ -52,12 +50,19 @@
                 <li class="">jin@simplesafaris.com</li>
               </ul>
             </div>
+            <div></div>
+            <div></div>
           </div>
         </div>
       </div>
     </div>
-    <div class="footer-bottom text-black text-center py-4">
-      2020 © Copyright Simple Safaris. All Rights Reserved
+    <div class="footer-bottom py-4">
+      <div
+        class="container mx-auto justify-bewteen text-black text-center text-sm"
+      >
+        <div>© 2020 Simple Safaris All Rights Reserved</div>
+        <div>icons by <a href="icons8.com/">icons8</a></div>
+      </div>
     </div>
   </div>
 </template>
@@ -73,12 +78,12 @@ export default {}
     @apply font-bold my-2;
   }
   &-list {
-    @apply opacity-50;
+    @apply opacity-75;
     &-item {
       @apply cursor-pointer;
     }
     &-item:hover {
-      @apply opacity-75;
+      @apply opacity-50;
     }
   }
 }
