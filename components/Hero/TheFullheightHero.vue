@@ -38,22 +38,24 @@
             </div>
           </div> </template
       ></agile>
+      <!-- Custom dots -->
+      <ul
+        class="flex justify-around absolute inset-x-0 bottom-0 w-screen py-12"
+      >
+        <div class="flex">
+          <li
+            v-for="(image, i) in images"
+            :key="i"
+            class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
+            :class="{ 'bg-white': i === trueCounter }"
+            @click="
+              counter = i
+              $refs.carousel.goTo(trueCounter)
+            "
+          ></li>
+        </div>
+      </ul>
     </div>
-    <!-- Custom dots -->
-    <ul class="flex justify-around absolute inset-x-0 bottom-0 w-screen py-12">
-      <div class="flex">
-        <li
-          v-for="(image, i) in images"
-          :key="i"
-          class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
-          :class="{ 'bg-white': i === trueCounter }"
-          @click="
-            counter = i
-            $refs.carousel.goTo(trueCounter)
-          "
-        ></li>
-      </div>
-    </ul>
   </div>
 </template>
 

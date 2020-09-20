@@ -2,7 +2,7 @@
   <div class="flex items-center h-24">
     <div class="container mx-auto flex justify-between">
       <div class="left-navbar flex space-x-8">
-        <div class="title text-4xl font-display text-white cursor-default">
+        <div class="text-4xl font-display text-white cursor-default">
           SIMPLE SAFARIS
         </div>
         <div class="flex items-center text-white text-lg space-x-8">
