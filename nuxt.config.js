@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -12,7 +14,9 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-
+  generate: {
+    routes: () => {},
+  },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['@/assets/sass/main.scss'],
 

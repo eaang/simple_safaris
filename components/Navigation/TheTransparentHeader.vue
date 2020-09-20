@@ -93,7 +93,7 @@
                       v-for="destination in continent.fields.destinations"
                       :key="destination.fields.name"
                       tag="li"
-                      to="/about"
+                      :to="'/destinations/' + destination.fields.slug"
                       class="nav-dropdown-item nav-dropdown-item-dark"
                     >
                       {{ destination.fields.name }}
@@ -124,7 +124,7 @@
                 <div v-for="tripIdea in tripIdeas" :key="tripIdea.fields.name">
                   <nuxt-link
                     tag="li"
-                    to="/about"
+                    :to="'/trips/' + tripIdea.fields.slug"
                     class="nav-dropdown-item nav-dropdown-item-dark"
                   >
                     {{ tripIdea.fields.name }}
