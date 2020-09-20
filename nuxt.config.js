@@ -1,4 +1,4 @@
-require('dotenv').config()
+const env = require('dotenv').config()
 
 // eslint-disable-next-line nuxt/no-cjs-in-config
 const contentful = require('contentful')
@@ -6,7 +6,7 @@ const contentful = require('contentful')
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
-
+  env: env.parsed,
   purgeCSS: {
     enabled: false,
   },
