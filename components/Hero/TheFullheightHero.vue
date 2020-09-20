@@ -4,10 +4,11 @@
       <agile ref="carousel" :options="carouselOptions">
         <div
           v-for="image in images"
-          :key="image"
+          :key="image.pathShort"
           class="slide block h-screen w-full z-0 bg-center bg-cover"
-          :style="{ backgroundImage: `url(${image})` }"
-        ></div>
+          :style="{
+            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)), url(${image.pathLong})`,
+          }" />
 
         <template slot="prevButton"
           ><div
@@ -63,9 +64,6 @@ export default {
   components: {
     agile: VueAgile,
   },
-  asyncData() {
-    return {}
-  },
   data() {
     return {
       counter: 0,
@@ -82,14 +80,7 @@ export default {
           },
         ],
       },
-      images: [
-        '/landing-page/hotel-samaki-lodge-zanzibar.jpeg',
-        '/landing-page/kenya-safari.jpeg',
-        '/landing-page/luxury-safari-holiday.jpeg',
-        '/landing-page/national-parks-safari-africa.jpeg',
-        '/landing-page/ranthambore-national-park.jpeg',
-        '/landing-page/sri-lanka-safari-leopard.jpeg',
-      ],
+      images: [],
     }
   },
   computed: {
@@ -104,7 +95,17 @@ export default {
       }
     },
   },
+  created() {
+    this.importImages(
+      require.context('@/assets/images/landing-page/', true, /\.jpeg$/)
+    )
+  },
   methods: {
+    importImages(r) {
+      r.keys().forEach((key) =>
+        this.images.push({ pathLong: r(key), pathShort: key })
+      )
+    },
     isFilled(i) {
       if (i === this.counter) {
         return true
