@@ -19,6 +19,9 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
+  router: {
+    base: '/',
+  },
   generate: {
     routes: () => {
       const client = contentful.createClient({
@@ -66,7 +69,7 @@ export default {
     config: {},
   },
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['@/plugins/vue-agile.js'],
+  plugins: [{ src: '~/plugins/vueAgile.js', ssr: false }],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -108,7 +111,6 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-    transpile: ['vue-agile'],
     extend(config) {
       config.node = {
         fs: 'empty',
