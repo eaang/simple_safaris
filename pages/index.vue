@@ -57,7 +57,7 @@
       <div class="title title-main">Destinations</div>
       <div class="grid grid-cols-2">
         <div class="text-left">
-          Africa
+          아프리카(Africa)
           <ul class="ml-2 cursor-pointer text-brown">
             <li @mouseleave="region = null" @mouseover="region = 'kenya'">
               케냐 (Kenya)
