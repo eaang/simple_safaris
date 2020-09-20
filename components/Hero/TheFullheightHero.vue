@@ -39,9 +39,7 @@
           </div> </template
       ></agile>
       <!-- Custom dots -->
-      <ul
-        class="flex justify-around absolute inset-x-0 bottom-0 w-screen py-12"
-      >
+      <ul class="flex justify-around absolute inset-x-0 bottom-0 py-12">
         <div class="flex">
           <li
             v-for="(image, i) in images"
@@ -72,6 +70,7 @@ export default {
       carouselOptions: {
         navButtons: false,
         fade: true,
+        autoplay: false,
         dots: false,
         responsive: [
           {
@@ -101,6 +100,10 @@ export default {
     this.importImages(
       require.context('@/assets/images/landing-page/', true, /\.jpeg$/)
     )
+    setInterval(() => {
+      this.counter++
+      this.$refs.carousel.goToNext()
+    }, 4000)
   },
   methods: {
     importImages(r) {

@@ -10,12 +10,9 @@
             @mouseover="dropdownOneShow = true"
             @mouseleave="dropdownOneShow = false"
           >
-            <div
-              class="nav-link nav-link-dropdown"
-              @click="dropdownOneShow = !dropdownOneShow"
+            <a href="/about"
+              ><div class="nav-link nav-link-dropdown">About</div></a
             >
-              About
-            </div>
             <div
               v-if="dropdownOneShow"
               class="absolute nav-dropdown nav-dropdown-dark"
@@ -23,7 +20,7 @@
               <ul class="nav-dropdown-list">
                 <a href="/about"
                   ><li class="nav-dropdown-item nav-dropdown-item-dark">
-                    About us
+                    About Us
                   </li>
                 </a>
 
@@ -48,12 +45,9 @@
             @mouseover="dropdownTwoShow = true"
             @mouseleave="dropdownTwoShow = false"
           >
-            <div
-              class="nav-link nav-link-dropdown"
-              @click="dropdownTwoShow = !dropdownTwoShow"
+            <a href="/destinations"
+              ><div class="nav-link nav-link-dropdown">Destinations</div></a
             >
-              Destinations
-            </div>
             <div
               v-if="dropdownTwoShow"
               class="absolute nav-dropdown nav-dropdown-dark"
@@ -64,10 +58,10 @@
                   :key="continent.fields.name"
                 >
                   <li
-                    class="nav-dropdown-item w-full flex items-center justify-between cursor-pointer"
+                    class="nav-dropdown-item flex items-center justify-between cursor-pointer"
                     @click="toggleRegions(continent.fields.name)"
                   >
-                    <div class="w-full">
+                    <div class="">
                       {{ continent.fields.name }}
                     </div>
                     <div>
@@ -104,12 +98,9 @@
             @mouseover="dropdownThreeShow = true"
             @mouseleave="dropdownThreeShow = false"
           >
-            <div
-              class="nav-link nav-link-dropdown"
-              @click="dropdownThreeShow = !dropdownThreeShow"
+            <a href="/trips"
+              ><div class="nav-link nav-link-dropdown">Trip Ideas</div></a
             >
-              Trip Ideas
-            </div>
             <div
               v-if="dropdownThreeShow"
               class="absolute nav-dropdown nav-dropdown-dark"

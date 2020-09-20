@@ -3,19 +3,56 @@
     <div class="footer-top bg-black">
       <div class="container mx-auto py-8">
         <div class="flex">
-          <div class="text-4xl font-display text-brown">SIMPLE SAFARIS</div>
-          <div>
-            <div class="footer-title">About</div>
-            <ul class="footer-list">
-              <li class="footer-list-item">About us</li>
-              <li class="footer-list-item">개인정보처리방침</li>
-              <li class="footer-list-item">해외여행약관</li>
-            </ul>
+          <div class="text-4xl font-display text-brown w-1/3">
+            SIMPLE SAFARIS
           </div>
-          <div>Space 2</div>
-          <div>Space 3</div>
-          <div>Space 4</div>
-          <div>Space 5</div>
+          <div class="grid grid-flow-col grid-cols-5 gap-4 w-full">
+            <div>
+              <div class="footer-title">About</div>
+              <ul class="footer-list">
+                <a href="/about"><li class="footer-list-item">About Us</li></a>
+                <a href="/about/privacy"
+                  ><li class="footer-list-item">개인정보처리방침</li></a
+                >
+                <a href="/about/terms-and-conditions"
+                  ><li class="footer-list-item">해외여행약관</li></a
+                >
+              </ul>
+            </div>
+            <div>
+              <a href="/destinations"
+                ><div class="footer-title">Destinations</div></a
+              >
+              <a href="/trips"><div class="footer-title">Trip Ideas</div></a>
+              <a href="/contact"><div class="footer-title">Contact Us</div></a>
+            </div>
+            <div></div>
+            <div></div>
+            <div>
+              <div class="footer-title">Stay in Touch</div>
+              <ul class="footer-list">
+                <div class="flex">
+                  <li class="footer-list-item">
+                    <img
+                      class="h-5"
+                      src="@/assets/images/icons/ic-instagram-ft.svg"
+                    />
+                  </li>
+                  <li class="footer-list-item">
+                    <img
+                      class="h-5"
+                      src="@/assets/images/icons/ic-blog-ft.svg"
+                    />
+                  </li>
+                  <li class="footer-list-item">
+                    <img class="h-5" src="@/assets/images/icons/ic-kakao.svg" />
+                  </li>
+                </div>
+                <li class="">070-4517-0225</li>
+                <li class="">jin@simplesafaris.com</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -33,11 +70,12 @@ export default {}
 .footer {
   @apply text-brown;
   &-title {
-    @apply font-bold;
+    @apply font-bold my-2;
   }
   &-list {
+    @apply opacity-50;
     &-item {
-      @apply opacity-50 cursor-pointer;
+      @apply cursor-pointer;
     }
     &-item:hover {
       @apply opacity-75;
