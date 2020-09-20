@@ -57,27 +57,49 @@
       <div class="title title-main">Destinations</div>
       <div class="grid grid-cols-2">
         <div class="text-left">
-          아프리카(Africa)
-          <ul class="ml-2 cursor-pointer text-brown">
-            <li @mouseleave="region = null" @mouseover="region = 'kenya'">
-              케냐 (Kenya)
-            </li>
-            <li @mouseleave="region = null" @mouseover="region = 'tanzania'">
-              탄자니아 (Tanzania)
-            </li>
-            <li @mouseleave="region = null" @mouseover="region = 'botswana'">
-              보츠와나 (Botswana)
-            </li>
-            <li
-              @mouseleave="region = null"
-              @mouseover="region = 'south-africa'"
-            >
-              남아프리카 공화국 (South Africa)
-            </li>
-            <li @mouseleave="region = null" @mouseover="region = 'namibia'">
-              나미비아 (Namibia)
-            </li>
-          </ul>
+          <div class="grid grid-cols-2">
+            <ul class="destination-list">
+              <li class="destination-list-item">아프리카(Africa)</li>
+              <li class="destination-list-item">아시아(Asia)</li>
+            </ul>
+            <ul class="destination-list ml-2 cursor-pointer">
+              <li
+                class="destination-list-item"
+                @mouseleave="region = null"
+                @mouseover="region = 'kenya'"
+              >
+                케냐 (Kenya)
+              </li>
+              <li
+                class="destination-list-item"
+                @mouseleave="region = null"
+                @mouseover="region = 'tanzania'"
+              >
+                탄자니아 (Tanzania)
+              </li>
+              <li
+                class="destination-list-item"
+                @mouseleave="region = null"
+                @mouseover="region = 'botswana'"
+              >
+                보츠와나 (Botswana)
+              </li>
+              <li
+                class="destination-list-item"
+                @mouseleave="region = null"
+                @mouseover="region = 'south-africa'"
+              >
+                남아프리카 공화국 (South Africa)
+              </li>
+              <li
+                class="destination-list-item"
+                @mouseleave="region = null"
+                @mouseover="region = 'namibia'"
+              >
+                나미비아 (Namibia)
+              </li>
+            </ul>
+          </div>
         </div>
         <div class="relative">
           <img class="absolute" :src="countryImage" />
@@ -117,4 +139,13 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.destination-list {
+  &-item {
+    @apply text-brown text-xl mb-4;
+  }
+  &-item:hover {
+    @apply text-black font-bold;
+  }
+}
+</style>
