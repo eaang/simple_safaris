@@ -71,6 +71,7 @@ export default {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
+    '@nuxtjs/dotenv',
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
@@ -81,7 +82,13 @@ export default {
         component: 'fa',
         suffix: true,
         icons: {
-          solid: ['faPhoneAlt', 'faArrowLeft', 'faArrowRight'],
+          solid: [
+            'faPhoneAlt',
+            'faArrowLeft',
+            'faArrowRight',
+            'faCaretDown',
+            'faCaretUp',
+          ],
           regular: ['faCircle'],
         },
       },
@@ -92,6 +99,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/dotenv',
   ],
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
