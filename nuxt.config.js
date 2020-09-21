@@ -103,6 +103,7 @@ export default {
             'faCaretUp',
             'faAngleRight',
             'faPlus',
+            'faThumbsUp',
           ],
           regular: ['faCircle'],
         },

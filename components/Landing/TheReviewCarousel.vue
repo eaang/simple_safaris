@@ -1,14 +1,26 @@
 <template>
   <div class="section">
     <div class="container relative bg-brown mx-auto text-center py-16">
-      <div class="title title-main text-white">Reviews</div>
+      <div class="title title-main text-white leading-10">Reviews</div>
       <div class="text-white text-lg">
-        <agile ref="reviewCarousel" :options="reviewCarouselOptions">
+        <agile
+          ref="reviewCarousel"
+          :options="reviewCarouselOptions"
+          class="pb-24"
+        >
           <div v-for="(review, i) in reviews" :key="i" class="slide">
             <h3>
-              <div>score: {{ review.rating }}</div>
-              <div>{{ review.text }}</div>
-              <div class="font-bold">{{ review.name }}</div>
+              <div class="flex w-full justify-center space-x-4 my-8">
+                <div
+                  v-for="n in review.rating"
+                  :key="n"
+                  class="rounded-lg h-16 w-16 bg-teal-500 flex items-center justify-center text-3xl"
+                >
+                  <fa-icon icon="thumbs-up" />
+                </div>
+              </div>
+              <div class="px-48 my-8">{{ review.text }}</div>
+              <div class="font-bold my-8">{{ review.name }}</div>
             </h3>
           </div>
           <template slot="prevButton"
@@ -41,7 +53,7 @@
           </template>
         </agile>
         <!-- Custom dots -->
-        <ul class="flex justify-around absolute inset-x-0 bottom-0">
+        <ul class="flex justify-around absolute inset-x-0 bottom-0 pb-16">
           <div class="flex">
             <li
               v-for="(review, i) in reviews"
@@ -88,15 +100,6 @@ export default {
       reviews: [
         {
           name: '이름이',
-          rating: 1,
-          text: `대통령은 필요하다고 인정할 때에는 외교·국방·통일 기타 국가안위에 관한
-          중요정책을 국민투표에 붙일 수 있다. 이를 규제·조정할 수 있다. 누구든지
-          체포 또는 구속의 이유와 변호인의 조력을 받을 권리가 있음을 고지받지
-          아니하고는 체포 또는 구속을 당하지 아니한다. 국회의원과 정부는
-          법률안을 제출할 수 있다.`,
-        },
-        {
-          name: '뭐예요',
           rating: 2,
           text: `대통령은 필요하다고 인정할 때에는 외교·국방·통일 기타 국가안위에 관한
           중요정책을 국민투표에 붙일 수 있다. 이를 규제·조정할 수 있다. 누구든지
@@ -105,7 +108,7 @@ export default {
           법률안을 제출할 수 있다.`,
         },
         {
-          name: '이름이',
+          name: '뭐예요',
           rating: 3,
           text: `대통령은 필요하다고 인정할 때에는 외교·국방·통일 기타 국가안위에 관한
           중요정책을 국민투표에 붙일 수 있다. 이를 규제·조정할 수 있다. 누구든지
@@ -114,8 +117,17 @@ export default {
           법률안을 제출할 수 있다.`,
         },
         {
-          name: '뭐예요',
+          name: '이름이',
           rating: 4,
+          text: `대통령은 필요하다고 인정할 때에는 외교·국방·통일 기타 국가안위에 관한
+          중요정책을 국민투표에 붙일 수 있다. 이를 규제·조정할 수 있다. 누구든지
+          체포 또는 구속의 이유와 변호인의 조력을 받을 권리가 있음을 고지받지
+          아니하고는 체포 또는 구속을 당하지 아니한다. 국회의원과 정부는
+          법률안을 제출할 수 있다.`,
+        },
+        {
+          name: '뭐예요',
+          rating: 5,
           text: `대통령은 필요하다고 인정할 때에는 외교·국방·통일 기타 국가안위에 관한
           중요정책을 국민투표에 붙일 수 있다. 이를 규제·조정할 수 있다. 누구든지
           체포 또는 구속의 이유와 변호인의 조력을 받을 권리가 있음을 고지받지
