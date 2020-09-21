@@ -17,10 +17,10 @@ html {
 .title {
   @apply font-bold;
   &-main {
-    @apply text-5xl mb-8;
+    @apply text-5xl;
   }
 }
 .content {
-  @apply text-gray text-lg mb-4;
+  @apply text-gray text-lg;
 }
 </style>

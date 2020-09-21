@@ -14,7 +14,7 @@
       <div class="title title-main text-black">
         당신만을 위한 비스포크 럭셔리 사파리 여행!
       </div>
-      <div class="content">
+      <div class="content my-8">
         사파리(Safari)라는 말은 동물을 구경하거나 사냥하는 여행을 의미합니다.
         <br />
         심플사파리는 고객님들이 대자연에서의 모험을 쉽고 편안하게 즐길 수 있도록
@@ -53,7 +53,10 @@
     </div>
 
     <!-- Destinations -->
-    <DestinationMap />
+    <div class="section container text-center">
+      <div class="title title-main text-black">Destinations</div>
+      <TheDestinationMap class="my-8" />
+    </div>
 
     <!-- Trip Ideas -->
     <div class="section bg-brown-dark">
@@ -61,7 +64,7 @@
         <div class="title title-main text-white text-center">
           Trip ideas for you
         </div>
-        <div class="grid grid-flow-col grid-cols-4 gap-4">
+        <div class="grid grid-flow-col grid-cols-4 gap-4 my-8">
           <div v-for="idea in tripIdeas" :key="idea.id">
             <TripIdeaCard
               :slug="idea.fields.slug"
@@ -77,6 +80,13 @@
             />
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Reviews -->
+    <div class="section">
+      <div class="container bg-brown mx-auto text-center py-16">
+        <div class="title title-main text-white">Reviews</div>
       </div>
     </div>
   </div>

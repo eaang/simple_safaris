@@ -73,6 +73,7 @@ export default {
         infinite: true,
         autoplay: false,
         dots: false,
+        speed: 500,
         responsive: [
           {
             breakpoint: 768,
