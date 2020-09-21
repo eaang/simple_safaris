@@ -69,7 +69,7 @@
     <div class="section bg-brown-dark">
       <div class="container mx-auto">
         <div class="title title-main text-white text-center">
-          Trip ideas for you
+          <div class="mb-8">Trip ideas for you</div>
           <TripideaCarousel :trip-ideas="tripIdeas" />
         </div>
       </div>

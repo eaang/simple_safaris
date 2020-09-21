@@ -1,8 +1,8 @@
 <template>
-  <div class="section">
+  <div class="section px-8">
     <div class="container relative bg-brown mx-auto text-center pt-16 pb-32">
       <div class="title title-main text-white">Reviews</div>
-      <div class="text-white text-xl">
+      <div class="text-white text-lg lg:text-xl">
         <agile
           ref="reviewCarousel"
           :options="reviewCarouselOptions"
@@ -10,16 +10,18 @@
         >
           <div v-for="(review, i) in reviews" :key="i" class="slide">
             <h3>
-              <div class="flex w-full justify-center space-x-4 my-8">
+              <div
+                class="flex w-full justify-center space-x-2 lg:space-x-4 my-8"
+              >
                 <div
                   v-for="n in review.rating"
                   :key="n"
-                  class="rounded-lg h-16 w-16 bg-teal-500 flex items-center justify-center text-3xl"
+                  class="rounded h-12 w-12 lg:h-16 lg:w-16 bg-teal-500 flex items-center justify-center text-xl lg:text-3xl"
                 >
                   <fa-icon icon="thumbs-up" />
                 </div>
               </div>
-              <div class="px-48 my-8">{{ review.text }}</div>
+              <div class="px-4 lg:px-48 my-8">{{ review.text }}</div>
               <div class="font-bold my-8">{{ review.name }}</div>
             </h3>
           </div>
@@ -90,7 +92,7 @@ export default {
         speed: 500,
         responsive: [
           {
-            breakpoint: 768,
+            breakpoint: 1024,
             settings: {
               navButtons: true,
             },

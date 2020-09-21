@@ -1,5 +1,5 @@
 <template>
-  <div class="relative mb-12">
+  <div class="relative mb-24">
     <agile ref="carousel" :options="tripCarouselOptions" class="mx-8">
       <div v-for="idea in tripIdeas" :key="idea.id" class="slide px-2">
         <TripIdeaCard
