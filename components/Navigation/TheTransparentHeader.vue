@@ -123,9 +123,7 @@
           >
         </div>
       </div>
-      <div
-        class="right-navbar flex flex-col justify-around text-white text-lg space-x-4"
-      >
+      <div class="right-navbar flex flex-col justify-center text-white text-lg">
         <div class="flex justify-end space-x-2">
           <a
             href="#"
