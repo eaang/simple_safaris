@@ -57,15 +57,6 @@
               보츠와나 (Botswana)
             </li></a
           >
-          <a href="/destinations/south-africa"
-            ><li
-              class="destination-list-item"
-              @mouseleave="region = null"
-              @mouseover="region = 'south-africa'"
-            >
-              남아프리카 공화국 (South Africa)
-            </li></a
-          >
           <a href="/destinations/namibia"
             ><li
               class="destination-list-item"
@@ -73,6 +64,15 @@
               @mouseover="region = 'namibia'"
             >
               나미비아 (Namibia)
+            </li></a
+          >
+          <a href="/destinations/south-africa"
+            ><li
+              class="destination-list-item"
+              @mouseleave="region = null"
+              @mouseover="region = 'south-africa'"
+            >
+              남아프리카 공화국 (South Africa)
             </li></a
           >
         </ul>
