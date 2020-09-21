@@ -127,6 +127,8 @@
       <div class="title title-main text-black">Our Partners</div>
       <ThePartnerCarousel />
     </div>
+    <!-- Spacing before footer -->
+    <div class="h-16"></div>
   </div>
 </template>
 
