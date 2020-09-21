@@ -1,11 +1,18 @@
 <template>
   <div class="flex items-center h-24">
-    <div class="container mx-auto flex justify-between h-full">
-      <div class="left-navbar flex space-x-8">
+    <div class="relative container px-4 mx-auto flex justify-between h-full">
+      <div
+        class="lg:hidden flex items-center text-4xl text-white absolute h-full"
+      >
+        <fa-icon icon="bars" />
+      </div>
+      <div
+        class="left-navbar flex justify-center lg:justify-start space-x-8 w-screen"
+      >
         <div class="text-4xl font-display text-white flex items-center">
           SIMPLE SAFARIS
         </div>
-        <div class="flex items-center text-white text-lg space-x-8">
+        <div class="hidden lg:flex items-center text-white text-lg space-x-8">
           <!-- About Dropdown -->
           <div
             class="relative"
@@ -123,7 +130,9 @@
           >
         </div>
       </div>
-      <div class="right-navbar flex flex-col justify-center text-white text-lg">
+      <div
+        class="right-navbar hidden lg:flex flex-col justify-center text-white text-lg"
+      >
         <div class="flex justify-end space-x-2">
           <a
             href="#"
