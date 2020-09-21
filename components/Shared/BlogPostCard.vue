@@ -4,7 +4,7 @@
     @mouseover="mouseover = true"
     @mouseleave="mouseover = false"
   >
-    <a :href="'/trips/' + slug">
+    <a :href="link">
       <div class="relative h-56 trip-idea-image">
         <div
           v-if="mouseover"
@@ -20,31 +20,23 @@
             background-position: center;
           "
           :class="{ 'background-filter': mouseover }"
-          :style="{ 'background-image': 'url(' + url + ')' }"
+          :style="{ 'background-image': `url(${url})` }"
         ></div>
       </div>
-      <div class="trip-idea-text bg-white text-center p-4">
+      <div class="trip-idea-text bg-white text-center px-4 py-8 space-y-4">
         <div
-          class="trip-idea-title text-gray-dark text-2xl font-bold flex items-center justify-center px-4 h-20"
+          class="trip-idea-title text-gray-dark text-2xl font-bold flex items-center justify-center"
         >
-          {{ title }}
+          <div>
+            <div class="topic">[{{ topic }}]</div>
+            <div class="title">{{ title }}</div>
+          </div>
         </div>
-        <div class="trip-idea-body text-brown text-sm h-16">
+        <div class="trip-idea-body text-brown text-sm">
           {{ content }}
         </div>
-        <div
-          class="trip-idea-price text-brown h-20 flex flex-col items-center justify-center"
-        >
-          <div class="font-bold text-lg">Course 예상 가격</div>
-          <div>{{ price }}</div>
-        </div>
-        <div
-          class="trip-idea-link text-xs text-brown flex items-center justify-center space-x-2 h-6"
-        >
-          <div>more</div>
-          <img src="@/assets/images/icons/more.svg" />
-        </div></div
-    ></a>
+      </div></a
+    >
   </div>
 </template>
 
@@ -55,20 +47,21 @@ export default {
       type: String,
       default: 'https://picsum.photos/640/480',
     },
+    topic: {
+      type: String,
+      default: '케냐 숙소 정보',
+    },
     title: {
       type: String,
-      default: 'Lorem ipsum dolor sit amet',
+      default: `위치부터 역사까지!
+케냐 기린 호텔의 모든 것!`,
     },
     content: {
       type: String,
-      default:
-        '이 경우 그 명령에 의하여 개정 또는 폐지되었던 법률은 그 명령이 승인을 얻지 못한 때부터 당연히 효력을 회복한다.',
+      default: `기린과의 키스와 함께하는 티타임
+나이보비의 천상 정원, 기린호텔!`,
     },
-    price: {
-      type: String,
-      default: '$300만원 부터 시작',
-    },
-    slug: {
+    link: {
       type: String,
       default: null,
     },

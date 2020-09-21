@@ -96,6 +96,22 @@
         여행 문의하기 <fa-icon icon="angle-right" />
       </div>
     </div>
+
+    <!-- Travel Knowhow -->
+    <div class="section container mx-auto text-center">
+      <div class="title title-main text-brown">Travel Knowhow</div>
+      <div class="mt-8 grid grid-flow-col grid-cols-4 gap-4">
+        <div v-for="(post, i) in blogposts" :key="i">
+          <BlogPostCard
+            :url="post.url"
+            :title="post.title"
+            :topic="post.topic"
+            :content="post.content"
+            :link="post.link"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -107,6 +123,48 @@ export default {
     return {
       continents: store.getters['continents/continents'],
       tripIdeas: store.getters['tripIdeas/tripIdeas'],
+    }
+  },
+  data() {
+    return {
+      blogposts: [
+        {
+          url: require('@/assets/images/blogposts/giraffe_manor.jpg'),
+          topic: '케냐 숙소 정보',
+          title: `위치부터 역사까지!
+케냐 기린 호텔의 모든 것!`,
+          content: `기린과의 키스와 함께하는 티타임
+나이보비의 천상 정원, 기린호텔!`,
+          link: `/`,
+        },
+        {
+          url: require('@/assets/images/blogposts/manta_hotel.jpg'),
+          topic: '케냐 숙소 정보',
+          title: `위치부터 역사까지!
+케냐 기린 호텔의 모든 것!`,
+          content: `기린과의 키스와 함께하는 티타임
+나이보비의 천상 정원, 기린호텔!`,
+          link: `/`,
+        },
+        {
+          url: require('@/assets/images/blogposts/singita_sasakwa_lodge.jpg'),
+          topic: '케냐 숙소 정보',
+          title: `위치부터 역사까지!
+케냐 기린 호텔의 모든 것!`,
+          content: `기린과의 키스와 함께하는 티타임
+나이보비의 천상 정원, 기린호텔!`,
+          link: `/`,
+        },
+        {
+          url: require('@/assets/images/blogposts/travel_planning.jpg'),
+          topic: '케냐 숙소 정보',
+          title: `위치부터 역사까지!
+케냐 기린 호텔의 모든 것!`,
+          content: `기린과의 키스와 함께하는 티타임
+나이보비의 천상 정원, 기린호텔!`,
+          link: `/`,
+        },
+      ],
     }
   },
   computed: {
