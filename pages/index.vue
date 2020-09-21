@@ -23,7 +23,7 @@
       </div>
       <div class="grid grid-flow-col grid-cols-3 gap-4">
         <div>
-          <InfoPoint
+          <HighlightCardLanding
             :icon-path="require('@/assets/images/landing-page/icon-01.svg')"
             title="사파리 여행 전문가와 함께하는 플래닝"
             content="여행 상담부터 여행 다녀오실 때까지
@@ -32,7 +32,7 @@
           />
         </div>
         <div>
-          <InfoPoint
+          <HighlightCardLanding
             :icon-path="require('@/assets/images/landing-page/icon-02.svg')"
             title="100% 맞춤형 여행"
             content="심플 사파리는 누구나를 위해 만들어진 
@@ -41,7 +41,7 @@
           />
         </div>
         <div>
-          <InfoPoint
+          <HighlightCardLanding
             :icon-path="require('@/assets/images/landing-page/icon-03.svg')"
             title="모험과 휴양의 조화"
             content="사파리 여행 동안 모험과 휴양을 동시에 즐길 수 있도록 
@@ -92,9 +92,10 @@
       <div class="content mb-4">
         <div>꿈꾸시는 추억의 맞춤 사파리 여행을 떠나보세요 :)</div>
       </div>
-      <div class="btn btn-big btn-dark-brown cursor-pointer w-1/5 mx-auto">
-        여행 문의하기 <fa-icon icon="angle-right" />
-      </div>
+      <a href="/contact"
+        ><div class="btn btn-big btn-dark-brown cursor-pointer w-1/5 mx-auto">
+          여행 문의하기 <fa-icon icon="angle-right" /></div
+      ></a>
     </div>
 
     <!-- Travel Knowhow -->
@@ -124,7 +125,7 @@
     <!-- Our Partners -->
     <div class="section container mx-auto text-center">
       <div class="title title-main text-black">Our Partners</div>
-      <div class="grid grid-flow-row grid-cols-6 grid-rows-1 gap-4 p-16"></div>
+      <ThePartnerCarousel />
     </div>
   </div>
 </template>
