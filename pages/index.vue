@@ -64,6 +64,7 @@
         <div class="grid grid-flow-col grid-cols-4 gap-4">
           <div v-for="idea in tripIdeas" :key="idea.id">
             <TripIdeaCard
+              :slug="idea.fields.slug"
               :url="idea.fields.headerImages[0].fields.file.url"
               :alt="idea.fields.headerImages[0].fields.file.title"
               :title="idea.fields.name"

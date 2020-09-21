@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         black: '#1a1915',
+        beige: '#e4ddbb',
         brown: {
           lighter: '#aea88e',
           default: '#9c9780',
