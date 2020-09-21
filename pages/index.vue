@@ -84,11 +84,7 @@
     </div>
 
     <!-- Reviews -->
-    <div class="section">
-      <div class="container bg-brown mx-auto text-center py-16">
-        <div class="title title-main text-white">Reviews</div>
-      </div>
-    </div>
+    <TheReviewCarousel />
   </div>
 </template>
 
