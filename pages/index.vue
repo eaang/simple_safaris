@@ -61,20 +61,19 @@
         <div class="title title-main text-white text-center">
           Trip ideas for you
         </div>
-        <div class="trip-idea-box">
-          <div class="grid grid-flow-col grid-cols-4 gap-4">
-            <div v-for="idea in tripIdeas" :key="idea.id" class="shadow-2xl">
-              <div class="trip-idea-image">
-                <img
-                  class="object-cover h-56 w-full"
-                  :src="idea.fields.headerImages[0].fields.file.url"
-                  :alt="idea.fields.headerImages[0].fields.file.title"
-                />
-              </div>
-              <div class="trip-idea-text bg-white text-center px-4 py-2">
-                {{ idea.fields.name }}
-              </div>
-            </div>
+        <div class="grid grid-flow-col grid-cols-4 gap-4">
+          <div v-for="idea in tripIdeas" :key="idea.id">
+            <TripIdeaCard
+              :url="idea.fields.headerImages[0].fields.file.url"
+              :alt="idea.fields.headerImages[0].fields.file.title"
+              :title="idea.fields.name"
+              :content="
+                idea.fields.description.content[0].content[0].value.match(
+                  /^([^.]+.)/
+                )[0]
+              "
+              :price="idea.fields.startingPrice"
+            />
           </div>
         </div>
       </div>

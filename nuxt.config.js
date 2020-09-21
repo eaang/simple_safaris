@@ -102,6 +102,7 @@ export default {
             'faCaretDown',
             'faCaretUp',
             'faAngleRight',
+            'faLongArrowAltRight',
           ],
           regular: ['faCircle'],
         },
