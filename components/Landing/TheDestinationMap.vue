@@ -1,9 +1,9 @@
 <template>
-  <div class="grid grid-cols-2">
-    <div class="text-left">
-      <div class="flex">
-        <!-- Continent Picker -->
-        <ul class="destination-list text-2xl w-56">
+  <div class="flex justify-center">
+    <div class="text-left w-1/3">
+      <div>
+        <!-- Continent Picker (removed for now because no Asia) -->
+        <!-- <ul class="destination-list text-2xl w-56">
           <li
             class="destination-list-item"
             :class="{
@@ -24,7 +24,7 @@
             아시아 (Asia)
             <fa-icon v-if="chosenDestination === 'asia'" icon="angle-right" />
           </li>
-        </ul>
+        </ul> -->
         <!-- Region Picker -->
         <ul
           v-if="chosenDestination === 'africa'"
