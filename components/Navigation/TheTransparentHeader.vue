@@ -1,23 +1,23 @@
 <template>
   <div class="flex items-center h-24">
-    <div class="container mx-auto flex justify-between">
+    <div class="container mx-auto flex justify-between h-full">
       <div class="left-navbar flex space-x-8">
-        <div class="text-4xl font-display text-white">SIMPLE SAFARIS</div>
+        <div class="text-4xl font-display text-white flex items-center">
+          SIMPLE SAFARIS
+        </div>
         <div class="flex items-center text-white text-lg space-x-8">
           <!-- About Dropdown -->
           <div
-            class="relative cursor-pointer"
+            class="relative"
             @mouseover="dropdownOneShow = true"
             @mouseleave="dropdownOneShow = false"
           >
-            <a href="/about"
-              ><div class="nav-link nav-link-dropdown">About</div></a
-            >
+            <div class="nav-link nav-link-dropdown">About</div>
             <div
               v-if="dropdownOneShow"
               class="absolute nav-dropdown nav-dropdown-dark"
             >
-              <ul class="nav-dropdown-list">
+              <ul class="nav-dropdown-list cursor-pointer">
                 <a href="/about"
                   ><li class="nav-dropdown-item nav-dropdown-item-dark">
                     About Us
@@ -41,18 +41,16 @@
 
           <!-- Destinations Dropdown -->
           <div
-            class="relative cursor-pointer"
+            class="relative"
             @mouseover="dropdownTwoShow = true"
             @mouseleave="dropdownTwoShow = false"
           >
-            <a href="/destinations"
-              ><div class="nav-link nav-link-dropdown">Destinations</div></a
-            >
+            <div class="nav-link nav-link-dropdown">Destinations</div>
             <div
               v-if="dropdownTwoShow"
               class="absolute nav-dropdown nav-dropdown-dark"
             >
-              <ul class="nav-dropdown-list">
+              <ul class="nav-dropdown-list cursor-pointer">
                 <div
                   v-for="continent in continents"
                   :key="continent.fields.name"
@@ -95,18 +93,17 @@
 
           <!-- Trip Ideas Dropdown -->
           <div
-            class="relative cursor-pointer"
+            class="relative"
             @mouseover="dropdownThreeShow = true"
             @mouseleave="dropdownThreeShow = false"
           >
-            <a href="/trips"
-              ><div class="nav-link nav-link-dropdown">Trip Ideas</div></a
-            >
+            <div class="nav-link nav-link-dropdown">Trip Ideas</div>
+
             <div
               v-if="dropdownThreeShow"
               class="absolute nav-dropdown nav-dropdown-dark"
             >
-              <ul class="nav-dropdown-list">
+              <ul class="nav-dropdown-list cursor-pointer">
                 <a
                   v-for="tripIdea in tripIdeas"
                   :key="tripIdea.fields.name"
@@ -210,11 +207,11 @@ export default {
 .nav {
   &-link {
     &-dropdown {
-      @apply py-3;
+      @apply py-6;
     }
   }
   &-link:hover {
-    @apply opacity-50;
+    @apply underline;
   }
   &-dropdown {
     @apply py-4;
@@ -222,7 +219,7 @@ export default {
       @apply bg-black;
     }
     &-list {
-      @apply w-48 cursor-pointer;
+      @apply w-48;
     }
     &-item {
       @apply py-2 px-4;
