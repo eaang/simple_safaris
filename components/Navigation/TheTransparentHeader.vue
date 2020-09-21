@@ -120,7 +120,9 @@
           </div>
 
           <!-- Contact Us Button -->
-          <nuxt-link class="nav-button" to="/contact">Contact Us</nuxt-link>
+          <nuxt-link class="btn btn-white-outline" to="/contact"
+            >Contact Us</nuxt-link
+          >
         </div>
       </div>
       <div
@@ -212,12 +214,6 @@ export default {
   }
   &-link:hover {
     @apply opacity-50;
-  }
-  &-button {
-    @apply border-2 border-white px-4 py-2 rounded-md;
-  }
-  &-button:hover {
-    @apply bg-white text-brown;
   }
   &-dropdown {
     @apply py-4;

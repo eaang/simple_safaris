@@ -85,6 +85,17 @@
 
     <!-- Reviews -->
     <TheReviewCarousel />
+
+    <!-- Design Your Safari -->
+    <div class="section container mx-auto text-center">
+      <div class="title title-main text-black mb-8">Design your safari!</div>
+      <div class="content mb-4">
+        <div>꿈꾸시는 추억의 맞춤 사파리 여행을 떠나보세요 :)</div>
+      </div>
+      <div class="btn btn-big btn-dark-brown cursor-pointer w-1/5 mx-auto">
+        여행 문의하기 <fa-icon icon="angle-right" />
+      </div>
+    </div>
   </div>
 </template>
 
