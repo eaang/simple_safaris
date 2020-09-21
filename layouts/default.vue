@@ -21,6 +21,6 @@ html {
   }
 }
 .content {
-  @apply text-gray text-xl my-4;
+  @apply text-gray text-lg my-4;
 }
 </style>

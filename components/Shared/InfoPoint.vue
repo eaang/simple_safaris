@@ -36,7 +36,7 @@ export default {
     @apply text-black text-2xl font-bold;
   }
   &-content {
-    @apply text-gray text-xl my-4 italic;
+    @apply text-gray text-lg my-4 italic;
   }
 }
 </style>
