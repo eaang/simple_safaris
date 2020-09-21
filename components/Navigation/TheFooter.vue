@@ -58,15 +58,16 @@
     </div>
     <div class="footer-bottom py-4">
       <div
-        class="container mx-auto flex justify-between text-gray-dark text-center text-sm"
+        class="container mx-auto flex justify-center text-gray-dark text-center text-sm"
       >
         <div>© 2020 Simple Safaris All Rights Reserved</div>
-        <div class="text-gray-dark">
+        <!-- If we go with icons8 icons -->
+        <!-- <div class="text-gray-dark">
           icons by
           <a class="text-gray hover:text-gray-dark" href="icons8.com/"
             >icons8</a
           >
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
