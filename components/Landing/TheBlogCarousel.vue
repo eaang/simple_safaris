@@ -1,20 +1,15 @@
 <template>
-  <div class="relative mb-24">
-    <agile ref="carousel" :options="tripCarouselOptions" class="mx-8">
-      <TripIdeaCard
-        v-for="idea in tripIdeas"
-        :key="idea.id"
+  <div class="relative">
+    <agile ref="carousel" :options="carouselOptions" class="mx-8">
+      <BlogPostCard
+        v-for="(post, i) in blogposts"
+        :key="i"
+        :url="post.url"
         class="slide px-2"
-        :slug="idea.fields.slug"
-        :url="idea.fields.headerImages[0].fields.file.url"
-        :alt="idea.fields.headerImages[0].fields.file.title"
-        :title="idea.fields.name"
-        :content="
-          idea.fields.description.content[0].content[0].value.match(
-            /^([^.]+.)/
-          )[0]
-        "
-        :price="idea.fields.startingPrice"
+        :title="post.title"
+        :topic="post.topic"
+        :content="post.content"
+        :link="post.link"
       />
       <template slot="prevButton"
         ><div
@@ -37,7 +32,7 @@
     <ul class="flex justify-around absolute inset-x-0 bottom-0 -mb-16">
       <div class="flex">
         <li
-          v-for="(card, i) in tripIdeas"
+          v-for="(post, i) in blogposts"
           :key="i"
           class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
           :class="{ 'bg-white': i === trueCounter }"
@@ -59,15 +54,15 @@ export default {
     agile: VueAgile,
   },
   props: {
-    tripIdeas: {
+    blogposts: {
       type: Array,
-      default: () => {},
+      default: () => [],
     },
   },
   data() {
     return {
       counter: 0,
-      tripCarouselOptions: {
+      carouselOptions: {
         navButtons: true,
         infinite: true,
         autoplay: false,
@@ -100,13 +95,13 @@ export default {
   computed: {
     trueCounter() {
       if (this.counter >= 0) {
-        return this.counter % this.tripIdeas.length
+        return this.counter % this.blogposts.length
       } else {
-        if (Math.abs(this.counter % this.tripIdeas.length) === 0) {
+        if (Math.abs(this.counter % this.blogposts.length) === 0) {
           return 0
         }
         return (
-          this.tripIdeas.length - Math.abs(this.counter % this.tripIdeas.length)
+          this.blogposts.length - Math.abs(this.counter % this.blogposts.length)
         )
       }
     },

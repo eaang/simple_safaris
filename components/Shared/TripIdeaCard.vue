@@ -1,50 +1,52 @@
 <template>
-  <div
-    class="trip-idea-box shadow-xl cursor-pointer"
-    @mouseover="mouseover = true"
-    @mouseleave="mouseover = false"
-  >
-    <a :href="'/trips/' + slug">
-      <div class="relative h-56 trip-idea-image">
-        <div
-          v-if="mouseover"
-          class="absolute w-full h-full flex items-center justify-center text-beige text-6xl z-50"
-        >
-          +
+  <div class="px-2">
+    <div
+      class="trip-idea-box box-shadow cursor-pointer"
+      @mouseover="mouseover = true"
+      @mouseleave="mouseover = false"
+    >
+      <a :href="'/trips/' + slug">
+        <div class="relative h-56 trip-idea-image">
+          <div
+            v-if="mouseover"
+            class="absolute w-full h-full flex items-center justify-center text-beige text-6xl"
+          >
+            +
+          </div>
+          <div
+            class="h-56 z-40"
+            style="
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: center;
+            "
+            :class="{ 'background-filter': mouseover }"
+            :style="{ 'background-image': 'url(' + url + ')' }"
+          ></div>
         </div>
-        <div
-          class="h-56 z-40"
-          style="
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-          "
-          :class="{ 'background-filter': mouseover }"
-          :style="{ 'background-image': 'url(' + url + ')' }"
-        ></div>
-      </div>
-      <div class="trip-idea-text bg-white text-center p-4">
-        <div
-          class="trip-idea-title text-gray-dark text-2xl flex items-center justify-center px-4 h-20"
-        >
-          {{ title }}
-        </div>
-        <div class="trip-idea-body text-brown text-sm h-16 font-normal">
-          {{ content }}
-        </div>
-        <div
-          class="trip-idea-price text-brown h-20 flex flex-col items-center justify-center"
-        >
-          <div class="text-lg">Course 예상 가격</div>
-          <div class="text-sm font-normal">{{ price }}</div>
-        </div>
-        <div
-          class="trip-idea-link text-xs text-brown flex items-center justify-center space-x-2 h-6"
-        >
-          <div class="font-normal">more</div>
-          <img src="@/assets/images/icons/more.svg" />
-        </div></div
-    ></a>
+        <div class="trip-idea-text bg-white text-center p-4">
+          <div
+            class="trip-idea-title text-gray-dark text-2xl flex items-center justify-center px-4 h-20"
+          >
+            {{ title }}
+          </div>
+          <div class="trip-idea-body text-brown text-sm h-16 font-normal">
+            {{ content }}
+          </div>
+          <div
+            class="trip-idea-price text-brown h-20 flex flex-col items-center justify-center"
+          >
+            <div class="text-lg">Course 예상 가격</div>
+            <div class="text-sm font-normal">{{ price }}</div>
+          </div>
+          <div
+            class="trip-idea-link text-xs text-brown flex items-center justify-center space-x-2 h-6"
+          >
+            <div class="font-normal">more</div>
+            <img src="@/assets/images/icons/more.svg" />
+          </div></div
+      ></a>
+    </div>
   </div>
 </template>
 

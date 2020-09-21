@@ -85,25 +85,17 @@
         <div>꿈꾸시는 추억의 맞춤 사파리 여행을 떠나보세요 :)</div>
       </div>
       <a href="/contact"
-        ><div class="btn btn-big btn-dark-brown cursor-pointer w-1/5 mx-auto">
+        ><div
+          class="btn btn-big btn-dark-brown cursor-pointer w-1/2 md:w-1/3 lg:w-1/5 mx-auto"
+        >
           여행 문의하기 <fa-icon icon="angle-right" /></div
       ></a>
     </div>
 
     <!-- Travel Knowhow -->
     <div class="section container mx-auto text-center">
-      <div class="title title-main text-brown">Travel Knowhow</div>
-      <div class="mt-8 grid grid-flow-col grid-cols-4 gap-4">
-        <div v-for="(post, i) in blogposts" :key="i">
-          <BlogPostCard
-            :url="post.url"
-            :title="post.title"
-            :topic="post.topic"
-            :content="post.content"
-            :link="post.link"
-          />
-        </div>
-      </div>
+      <div class="title title-main text-brown mb-8">Travel Knowhow</div>
+      <TheBlogCarousel :blogposts="blogposts" />
     </div>
 
     <!-- Safari Gallery -->

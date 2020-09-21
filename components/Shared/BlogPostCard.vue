@@ -1,42 +1,44 @@
 <template>
-  <div
-    class="trip-idea-box shadow-2xl cursor-pointer"
-    @mouseover="mouseover = true"
-    @mouseleave="mouseover = false"
-  >
-    <a :href="link">
-      <div class="relative h-56 trip-idea-image">
-        <div
-          v-if="mouseover"
-          class="absolute w-full h-full flex items-center justify-center text-beige text-6xl z-50"
-        >
-          +
-        </div>
-        <div
-          class="h-56 z-40"
-          style="
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-          "
-          :class="{ 'background-filter': mouseover }"
-          :style="{ 'background-image': `url(${url})` }"
-        ></div>
-      </div>
-      <div class="trip-idea-text bg-white text-center py-8 space-y-4">
-        <div
-          class="trip-idea-title text-gray-dark text-2xl font-bold flex items-center justify-center"
-        >
-          <div class="h-32 px-4">
-            <div class="topic">[{{ topic }}]</div>
-            <div class="title">{{ title }}</div>
-          </div>
-        </div>
-        <div class="trip-idea-body pt-4 px-4 text-brown text-sm">
-          {{ content }}
-        </div>
-      </div></a
+  <div class="px-2">
+    <div
+      class="trip-idea-box shadow cursor-pointer"
+      @mouseover="mouseover = true"
+      @mouseleave="mouseover = false"
     >
+      <a :href="link">
+        <div class="relative h-56 trip-idea-image">
+          <div
+            v-if="mouseover"
+            class="absolute w-full h-full flex items-center justify-center text-beige text-6xl z-50"
+          >
+            +
+          </div>
+          <div
+            class="h-56 z-40"
+            style="
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: center;
+            "
+            :class="{ 'background-filter': mouseover }"
+            :style="{ 'background-image': `url(${url})` }"
+          ></div>
+        </div>
+        <div class="trip-idea-text bg-white text-center py-8 space-y-4">
+          <div
+            class="trip-idea-title text-gray-dark text-2xl font-bold flex items-center justify-center"
+          >
+            <div class="h-32 px-4">
+              <div class="topic">[{{ topic }}]</div>
+              <div class="title">{{ title }}</div>
+            </div>
+          </div>
+          <div class="trip-idea-body pt-4 px-4 text-brown text-sm">
+            {{ content }}
+          </div>
+        </div></a
+      >
+    </div>
   </div>
 </template>
 
