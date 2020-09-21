@@ -24,7 +24,7 @@
       <div class="grid grid-flow-col grid-cols-3 gap-4">
         <div>
           <InfoPoint
-            icon="meeting"
+            :icon-path="require('@/assets/images/landing-page/icon-01.svg')"
             title="사파리 여행 전문가와 함께하는 플래닝"
             content="여행 상담부터 여행 다녀오실 때까지
 전문 사파리 여행 컨설턴트가 고객님을 도와드립니다. 
@@ -33,7 +33,7 @@
         </div>
         <div>
           <InfoPoint
-            icon="passenger-with-baggage"
+            :icon-path="require('@/assets/images/landing-page/icon-02.svg')"
             title="100% 맞춤형 여행"
             content="심플 사파리는 누구나를 위해 만들어진 
 패키지 여행은 판매하지 않습니다. 
@@ -42,7 +42,7 @@
         </div>
         <div>
           <InfoPoint
-            icon="sunbathe"
+            :icon-path="require('@/assets/images/landing-page/icon-03.svg')"
             title="모험과 휴양의 조화"
             content="사파리 여행 동안 모험과 휴양을 동시에 즐길 수 있도록 
 심플 사파리의 자존심을 걸고 
@@ -112,6 +112,11 @@
         </div>
       </div>
     </div>
+
+    <!-- Safari Gallery -->
+    <div class="section container mx-auto text-center">
+      <div class="title title-main text-brown">Safari Gallery</div>
+    </div>
   </div>
 </template>
 
@@ -139,29 +144,29 @@ export default {
         },
         {
           url: require('@/assets/images/blogposts/manta_hotel.jpg'),
-          topic: '케냐 숙소 정보',
-          title: `위치부터 역사까지!
-케냐 기린 호텔의 모든 것!`,
-          content: `기린과의 키스와 함께하는 티타임
-나이보비의 천상 정원, 기린호텔!`,
+          topic: '탄자니아 숙소',
+          title: `돌고래와 하룻밤 어떠세요?
+탄자니아 수중 호텔`,
+          content: `바닷속 한가운데 위치한 마법 같은 숙소
+환상적인 수중정원 ‘만타 리조트’`,
           link: `/`,
         },
         {
           url: require('@/assets/images/blogposts/singita_sasakwa_lodge.jpg'),
-          topic: '케냐 숙소 정보',
-          title: `위치부터 역사까지!
-케냐 기린 호텔의 모든 것!`,
-          content: `기린과의 키스와 함께하는 티타임
-나이보비의 천상 정원, 기린호텔!`,
+          topic: '탄자니아 숙소',
+          title: `1박 숙박비 250만원!!
+럭셔리 싱키타는 왜 특별한가?`,
+          content: `VVIP, 그들만을 위한 럭셔리 롯지
+완벽한 서비스와 프라이빗 게임리저브`,
           link: `/`,
         },
         {
           url: require('@/assets/images/blogposts/travel_planning.jpg'),
           topic: '케냐 숙소 정보',
-          title: `위치부터 역사까지!
-케냐 기린 호텔의 모든 것!`,
-          content: `기린과의 키스와 함께하는 티타임
-나이보비의 천상 정원, 기린호텔!`,
+          title: `여행 전 꼭 챙겨야 하는
+체크 리스트 5가지!`,
+          content: `아프리카 여행 시 반드시 체크할 것
+비자, 예방접종, 주의사항까지 모든 것`,
           link: `/`,
         },
       ],

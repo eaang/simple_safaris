@@ -57,14 +57,15 @@
                   v-for="continent in continents"
                   :key="continent.fields.name"
                 >
+                  <!-- This is the code for the continent dropdown - hidden for now, to be enabled if Asia ever returns lmao -->
                   <li
-                    class="nav-dropdown-item flex items-center justify-between cursor-pointer"
+                    class="nav-dropdown-item items-center justify-between cursor-pointer hidden"
                     @click="toggleRegions(continent.fields.name)"
                   >
                     <div class="">
                       {{ continent.fields.name }}
                     </div>
-                    <div>
+                    <div class="invisible">
                       <fa-icon
                         :id="continent.fields.name.toLowerCase() + '-icon-up'"
                         icon="caret-up"

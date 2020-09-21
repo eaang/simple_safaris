@@ -1,18 +1,15 @@
 <template>
   <div class="h-40 w-40 flex items-center justify-center">
-    <img
-      class="h-24"
-      :src="'https://img.icons8.com/ios/100/000000/' + iconName + '.png'"
-    />
+    <img class="h-24" :src="iconPath" />
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    iconName: {
+    iconPath: {
       type: String,
-      default: 'national-park',
+      default: require('@/assets/images/landing-page/icon-01.svg'),
     },
   },
 }

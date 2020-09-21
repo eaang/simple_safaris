@@ -1,6 +1,6 @@
 <template>
   <div class="info-point">
-    <div class="info-icon"><Icon :icon-name="icon" /></div>
+    <div class="info-icon"><Icon :icon-path="iconPath" /></div>
     <div class="info-title">{{ title }}</div>
     <div class="info-content">
       {{ content }}
@@ -11,9 +11,9 @@
 <script>
 export default {
   props: {
-    icon: {
+    iconPath: {
       type: String,
-      default: 'friends',
+      default: require('@/assets/images/landing-page/icon-01.svg'),
     },
     title: {
       type: String,
