@@ -1,6 +1,6 @@
 <template>
   <div
-    class="trip-idea-box shadow-2xl cursor-pointer"
+    class="trip-idea-box shadow-xl cursor-pointer"
     @mouseover="mouseover = true"
     @mouseleave="mouseover = false"
   >
@@ -25,23 +25,23 @@
       </div>
       <div class="trip-idea-text bg-white text-center p-4">
         <div
-          class="trip-idea-title text-gray-dark text-2xl font-bold flex items-center justify-center px-4 h-20"
+          class="trip-idea-title text-gray-dark text-2xl flex items-center justify-center px-4 h-20"
         >
           {{ title }}
         </div>
-        <div class="trip-idea-body text-brown text-sm h-16">
+        <div class="trip-idea-body text-brown text-sm h-16 font-normal">
           {{ content }}
         </div>
         <div
           class="trip-idea-price text-brown h-20 flex flex-col items-center justify-center"
         >
-          <div class="font-bold text-lg">Course 예상 가격</div>
-          <div>{{ price }}</div>
+          <div class="text-lg">Course 예상 가격</div>
+          <div class="text-sm font-normal">{{ price }}</div>
         </div>
         <div
           class="trip-idea-link text-xs text-brown flex items-center justify-center space-x-2 h-6"
         >
-          <div>more</div>
+          <div class="font-normal">more</div>
           <img src="@/assets/images/icons/more.svg" />
         </div></div
     ></a>

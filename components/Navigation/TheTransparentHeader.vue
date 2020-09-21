@@ -4,7 +4,7 @@
       <div
         class="lg:hidden flex items-center text-4xl text-white absolute h-full"
       >
-        <fa-icon icon="bars" />
+        <fa-icon class="cursor-pointer" icon="bars" />
       </div>
       <div
         class="left-navbar flex justify-center lg:justify-start space-x-8 w-screen"

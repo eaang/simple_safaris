@@ -70,22 +70,7 @@
       <div class="container mx-auto">
         <div class="title title-main text-white text-center">
           Trip ideas for you
-        </div>
-        <div class="grid grid-flow-col grid-cols-4 gap-4 my-8">
-          <div v-for="idea in tripIdeas" :key="idea.id">
-            <TripIdeaCard
-              :slug="idea.fields.slug"
-              :url="idea.fields.headerImages[0].fields.file.url"
-              :alt="idea.fields.headerImages[0].fields.file.title"
-              :title="idea.fields.name"
-              :content="
-                idea.fields.description.content[0].content[0].value.match(
-                  /^([^.]+.)/
-                )[0]
-              "
-              :price="idea.fields.startingPrice"
-            />
-          </div>
+          <TripideaCarousel :trip-ideas="tripIdeas" />
         </div>
       </div>
     </div>
@@ -202,11 +187,6 @@ export default {
         },
       ],
     }
-  },
-  computed: {
-    ideaCards() {
-      return Object.entries(this.tripIdeas).slice(-4, -1).flat()
-    },
   },
 }
 </script>
