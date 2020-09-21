@@ -1,6 +1,6 @@
 <template>
   <div class="section container text-center">
-    <div class="title title-main">Destinations</div>
+    <div class="title title-main text-black">Destinations</div>
     <div class="grid grid-cols-2">
       <div class="text-left">
         <div class="flex">

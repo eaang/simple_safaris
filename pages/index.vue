@@ -11,7 +11,7 @@
 
     <!-- Introduction -->
     <div class="section container text-center">
-      <div class="title title-main">
+      <div class="title title-main text-black">
         당신만을 위한 비스포크 럭셔리 사파리 여행!
       </div>
       <div class="content">
@@ -54,6 +54,16 @@
 
     <!-- Destinations -->
     <DestinationMap />
+
+    <!-- Trip Ideas -->
+    <div class="section bg-brown-dark">
+      <div class="container mx-auto">
+        <div class="title title-main text-white text-center">
+          Trip ideas for you
+        </div>
+        <div class="trip-idea-box"></div>
+      </div>
+    </div>
   </div>
 </template>
 

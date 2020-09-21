@@ -12,15 +12,15 @@ html {
   cursor: default;
 }
 .section {
-  @apply my-24 mx-auto;
+  @apply my-8 py-16 mx-auto;
 }
 .title {
-  @apply text-black font-bold;
+  @apply font-bold;
   &-main {
-    @apply text-5xl my-8;
+    @apply text-5xl mb-8;
   }
 }
 .content {
-  @apply text-gray text-lg my-4;
+  @apply text-gray text-lg mb-4;
 }
 </style>
