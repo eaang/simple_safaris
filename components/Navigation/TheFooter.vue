@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <div class="footer-top bg-black">
-      <div class="container mx-auto py-8">
+      <div class="container mx-auto py-16">
         <div class="flex">
           <a href="/" class="text-4xl font-display text-brown w-1/3">
             SIMPLE SAFARIS
@@ -20,16 +20,46 @@
               </ul>
             </div>
             <div>
-              <a href="/destinations"
-                ><div class="footer-title">Destinations</div></a
-              >
-              <a href="/trips"><div class="footer-title">Trip Ideas</div></a>
-              <a href="/contact"><div class="footer-title">Contact Us</div></a>
+              <div class="footer-title">Destinations</div>
+              <ul class="footer-list">
+                <a href="/destinations/botswana"
+                  ><li class="footer-list-item">보츠와나</li></a
+                >
+                <a href="/destinations/kenya"
+                  ><li class="footer-list-item">케냐</li></a
+                >
+                <a href="/destinations/namibia"
+                  ><li class="footer-list-item">나미비아</li></a
+                >
+                <a href="/destinations/south-africa"
+                  ><li class="footer-list-item">남아프리카 공화국</li></a
+                >
+                <a href="/destinations/tanzania"
+                  ><li class="footer-list-item">탄자니아</li></a
+                >
+              </ul>
             </div>
             <div>
-              <div class="footer-title">Stay in Touch</div>
+              <div class="footer-title">Contact us</div>
               <ul class="footer-list">
-                <div class="flex w-1/2 justify-between mb-1">
+                <a href="/contact"
+                  ><li class="footer-list-item">문의 양식</li></a
+                >
+                <li class="">070-4517-0225</li>
+                <li class="">sales@simplesafaris.com</li>
+              </ul>
+            </div>
+            <div></div>
+            <div>
+              <div class="footer-title">Stay in touch</div>
+              <ul class="footer-list">
+                <div class="flex space-x-2 mb-1">
+                  <li class="footer-list-item">
+                    <img
+                      class="h-5"
+                      src="@/assets/images/icons/ic-youtube-ft.svg"
+                    />
+                  </li>
                   <li class="footer-list-item">
                     <img
                       class="h-5"
@@ -46,12 +76,28 @@
                     <img class="h-5" src="@/assets/images/icons/ic-kakao.svg" />
                   </li>
                 </div>
-                <li class="">070-4517-0225</li>
-                <li class="">jin@simplesafaris.com</li>
               </ul>
             </div>
-            <div></div>
-            <div></div>
+          </div>
+        </div>
+        <div class="flex justify-center space-x-24 mt-16">
+          <div class="flex space-x-4">
+            <div>관광사업등록번호</div>
+            <div class="font-bold">제 2019-000026호</div>
+            <img
+              class="object-scale-down"
+              src="@/assets/images/icons/window.svg"
+            />
+          </div>
+          <div>
+            <div class="flex space-x-4">
+              <div>인허가보증보험증권</div>
+              <div class="font-bold">제 100-000-2020 0098 3703호</div>
+              <img
+                class="object-scale-down"
+                src="@/assets/images/icons/window.svg"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -81,7 +127,7 @@ export default {}
 .footer {
   @apply text-brown;
   &-title {
-    @apply font-bold my-2;
+    @apply font-bold my-2 text-lg;
   }
   &-list {
     @apply opacity-75;
@@ -89,7 +135,7 @@ export default {}
       @apply cursor-pointer;
     }
     &-item:hover {
-      @apply opacity-50;
+      @apply underline;
     }
   }
 }
