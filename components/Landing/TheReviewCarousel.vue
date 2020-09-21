@@ -1,12 +1,12 @@
 <template>
   <div class="section">
-    <div class="container relative bg-brown mx-auto text-center py-16">
-      <div class="title title-main text-white leading-10">Reviews</div>
-      <div class="text-white text-lg">
+    <div class="container relative bg-brown mx-auto text-center pt-16 pb-32">
+      <div class="title title-main text-white">Reviews</div>
+      <div class="text-white text-xl">
         <agile
           ref="reviewCarousel"
           :options="reviewCarouselOptions"
-          class="pb-24"
+          class="pb-18"
         >
           <div v-for="(review, i) in reviews" :key="i" class="slide">
             <h3>
@@ -53,7 +53,7 @@
           </template>
         </agile>
         <!-- Custom dots -->
-        <ul class="flex justify-around absolute inset-x-0 bottom-0 pb-16">
+        <ul class="flex justify-around absolute inset-x-0 bottom-0 pb-16 h-0">
           <div class="flex">
             <li
               v-for="(review, i) in reviews"

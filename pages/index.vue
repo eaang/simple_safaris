@@ -116,6 +116,15 @@
     <!-- Safari Gallery -->
     <div class="section container mx-auto text-center">
       <div class="title title-main text-brown">Safari Gallery</div>
+      <div class="grid grid-flow-row grid-cols-5 grid-rows-2 gap-4 px-16 pt-8">
+        <img v-for="(photo, i) in gallery" :key="i" :src="photo" />
+      </div>
+    </div>
+
+    <!-- Our Partners -->
+    <div class="section container mx-auto text-center">
+      <div class="title title-main text-black">Our Partners</div>
+      <div class="grid grid-flow-row grid-cols-6 grid-rows-1 gap-4 p-16"></div>
     </div>
   </div>
 </template>
@@ -132,6 +141,18 @@ export default {
   },
   data() {
     return {
+      gallery: [
+        'https://picsum.photos/id/507/300/300',
+        'https://picsum.photos/id/243/300/300',
+        'https://picsum.photos/id/202/300/300',
+        'https://picsum.photos/id/909/300/300',
+        'https://picsum.photos/id/795/300/300',
+        'https://picsum.photos/id/471/300/300',
+        'https://picsum.photos/id/501/300/300',
+        'https://picsum.photos/id/599/300/300',
+        'https://picsum.photos/id/228/300/300',
+        'https://picsum.photos/id/350/300/300',
+      ],
       blogposts: [
         {
           url: require('@/assets/images/blogposts/giraffe_manor.jpg'),
