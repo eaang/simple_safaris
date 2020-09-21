@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="relative h-screen w-full">
+    <div class="relative h-screen/75 lg:h-screen w-full">
       <agile ref="carousel" :options="carouselOptions">
         <div
           v-for="image in images"
           :key="image.pathShort"
-          class="slide block h-screen w-full z-0 bg-center bg-cover"
+          class="slide block h-screen/75 lg:h-screen w-full z-0 bg-center bg-cover"
           :style="{
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)), url(${image.pathLong})`,
           }" />

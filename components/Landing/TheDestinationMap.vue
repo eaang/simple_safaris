@@ -1,6 +1,8 @@
 <template>
-  <div class="flex justify-center">
-    <div class="text-left w-1/3">
+  <div
+    class="flex flex-col md:flex-row items-center md:items-start justify-center px-4"
+  >
+    <div class="text-left w-2/3 lg:w-1/3">
       <div>
         <!-- Continent Picker (removed for now because no Asia) -->
         <!-- <ul class="destination-list text-2xl w-56">
@@ -28,7 +30,7 @@
         <!-- Region Picker -->
         <ul
           v-if="chosenDestination === 'africa'"
-          class="destination-list ml-2 cursor-pointer"
+          class="destination-list flex flex-col space-y-2 lg:space-y-4 text-lg lg:text-2xl cursor-pointer"
         >
           <a href="/destinations/kenya"
             ><li
@@ -39,7 +41,7 @@
               케냐 (Kenya)
             </li></a
           >
-          <a href="tanzania"
+          <a href="/destinations/tanzania"
             ><li
               class="destination-list-item"
               @mouseleave="region = null"
@@ -76,7 +78,8 @@
             </li></a
           >
         </ul>
-        <ul
+        <!-- Removing Asia for now -->
+        <!-- <ul
           v-if="chosenDestination === 'asia'"
           class="destination-list ml-2 cursor-pointer"
         >
@@ -98,13 +101,16 @@
               라자스탄 (Rajasthan)
             </li></a
           >
-        </ul>
+        </ul> -->
       </div>
     </div>
     <!-- Continent Map -->
-    <div class="relative">
-      <img class="absolute" :src="countryImage" />
-      <img src="@/assets/images/landing-map/map-africa.png" />
+    <div class="relative my-8 md:my-0">
+      <img class="absolute h-screen/50 md:h-full" :src="countryImage" />
+      <img
+        class="h-screen/50 md:h-full"
+        src="@/assets/images/landing-map/map-africa.png"
+      />
     </div>
   </div>
 </template>
@@ -134,13 +140,13 @@ export default {
 <style lang="scss" scoped>
 .destination-list {
   &-item {
-    @apply text-brown text-2xl mb-4;
+    @apply text-brown;
   }
   &-item:hover {
     @apply text-black font-bold;
   }
   &-choice {
-    @apply text-black text-2xl mb-4 font-bold;
+    @apply text-black font-bold;
   }
 }
 </style>

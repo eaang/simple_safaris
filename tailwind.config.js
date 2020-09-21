@@ -19,13 +19,20 @@ module.exports = {
           dark: '#575446',
         },
       },
+      height: (theme) => ({
+        'screen/50': '50vh',
+        'screen/75': '75vh',
+        'screen/3': 'calc(100vh / 3)',
+        'screen/4': 'calc(100vh / 4)',
+        'screen/5': 'calc(100vh / 5)',
+      }),
     },
     fontFamily: {
       sans: ['Noto Sans KR', 'sans-serif'],
       display: ['proxima-nova'],
     },
   },
-  variants: {},
+  variants: { display: ['responsive', 'hover', 'focus'] },
   plugins: [],
   purge: {
     layers: ['components', 'utilities'],

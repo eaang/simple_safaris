@@ -10,18 +10,25 @@
     <TheFullheightHero class="z-40" />
 
     <!-- Introduction -->
-    <div class="section container text-center">
+    <div class="section container px-4 text-center">
       <div class="title title-main text-black">
         당신만을 위한 비스포크 럭셔리 사파리 여행!
       </div>
-      <div class="content my-8">
-        사파리(Safari)라는 말은 동물을 구경하거나 사냥하는 여행을 의미합니다.
-        <br />
-        심플사파리는 고객님들이 대자연에서의 모험을 쉽고 편안하게 즐길 수 있도록
-        도와드리고 있습니다. <br />
-        최고의 경험을 선사해 드리기 위해 심플사파리는 3가지를 약속합니다.
+      <div class="content my-8 space-y-2">
+        <div>
+          사파리(Safari)라는 말은 동물을 구경하거나 사냥하는 여행을 의미합니다.
+        </div>
+        <div>
+          심플사파리는 고객님들이 대자연에서의 모험을 쉽고 편안하게 즐길 수
+          있도록 도와드리고 있습니다.
+        </div>
+        <div>
+          최고의 경험을 선사해 드리기 위해 심플사파리는 3가지를 약속합니다.
+        </div>
       </div>
-      <div class="grid grid-flow-col grid-cols-3 gap-4">
+      <div
+        class="grid grid-flow-col grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-1 gap-4"
+      >
         <div>
           <HighlightCardLanding
             :icon-path="require('@/assets/images/landing-page/icon-01.svg')"
