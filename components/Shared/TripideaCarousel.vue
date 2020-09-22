@@ -1,6 +1,11 @@
 <template>
   <div class="relative mb-24">
-    <agile ref="carousel" :options="tripCarouselOptions" class="mx-8">
+    <agile
+      ref="carousel"
+      :options="tripCarouselOptions"
+      class="mx-8"
+      @after-change="counter = $refs.carousel.getCurrentSlide()"
+    >
       <TripIdeaCard
         v-for="idea in tripIdeas"
         :key="idea.id"
@@ -17,18 +22,12 @@
         :price="idea.fields.startingPrice"
       />
       <template slot="prevButton"
-        ><div
-          class="absolute inset-y-0 left-0 -ml-8 pl-4 flex items-center"
-          @click="counter--"
-        >
+        ><div class="absolute inset-y-0 left-0 -ml-8 pl-4 flex items-center">
           <fa-icon class="text-gray-lighter text-4xl" icon="angle-left" />
         </div>
       </template>
       <template slot="nextButton">
-        <div
-          class="absolute inset-y-0 right-0 -mr-8 pr-4 flex items-center"
-          @click="counter++"
-        >
+        <div class="absolute inset-y-0 right-0 -mr-8 pr-4 flex items-center">
           <fa-icon class="text-gray-lighter text-4xl" icon="angle-right" />
         </div>
       </template>
@@ -40,10 +39,10 @@
           v-for="(card, i) in tripIdeas"
           :key="i"
           class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
-          :class="{ 'bg-white': i === trueCounter }"
+          :class="{ 'bg-white': i === counter }"
           @click="
             counter = i
-            $refs.carousel.goTo(trueCounter)
+            $refs.carousel.goTo(counter)
           "
         ></li>
       </div>
@@ -96,20 +95,6 @@ export default {
         ],
       },
     }
-  },
-  computed: {
-    trueCounter() {
-      if (this.counter >= 0) {
-        return this.counter % this.tripIdeas.length
-      } else {
-        if (Math.abs(this.counter % this.tripIdeas.length) === 0) {
-          return 0
-        }
-        return (
-          this.tripIdeas.length - Math.abs(this.counter % this.tripIdeas.length)
-        )
-      }
-    },
   },
 }
 </script>

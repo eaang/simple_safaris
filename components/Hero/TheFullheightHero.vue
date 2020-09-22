@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="relative h-screen/75 lg:h-screen w-full">
-      <agile ref="carousel" :options="carouselOptions">
+      <agile
+        ref="carousel"
+        :options="carouselOptions"
+        @after-change="counter = $refs.carousel.getCurrentSlide()"
+      >
         <div
           v-for="image in images"
           :key="image.pathShort"
@@ -13,7 +17,6 @@
         <template slot="prevButton"
           ><div
             class="absolute inset-y-0 left-0 flex items-center justify-around px-12 text-4xl"
-            @click="counter--"
           >
             <div
               class="rounded-full border-2 border-white p-8 text-white hover:bg-white hover:text-brown"
@@ -27,7 +30,6 @@
         <template slot="nextButton"
           ><div
             class="absolute inset-y-0 right-0 flex items-center justify-around px-12 text-4xl"
-            @click="counter++"
           >
             <div
               class="rounded-full border-2 border-white p-8 text-white hover:bg-white hover:text-brown"
@@ -45,10 +47,10 @@
             v-for="(image, i) in images"
             :key="i"
             class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
-            :class="{ 'bg-white': i === trueCounter }"
+            :class="{ 'bg-white': i === counter }"
             @click="
               counter = i
-              $refs.carousel.goTo(trueCounter)
+              $refs.carousel.goTo(counter)
             "
           ></li>
         </div>
@@ -85,18 +87,6 @@ export default {
       },
       images: [],
     }
-  },
-  computed: {
-    trueCounter() {
-      if (this.counter >= 0) {
-        return this.counter % this.images.length
-      } else {
-        if (Math.abs(this.counter % this.images.length) === 0) {
-          return 0
-        }
-        return this.images.length - Math.abs(this.counter % this.images.length)
-      }
-    },
   },
   created() {
     this.importImages(
