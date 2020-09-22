@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <agile :options="carouselOptions">
+    <agile :options="carouselOptions" class="px-4">
       <div v-for="(partner, i) in partners" :key="i" class="slide">
         <img class="w-full object-scale-down" :src="partner" />
       </div>

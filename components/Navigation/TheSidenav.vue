@@ -25,7 +25,7 @@
             src="@/assets/images/icons/btn-minus.svg"
           />
         </div>
-        <transition name="slide" mode="out-in">
+        <transition name="slide" mode="in-out">
           <div v-if="aboutDropdown" class="nav-dropdown z-0">
             <a href="/about"><div class="nav-dropdown-item">About us</div> </a>
             <a href="/about/privacy"
@@ -49,7 +49,7 @@
             src="@/assets/images/icons/btn-minus.svg"
           />
         </div>
-        <transition name="slide" mode="out-in">
+        <transition name="slide" mode="in-out">
           <div v-if="destinationDropdown" class="nav-dropdown">
             <div
               v-for="continent in continents"
@@ -81,7 +81,7 @@
             src="@/assets/images/icons/btn-minus.svg"
           />
         </div>
-        <transition name="slide" mode="out-in">
+        <transition name="slide" mode="in-out">
           <div v-if="tripsDropdown" class="nav-dropdown">
             <a
               v-for="tripIdea in tripIdeas"

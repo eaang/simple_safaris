@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <agile :options="carouselOptions">
+    <agile :options="carouselOptions" class="px-4">
       <div v-for="(group, i) in gallery" :key="i" class="slide px-2 space-y-4">
         <img :src="group[0]" />
         <img v-if="group[1]" :src="group[1]" />

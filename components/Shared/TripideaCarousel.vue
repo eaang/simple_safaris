@@ -3,7 +3,7 @@
     <agile
       ref="carousel"
       :options="tripCarouselOptions"
-      class="mx-8"
+      class="mx-8 px-4"
       @after-change="counter = $refs.carousel.getCurrentSlide()"
     >
       <TripIdeaCard
