@@ -2,7 +2,7 @@
   <div class="relative">
     <agile :options="carouselOptions">
       <div v-for="(partner, i) in partners" :key="i" class="slide">
-        <img :src="partner" />
+        <img class="w-full object-scale-down" :src="partner" />
       </div>
       <template slot="prevButton"
         ><div class="absolute inset-y-0 left-0 flex items-center -ml-6">
