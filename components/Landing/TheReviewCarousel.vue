@@ -138,21 +138,6 @@ export default {
       ],
     }
   },
-  // computed: {
-  //   trueReviewCounter() {
-  //     if (this.reviewCounter >= 0) {
-  //       return this.reviewCounter % this.reviews.length
-  //     } else {
-  //       if (Math.abs(this.reviewCounter % this.reviews.length) === 0) {
-  //         return 0
-  //       }
-  //       return (
-  //         this.reviews.length -
-  //         Math.abs(this.reviewCounter % this.reviews.length)
-  //       )
-  //     }
-  //   },
-  // },
   mounted() {
     setInterval(() => {
       this.$refs.reviewCarousel.goToNext()

@@ -12,37 +12,16 @@
         :link="post.link"
       />
       <template slot="prevButton"
-        ><div
-          class="absolute inset-y-0 left-0 -ml-8 pl-4 flex items-center"
-          @click="counter--"
-        >
+        ><div class="absolute inset-y-0 left-0 -ml-8 pl-4 flex items-center">
           <fa-icon class="text-gray-lighter text-4xl" icon="angle-left" />
         </div>
       </template>
       <template slot="nextButton">
-        <div
-          class="absolute inset-y-0 right-0 -mr-8 pr-4 flex items-center"
-          @click="counter++"
-        >
+        <div class="absolute inset-y-0 right-0 -mr-8 pr-4 flex items-center">
           <fa-icon class="text-gray-lighter text-4xl" icon="angle-right" />
         </div>
       </template>
     </agile>
-    <!-- Custom dots -->
-    <ul class="flex justify-around absolute inset-x-0 bottom-0 -mb-16">
-      <div class="flex">
-        <li
-          v-for="(post, i) in blogposts"
-          :key="i"
-          class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
-          :class="{ 'bg-white': i === trueCounter }"
-          @click="
-            counter = i
-            $refs.carousel.goTo(trueCounter)
-          "
-        ></li>
-      </div>
-    </ul>
   </div>
 </template>
 
@@ -61,7 +40,6 @@ export default {
   },
   data() {
     return {
-      counter: 0,
       carouselOptions: {
         navButtons: true,
         infinite: true,
@@ -91,20 +69,6 @@ export default {
         ],
       },
     }
-  },
-  computed: {
-    trueCounter() {
-      if (this.counter >= 0) {
-        return this.counter % this.blogposts.length
-      } else {
-        if (Math.abs(this.counter % this.blogposts.length) === 0) {
-          return 0
-        }
-        return (
-          this.blogposts.length - Math.abs(this.counter % this.blogposts.length)
-        )
-      }
-    },
   },
 }
 </script>
