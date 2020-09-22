@@ -16,7 +16,7 @@
         <div class="text-4xl font-display text-white flex items-center">
           SIMPLE SAFARIS
         </div>
-        <div class="hidden lg:flex items-center text-white text-lg space-x-8">
+        <div class="hidden lg:flex items-stretch text-white text-lg space-x-8">
           <!-- About Dropdown -->
           <div
             class="relative"
@@ -137,48 +137,65 @@
           </div>
 
           <!-- Contact Us Button -->
-          <nuxt-link class="btn btn-white-outline" to="/contact"
-            >Contact us</nuxt-link
+          <a href="/contact" class="flex items-center"
+            ><div class="btn btn-white-outline">Contact us</div></a
           >
         </div>
       </div>
       <div
-        class="right-navbar hidden lg:flex flex-col justify-center text-white text-lg"
+        class="right-navbar hidden lg:flex flex-grow justify-center text-white text-lg"
       >
-        <div class="flex justify-end space-x-2">
-          <a
-            href="#"
-            target="_blank"
-            @mouseover="socialOne = true"
-            @mouseleave="socialOne = false"
-          >
-            <img
-              v-if="socialOne === false"
-              class="h-5"
-              src="@/assets/images/icons/ic-instagram.svg"
-            />
-            <img
-              v-else
-              class="h-5"
-              src="@/assets/images/icons/ic-instagram-ft.svg"
-            />
-          </a>
-          <a
-            href="#"
-            target="_blank"
-            @mouseover="socialTwo = true"
-            @mouseleave="socialTwo = false"
-            ><img
-              v-if="socialTwo === false"
-              class="h-5"
-              src="@/assets/images/icons/ic-blog.svg" /><img
-              v-else
-              class="h-5"
-              src="@/assets/images/icons/ic-blog-ft.svg"
-          /></a>
+        <div
+          class="space-x-2 hidden lg:flex lg:flex-col justify-center xl:hidden"
+        >
+          <div>
+            <div class="flex items-center space-x-2 justify-end">
+              <a href="#" class="h-6 w-6" target="_blank">
+                <img
+                  class="object-scale-down"
+                  src="@/assets/images/icons/ic-youtube.svg"
+                />
+              </a>
+              <a href="#" class="h-6 w-6" target="_blank">
+                <img
+                  class="object-scale-down"
+                  src="@/assets/images/icons/ic-instagram.svg"
+                />
+              </a>
+              <a href="#" class="h-6 w-6" target="_blank"
+                ><img
+                  class="object-scale-down"
+                  src="@/assets/images/icons/ic-blog.svg"
+              /></a>
+            </div>
+          </div>
+          <div class="flex items-center space-x-2">
+            <fa-icon icon="phone-alt" /><span>070-4517-0225</span>
+          </div>
         </div>
-        <div class="flex items-center space-x-2">
-          <fa-icon icon="phone-alt" /><span>070-4517-0225</span>
+        <div class="space-x-2 hidden xl:flex">
+          <div class="flex items-center space-x-2">
+            <fa-icon icon="phone-alt" /><span>070-4517-0225</span>
+          </div>
+          <div class="flex items-center space-x-2 justify-end">
+            <a href="#" class="h-6 w-6" target="_blank">
+              <img
+                class="object-scale-down"
+                src="@/assets/images/icons/ic-youtube.svg"
+              />
+            </a>
+            <a href="#" class="h-6 w-6" target="_blank">
+              <img
+                class="object-scale-down"
+                src="@/assets/images/icons/ic-instagram.svg"
+              />
+            </a>
+            <a href="#" class="h-6 w-6" target="_blank"
+              ><img
+                class="object-scale-down"
+                src="@/assets/images/icons/ic-blog.svg"
+            /></a>
+          </div>
         </div>
       </div>
     </div>
@@ -202,23 +219,22 @@ export default {
       dropdownOneShow: false,
       dropdownTwoShow: false,
       dropdownThreeShow: false,
-      socialOne: false,
-      socialTwo: false,
     }
   },
-  methods: {
-    toggleRegions(country) {
-      document
-        .querySelector('#' + country.toLowerCase() + '-dropdown')
-        .classList.toggle('hidden')
-      document
-        .querySelector('#' + country.toLowerCase() + '-icon-up')
-        .classList.toggle('hidden')
-      document
-        .querySelector('#' + country.toLowerCase() + '-icon-down')
-        .classList.toggle('hidden')
-    },
-  },
+  // This was if there was more than one continent
+  // methods: {
+  //   toggleRegions(country) {
+  //     document
+  //       .querySelector('#' + country.toLowerCase() + '-dropdown')
+  //       .classList.toggle('hidden')
+  //     document
+  //       .querySelector('#' + country.toLowerCase() + '-icon-up')
+  //       .classList.toggle('hidden')
+  //     document
+  //       .querySelector('#' + country.toLowerCase() + '-icon-down')
+  //       .classList.toggle('hidden')
+  //   },
+  // },
 }
 </script>
 
@@ -226,7 +242,7 @@ export default {
 .nav {
   &-link {
     &-dropdown {
-      @apply py-6;
+      @apply h-full flex items-center;
     }
   }
   &-link:hover {

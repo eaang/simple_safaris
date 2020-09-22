@@ -4,7 +4,7 @@
     <transition name="slideLeft">
       <TheSidenav
         v-if="sidenavStatus"
-        class="absolute inset-x-0 top-0 z-50"
+        class="sticky top-0 w-full z-50"
         style="animation-duration: 0.3s"
         :continents="continents"
         :trip-ideas="tripIdeas"
@@ -137,6 +137,8 @@
     </div>
     <!-- Spacing before footer -->
     <div class="h-16"></div>
+
+    <TheFooter />
   </div>
 </template>
 
