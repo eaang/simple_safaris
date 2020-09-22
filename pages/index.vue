@@ -1,13 +1,13 @@
 <template>
   <div class="relative landing-page">
     <!-- Hero section -->
+    <TheSidenav class="block lg:hidden absolute inset-x-0 top-0 z-50" />
     <TheTransparentHeader
       :continents="continents"
       :trip-ideas="tripIdeas"
-      class="absolute w-full z-50"
+      class="absolute w-full z-40"
     />
-    <TheSidenav class="absolute inset-x-0 top-0" />
-    <TheFullheightHero class="z-40 mb-24" />
+    <TheFullheightHero class="z-30 mb-24" />
 
     <!-- Introduction -->
     <div class="section container px-4 text-center">

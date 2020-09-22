@@ -27,7 +27,7 @@
               <ul class="nav-dropdown-list cursor-pointer">
                 <a href="/about"
                   ><li class="nav-dropdown-item nav-dropdown-item-dark">
-                    About Us
+                    About us
                   </li>
                 </a>
 
@@ -104,7 +104,7 @@
             @mouseover="dropdownThreeShow = true"
             @mouseleave="dropdownThreeShow = false"
           >
-            <div class="nav-link nav-link-dropdown">Trip Ideas</div>
+            <div class="nav-link nav-link-dropdown">Trip ideas</div>
 
             <div
               v-if="dropdownThreeShow"
@@ -126,7 +126,7 @@
 
           <!-- Contact Us Button -->
           <nuxt-link class="btn btn-white-outline" to="/contact"
-            >Contact Us</nuxt-link
+            >Contact us</nuxt-link
           >
         </div>
       </div>
