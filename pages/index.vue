@@ -10,11 +10,16 @@
         :trip-ideas="tripIdeas"
       />
     </transition>
-    <TheTransparentHeader
-      :continents="continents"
-      :trip-ideas="tripIdeas"
-      class="absolute w-full z-40"
-    />
+
+    <transition name="fade">
+      <TheTransparentHeader
+        v-if="transNavbarStatus"
+        :continents="continents"
+        :trip-ideas="tripIdeas"
+        class="absolute w-full z-40"
+      />
+    </transition>
+
     <TheFullheightHero class="z-30 mb-24" />
 
     <!-- Introduction -->
@@ -138,6 +143,7 @@ export default {
   },
   data() {
     return {
+      transNavbarStatus: true,
       sidenavStatus: false,
       gallery: [
         'https://picsum.photos/300/300?random=1',
@@ -201,6 +207,23 @@ export default {
     this.$nuxt.$on('openSidenav', () => {
       this.sidenavStatus = true
     })
+  },
+  mounted() {
+    window.addEventListener('scroll', this.onScroll)
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.onScroll)
+  },
+  methods: {
+    onScroll() {
+      // Get the current scroll position
+      const currentScrollPosition =
+        window.pageYOffset || document.documentElement.scrollTop
+      // Because of momentum scrolling on mobiles, we shouldn't continue if it is less than zero
+      currentScrollPosition === 0
+        ? (this.transNavbarStatus = true)
+        : (this.transNavbarStatus = false)
+    },
   },
 }
 </script>

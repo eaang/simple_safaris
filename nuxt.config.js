@@ -104,6 +104,7 @@ export default {
             'faPlus',
             'faThumbsUp',
             'faBars',
+            'faAngleRight',
           ],
           regular: ['faCircle'],
         },
