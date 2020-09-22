@@ -15,7 +15,7 @@
           class="left-navbar flex justify-center lg:justify-start space-x-8 w-screen"
         >
           <div class="text-4xl font-display text-brown flex items-center">
-            SIMPLE SAFARIS
+            <a href="/">SIMPLE SAFARIS</a>
           </div>
           <div
             class="hidden lg:flex items-stretch text-black text-lg space-x-8"

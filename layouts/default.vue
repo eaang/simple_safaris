@@ -1,14 +1,73 @@
 <template>
-  <div>
-    <Nuxt />
+  <div class="default-layout">
+    <!-- Hero section -->
+    <transition name="slideLeft">
+      <TheSidenav
+        v-if="sidenavStatus"
+        class="fixed-sidebar z-50 w-2/3"
+        style="animation-duration: 0.3s"
+        :continents="continents"
+        :trip-ideas="tripIdeas"
+      />
+    </transition>
+
+    <transition name="fade">
+      <div
+        v-if="sidenavStatus"
+        class="fixed-sidebar top-0 sidenav-backdrop w-screen h-screen z-40 bg-opacity-50 bg-black"
+        @click="$nuxt.$emit('closeSidenav')"
+      ></div>
+    </transition>
+
+    <TheWhiteHeader
+      :continents="continents"
+      :trip-ideas="tripIdeas"
+      class="sticky top-0 w-full z-30"
+    />
+    <Nuxt class="default-content -mt-24" />
+    <TheFooter />
   </div>
 </template>
+
+<script>
+export default {
+  async asyncData({ store, params }) {
+    await store.dispatch('continents/getContinents')
+    await store.dispatch('tripIdeas/getTripIdeas', params.slug)
+    return {
+      continents: store.getters['continents/continents'],
+      tripIdeas: store.getters['tripIdeas/tripIdeas'],
+    }
+  },
+  data() {
+    return {
+      sidenavStatus: false,
+    }
+  },
+  created() {
+    this.$nuxt.$on('closeSidenav', () => {
+      this.sidenavStatus = false
+    })
+    this.$nuxt.$on('openSidenav', () => {
+      this.sidenavStatus = true
+    })
+  },
+}
+</script>
 
 <style lang="scss">
 html {
   line-break: strict;
   word-break: keep-all;
   cursor: default;
+}
+.default-layout {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.default-content {
+  flex: 1;
 }
 .section {
   @apply my-8 py-16 mx-auto;
@@ -39,6 +98,12 @@ html {
 }
 .content {
   @apply text-gray text-lg;
+}
+.fixed-sidebar {
+  position: -webkit-fixed;
+  position: fixed;
+  top: 0;
+  right: left;
 }
 
 // Animations go here

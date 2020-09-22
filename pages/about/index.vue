@@ -1,9 +1,11 @@
 <template>
-  <div>This is the main about page</div>
+  <div class="relative about-page"></div>
 </template>
 
 <script>
-export default {}
+export default {
+  layout: 'default',
+}
 </script>
 
 <style lang="scss" scoped></style>

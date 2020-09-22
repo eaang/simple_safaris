@@ -149,6 +149,7 @@
 
 <script>
 export default {
+  layout: 'landing',
   async asyncData({ store, params }) {
     await store.dispatch('continents/getContinents')
     await store.dispatch('tripIdeas/getTripIdeas', params.slug)
@@ -260,11 +261,5 @@ export default {
   &-choice {
     @apply text-black text-2xl mb-4 font-bold;
   }
-}
-.fixed-sidebar {
-  position: -webkit-fixed;
-  position: fixed;
-  top: 0;
-  right: left;
 }
 </style>
