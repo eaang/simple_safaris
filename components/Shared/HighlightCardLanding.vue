@@ -1,8 +1,8 @@
 <template>
   <div class="info-point">
     <div class="info-icon"><Icon :icon-path="iconPath" /></div>
-    <div class="info-title">{{ title }}</div>
-    <div class="info-content">
+    <div class="info-title text-xl xl:text-2xl">{{ title }}</div>
+    <div class="info-content text-base xl:text-lg">
       {{ content }}
     </div>
   </div>
@@ -33,10 +33,10 @@ export default {
     @apply flex justify-center;
   }
   &-title {
-    @apply text-black text-2xl font-bold;
+    @apply text-black  font-bold;
   }
   &-content {
-    @apply text-gray text-lg mt-4 italic;
+    @apply text-gray  mt-4 italic;
   }
 }
 </style>

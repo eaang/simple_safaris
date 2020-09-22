@@ -69,7 +69,7 @@
     <div class="section bg-brown-dark">
       <div class="container mx-auto">
         <div class="title title-main text-white text-center">
-          <div class="mb-8">Trip ideas for you</div>
+          <div class="mb-8 px-4">Trip ideas for you</div>
           <TripideaCarousel :trip-ideas="tripIdeas" />
         </div>
       </div>
@@ -96,22 +96,22 @@
 
     <!-- Travel Knowhow -->
     <div class="section container mx-auto text-center">
-      <div class="title title-main text-brown mb-8">Travel Knowhow</div>
+      <div class="title title-main text-brown mb-8 mx-8">Travel Knowhow</div>
       <TheBlogCarousel :blogposts="blogposts" />
     </div>
 
     <!-- Safari Gallery -->
     <div class="section container mx-auto text-center">
       <div class="title title-main text-brown">Safari Gallery</div>
-      <div class="grid grid-flow-row grid-cols-5 grid-rows-2 gap-4 px-16 pt-8">
-        <img v-for="(photo, i) in gallery" :key="i" :src="photo" />
+      <div class="px-8 pt-8">
+        <GalleryCarousel :image-links="gallery" />
       </div>
     </div>
 
     <!-- Our Partners -->
     <div class="section container mx-auto text-center">
       <div class="title title-main text-black">Our Partners</div>
-      <ThePartnerCarousel />
+      <ThePartnerCarousel class="mx-8" />
     </div>
     <!-- Spacing before footer -->
     <div class="h-16"></div>
@@ -131,16 +131,19 @@ export default {
   data() {
     return {
       gallery: [
-        'https://picsum.photos/id/507/300/300',
-        'https://picsum.photos/id/243/300/300',
-        'https://picsum.photos/id/202/300/300',
-        'https://picsum.photos/id/909/300/300',
-        'https://picsum.photos/id/795/300/300',
-        'https://picsum.photos/id/471/300/300',
-        'https://picsum.photos/id/501/300/300',
-        'https://picsum.photos/id/599/300/300',
-        'https://picsum.photos/id/228/300/300',
-        'https://picsum.photos/id/350/300/300',
+        'https://picsum.photos/300/300?random=1',
+        'https://picsum.photos/300/300?random=2',
+        'https://picsum.photos/300/300?random=3',
+        'https://picsum.photos/300/300?random=4',
+        'https://picsum.photos/300/300?random=5',
+        'https://picsum.photos/300/300?random=6',
+        'https://picsum.photos/300/300?random=7',
+        'https://picsum.photos/300/300?random=8',
+        'https://picsum.photos/300/300?random=9',
+        'https://picsum.photos/300/300?random=10',
+        'https://picsum.photos/300/300?random=11',
+        'https://picsum.photos/300/300?random=12',
+        'https://picsum.photos/300/300?random=13',
       ],
       blogposts: [
         {

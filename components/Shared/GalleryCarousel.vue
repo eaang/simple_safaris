@@ -1,16 +1,18 @@
 <template>
   <div class="relative">
     <agile :options="carouselOptions">
-      <div v-for="(partner, i) in partners" :key="i" class="slide">
-        <img :src="partner" />
+      <div v-for="(group, i) in gallery" :key="i" class="slide px-2 space-y-4">
+        <img :src="group[0]" />
+        <img v-if="group[1]" :src="group[1]" />
+        <img v-else src="/transparent-square.png" />
       </div>
       <template slot="prevButton"
-        ><div class="absolute inset-y-0 left-0 flex items-center">
+        ><div class="absolute inset-y-0 left-0 flex items-center -ml-4">
           <fa-icon class="text-gray-lighter text-4xl" icon="angle-left" />
         </div>
       </template>
       <template slot="nextButton">
-        <div class="absolute inset-y-0 right-0 flex items-center">
+        <div class="absolute inset-y-0 right-0 flex items-center -mr-4">
           <fa-icon class="text-gray-lighter text-4xl" icon="angle-right" />
         </div>
       </template>
@@ -25,6 +27,12 @@ export default {
   components: {
     agile: VueAgile,
   },
+  props: {
+    imageLinks: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       carouselOptions: {
@@ -34,26 +42,32 @@ export default {
           {
             breakpoint: 768,
             settings: {
-              slidesToShow: 4,
+              slidesToShow: 3,
             },
           },
           {
             breakpoint: 1024,
             settings: {
-              slidesToShow: 6,
+              slidesToShow: 4,
+            },
+          },
+          {
+            breakpoint: 1280,
+            settings: {
+              slidesToShow: 5,
             },
           },
         ],
       },
-      partners: [
-        '/partners/partner-01.jpg',
-        '/partners/partner-02.jpg',
-        '/partners/partner-03.jpg',
-        '/partners/partner-04.jpg',
-        '/partners/partner-05.jpg',
-        '/partners/partner-06.jpg',
-      ],
     }
+  },
+  computed: {
+    gallery() {
+      return this.imageLinks.reduce(function (result, value, index, array) {
+        if (index % 2 === 0) result.push(array.slice(index, index + 2))
+        return result
+      }, [])
+    },
   },
 }
 </script>
