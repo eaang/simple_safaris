@@ -1,7 +1,12 @@
 <template>
   <div class="relative landing-page">
     <!-- Hero section -->
-    <TheSidenav class="block lg:hidden absolute inset-x-0 top-0 z-50" />
+    <TheSidenav
+      v-if="sidenavStatus"
+      class="block lg:hidden absolute inset-x-0 top-0 z-50"
+      :continents="continents"
+      :trip-ideas="tripIdeas"
+    />
     <TheTransparentHeader
       :continents="continents"
       :trip-ideas="tripIdeas"
@@ -130,6 +135,7 @@ export default {
   },
   data() {
     return {
+      sidenavStatus: false,
       gallery: [
         'https://picsum.photos/300/300?random=1',
         'https://picsum.photos/300/300?random=2',
@@ -184,6 +190,14 @@ export default {
         },
       ],
     }
+  },
+  created() {
+    this.$nuxt.$on('closeSidenav', () => {
+      this.sidenavStatus = false
+    })
+    this.$nuxt.$on('openSidenav', () => {
+      this.sidenavStatus = true
+    })
   },
 }
 </script>

@@ -19,6 +19,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/dotenv": "^1.4.1",
+    "animate.css": "^4.1.1",
     "contentful": "^7.14.6",
     "core-js": "^3.6.5",
     "node-sass": "^4.14.1",
