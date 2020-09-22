@@ -12,12 +12,12 @@
         :link="post.link"
       />
       <template slot="prevButton"
-        ><div class="absolute inset-y-0 left-0 -ml-10 pl-4 flex items-center">
+        ><div class="absolute inset-y-0 left-0 -ml-6 flex items-center">
           <img src="@/assets/images/icons/btn-prev.svg" />
         </div>
       </template>
       <template slot="nextButton">
-        <div class="absolute inset-y-0 right-0 -mr-10 pr-4 flex items-center">
+        <div class="absolute inset-y-0 right-0 -mr-6 flex items-center">
           <img src="@/assets/images/icons/btn-next.svg" />
         </div>
       </template>
