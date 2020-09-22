@@ -4,7 +4,7 @@
     <transition name="slideLeft">
       <TheSidenav
         v-if="sidenavStatus"
-        class="sticky top-0 w-full z-50"
+        class="fixed-sidebar"
         style="animation-duration: 0.3s"
         :continents="continents"
         :trip-ideas="tripIdeas"
@@ -22,14 +22,11 @@
         v-if="transNavbarStatus"
         :continents="continents"
         :trip-ideas="tripIdeas"
-        class="absolute top-0 w-full z-40"
+        class="sticky top-0 w-full z-40"
       />
     </transition>
 
-    <TheFullheightHero class="absolute inset-x-0 top-0 z-30 mb-24" />
-
-    <!-- One screen width of space to account for the hero being given absolute positioning -->
-    <div class="h-screen/75 lg:h-screen"></div>
+    <TheFullheightHero class="w-full z-30 -mt-24 mb-24" />
 
     <!-- Introduction -->
     <div class="section container px-4 text-center">
@@ -255,5 +252,13 @@ export default {
   &-choice {
     @apply text-black text-2xl mb-4 font-bold;
   }
+}
+.fixed-sidebar {
+  position: -webkit-fixed;
+  position: fixed;
+  top: 0;
+  right: left;
+  width: 100vw;
+  z-index: 999;
 }
 </style>

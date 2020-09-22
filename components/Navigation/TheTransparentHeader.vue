@@ -5,7 +5,7 @@
         class="lg:hidden flex items-center text-4xl text-white absolute h-full"
       >
         <fa-icon
-          class="cursor-pointer"
+          class="cursor-pointer text-2xl sm:text-4xl"
           icon="bars"
           @click="$nuxt.$emit('openSidenav')"
         />
