@@ -1,12 +1,15 @@
 <template>
   <div class="relative landing-page">
     <!-- Hero section -->
-    <TheSidenav
-      v-if="sidenavStatus"
-      class="block lg:hidden absolute inset-x-0 top-0 z-50"
-      :continents="continents"
-      :trip-ideas="tripIdeas"
-    />
+    <transition name="slideLeft">
+      <TheSidenav
+        v-if="sidenavStatus"
+        class="absolute inset-x-0 top-0 z-50"
+        style="animation-duration: 0.3s"
+        :continents="continents"
+        :trip-ideas="tripIdeas"
+      />
+    </transition>
     <TheTransparentHeader
       :continents="continents"
       :trip-ideas="tripIdeas"

@@ -8,11 +8,11 @@
           @click="$nuxt.$emit('closeSidenav')"
         />
       </div>
-      <div class="flex flex-col pl-4 overflow-auto">
+      <div class="flex flex-col h-full pl-4 overflow-auto">
         <a href="/"
           ><div class="nav-item"><div>Home</div></div></a
         >
-        <div class="nav-item" @click="aboutClick">
+        <div class="nav-item z-20" @click="aboutClick">
           <div>About</div>
           <img
             v-if="!aboutDropdown"
@@ -25,15 +25,17 @@
             src="@/assets/images/icons/btn-minus.svg"
           />
         </div>
-        <div v-if="aboutDropdown" class="nav-dropdown">
-          <a href="/about"><div class="nav-dropdown-item">About us</div> </a>
-          <a href="/about/privacy"
-            ><div class="nav-dropdown-item">개인정보처리방침</div></a
-          >
-          <a href="/about/terms-and-conditions"
-            ><div class="nav-dropdown-item">해외여행약관</div>
-          </a>
-        </div>
+        <transition name="slide" mode="out-in">
+          <div v-if="aboutDropdown" class="nav-dropdown z-0">
+            <a href="/about"><div class="nav-dropdown-item">About us</div> </a>
+            <a href="/about/privacy"
+              ><div class="nav-dropdown-item">개인정보처리방침</div></a
+            >
+            <a href="/about/terms-and-conditions"
+              ><div class="nav-dropdown-item">해외여행약관</div>
+            </a>
+          </div>
+        </transition>
         <div class="nav-item" @click="destinationClick">
           <div>Destinations</div>
           <img
@@ -47,23 +49,25 @@
             src="@/assets/images/icons/btn-minus.svg"
           />
         </div>
-        <div v-if="destinationDropdown" class="nav-dropdown">
-          <div
-            v-for="continent in continents"
-            :key="continent.fields.name"
-            class="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-3 grid-flow-row"
-          >
-            <a
-              v-for="destination in continent.fields.destinations"
-              :key="destination.fields.name"
-              :href="'/destinations/' + destination.fields.slug"
+        <transition name="slide" mode="out-in">
+          <div v-if="destinationDropdown" class="nav-dropdown">
+            <div
+              v-for="continent in continents"
+              :key="continent.fields.name"
+              class="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-3 grid-flow-row"
             >
-              <div class="nav-dropdown-item">
-                {{ destination.fields.koreanName }}
-              </div></a
-            >
+              <a
+                v-for="destination in continent.fields.destinations"
+                :key="destination.fields.name"
+                :href="'/destinations/' + destination.fields.slug"
+              >
+                <div class="nav-dropdown-item">
+                  {{ destination.fields.koreanName }}
+                </div></a
+              >
+            </div>
           </div>
-        </div>
+        </transition>
         <div class="nav-item" @click="tripsClick">
           <div>Trip Ideas</div>
           <img
@@ -77,8 +81,8 @@
             src="@/assets/images/icons/btn-minus.svg"
           />
         </div>
-        <div v-if="tripsDropdown" class="nav-dropdown">
-          <div class="">
+        <transition name="slide" mode="out-in">
+          <div v-if="tripsDropdown" class="nav-dropdown">
             <a
               v-for="tripIdea in tripIdeas"
               :key="tripIdea.fields.name"
@@ -89,7 +93,7 @@
               </div>
             </a>
           </div>
-        </div>
+        </transition>
         <a href="/"
           ><div class="nav-item"><div>Blog</div></div></a
         >
@@ -123,10 +127,7 @@
         </div>
       </div>
     </div>
-    <div
-      class="h-screen w-1/3 bg-black bg-opacity-25"
-      @click="$nuxt.$emit('closeSidenav')"
-    ></div>
+    <div class="h-screen w-1/3" @click="$nuxt.$emit('closeSidenav')"></div>
   </div>
 </template>
 

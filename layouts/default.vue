@@ -41,4 +41,29 @@ html {
 .content {
   @apply text-gray text-lg;
 }
+
+// Animations go here
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s ease;
+  max-height: 100%;
+  opacity: 1;
+}
+
+.slide-enter,
+.slide-leave-to {
+  opacity: 0;
+  max-height: 0px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.05s ease;
+  opacity: 1;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

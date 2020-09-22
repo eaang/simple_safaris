@@ -70,7 +70,7 @@ export default {
     },
   },
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['@/assets/sass/main.scss'],
+  css: ['@/assets/sass/main.scss', 'vue2-animate/dist/vue2-animate.min.css'],
 
   tailwindcss: {
     configPath: './tailwind.config.js',

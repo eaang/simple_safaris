@@ -24,30 +24,32 @@
             @mouseleave="dropdownOneShow = false"
           >
             <div class="nav-link nav-link-dropdown">About</div>
-            <div
-              v-if="dropdownOneShow"
-              class="absolute nav-dropdown nav-dropdown-dark"
-            >
-              <ul class="nav-dropdown-list cursor-pointer">
-                <a href="/about"
-                  ><li class="nav-dropdown-item nav-dropdown-item-dark">
-                    About us
-                  </li>
-                </a>
+            <transition name="fade" mode="out-in">
+              <div
+                v-if="dropdownOneShow"
+                class="absolute nav-dropdown nav-dropdown-dark"
+              >
+                <ul class="nav-dropdown-list cursor-pointer">
+                  <a href="/about"
+                    ><li class="nav-dropdown-item nav-dropdown-item-dark">
+                      About us
+                    </li>
+                  </a>
 
-                <a href="/about/privacy"
-                  ><li class="nav-dropdown-item nav-dropdown-item-dark">
-                    개인정보처리방침
-                  </li></a
-                >
+                  <a href="/about/privacy"
+                    ><li class="nav-dropdown-item nav-dropdown-item-dark">
+                      개인정보처리방침
+                    </li></a
+                  >
 
-                <a href="/about/terms-and-conditions"
-                  ><li class="nav-dropdown-item nav-dropdown-item-dark">
-                    해외여행약관
-                  </li>
-                </a>
-              </ul>
-            </div>
+                  <a href="/about/terms-and-conditions"
+                    ><li class="nav-dropdown-item nav-dropdown-item-dark">
+                      해외여행약관
+                    </li>
+                  </a>
+                </ul>
+              </div>
+            </transition>
           </div>
 
           <!-- Destinations Dropdown -->
@@ -57,49 +59,55 @@
             @mouseleave="dropdownTwoShow = false"
           >
             <div class="nav-link nav-link-dropdown">Destinations</div>
-            <div
-              v-if="dropdownTwoShow"
-              class="absolute nav-dropdown nav-dropdown-dark"
-            >
-              <ul class="nav-dropdown-list cursor-pointer">
-                <div
-                  v-for="continent in continents"
-                  :key="continent.fields.name"
-                >
-                  <!-- This is the code for the continent dropdown - hidden for now, to be enabled if Asia ever returns lmao -->
-                  <li
-                    class="nav-dropdown-item items-center justify-between cursor-pointer hidden"
-                    @click="toggleRegions(continent.fields.name)"
+            <transition name="fade" mode="out-in">
+              <div
+                v-if="dropdownTwoShow"
+                class="absolute nav-dropdown nav-dropdown-dark"
+              >
+                <ul class="nav-dropdown-list cursor-pointer">
+                  <div
+                    v-for="continent in continents"
+                    :key="continent.fields.name"
                   >
-                    <div class="">
-                      {{ continent.fields.name }}
-                    </div>
-                    <div class="invisible">
-                      <fa-icon
-                        :id="continent.fields.name.toLowerCase() + '-icon-up'"
-                        icon="caret-up"
-                      />
-                      <fa-icon
-                        :id="continent.fields.name.toLowerCase() + '-icon-down'"
-                        icon="caret-down"
-                        class="hidden"
-                      />
-                    </div>
-                  </li>
-                  <div :id="continent.fields.name.toLowerCase() + '-dropdown'">
-                    <a
-                      v-for="destination in continent.fields.destinations"
-                      :key="destination.fields.name"
-                      :href="'/destinations/' + destination.fields.slug"
+                    <!-- This is the code for the continent dropdown - hidden for now, to be enabled if Asia ever returns lmao -->
+                    <li
+                      class="nav-dropdown-item items-center justify-between cursor-pointer hidden"
+                      @click="toggleRegions(continent.fields.name)"
                     >
-                      <li class="nav-dropdown-item nav-dropdown-item-dark">
-                        {{ destination.fields.name }}
-                      </li></a
+                      <div class="">
+                        {{ continent.fields.name }}
+                      </div>
+                      <div class="invisible">
+                        <fa-icon
+                          :id="continent.fields.name.toLowerCase() + '-icon-up'"
+                          icon="caret-up"
+                        />
+                        <fa-icon
+                          :id="
+                            continent.fields.name.toLowerCase() + '-icon-down'
+                          "
+                          icon="caret-down"
+                          class="hidden"
+                        />
+                      </div>
+                    </li>
+                    <div
+                      :id="continent.fields.name.toLowerCase() + '-dropdown'"
                     >
+                      <a
+                        v-for="destination in continent.fields.destinations"
+                        :key="destination.fields.name"
+                        :href="'/destinations/' + destination.fields.slug"
+                      >
+                        <li class="nav-dropdown-item nav-dropdown-item-dark">
+                          {{ destination.fields.name }}
+                        </li></a
+                      >
+                    </div>
                   </div>
-                </div>
-              </ul>
-            </div>
+                </ul>
+              </div>
+            </transition>
           </div>
 
           <!-- Trip Ideas Dropdown -->
@@ -110,22 +118,22 @@
           >
             <div class="nav-link nav-link-dropdown">Trip ideas</div>
 
-            <div
-              v-if="dropdownThreeShow"
-              class="absolute nav-dropdown nav-dropdown-dark"
-            >
-              <ul class="nav-dropdown-list cursor-pointer">
+            <transition name="fade" mode="out-in">
+              <div
+                v-if="dropdownThreeShow"
+                class="absolute nav-dropdown nav-dropdown-dark nav-dropdown-list cursor-pointer"
+              >
                 <a
                   v-for="tripIdea in tripIdeas"
                   :key="tripIdea.fields.name"
                   :href="'/trips/' + tripIdea.fields.slug"
                 >
-                  <li class="nav-dropdown-item nav-dropdown-item-dark">
+                  <div class="nav-dropdown-item nav-dropdown-item-dark">
                     {{ tripIdea.fields.name }}
-                  </li>
+                  </div>
                 </a>
-              </ul>
-            </div>
+              </div>
+            </transition>
           </div>
 
           <!-- Contact Us Button -->
