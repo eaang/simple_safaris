@@ -24,16 +24,18 @@
             :style="{ 'background-image': `url(${url})` }"
           ></div>
         </div>
-        <div class="trip-idea-text bg-white text-center py-8 space-y-4">
+        <div class="trip-idea-text bg-white text-center py-8 space-y-8">
           <div
             class="trip-idea-title text-gray-dark text-2xl font-bold flex items-center justify-center"
           >
-            <div class="h-32 px-4">
+            <div class="h-24 lg:h-32 px-4">
               <div class="topic">[{{ topic }}]</div>
-              <div class="title">{{ title }}</div>
+              <div class="title h-full">
+                {{ title }}
+              </div>
             </div>
           </div>
-          <div class="trip-idea-body pt-4 px-4 text-brown text-sm">
+          <div class="trip-idea-body px-4 text-brown text-base">
             {{ content }}
           </div>
         </div></a
