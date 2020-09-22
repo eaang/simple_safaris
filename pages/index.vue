@@ -11,7 +11,13 @@
       />
     </transition>
 
-    <transition name="fade">
+    <transition name="fade" mode="out-in">
+      <TheWhiteHeader
+        v-if="whiteNavbarStatus"
+        :continents="continents"
+        :trip-ideas="tripIdeas"
+        class="sticky top-0 w-full z-40"
+      />
       <TheTransparentHeader
         v-if="transNavbarStatus"
         :continents="continents"
@@ -20,7 +26,10 @@
       />
     </transition>
 
-    <TheFullheightHero class="z-30 mb-24" />
+    <TheFullheightHero class="absolute inset-x-0 top-0 z-30 mb-24" />
+
+    <!-- One screen width of space to account for the hero being given absolute positioning -->
+    <div class="h-screen/75 lg:h-screen"></div>
 
     <!-- Introduction -->
     <div class="section container px-4 text-center">
@@ -144,6 +153,7 @@ export default {
   data() {
     return {
       transNavbarStatus: true,
+      whiteNavbarStatus: false,
       sidenavStatus: false,
       gallery: [
         'https://picsum.photos/300/300?random=1',
@@ -220,9 +230,13 @@ export default {
       const currentScrollPosition =
         window.pageYOffset || document.documentElement.scrollTop
       // Because of momentum scrolling on mobiles, we shouldn't continue if it is less than zero
-      currentScrollPosition === 0
-        ? (this.transNavbarStatus = true)
-        : (this.transNavbarStatus = false)
+      if (currentScrollPosition === 0) {
+        this.transNavbarStatus = true
+        this.whiteNavbarStatus = false
+      } else {
+        this.transNavbarStatus = false
+        this.whiteNavbarStatus = true
+      }
     },
   },
 }
