@@ -1,7 +1,7 @@
 <template>
   <div class="px-2">
     <div
-      class="trip-idea-box box-shadow cursor-pointer"
+      class="trip-idea-box shadow cursor-pointer"
       @mouseover="mouseover = true"
       @mouseleave="mouseover = false"
     >
@@ -9,7 +9,7 @@
         <div class="relative h-56 trip-idea-image">
           <div
             v-if="mouseover"
-            class="absolute w-full h-full flex items-center justify-center text-beige text-6xl"
+            class="absolute w-full h-full flex items-center justify-center text-beige text-6xl font-normal z-50"
           >
             +
           </div>
