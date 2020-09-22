@@ -5,13 +5,13 @@
         <img :src="partner" />
       </div>
       <template slot="prevButton"
-        ><div class="absolute inset-y-0 left-0 flex items-center -ml-4">
-          <fa-icon class="text-gray-lighter text-4xl" icon="angle-left" />
+        ><div class="absolute inset-y-0 left-0 flex items-center -ml-6">
+          <img src="@/assets/images/icons/btn-prev.svg" />
         </div>
       </template>
       <template slot="nextButton">
-        <div class="absolute inset-y-0 right-0 flex items-center -mr-4">
-          <fa-icon class="text-gray-lighter text-4xl" icon="angle-right" />
+        <div class="absolute inset-y-0 right-0 flex items-center -mr-6">
+          <img src="@/assets/images/icons/btn-next.svg" />
         </div>
       </template>
     </agile>

@@ -22,13 +22,13 @@
         :price="idea.fields.startingPrice"
       />
       <template slot="prevButton"
-        ><div class="absolute inset-y-0 left-0 -ml-8 pl-4 flex items-center">
-          <fa-icon class="text-gray-lighter text-4xl" icon="angle-left" />
+        ><div class="absolute inset-y-0 left-0 -ml-10 pl-4 flex items-center">
+          <img src="@/assets/images/icons/btn-prev.svg" />
         </div>
       </template>
       <template slot="nextButton">
-        <div class="absolute inset-y-0 right-0 -mr-8 pr-4 flex items-center">
-          <fa-icon class="text-gray-lighter text-4xl" icon="angle-right" />
+        <div class="absolute inset-y-0 right-0 -mr-10 pr-4 flex items-center">
+          <img src="@/assets/images/icons/btn-next.svg" />
         </div>
       </template>
     </agile>

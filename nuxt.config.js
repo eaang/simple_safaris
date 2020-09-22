@@ -101,8 +101,6 @@ export default {
             'faArrowRight',
             'faCaretDown',
             'faCaretUp',
-            'faAngleLeft',
-            'faAngleRight',
             'faPlus',
             'faThumbsUp',
             'faBars',
