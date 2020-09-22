@@ -7,6 +7,7 @@
           ref="reviewCarousel"
           :options="reviewCarouselOptions"
           class="pb-18"
+          @after-change="reviewCounter = $refs.reviewCarousel.getCurrentSlide()"
         >
           <div v-for="(review, i) in reviews" :key="i" class="slide">
             <h3>
@@ -28,7 +29,6 @@
           <template slot="prevButton"
             ><div
               class="absolute inset-y-0 left-0 flex items-center justify-around px-12 text-4xl"
-              @click="reviewCounter--"
             >
               <div
                 class="rounded-full border-2 border-white p-8 text-white hover:bg-white hover:text-brown"
@@ -42,7 +42,6 @@
           <template slot="nextButton"
             ><div
               class="absolute inset-y-0 right-0 flex items-center justify-around px-12 text-4xl"
-              @click="reviewCounter++"
             >
               <div
                 class="rounded-full border-2 border-white p-8 text-white hover:bg-white hover:text-brown"
@@ -61,10 +60,10 @@
               v-for="(review, i) in reviews"
               :key="i"
               class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
-              :class="{ 'bg-white': i === trueReviewCounter }"
+              :class="{ 'bg-white': i === reviewCounter }"
               @click="
                 reviewCounter = i
-                $refs.reviewCarousel.goTo(trueReviewCounter)
+                $refs.reviewCarousel.goTo(reviewCounter)
               "
             ></li>
           </div>
@@ -139,21 +138,21 @@ export default {
       ],
     }
   },
-  computed: {
-    trueReviewCounter() {
-      if (this.reviewCounter >= 0) {
-        return this.reviewCounter % this.reviews.length
-      } else {
-        if (Math.abs(this.reviewCounter % this.reviews.length) === 0) {
-          return 0
-        }
-        return (
-          this.reviews.length -
-          Math.abs(this.reviewCounter % this.reviews.length)
-        )
-      }
-    },
-  },
+  // computed: {
+  //   trueReviewCounter() {
+  //     if (this.reviewCounter >= 0) {
+  //       return this.reviewCounter % this.reviews.length
+  //     } else {
+  //       if (Math.abs(this.reviewCounter % this.reviews.length) === 0) {
+  //         return 0
+  //       }
+  //       return (
+  //         this.reviews.length -
+  //         Math.abs(this.reviewCounter % this.reviews.length)
+  //       )
+  //     }
+  //   },
+  // },
   mounted() {
     setInterval(() => {
       this.$refs.reviewCarousel.goToNext()
