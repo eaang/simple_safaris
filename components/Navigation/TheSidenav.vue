@@ -39,7 +39,11 @@
           ><div class="nav-item"><div>Contact us</div></div></a
         >
       </div>
-      <div class=""></div>
+      <div class="flex items-end text-brown">
+        <div class="mb-8 ml-4 font-bold space-x-2 text-lg">
+          <fa-icon icon="phone-alt" /><span>070-4517-0225</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
