@@ -7,7 +7,7 @@
       class="absolute w-full z-50"
     />
     <TheSidenav class="absolute inset-x-0 top-0" />
-    <TheFullheightHero class="z-40" />
+    <TheFullheightHero class="z-40 mb-24" />
 
     <!-- Introduction -->
     <div class="section container px-4 text-center">
@@ -62,7 +62,7 @@
     <!-- Destinations -->
     <div class="section container text-center">
       <div class="title title-main text-black">Destinations</div>
-      <TheDestinationMap class="my-8" />
+      <TheDestinationMap class="mb-16 mt-8" />
     </div>
 
     <!-- Trip Ideas -->
@@ -76,7 +76,9 @@
     </div>
 
     <!-- Reviews -->
-    <TheReviewCarousel />
+    <div class="pt-8">
+      <TheReviewCarousel />
+    </div>
 
     <!-- Design Your Safari -->
     <div class="section container mx-auto text-center">
