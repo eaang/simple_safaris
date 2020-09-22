@@ -143,7 +143,7 @@
         </div>
       </div>
       <div
-        class="right-navbar hidden lg:flex flex-grow justify-center text-white text-lg"
+        class="right-navbar hidden lg:flex w-1/4 xl:w-1/3 justify-end text-white text-lg"
       >
         <div
           class="space-x-2 hidden lg:flex lg:flex-col justify-center xl:hidden"

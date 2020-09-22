@@ -141,7 +141,7 @@
         </div>
       </div>
       <div
-        class="right-navbar hidden lg:flex flex-grow justify-center text-brown-dark text-lg"
+        class="right-navbar hidden w-1/4 xl:w-1/3 lg:flex flex-grow justify-center text-brown-dark text-lg"
       >
         <div
           class="space-x-2 hidden lg:flex lg:flex-col justify-center xl:hidden"
