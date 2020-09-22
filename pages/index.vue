@@ -22,7 +22,7 @@
         v-if="transNavbarStatus"
         :continents="continents"
         :trip-ideas="tripIdeas"
-        class="absolute w-full z-40"
+        class="absolute top-0 w-full z-40"
       />
     </transition>
 
