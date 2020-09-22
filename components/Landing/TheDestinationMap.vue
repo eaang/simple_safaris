@@ -105,10 +105,13 @@
       </div>
     </div>
     <!-- Continent Map -->
-    <div class="relative my-8 md:my-0">
-      <img class="absolute h-screen/50 md:h-full" :src="countryImage" />
+    <div class="relative my-8 md:my-0 flex justify-center">
       <img
-        class="h-screen/50 md:h-full"
+        class="absolute w-2/3 md:w-full object-scale-down"
+        :src="countryImage"
+      />
+      <img
+        class="w-2/3 md:w-full object-scale-down"
         src="@/assets/images/landing-map/map-africa.png"
       />
     </div>
