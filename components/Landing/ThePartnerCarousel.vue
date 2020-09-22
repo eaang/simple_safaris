@@ -5,12 +5,12 @@
         <img :src="partner" />
       </div>
       <template slot="prevButton"
-        ><div class="absolute inset-y-0 left-0 flex items-center">
+        ><div class="absolute inset-y-0 left-0 flex items-center -ml-4">
           <fa-icon class="text-gray-lighter text-4xl" icon="angle-left" />
         </div>
       </template>
       <template slot="nextButton">
-        <div class="absolute inset-y-0 right-0 flex items-center">
+        <div class="absolute inset-y-0 right-0 flex items-center -mr-4">
           <fa-icon class="text-gray-lighter text-4xl" icon="angle-right" />
         </div>
       </template>
