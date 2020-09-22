@@ -31,17 +31,11 @@
 
 <script>
 export default {
-  async asyncData({ store, params }) {
-    await store.dispatch('continents/getContinents')
-    await store.dispatch('tripIdeas/getTripIdeas', params.slug)
-    return {
-      continents: store.getters['continents/continents'],
-      tripIdeas: store.getters['tripIdeas/tripIdeas'],
-    }
-  },
   data() {
     return {
       sidenavStatus: false,
+      continents: this.$store.getters['continents/continents'],
+      tripIdeas: this.$store.getters['tripIdeas/tripIdeas'],
     }
   },
   created() {
