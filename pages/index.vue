@@ -4,11 +4,19 @@
     <transition name="slideLeft">
       <TheSidenav
         v-if="sidenavStatus"
-        class="fixed-sidebar"
+        class="fixed-sidebar z-50 w-2/3"
         style="animation-duration: 0.3s"
         :continents="continents"
         :trip-ideas="tripIdeas"
       />
+    </transition>
+
+    <transition name="fade">
+      <div
+        v-if="sidenavStatus"
+        class="fixed-sidebar top-0 sidenav-backdrop w-screen h-screen z-40 bg-opacity-50 bg-black"
+        @click="$nuxt.$emit('closeSidenav')"
+      ></div>
     </transition>
 
     <transition name="fade" mode="out-in">
@@ -16,17 +24,17 @@
         v-if="whiteNavbarStatus"
         :continents="continents"
         :trip-ideas="tripIdeas"
-        class="sticky top-0 w-full z-40"
+        class="sticky top-0 w-full z-30"
       />
       <TheTransparentHeader
         v-if="transNavbarStatus"
         :continents="continents"
         :trip-ideas="tripIdeas"
-        class="sticky top-0 w-full z-40"
+        class="sticky top-0 w-full z-30"
       />
     </transition>
 
-    <TheFullheightHero class="w-full z-30 -mt-24 mb-24" />
+    <TheFullheightHero class="w-full z-20 -mt-24 mb-24" />
 
     <!-- Introduction -->
     <div class="section container px-4 text-center">
@@ -258,7 +266,5 @@ export default {
   position: fixed;
   top: 0;
   right: left;
-  width: 100vw;
-  z-index: 999;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="sidenav flex h-screen">
-    <div class="w-2/3 bg-black flex flex-col justify-between pt-4 shadow-lg">
+    <div class="w-full bg-black flex flex-col justify-between pt-4 shadow-lg">
       <div class="h-12 flex justify-end">
         <img
           class="nav-button nav-button-big cursor-pointer"
@@ -127,8 +127,6 @@
         </div>
       </div>
     </div>
-
-    <div class="w-1/3" @click="$nuxt.$emit('closeSidenav')"></div>
   </div>
 </template>
 
