@@ -131,6 +131,6 @@ html {
 }
 
 .mapboxgl-popup-content {
-  @apply text-brown rounded h-8 flex items-end justify-center text-lg font-bold pb-1;
+  @apply text-brown shadow-lg rounded h-8 flex items-end justify-center text-lg font-bold pb-1;
 }
 </style>

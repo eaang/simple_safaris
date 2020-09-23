@@ -73,7 +73,7 @@ export default {
         new mapboxgl.Marker(el)
           .setLngLat(marker.geometry.coordinates)
           .setPopup(
-            new mapboxgl.Popup({ closeButton: false }) // add popups
+            new mapboxgl.Popup({ offset: 15, closeButton: false }) // add popups
               .setHTML(marker.properties.description)
           )
           .addTo(map)
