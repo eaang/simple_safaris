@@ -43,7 +43,7 @@
           Your Safari Consultants
         </div>
         <div
-          class="flex flex-col space-y-40 lg:flex-row lg:space-x-16 xl:space-x-32"
+          class="flex flex-col space-y-40 lg:space-y-0 lg:flex-row lg:space-x-16 xl:space-x-32"
         >
           <!-- John's section -->
           <div class="flex flex-col space-y-8 text-black lg:w-1/2">
