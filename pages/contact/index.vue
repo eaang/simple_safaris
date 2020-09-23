@@ -8,7 +8,7 @@
       <div class="flex-grow flex-center pt-16">
         <div class="title-header">Contact us</div>
       </div>
-      <div class="w-5/6 sm:w-3/4 bg-white h-screen/25">
+      <div class="w-5/6 sm:w-3/4 bg-white h-40">
         <div class="relative w-full h-full flex flex-col justify-center">
           <div
             class="flex flex-wrap justify-center gap-x-2 text-2xl sm:text-3xl xl:text-4xl italic p-4"
@@ -24,7 +24,7 @@
           </div>
         </div>
       </div>
-      <div class="w-full flex flex-col justify-between bg-white h-screen/25">
+      <div class="w-full flex flex-col justify-between bg-white h-forty">
         <div class="block lg:hidden text-brown text-xl sm:text-2xl text-center">
           소설가 Ernest Hemingway
         </div>

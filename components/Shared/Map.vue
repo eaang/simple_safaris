@@ -24,11 +24,6 @@ export default {
       ],
     },
   },
-  data() {
-    return {
-      map_token: process.env.MAPBOX_TOKEN,
-    }
-  },
   computed: {
     locationData() {
       const locations = {
@@ -55,13 +50,13 @@ export default {
   },
   methods: {
     createMap() {
-      mapboxgl.accessToken = this.map_token
+      mapboxgl.accessToken = process.env.MAPBOX_TOKEN
       const locations = this.locationData
       const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v10',
-        zoom: 2.5,
         center: this.center,
+        zoom: 2.5,
       })
 
       locations.features.forEach(function (marker) {
