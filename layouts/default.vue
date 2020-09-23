@@ -119,4 +119,18 @@ html {
 .fade-leave-to {
   opacity: 0;
 }
+
+// Map styles
+.marker {
+  background-image: url('/pin.png');
+  @apply bg-contain bg-center h-8 w-6 cursor-pointer;
+}
+
+.mapboxgl-popup {
+  @apply max-w-2xl;
+}
+
+.mapboxgl-popup-content {
+  @apply text-brown rounded h-8 flex items-end justify-center text-lg font-bold pb-1;
+}
 </style>

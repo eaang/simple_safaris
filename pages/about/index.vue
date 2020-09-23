@@ -1,5 +1,5 @@
 <template>
-  <div class="relative about-page">
+  <div class="about-page">
     <!-- Hero section -->
     <div
       class="bg-cover bg-center w-full h-screen"
@@ -111,11 +111,8 @@
     </div>
 
     <!-- Map box -->
-    <div class="section">
-      <div class="container mx-auto">
-        <!-- Map goes here -->
-        <div class="w-full h-screen/50 lg:h-screen/75 bg-gray-lighter"></div>
-      </div>
+    <div class="section container mx-auto">
+      <Map />
     </div>
   </div>
 </template>
