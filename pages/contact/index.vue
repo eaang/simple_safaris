@@ -39,105 +39,238 @@
 
     <!-- Contact form here -->
     <div class="contact-form container mx-auto">
-      name: {{ name }} <br />
-      phone: {{ phone }} <br />
-      email: {{ email }} <br />
-      adults: {{ adults }} <br />
-      children: {{ children }} <br />
-      start: {{ trueStart }} | {{ formStart }} <br />
-      end: {{ trueEnd }} | {{ formEnd }} <br />
-      No Date: {{ noDate }}
-
-      <div class="bg-gray-lightest border-t-4 border-b-4 border-brown h-screen">
-        <div class="w-2/5 mx-auto py-16">
-          <div class="input-group">
-            <label for="name">성함</label>
-            <input
-              v-model.lazy="name"
-              type="text"
-              placeholder="홍길동"
-              required
-            />
-          </div>
-
-          <div class="input-group">
-            <label for="phone">연락처</label>
-            <input
-              v-model="phone"
-              type="text"
-              placeholder="010-1234-5678"
-              required
-            />
-          </div>
-
-          <div class="input-group">
-            <label for="email">이메일</label>
-            <input
-              v-model="email"
-              type="text"
-              placeholder="이메일 주소 입력"
-              required
-            />
-          </div>
-
-          <div class="input-group">
-            <label for="people">희망 인원 수</label>
-            <div class="grid grid-cols-2 grid-rows-1 gap-4">
-              <select v-model="adults" required>
-                <option value="" selected disabled>-</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </select>
-              <select v-model="children" required>
-                <option value="" selected disabled>-</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </select>
+      <div class="bg-gray-lightest border-t-4 border-b-4 border-brown">
+        <div class="w-1/2 mx-auto py-16">
+          <form data-netlify="true" name="contact">
+            <!-- Name -->
+            <div class="input-group">
+              <label for="name">성함</label>
+              <input
+                id="name"
+                v-model.lazy="name"
+                type="text"
+                placeholder="홍길동"
+                required
+              />
             </div>
-          </div>
 
-          <div class="input-group">
-            <label for="dates">희망 인원 수</label>
-            <div class="grid grid-cols-2 grid-rows-2 grid-flow-row gap-4">
-              <input v-model="formStart" type="date" />
-              <input v-model="formEnd" type="date" />
-              <div class="text-gray-light flex space-x-2">
-                <label for="check-date"
-                  ><div class="checkbox">
-                    <fa-icon
-                      v-if="noDate"
-                      class="checkmark"
-                      icon="check"
-                    /></div></label
-                ><input
-                  id="check-date"
-                  v-model="noDate"
-                  type="checkbox"
-                  class="hidden"
-                />
-                <div>여행일자 미정</div>
+            <!-- Phone -->
+            <div class="input-group">
+              <label for="phone">연락처</label>
+              <input
+                id="phone"
+                v-model="phone"
+                type="text"
+                placeholder="010-1234-5678"
+                required
+              />
+            </div>
+
+            <!-- Email -->
+            <div class="input-group">
+              <label for="email">이메일</label>
+              <input
+                id="email"
+                v-model="email"
+                type="text"
+                placeholder="이메일 주소 입력"
+                required
+              />
+            </div>
+
+            <!-- People going -->
+            <div class="input-group">
+              <label for="people">희망 인원 수</label>
+              <div class="grid grid-cols-2 grid-rows-1 gap-4">
+                <select id="adults" v-model="adults" required>
+                  <option value="" selected disabled>-</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+                <select id="children" v-model="children" required>
+                  <option value="" selected disabled>-</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
               </div>
-              <div></div>
             </div>
-          </div>
+
+            <!-- Planned Dates -->
+            <div class="input-group">
+              <label>희망 인원 수</label>
+              <div class="grid grid-cols-2 grid-rows-1 gap-4">
+                <div class="flex flex-col space-y-2">
+                  <input id="start-date" v-model="formStart" type="date" />
+
+                  <!-- Single check-group element -->
+                  <div>
+                    <label for="no-date" class="flex items-center space-x-2"
+                      ><div class="check-box">
+                        <fa-icon
+                          v-if="noDate"
+                          class="check-mark"
+                          icon="check"
+                        />
+                      </div>
+                      <div class="text-gray-light text-lg">
+                        여행일자 미정
+                      </div></label
+                    ><input
+                      id="no-date"
+                      v-model="noDate"
+                      type="checkbox"
+                      class="hidden"
+                    />
+                  </div>
+                </div>
+
+                <input id="end-date" v-model="formEnd" type="date" />
+              </div>
+            </div>
+
+            <!-- Days and Budget -->
+            <div class="input-group">
+              <div class="grid grid-cols-2 grid-rows-1 gap-4">
+                <div class="flex flex-col space-y-2">
+                  <label for="days">희망 인원 수</label>
+                  <select id="days" v-model="daysDesired" required>
+                    <option value="" selected disabled>-</option>
+                    <option value="<5">5 일 미만</option>
+                    <option value="6-10">6 ~ 10 일</option>
+                    <option value=">10">10 일 이상</option>
+                  </select>
+                </div>
+                <div class="flex flex-col space-y-2">
+                  <label for="budget">1인 여행 예산</label>
+                  <select id="budget" v-model="budgetPerPerson" required>
+                    <option value="" selected disabled>-</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Desired Countries -->
+            <div class="input-group">
+              <label>희망 여행 국가</label>
+              <div class="grid grid-cols-5 grid-rows-1 gap-x-4 gap-y-2">
+                <!-- Botswana -->
+                <div>
+                  <label for="botswana" class="check-group"
+                    ><div class="check-box">
+                      <fa-icon
+                        v-if="countries.botswana"
+                        class="check-mark"
+                        icon="check"
+                      />
+                    </div>
+                    <div class="text-black text-lg">보츠와나</div></label
+                  ><input
+                    id="botswana"
+                    v-model="countries.botswana"
+                    type="checkbox"
+                    class="hidden"
+                  />
+                </div>
+
+                <!-- Kenya -->
+                <div>
+                  <label for="kenya" class="check-group"
+                    ><div class="check-box">
+                      <fa-icon
+                        v-if="countries.kenya"
+                        class="check-mark"
+                        icon="check"
+                      />
+                    </div>
+                    <div class="text-black text-lg">케냐</div></label
+                  ><input
+                    id="kenya"
+                    v-model="countries.kenya"
+                    type="checkbox"
+                    class="hidden"
+                  />
+                </div>
+
+                <!-- Namibia -->
+                <div>
+                  <label for="namibia" class="check-group"
+                    ><div class="check-box">
+                      <fa-icon
+                        v-if="countries.namibia"
+                        class="check-mark"
+                        icon="check"
+                      />
+                    </div>
+                    <div class="text-black text-lg">나미비아</div></label
+                  ><input
+                    id="namibia"
+                    v-model="countries.namibia"
+                    type="checkbox"
+                    class="hidden"
+                  />
+                </div>
+
+                <!-- South Africa -->
+                <div>
+                  <label for="southAfrica" class="check-group"
+                    ><div class="check-box">
+                      <fa-icon
+                        v-if="countries.southAfrica"
+                        class="check-mark"
+                        icon="check"
+                      />
+                    </div>
+                    <div class="text-black text-lg">남아공</div></label
+                  ><input
+                    id="southAfrica"
+                    v-model="countries.southAfrica"
+                    type="checkbox"
+                    class="hidden"
+                  />
+                </div>
+
+                <!-- Tanzania -->
+                <div>
+                  <label for="tanzania" class="check-group"
+                    ><div class="check-box">
+                      <fa-icon
+                        v-if="countries.tanzania"
+                        class="check-mark"
+                        icon="check"
+                      />
+                    </div>
+                    <div class="text-black text-lg">탄자니아</div></label
+                  ><input
+                    id="tanzania"
+                    v-model="countries.tanzania"
+                    type="checkbox"
+                    class="hidden"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -158,6 +291,15 @@ export default {
       formStart: '',
       formEnd: '',
       noDate: null,
+      daysDesired: '',
+      budgetPerPerson: '',
+      countries: {
+        botswana: null,
+        namibia: null,
+        kenya: null,
+        southAfrica: null,
+        tanzania: null,
+      },
     }
   },
   computed: {
@@ -178,11 +320,16 @@ export default {
 label {
   @apply text-xl text-black;
 }
-.checkbox {
-  @apply h-6 w-6 bg-white border border-gray-lighter flex items-center justify-center p-1;
-}
-.checkmark {
-  @apply text-brown;
+.check {
+  &-group {
+    @apply flex items-center gap-x-2;
+  }
+  &-box {
+    @apply h-6 w-6 bg-white border border-gray-lighter flex items-center justify-center p-1;
+  }
+  &-mark {
+    @apply text-brown;
+  }
 }
 input[type='text'],
 input[type='date'],

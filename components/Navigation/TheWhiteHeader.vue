@@ -1,5 +1,5 @@
 <template>
-  <div class="h-24">
+  <div class="h-24 select-none">
     <div class="h-16 bg-white shadow-lg">
       <div class="relative container px-4 mx-auto flex justify-between h-full">
         <div

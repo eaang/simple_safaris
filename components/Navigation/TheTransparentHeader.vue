@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center h-24">
+  <div class="flex items-center h-24 select-none">
     <div class="relative container px-4 mx-auto flex justify-between h-full">
       <div
         class="lg:hidden flex items-center text-4xl text-white absolute h-full"
