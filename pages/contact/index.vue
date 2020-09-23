@@ -41,7 +41,7 @@
     <div class="contact-form container mx-auto">
       <div class="bg-gray-lightest border-t-4 border-b-4 border-brown">
         <div class="w-1/2 mx-auto py-16">
-          <form data-netlify="true" name="contact">
+          <form name="contact">
             <!-- Name -->
             <div class="input-group">
               <label for="name">성함</label>
@@ -137,7 +137,7 @@
                       id="no-date"
                       v-model="noDate"
                       type="checkbox"
-                      class="hidden"
+                      class="invisible"
                     />
                   </div>
                 </div>
@@ -189,7 +189,7 @@
                     id="botswana"
                     v-model="countries.botswana"
                     type="checkbox"
-                    class="hidden"
+                    class="invisible"
                   />
                 </div>
 
@@ -208,7 +208,7 @@
                     id="kenya"
                     v-model="countries.kenya"
                     type="checkbox"
-                    class="hidden"
+                    class="invisible"
                   />
                 </div>
 
@@ -227,7 +227,7 @@
                     id="namibia"
                     v-model="countries.namibia"
                     type="checkbox"
-                    class="hidden"
+                    class="invisible"
                   />
                 </div>
 
@@ -246,7 +246,7 @@
                     id="southAfrica"
                     v-model="countries.southAfrica"
                     type="checkbox"
-                    class="hidden"
+                    class="invisible"
                   />
                 </div>
 
@@ -265,7 +265,7 @@
                     id="tanzania"
                     v-model="countries.tanzania"
                     type="checkbox"
-                    class="hidden"
+                    class="invisible"
                   />
                 </div>
               </div>
@@ -331,8 +331,8 @@ label {
     @apply text-brown;
   }
 }
-input[type='text'],
 input[type='date'],
+input[type='text'],
 select {
   @apply h-12 border border-gray-lighter text-lg px-4;
 }
