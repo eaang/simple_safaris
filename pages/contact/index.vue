@@ -39,15 +39,100 @@
 
     <!-- Contact form here -->
     <div class="contact-form container mx-auto">
-      <div
-        class="bg-gray-lighter border-t-4 border-b-4 border-brown h-screen"
-      ></div>
+      <div class="bg-gray-lightest border-t-4 border-b-4 border-brown h-screen">
+        <div class="w-2/5 mx-auto py-16">
+          <div class="input-group">
+            <label for="name">성함</label>
+            <input v-model.lazy="name" type="text" placeholder="홍길동" />
+          </div>
+
+          <div class="input-group">
+            <label for="phone">연락처</label>
+            <input
+              v-model.lazy="phone"
+              type="text"
+              placeholder="010-1234-5678"
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="email">이메일</label>
+            <input
+              v-model.lazy="email"
+              type="text"
+              placeholder="이메일 주소 입력"
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="people">희망 인원 수</label>
+            <div class="grid grid-cols-2 grid-rows-1 gap-4">
+              <select v-model="adults">
+                <option value="undefined" disabled>-</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <select v-model="children">
+                <option value="undefined" disabled>-</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      name: '',
+      phone: '',
+      email: '',
+      adults: null,
+      children: null,
+    }
+  },
+}
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.input-group {
+  @apply gap-y-2 mb-8 flex flex-col;
+}
+label {
+  @apply text-xl text-black;
+}
+input[type='text'],
+select {
+  @apply h-12 border border-gray-lighter text-lg px-4;
+}
+select {
+  appearance: none;
+  background-image: url('/btn-dropdown.svg');
+  background-repeat: no-repeat;
+  background-position: right 0.5em top 50%, 0 0;
+  background-size: 0.7em auto, 100%;
+}
+</style>
