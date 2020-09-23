@@ -114,6 +114,7 @@ export default {
             'faThumbsUp',
             'faBars',
             'faAngleRight',
+            'faCheck',
           ],
           regular: ['faCircle'],
         },
