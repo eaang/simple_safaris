@@ -18,14 +18,14 @@
             <div class="text-center">그곳이 바로 아프리카였다.”</div>
           </div>
           <div
-            class="hidden lg:block absolute inset-x-0 bottom-0 text-brown text-2xl text-center"
+            class="hidden xl:block absolute inset-x-0 bottom-0 text-brown text-2xl text-center"
           >
             소설가 Ernest Hemingway
           </div>
         </div>
       </div>
       <div class="w-full flex flex-col justify-between bg-white h-forty">
-        <div class="block lg:hidden text-brown text-xl sm:text-2xl text-center">
+        <div class="block xl:hidden text-brown text-xl sm:text-2xl text-center">
           소설가 Ernest Hemingway
         </div>
         <div class="w-full flex justify-stretch flex-center py-16">

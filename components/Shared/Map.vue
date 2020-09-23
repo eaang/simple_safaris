@@ -50,9 +50,9 @@ export default {
   },
   methods: {
     createMap() {
-      mapboxgl.accessToken = process.env.MAPBOX_TOKEN
       const locations = this.locationData
       const map = new mapboxgl.Map({
+        accessToken: process.env.MAPBOX_TOKEN,
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v10',
         center: this.center,
