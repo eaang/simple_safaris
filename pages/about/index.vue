@@ -43,10 +43,10 @@
           Your Safari Consultants
         </div>
         <div
-          class="grid grid-flow-col grid-cols-2 grid-rows-1 gap-x-32 gap-y-4"
+          class="flex flex-col space-y-40 lg:flex-row lg:space-x-16 xl:space-x-32"
         >
           <!-- John's section -->
-          <div class="flex flex-col space-y-8 text-black">
+          <div class="flex flex-col space-y-8 text-black lg:w-1/2">
             <img class="object-scale-down" src="/profile pic john.png" alt="" />
             <div class="font-bold text-center text-xl">John Bio</div>
             <div class="space-y-8 text-base sm:text-lg">
@@ -77,7 +77,7 @@
           </div>
 
           <!-- Jin's section -->
-          <div class="flex flex-col space-y-8 text-lg text-black">
+          <div class="flex flex-col space-y-8 text-lg text-black lg:w-1/2">
             <img class="object-scale-down" src="/profile pic jin.png" alt="" />
 
             <div class="font-bold text-center text-xl">Jin bio</div>
@@ -114,7 +114,7 @@
     <div class="section">
       <div class="container mx-auto">
         <!-- Map goes here -->
-        <div class="w-full h-screen/75 bg-gray-lighter"></div>
+        <div class="w-full h-screen/50 lg:h-screen/75 bg-gray-lighter"></div>
       </div>
     </div>
   </div>
