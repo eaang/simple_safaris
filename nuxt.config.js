@@ -7,6 +7,11 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
   env: env.parsed,
+  publicRuntimeConfig: {
+    mapboxToken: process.env.MAPBOX_TOKEN,
+    ctfSpace: process.env.CTF_SPACE_ID,
+    ctfAccess: process.env.CTF_CD_ACCESS_TOKEN,
+  },
   purgeCSS: {
     enabled: false,
   },
