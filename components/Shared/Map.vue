@@ -52,8 +52,7 @@ export default {
     createMap() {
       const locations = this.locationData
       const map = new mapboxgl.Map({
-        accessToken:
-          'pk.eyJ1IjoiZWFhbmciLCJhIjoiY2tmZXNwanJjMDVpNzJxbDR6OTJvNTB2ciJ9.f9bS01CZDdA6kV9-0OnMdg',
+        accessToken: process.env.MAPBOX_TOKEN,
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v10',
         center: this.center,
