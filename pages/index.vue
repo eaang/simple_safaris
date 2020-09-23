@@ -140,8 +140,6 @@
       <div class="title title-main text-black">Our Partners</div>
       <ThePartnerCarousel class="mx-8" />
     </div>
-    <!-- Spacing before footer -->
-    <div class="h-16"></div>
 
     <TheFooter />
   </div>

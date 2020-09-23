@@ -1,5 +1,5 @@
 <template>
-  <div class="default-layout">
+  <div>
     <!-- Hero section -->
     <transition name="slideLeft">
       <TheSidenav
@@ -24,7 +24,7 @@
       :trip-ideas="tripIdeas"
       class="sticky top-0 w-full z-30"
     />
-    <Nuxt class="default-content -mt-24" />
+    <Nuxt class="-mt-24" />
     <TheFooter />
   </div>
 </template>
@@ -55,14 +55,6 @@ html {
   word-break: keep-all;
   cursor: default;
 }
-.default-layout {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-.default-content {
-  flex: 1;
-}
 .section {
   @apply my-8 py-16 mx-auto;
 }
@@ -92,6 +84,9 @@ html {
 }
 .content {
   @apply text-gray text-lg;
+}
+.flex-center {
+  @apply flex items-center justify-center;
 }
 .fixed-sidebar {
   position: -webkit-fixed;
