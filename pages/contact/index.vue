@@ -369,4 +369,13 @@ input[type='date'] {
   background-position: right 0.5em top 50%, 0 0;
   background-size: 1em auto, 100%;
 }
+
+// Removing arrows and stuff
+input::-webkit-outer-spin-button, /* Removes arrows */
+input::-webkit-inner-spin-button, /* Removes arrows */
+input::-webkit-clear-button {
+  /* Removes blue cross */
+  -webkit-appearance: none;
+  margin: 0;
+}
 </style>

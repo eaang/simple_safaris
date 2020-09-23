@@ -52,7 +52,7 @@
           <div class="flex flex-col space-y-8 text-black lg:w-1/2">
             <img class="object-scale-down" src="/profile pic john.png" alt="" />
             <div class="font-bold text-center text-xl">John Bio</div>
-            <div class="space-y-8 text-base sm:text-lg">
+            <div class="space-y-8 text-base sm:text-lg px-8">
               <div>
                 미국 Northwestern University을 졸업한 뒤 스타트업과 컨설팅을
                 거쳐 심플사파리를 시작하게 되었습니다.
@@ -84,7 +84,7 @@
             <img class="object-scale-down" src="/profile pic jin.png" alt="" />
 
             <div class="font-bold text-center text-xl">Jin bio</div>
-            <div class="space-y-8 text-base sm:text-lg">
+            <div class="space-y-8 text-base sm:text-lg px-8">
               <div>
                 미국 New York University에서 공부하며, 여행을 떠나는 법, 맛있는
                 음식과 와인을 즐기는 법, 패션을 사랑하는 법을 배웠습니다.
