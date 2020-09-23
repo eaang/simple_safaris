@@ -19,18 +19,20 @@
           </div>
         </div>
       </div>
-      <div class="w-full bg-white h-forty">
+      <div class="w-full bg-white h-forty flex flex-col">
         <div class="text-brown text-xl sm:text-2xl lg:text-3xl text-center">
           소설가 Ernest Hemingway
         </div>
-        <div class="w-full flex justify-stretch flex-center py-16">
+        <div class="w-full flex-grow flex flex-col items-center justify-evenly">
           <div class="w-24 h-1 bg-brown"></div>
-        </div>
-        <div class="text-black text-center text-xl md:text-2xl px-8 w-full">
-          <div>
-            심플사파리에서 당신을 위한 100% 맞춤 사파리 여행을 계획해 드립니다.
+
+          <div class="text-black text-center text-xl md:text-2xl px-8 w-full">
+            <div>
+              심플사파리에서 당신을 위한 100% 맞춤 사파리 여행을 계획해
+              드립니다.
+            </div>
+            <div>아래 사항들을 기재해 심플사파리에게 보내주세요.</div>
           </div>
-          <div>아래 사항들을 기재해 심플사파리에게 보내주세요.</div>
         </div>
       </div>
     </div>
