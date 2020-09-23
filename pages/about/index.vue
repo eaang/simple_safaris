@@ -5,7 +5,10 @@
       class="bg-cover bg-center w-full h-screen"
       style="background-image: url('/migration.jpg')"
     >
-      <div class="h-full flex items-end">
+      <div class="h-full flex flex-col">
+        <div class="flex-center flex-grow pt-16">
+          <div class="title-header">About us</div>
+        </div>
         <div
           class="py-8 sm:py-0 sm:h-screen/50 background-gradient w-full flex-center"
         >

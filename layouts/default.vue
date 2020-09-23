@@ -81,6 +81,10 @@ html {
   &-main {
     @apply text-5xl;
   }
+  &-header {
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    @apply text-white text-5xl font-normal;
+  }
 }
 .content {
   @apply text-gray text-lg;
