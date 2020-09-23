@@ -20,6 +20,7 @@ module.exports = {
         },
       },
       height: (theme) => ({
+        'screen/25': '25vh',
         'screen/50': '50vh',
         'screen/75': '75vh',
         'screen/3': 'calc(100vh / 3)',

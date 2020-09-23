@@ -5,10 +5,13 @@
       class="bg-cover bg-center w-full h-screen"
       style="background-image: url('/migration.jpg')"
     >
-      <div class="grid grid-cols-1 grid-rows-2 pt-16 h-full">
-        <div class=""></div>
-        <div class="background-gradient w-full flex items-center">
-          <div class="space-y-8 text-white text-lg text-center w-1/2 mx-auto">
+      <div class="h-full flex items-end">
+        <div
+          class="py-8 sm:py-0 sm:h-screen/50 background-gradient w-full flex-center"
+        >
+          <div
+            class="space-y-8 text-white text-base sm:text-lg text-center mx-4 w-full md:w-4/5 lg:w-2/3 xl:w-1/2"
+          >
             <div>
               심플 사파리(Simple Safaris) John 과 Jin입니다. 2019년 설립된 심플
               사파리는 여행을 사랑하고, 수준 높은 여행 경험 및 정보를 주변
@@ -46,7 +49,7 @@
           <div class="flex flex-col space-y-8 text-black">
             <img class="object-scale-down" src="/profile pic john.png" alt="" />
             <div class="font-bold text-center text-xl">John Bio</div>
-            <div class="space-y-8 text-lg">
+            <div class="space-y-8 text-base sm:text-lg">
               <div>
                 미국 Northwestern University을 졸업한 뒤 스타트업과 컨설팅을
                 거쳐 심플사파리를 시작하게 되었습니다.
@@ -78,7 +81,7 @@
             <img class="object-scale-down" src="/profile pic jin.png" alt="" />
 
             <div class="font-bold text-center text-xl">Jin bio</div>
-            <div class="space-y-8 text-lg">
+            <div class="space-y-8 text-base sm:text-lg">
               <div>
                 미국 New York University에서 공부하며, 여행을 떠나는 법, 맛있는
                 음식과 와인을 즐기는 법, 패션을 사랑하는 법을 배웠습니다.
