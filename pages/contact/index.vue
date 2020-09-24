@@ -118,7 +118,11 @@
               <label>희망 인원 수</label>
               <div class="grid grid-cols-2 grid-rows-1 gap-4">
                 <div class="flex flex-col space-y-2">
-                  <input id="start-date" v-model="formStart" type="date" />
+                  <v-date-picker
+                    v-model="startDate"
+                    color="gray"
+                    :input-props="datePickerProps"
+                  />
 
                   <!-- Single check-group element -->
                   <div>
@@ -142,7 +146,11 @@
                   </div>
                 </div>
 
-                <input id="end-date" v-model="formEnd" type="date" />
+                <v-date-picker
+                  v-model="endDate"
+                  color="gray"
+                  :input-props="datePickerProps"
+                />
               </div>
             </div>
 
@@ -278,8 +286,6 @@
 </template>
 
 <script>
-import { parseISO } from 'date-fns'
-
 export default {
   data() {
     return {
@@ -288,8 +294,8 @@ export default {
       email: '',
       adults: '',
       children: '',
-      formStart: '',
-      formEnd: '',
+      startDate: null,
+      endDate: null,
       noDate: null,
       daysDesired: '',
       budgetPerPerson: '',
@@ -300,15 +306,16 @@ export default {
         southAfrica: null,
         tanzania: null,
       },
+      datePickerProps: {
+        class:
+          'rounded-none w-full h-12 border border-gray-lighter text-lg px-4',
+        placeholder: '선택',
+        style: `background-image: url('/calendar.svg');
+          background-repeat: no-repeat;
+          background-position: right 0.5em top 50%, 0 0;
+          background-size: 1em auto, 100%;`,
+      },
     }
-  },
-  computed: {
-    trueStart() {
-      return parseISO(this.formStart)
-    },
-    trueEnd() {
-      return parseISO(this.formEnd)
-    },
   },
 }
 </script>
