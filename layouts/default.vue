@@ -110,7 +110,29 @@ html {
   top: 0;
   right: left;
 }
-
+.nav {
+  &-link {
+    @apply h-full flex items-center;
+  }
+  &-dropdown {
+    @apply py-4;
+    &-dark {
+      @apply bg-black;
+    }
+    &-list {
+      @apply w-48;
+    }
+    &-item {
+      @apply py-2 px-4;
+      &-dark {
+        @apply text-brown;
+      }
+      &-dark:hover {
+        @apply bg-brown text-white font-bold;
+      }
+    }
+  }
+}
 // Animations go here
 .slide-enter-active,
 .slide-leave-active {

@@ -33,55 +33,10 @@
             >
               <div class="nav-link nav-link-dropdown">Destinations</div>
               <transition name="fade" mode="out-in">
-                <div
+                <DropdownDestinations
                   v-if="dropdownTwoShow"
-                  class="absolute nav-dropdown nav-dropdown-dark"
-                >
-                  <ul class="nav-dropdown-list cursor-pointer">
-                    <div
-                      v-for="continent in continents"
-                      :key="continent.fields.name"
-                    >
-                      <!-- This is the code for the continent dropdown - hidden for now, to be enabled if Asia ever returns lmao -->
-                      <li
-                        class="nav-dropdown-item items-center justify-between cursor-pointer hidden"
-                        @click="toggleRegions(continent.fields.name)"
-                      >
-                        <div class="">
-                          {{ continent.fields.name }}
-                        </div>
-                        <div class="invisible">
-                          <fa-icon
-                            :id="
-                              continent.fields.name.toLowerCase() + '-icon-up'
-                            "
-                            icon="caret-up"
-                          />
-                          <fa-icon
-                            :id="
-                              continent.fields.name.toLowerCase() + '-icon-down'
-                            "
-                            icon="caret-down"
-                            class="hidden"
-                          />
-                        </div>
-                      </li>
-                      <div
-                        :id="continent.fields.name.toLowerCase() + '-dropdown'"
-                      >
-                        <a
-                          v-for="destination in continent.fields.destinations"
-                          :key="destination.fields.name"
-                          :href="'/destinations/' + destination.fields.slug"
-                        >
-                          <li class="nav-dropdown-item nav-dropdown-item-dark">
-                            {{ destination.fields.name }}
-                          </li></a
-                        >
-                      </div>
-                    </div>
-                  </ul>
-                </div>
+                  :continents="continents"
+                />
               </transition>
             </div>
 
@@ -94,20 +49,10 @@
               <div class="nav-link nav-link-dropdown">Trip ideas</div>
 
               <transition name="fade" mode="out-in">
-                <div
+                <DropdownTrips
                   v-if="dropdownThreeShow"
-                  class="absolute nav-dropdown nav-dropdown-dark nav-dropdown-list cursor-pointer"
-                >
-                  <a
-                    v-for="tripIdea in tripIdeas"
-                    :key="tripIdea.fields.name"
-                    :href="'/trips/' + tripIdea.fields.slug"
-                  >
-                    <div class="nav-dropdown-item nav-dropdown-item-dark">
-                      {{ tripIdea.fields.name }}
-                    </div>
-                  </a>
-                </div>
+                  :trip-ideas="tripIdeas"
+                />
               </transition>
             </div>
 
@@ -205,41 +150,16 @@ export default {
       dropdownThreeShow: false,
     }
   },
-  computed: {
-    asiaTrips() {
-      return this.tripIdeas
-    },
-  },
 }
 </script>
 
 <style lang="scss" scoped>
 .nav {
   &-link {
-    @apply h-full flex items-center font-bold;
-    &-dropdown {
-    }
+    @apply font-bold;
   }
   &-link:hover {
     @apply text-brown-dark;
-  }
-  &-dropdown {
-    @apply py-4;
-    &-dark {
-      @apply bg-black;
-    }
-    &-list {
-      @apply w-48;
-    }
-    &-item {
-      @apply py-2 px-4;
-      &-dark {
-        @apply text-brown;
-      }
-      &-dark:hover {
-        @apply bg-brown text-white font-bold;
-      }
-    }
   }
 }
 </style>
