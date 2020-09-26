@@ -82,34 +82,18 @@
             <div class="input-group">
               <label for="people">희망 인원 수</label>
               <div class="grid grid-cols-2 grid-rows-1 gap-4">
-                <select id="adults" v-model="adults" required>
-                  <option value="" selected disabled>-</option>
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-                <select id="children" v-model="children" required>
-                  <option value="" selected disabled>-</option>
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
+                <v-select
+                  id="adults"
+                  v-model="adults"
+                  :components="{ OpenIndicator }"
+                  :options="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                ></v-select>
+                <v-select
+                  id="children"
+                  v-model="children"
+                  :components="{ OpenIndicator }"
+                  :options="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                ></v-select>
               </div>
             </div>
 
@@ -279,6 +263,18 @@
               </div>
             </div>
           </form>
+
+          name: {{ name }} <br />
+          phone: {{ phone }} <br />
+          email: {{ email }} <br />
+          adults: {{ adults }} <br />
+          children: {{ children }} <br />
+          startDate: {{ startDate }} <br />
+          endDate: {{ endDate }} <br />
+          noDate: {{ noDate }} <br />
+          daysDesired: {{ daysDesired }} <br />
+          budgetPerPerson: {{ budgetPerPerson }} <br />
+          countries: {{ countries }}
         </div>
       </div>
     </div>
@@ -315,6 +311,10 @@ export default {
           background-position: right 0.5em top 50%, 0 0;
           background-size: 1em auto, 100%;`,
       },
+      OpenIndicator: {
+        render: (createElement) =>
+          createElement('span', { class: { toggle: true } }),
+      },
     }
   },
 }
@@ -339,35 +339,41 @@ label {
   }
 }
 input[type='date'],
-input[type='text'],
-select {
+input[type='text'] {
   @apply h-12 border border-gray-lighter text-lg px-4;
 }
-select {
-  appearance: none;
+.toggle {
   background-image: url('/btn-dropdown.svg');
-  background-repeat: no-repeat;
-  background-position: right 0.5em top 50%, 0 0;
-  background-size: 0.7em auto, 100%;
 }
-select {
-  // The select element is set to required
-  // as long as the selected options value
-  // is empty the element is not valid.
-  &:invalid {
-    @apply text-gray-light;
-  }
+// select {
+//   appearance: none;
+//   background-image: url('/btn-dropdown.svg');
+//   background-repeat: no-repeat;
+//   background-position: right 0.5em top 50%, 0 0;
+//   background-size: 0.7em auto, 100%;
+// }
+// select {
+//   // The select element is set to required
+//   // as long as the selected options value
+//   // is empty the element is not valid.
+//   &:invalid {
+//     @apply text-gray-light;
+//   }
 
-  // Styling for browsers which do support
-  // styling select option elements directly
-  [disabled] {
-    @apply text-gray-light;
-  }
+//   // Styling for browsers which do support
+//   // styling select option elements directly
+//   [disabled] {
+//     @apply text-gray-light;
+//   }
 
-  option {
-    @apply text-black;
-  }
-}
+//   option {
+//     @apply text-black;
+//   }
+
+//   option:hover {
+//     @apply text-white;
+//   }
+// }
 
 input[type='date'] {
   appearance: none;

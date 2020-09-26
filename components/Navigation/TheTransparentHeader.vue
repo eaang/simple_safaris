@@ -174,7 +174,7 @@
           </div>
         </div>
         <div class="space-x-2 hidden xl:flex">
-          <div class="flex items-center space-x-2">
+          <div class="flex items-center space-x-2 w-40 justify-end">
             <fa-icon icon="phone-alt" /><span>070-4517-0225</span>
           </div>
           <div class="flex items-center space-x-2 justify-end">
