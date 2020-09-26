@@ -115,6 +115,7 @@
 
     <!-- Map box -->
     <div class="section container mx-auto">
+      <div class="title title-main text-center mb-8">Places we've visited</div>
       <Map />
     </div>
   </div>
@@ -129,7 +130,7 @@ export default {}
   background: rgb(104, 100, 84);
   background: linear-gradient(
     0deg,
-    rgba(104, 100, 84, 1) 0%,
+    // rgba(104, 100, 84, 1) 0%,
     rgba(104, 100, 84, 1) 50%,
     rgba(104, 100, 84, 0.8) 100%
   );
