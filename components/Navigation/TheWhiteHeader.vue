@@ -205,6 +205,11 @@ export default {
       dropdownThreeShow: false,
     }
   },
+  computed: {
+    asiaTrips() {
+      return this.tripIdeas
+    },
+  },
 }
 </script>
 

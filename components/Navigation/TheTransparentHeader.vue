@@ -92,17 +92,67 @@
             <transition name="fade" mode="out-in">
               <div
                 v-if="dropdownThreeShow"
-                class="absolute nav-dropdown nav-dropdown-dark nav-dropdown-list cursor-pointer"
+                class="absolute nav-dropdown nav-dropdown-dark"
               >
-                <a
-                  v-for="tripIdea in tripIdeas"
-                  :key="tripIdea.fields.name"
-                  :href="'/trips/' + tripIdea.fields.slug"
-                >
-                  <div class="nav-dropdown-item nav-dropdown-item-dark">
-                    {{ tripIdea.fields.name }}
+                <!-- Asia trip ideas -->
+                <ul class="nav-dropdown-list flex flex-col cursor-pointer">
+                  <!-- African trips -->
+                  <div>
+                    <li
+                      class="nav-dropdown-item flex items-center justify-between cursor-pointer"
+                      @click="toggleTrips('africa')"
+                    >
+                      <div>Africa</div>
+                      <div>
+                        <fa-icon id="africa-trip-icon-up" icon="caret-up" />
+                        <fa-icon
+                          id="africa-trip-icon-down"
+                          icon="caret-down"
+                          class="hidden"
+                        />
+                      </div>
+                    </li>
+                    <div id="africa-trip-dropdown">
+                      <a
+                        v-for="tripIdea in africaTrips"
+                        :key="tripIdea.fields.name"
+                        :href="'/trips/' + tripIdea.fields.slug"
+                      >
+                        <li class="nav-dropdown-item nav-dropdown-item-dark">
+                          {{ tripIdea.fields.name }}
+                        </li></a
+                      >
+                    </div>
                   </div>
-                </a>
+                  <!-- Asian trips -->
+                  <div>
+                    <li
+                      class="nav-dropdown-item flex items-center justify-between cursor-pointer"
+                      @click="toggleTrips('asia')"
+                    >
+                      <div>Asia</div>
+                      <div>
+                        <fa-icon id="asia-trip-icon-up" icon="caret-up" />
+                        <fa-icon
+                          id="asia-trip-icon-down"
+                          icon="caret-down"
+                          class="hidden"
+                        />
+                      </div>
+                    </li>
+                    <div id="asia-trip-dropdown">
+                      <a
+                        v-for="tripIdea in asiaTrips"
+                        :key="tripIdea.fields.name"
+                        :href="'/trips/' + tripIdea.fields.slug"
+                      >
+                        <li class="nav-dropdown-item nav-dropdown-item-dark">
+                          {{ tripIdea.fields.name }}
+                        </li></a
+                      >
+                    </div>
+                  </div>
+                </ul>
               </div>
             </transition>
           </div>
@@ -201,6 +251,18 @@ export default {
       dropdownThreeShow: false,
     }
   },
+  computed: {
+    asiaTrips() {
+      return this.tripIdeas.filter(
+        (trip) => trip.fields.continent.fields.name === 'Asia'
+      )
+    },
+    africaTrips() {
+      return this.tripIdeas.filter(
+        (trip) => trip.fields.continent.fields.name === 'Africa'
+      )
+    },
+  },
   methods: {
     toggleRegions(country) {
       document
@@ -211,6 +273,17 @@ export default {
         .classList.toggle('hidden')
       document
         .querySelector('#' + country.toLowerCase() + '-icon-down')
+        .classList.toggle('hidden')
+    },
+    toggleTrips(country) {
+      document
+        .querySelector('#' + country.toLowerCase() + '-trip-dropdown')
+        .classList.toggle('hidden')
+      document
+        .querySelector('#' + country.toLowerCase() + '-trip-icon-up')
+        .classList.toggle('hidden')
+      document
+        .querySelector('#' + country.toLowerCase() + '-trip-icon-down')
         .classList.toggle('hidden')
     },
   },
