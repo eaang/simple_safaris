@@ -16,10 +16,10 @@
 
         <template slot="prevButton"
           ><div
-            class="absolute inset-y-0 left-0 flex items-center justify-around px-12 text-4xl"
+            class="absolute inset-y-0 left-0 flex items-center justify-around px-12 text-2xl"
           >
             <div
-              class="rounded-full border-2 border-white p-8 text-white hover:bg-white hover:text-brown"
+              class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
             >
               <div class="h-6 w-6 flex items-center justify-around">
                 <fa-icon icon="arrow-left" />
@@ -29,10 +29,10 @@
         </template>
         <template slot="nextButton"
           ><div
-            class="absolute inset-y-0 right-0 flex items-center justify-around px-12 text-4xl"
+            class="absolute inset-y-0 right-0 flex items-center justify-around px-12 text-2xl"
           >
             <div
-              class="rounded-full border-2 border-white p-8 text-white hover:bg-white hover:text-brown"
+              class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
             >
               <div class="h-6 w-6 flex items-center justify-around">
                 <fa-icon icon="arrow-right" />
@@ -75,7 +75,7 @@ export default {
         infinite: true,
         autoplay: false,
         dots: false,
-        speed: 500,
+        speed: 4000,
         responsive: [
           {
             breakpoint: 768,
@@ -97,7 +97,7 @@ export default {
     setInterval(() => {
       this.$refs.carousel.goToNext()
       this.counter++
-    }, 4000)
+    }, 8000)
   },
   methods: {
     importImages(r) {
