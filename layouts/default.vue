@@ -105,10 +105,7 @@ html {
   @apply flex items-center justify-center;
 }
 .fixed-sidebar {
-  position: -webkit-fixed;
-  position: fixed;
-  top: 0;
-  right: left;
+  @apply fixed top-0 left-0;
 }
 .nav {
   &-link {
