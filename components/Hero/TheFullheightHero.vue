@@ -21,9 +21,7 @@
             <div
               class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
             >
-              <div class="h-6 w-6 flex items-center justify-around">
-                <ArrowLeft />
-              </div>
+              <ArrowLeft class="h-6 w-6" />
             </div>
           </div>
         </template>
@@ -34,9 +32,7 @@
             <div
               class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
             >
-              <div class="h-6 w-6 flex items-center justify-around">
-                <ArrowRight />
-              </div>
+              <ArrowRight class="h-6 w-6" />
             </div>
           </div> </template
       ></agile>

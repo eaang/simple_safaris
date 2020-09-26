@@ -2,13 +2,10 @@
   <div class="flex items-center h-24 select-none">
     <div class="relative container px-4 mx-auto flex justify-between h-full">
       <div
-        class="lg:hidden flex items-center text-4xl text-white absolute h-full"
+        class="lg:hidden flex items-center absolute h-full cursor-pointer"
+        @click="$nuxt.$emit('openSidenav')"
       >
-        <fa-icon
-          class="cursor-pointer text-2xl sm:text-4xl"
-          icon="bars"
-          @click="$nuxt.$emit('openSidenav')"
-        />
+        <Bars class="text-white h-6 sm:h-8" />
       </div>
       <div
         class="left-navbar flex justify-center lg:justify-start space-x-8 w-screen"

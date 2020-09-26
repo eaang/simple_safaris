@@ -17,12 +17,14 @@
                 <div
                   v-for="n in review.rating"
                   :key="n"
-                  class="rounded h-12 w-12 lg:h-16 lg:w-16 bg-teal-500 flex items-center justify-center text-xl lg:text-3xl"
+                  class="rounded h-12 w-12 lg:h-16 lg:w-16 bg-teal-500 flex items-center justify-center"
                 >
-                  <fa-icon icon="thumbs-up" />
+                  <ThumbsUp class="h-6 lg:h-10" />
                 </div>
               </div>
-              <div class="px-4 lg:px-48 my-8">{{ review.text }}</div>
+              <div class="px-8 lg:px-48 my-8 text-base md:text-lg">
+                {{ review.text }}
+              </div>
               <div class="font-bold my-8">{{ review.name }}</div>
             </h3>
           </div>
@@ -33,9 +35,7 @@
               <div
                 class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
               >
-                <div class="h-6 w-6 flex items-center justify-around">
-                  <ArrowLeft />
-                </div>
+                <ArrowLeft class="h-6 w-6" />
               </div>
             </div>
           </template>
@@ -46,9 +46,7 @@
               <div
                 class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
               >
-                <div class="h-6 w-6 flex items-center justify-around">
-                  <ArrowRight />
-                </div>
+                <ArrowRight class="h-6 w-6" />
               </div>
             </div>
           </template>

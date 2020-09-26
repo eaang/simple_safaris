@@ -111,7 +111,7 @@ export default {
         component: 'fa',
         suffix: true,
         icons: {
-          solid: ['faThumbsUp', 'faBars', 'faAngleRight', 'faCheck'],
+          solid: ['faCheck'],
         },
       },
     ],

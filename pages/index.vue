@@ -131,7 +131,7 @@
     <!-- Safari Gallery -->
     <div class="section container mx-auto text-center">
       <div class="title title-main text-brown">Safari Gallery</div>
-      <div class="md:px-8 pt-8">
+      <div class="pt-8">
         <GalleryCarousel :image-links="gallery" />
       </div>
     </div>
