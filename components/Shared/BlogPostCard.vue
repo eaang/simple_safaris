@@ -19,16 +19,14 @@
           ></div>
         </div>
         <div class="trip-idea-text bg-white text-center py-8 space-y-8">
-          <div
-            class="trip-idea-title text-gray-dark font-bold h-16 md:h-20 lg:h-24 px-4"
-          >
+          <div class="trip-idea-title text-gray-dark font-bold h-16 px-4">
             <div class="topic text-base md:text-lg">[{{ topic }}]</div>
             <div class="title h-full text-lg md:text-xl">
               {{ title }}
             </div>
           </div>
           <div
-            class="trip-idea-body px-4 text-brown h-12 md:h-16 text-sm md:text-base flex-center"
+            class="trip-idea-body px-4 text-brown h-12 md:h-20 text-sm md:text-base flex items-start justify-center"
           >
             {{ content }}
           </div>
