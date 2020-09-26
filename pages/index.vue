@@ -110,14 +110,14 @@
     <!-- Design Your Safari -->
     <div class="section container mx-auto text-center">
       <div class="title title-main text-black mb-8">Design your safari!</div>
-      <div class="content mb-4">
+      <div class="content mb-4 mx-4">
         <div>꿈꾸시는 추억의 맞춤 사파리 여행을 떠나보세요 :)</div>
       </div>
       <a href="/contact">
         <Button
           text="여행 문의하기"
           :arrow="true"
-          classes="btn-big btn-dark-brown cursor-pointer w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 mx-auto"
+          classes="btn-big btn-dark-brown cursor-pointer w-3/5 md:w-1/3 lg:w-1/4 xl:w-1/5 mx-auto"
         />
       </a>
     </div>
@@ -131,7 +131,7 @@
     <!-- Safari Gallery -->
     <div class="section container mx-auto text-center">
       <div class="title title-main text-brown">Safari Gallery</div>
-      <div class="px-8 pt-8">
+      <div class="md:px-8 pt-8">
         <GalleryCarousel :image-links="gallery" />
       </div>
     </div>

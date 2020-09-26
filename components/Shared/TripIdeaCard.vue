@@ -1,5 +1,5 @@
 <template>
-  <div class="px-2">
+  <div class="">
     <div
       class="trip-idea-box shadow cursor-pointer"
       @mouseover="mouseover = true"
@@ -35,12 +35,8 @@
             <div class="text-base md:text-lg">Course 예상 가격</div>
             <div class="text-xs md:text-sm font-normal">{{ price }}</div>
           </div>
-          <div>
-            <Button
-              text="발견해보세요"
-              classes="btn-small btn-dark-brown font-normal"
-              :arrow="true"
-            />
+          <div class="mt-4">
+            <Button text="발견해보세요" classes="btn-dark-brown font-normal" />
           </div></div
       ></a>
     </div>

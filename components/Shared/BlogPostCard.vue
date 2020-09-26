@@ -1,5 +1,5 @@
 <template>
-  <div class="px-2">
+  <div>
     <div
       class="trip-idea-box shadow cursor-pointer"
       @mouseover="mouseover = true"
@@ -20,16 +20,16 @@
         </div>
         <div class="trip-idea-text bg-white text-center py-8 space-y-8">
           <div
-            class="trip-idea-title text-gray-dark text-2xl font-bold flex items-center justify-center"
+            class="trip-idea-title text-gray-dark font-bold h-16 md:h-20 lg:h-24 px-4"
           >
-            <div class="h-24 lg:h-32 px-4">
-              <div class="topic">[{{ topic }}]</div>
-              <div class="title h-full">
-                {{ title }}
-              </div>
+            <div class="topic text-base md:text-lg">[{{ topic }}]</div>
+            <div class="title h-full text-lg md:text-xl">
+              {{ title }}
             </div>
           </div>
-          <div class="trip-idea-body px-4 text-brown text-base h-16">
+          <div
+            class="trip-idea-body px-4 text-brown h-12 md:h-16 text-sm md:text-base flex-center"
+          >
             {{ content }}
           </div>
         </div></a

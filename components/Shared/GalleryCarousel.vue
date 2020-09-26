@@ -1,18 +1,22 @@
 <template>
   <div class="relative">
-    <agile :options="carouselOptions" class="px-4">
-      <div v-for="(group, i) in gallery" :key="i" class="slide px-2 space-y-4">
+    <agile :options="carouselOptions" class="mx-8 px-2">
+      <div
+        v-for="(group, i) in gallery"
+        :key="i"
+        class="slide px-1 space-y-2 md:px-2 md:space-y-4"
+      >
         <img :src="group[0]" />
         <img v-if="group[1]" :src="group[1]" />
         <img v-else src="/transparent-square.png" />
       </div>
       <template slot="prevButton"
-        ><div class="absolute inset-y-0 left-0 flex items-center -ml-6">
+        ><div class="absolute inset-y-0 left-0 -ml-6 flex items-center">
           <img src="@/assets/images/icons/btn-prev.svg" />
         </div>
       </template>
       <template slot="nextButton">
-        <div class="absolute inset-y-0 right-0 flex items-center -mr-6">
+        <div class="absolute inset-y-0 right-0 -mr-6 flex items-center">
           <img src="@/assets/images/icons/btn-next.svg" />
         </div>
       </template>

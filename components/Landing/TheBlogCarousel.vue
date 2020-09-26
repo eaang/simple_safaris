@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <agile ref="carousel" :options="carouselOptions" class="mx-8 px-4">
+    <agile ref="carousel" :options="carouselOptions" class="mx-8 md:px-2">
       <BlogPostCard
         v-for="(post, i) in blogposts"
         :key="i"
