@@ -34,20 +34,21 @@
                 v-if="dropdownTwoShow"
                 class="absolute nav-dropdown nav-dropdown-dark"
               >
-                <ul class="nav-dropdown-list cursor-pointer">
+                <ul
+                  class="nav-dropdown-list flex flex-col-reverse cursor-pointer"
+                >
                   <div
                     v-for="continent in continents"
                     :key="continent.fields.name"
                   >
-                    <!-- This is the code for the continent dropdown - hidden for now, to be enabled if Asia ever returns lmao -->
                     <li
-                      class="nav-dropdown-item items-center justify-between cursor-pointer hidden"
+                      class="nav-dropdown-item flex items-center justify-between cursor-pointer"
                       @click="toggleRegions(continent.fields.name)"
                     >
-                      <div class="">
+                      <div>
                         {{ continent.fields.name }}
                       </div>
-                      <div class="invisible">
+                      <div>
                         <fa-icon
                           :id="continent.fields.name.toLowerCase() + '-icon-up'"
                           icon="caret-up"
@@ -196,23 +197,23 @@ export default {
   },
   data() {
     return {
+      dropdownTwoShow: false,
       dropdownThreeShow: false,
     }
   },
-  // This was if there was more than one continent
-  // methods: {
-  //   toggleRegions(country) {
-  //     document
-  //       .querySelector('#' + country.toLowerCase() + '-dropdown')
-  //       .classList.toggle('hidden')
-  //     document
-  //       .querySelector('#' + country.toLowerCase() + '-icon-up')
-  //       .classList.toggle('hidden')
-  //     document
-  //       .querySelector('#' + country.toLowerCase() + '-icon-down')
-  //       .classList.toggle('hidden')
-  //   },
-  // },
+  methods: {
+    toggleRegions(country) {
+      document
+        .querySelector('#' + country.toLowerCase() + '-dropdown')
+        .classList.toggle('hidden')
+      document
+        .querySelector('#' + country.toLowerCase() + '-icon-up')
+        .classList.toggle('hidden')
+      document
+        .querySelector('#' + country.toLowerCase() + '-icon-down')
+        .classList.toggle('hidden')
+    },
+  },
 }
 </script>
 
