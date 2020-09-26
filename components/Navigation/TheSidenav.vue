@@ -9,33 +9,17 @@
         />
       </div>
       <div class="flex flex-col h-full pl-4 overflow-auto">
+        <!-- Home -->
         <a href="/"
           ><div class="nav-item"><div>Home</div></div></a
         >
-        <div class="nav-item z-20" @click="aboutClick">
-          <div>About</div>
-          <img
-            v-if="!aboutDropdown"
-            class="nav-button nav-button-small"
-            src="@/assets/images/icons/btn-add.svg"
-          />
-          <img
-            v-else
-            class="nav-button nav-button-small"
-            src="@/assets/images/icons/btn-minus.svg"
-          />
-        </div>
-        <transition name="slide" mode="in-out">
-          <div v-if="aboutDropdown" class="nav-dropdown z-0">
-            <a href="/about"><div class="nav-dropdown-item">About us</div> </a>
-            <a href="/about/privacy"
-              ><div class="nav-dropdown-item">개인정보처리방침</div></a
-            >
-            <a href="/about/terms-and-conditions"
-              ><div class="nav-dropdown-item">해외여행약관</div>
-            </a>
-          </div>
-        </transition>
+
+        <!-- About -->
+        <a href="/about"
+          ><div class="nav-item"><div>About</div></div></a
+        >
+
+        <!-- Destinations -->
         <div class="nav-item" @click="destinationClick">
           <div>Destinations</div>
           <img
@@ -68,6 +52,8 @@
             </div>
           </div>
         </transition>
+
+        <!-- Trip ideas -->
         <div class="nav-item" @click="tripsClick">
           <div>Trip Ideas</div>
           <img
@@ -94,9 +80,8 @@
             </a>
           </div>
         </transition>
-        <a href="/"
-          ><div class="nav-item"><div>Blog</div></div></a
-        >
+
+        <!-- Contact us -->
         <a href="/contact"
           ><div class="nav-item"><div>Contact us</div></div></a
         >
@@ -148,25 +133,17 @@ export default {
   },
   data() {
     return {
-      aboutDropdown: false,
       destinationDropdown: false,
       tripsDropdown: false,
     }
   },
   methods: {
-    aboutClick() {
-      this.aboutDropdown = !this.aboutDropdown
-      this.destinationDropdown = false
-      this.tripsDropdown = false
-    },
     destinationClick() {
       this.destinationDropdown = !this.destinationDropdown
-      this.aboutDropdown = false
       this.tripsDropdown = false
     },
     tripsClick() {
       this.tripsDropdown = !this.tripsDropdown
-      this.aboutDropdown = false
       this.destinationDropdown = false
     },
   },

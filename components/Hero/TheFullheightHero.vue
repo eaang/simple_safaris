@@ -75,7 +75,7 @@ export default {
         infinite: true,
         autoplay: false,
         dots: false,
-        speed: 4000,
+        speed: 3000,
         responsive: [
           {
             breakpoint: 768,
@@ -97,7 +97,7 @@ export default {
     setInterval(() => {
       this.$refs.carousel.goToNext()
       this.counter++
-    }, 8000)
+    }, 6000)
   },
   methods: {
     importImages(r) {

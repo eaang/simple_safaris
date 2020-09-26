@@ -20,40 +20,10 @@
           <div
             class="hidden lg:flex items-stretch text-black text-lg space-x-8"
           >
-            <!-- About Dropdown -->
-            <div
-              class="relative"
-              @mouseover="dropdownOneShow = true"
-              @mouseleave="dropdownOneShow = false"
+            <!-- About Link -->
+            <a class="nav-link nav-link-dropdown cursor-pointer" href="/about"
+              >About</a
             >
-              <div class="nav-link nav-link-dropdown">About</div>
-              <transition name="fade" mode="out-in">
-                <div
-                  v-if="dropdownOneShow"
-                  class="absolute nav-dropdown nav-dropdown-dark"
-                >
-                  <ul class="nav-dropdown-list cursor-pointer">
-                    <a href="/about"
-                      ><li class="nav-dropdown-item nav-dropdown-item-dark">
-                        About us
-                      </li>
-                    </a>
-
-                    <a href="/about/privacy"
-                      ><li class="nav-dropdown-item nav-dropdown-item-dark">
-                        개인정보처리방침
-                      </li></a
-                    >
-
-                    <a href="/about/terms-and-conditions"
-                      ><li class="nav-dropdown-item nav-dropdown-item-dark">
-                        해외여행약관
-                      </li>
-                    </a>
-                  </ul>
-                </div>
-              </transition>
-            </div>
 
             <!-- Destinations Dropdown -->
             <div
@@ -153,12 +123,13 @@
           >
             <div>
               <div class="flex items-center space-x-2 justify-end">
-                <a href="#" class="h-6 w-6" target="_blank">
+                <!-- Temporarily hiding the youtube icon -->
+                <!-- <a href="#" class="h-6 w-6" target="_blank">
                   <img
                     class="object-scale-down"
                     src="@/assets/images/icons/ic-youtube-ft.svg"
                   />
-                </a>
+                </a> -->
                 <a href="#" class="h-6 w-6" target="_blank">
                   <img
                     class="object-scale-down"
@@ -189,12 +160,13 @@
               >
             </div>
             <div class="flex items-center space-x-2 justify-end">
-              <a href="#" class="h-6 w-6" target="_blank">
+              <!-- Temporarily hiding the youtube icon -->
+              <!-- <a href="#" class="h-6 w-6" target="_blank">
                 <img
                   class="object-scale-down"
                   src="@/assets/images/icons/ic-youtube-ft.svg"
                 />
-              </a>
+              </a> -->
               <a href="#" class="h-6 w-6" target="_blank">
                 <img
                   class="object-scale-down"

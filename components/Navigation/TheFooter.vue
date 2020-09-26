@@ -57,12 +57,13 @@
                 </li>
                 <li class="">sales@simplesafaris.com</li>
                 <div class="flex md:hidden space-x-2 mt-2">
-                  <li class="footer-list-item">
+                  <!-- Temporarily hiding youtube -->
+                  <!-- <li class="footer-list-item">
                     <img
                       class="h-5"
                       src="@/assets/images/icons/ic-youtube-ft.svg"
                     />
-                  </li>
+                  </li> -->
                   <li class="footer-list-item">
                     <img
                       class="h-5"
@@ -86,12 +87,13 @@
               <div class="footer-title">Stay in touch</div>
               <ul class="footer-list">
                 <div class="flex space-x-2 mb-1">
-                  <li class="footer-list-item">
+                  <!-- Temporarily hiding youtube -->
+                  <!-- <li class="footer-list-item">
                     <img
                       class="h-5"
                       src="@/assets/images/icons/ic-youtube-ft.svg"
                     />
-                  </li>
+                  </li> -->
                   <li class="footer-list-item">
                     <img
                       class="h-5"
