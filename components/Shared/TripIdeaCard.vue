@@ -20,18 +20,20 @@
         </div>
         <div class="trip-idea-text bg-white text-center p-4">
           <div
-            class="trip-idea-title text-gray-dark text-2xl flex items-center justify-center px-4 h-20"
+            class="trip-idea-title text-gray-dark text-lg md:text-2xl flex items-center justify-center px-4 h-16 md:h-20"
           >
             {{ title }}
           </div>
-          <div class="trip-idea-body text-brown text-sm h-16 font-normal">
+          <div
+            class="trip-idea-body text-brown text-xs sm:text-sm h-16 font-normal flex-center"
+          >
             {{ content }}
           </div>
           <div
-            class="trip-idea-price text-brown h-20 flex flex-col items-center justify-center"
+            class="trip-idea-price text-brown h-12 md:h-20 flex flex-col items-center justify-center"
           >
-            <div class="text-lg">Course 예상 가격</div>
-            <div class="text-sm font-normal">{{ price }}</div>
+            <div class="text-base md:text-lg">Course 예상 가격</div>
+            <div class="text-xs md:text-sm font-normal">{{ price }}</div>
           </div>
           <div>
             <Button

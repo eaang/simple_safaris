@@ -74,7 +74,10 @@ html {
 .title {
   @apply font-bold;
   &-main {
-    @apply text-5xl;
+    @apply text-2xl;
+    @screen md {
+      @apply text-5xl;
+    }
   }
   &-header {
     text-shadow: 0 0 35px rgba(0, 0, 0, 1);
