@@ -9,12 +9,8 @@
         >
           <div>Africa</div>
           <div>
-            <fa-icon id="africa-trip-icon-up" icon="caret-up" />
-            <fa-icon
-              id="africa-trip-icon-down"
-              icon="caret-down"
-              class="hidden"
-            />
+            <CaretUp id="africa-trip-icon-up" />
+            <CaretDown id="africa-trip-icon-down" class="hidden" />
           </div>
         </li>
         <div id="africa-trip-dropdown">
@@ -37,12 +33,8 @@
         >
           <div class="text-white">Asia</div>
           <div>
-            <fa-icon id="asia-trip-icon-up" icon="caret-up" />
-            <fa-icon
-              id="asia-trip-icon-down"
-              icon="caret-down"
-              class="hidden"
-            />
+            <CaretUp id="asia-trip-icon-up" />
+            <CaretDown id="asia-trip-icon-down" class="hidden" />
           </div>
         </li>
         <div id="asia-trip-dropdown">

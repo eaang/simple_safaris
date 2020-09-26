@@ -34,7 +34,7 @@
                 class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
               >
                 <div class="h-6 w-6 flex items-center justify-around">
-                  <fa-icon icon="arrow-left" />
+                  <ArrowLeft />
                 </div>
               </div>
             </div>
@@ -47,7 +47,7 @@
                 class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
               >
                 <div class="h-6 w-6 flex items-center justify-around">
-                  <fa-icon icon="arrow-right" />
+                  <ArrowRight />
                 </div>
               </div>
             </div>
@@ -137,12 +137,6 @@ export default {
         },
       ],
     }
-  },
-  mounted() {
-    setInterval(() => {
-      this.$refs.reviewCarousel.goToNext()
-      this.reviewCounter++
-    }, 4000)
   },
 }
 </script>

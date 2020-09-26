@@ -8,12 +8,6 @@
       <a :href="'/trips/' + slug">
         <div class="relative h-56 trip-idea-image">
           <div
-            v-if="mouseover"
-            class="absolute w-full h-full flex items-center justify-center text-beige text-6xl font-normal z-50"
-          >
-            +
-          </div>
-          <div
             class="h-56 z-40"
             style="
               background-repeat: no-repeat;
@@ -39,11 +33,12 @@
             <div class="text-lg">Course 예상 가격</div>
             <div class="text-sm font-normal">{{ price }}</div>
           </div>
-          <div
-            class="trip-idea-link text-xs text-brown flex items-center justify-center space-x-2 h-6"
-          >
-            <div class="font-normal">more</div>
-            <img src="@/assets/images/icons/more.svg" />
+          <div>
+            <Button
+              text="발견해보세요"
+              classes="btn-small btn-dark-brown font-normal"
+              :arrow="true"
+            />
           </div></div
       ></a>
     </div>
@@ -94,6 +89,6 @@ export default {
   }
 }
 .background-filter {
-  filter: brightness(50%);
+  filter: brightness(80%);
 }
 </style>

@@ -8,12 +8,6 @@
       <a :href="link">
         <div class="relative h-56 trip-idea-image">
           <div
-            v-if="mouseover"
-            class="absolute w-full h-full flex items-center justify-center text-beige text-6xl z-50"
-          >
-            +
-          </div>
-          <div
             class="h-56 z-40"
             style="
               background-repeat: no-repeat;
@@ -35,7 +29,7 @@
               </div>
             </div>
           </div>
-          <div class="trip-idea-body px-4 text-brown text-base">
+          <div class="trip-idea-body px-4 text-brown text-base h-16">
             {{ content }}
           </div>
         </div></a
@@ -89,6 +83,6 @@ export default {
   }
 }
 .background-filter {
-  filter: brightness(50%);
+  filter: brightness(80%);
 }
 </style>

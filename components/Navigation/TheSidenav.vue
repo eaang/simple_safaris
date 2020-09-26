@@ -87,7 +87,7 @@
         >
       </div>
       <div class="flex items-end text-brown">
-        <div class="mb-8 pt-8 ml-4 font-bold space-x-2 space-y-8 text-lg">
+        <div class="mb-8 pt-8 ml-4 font-bold space-y-4 text-lg">
           <ul class="flex space-x-4">
             <a href="/"
               ><li class="">
@@ -108,11 +108,13 @@
                 <img class="h-8" src="@/assets/images/icons/ic-kakao.svg" /></li
             ></a>
           </ul>
-          <fa-icon icon="phone-alt" /><a
-            class="tel-link tel-link-brown"
-            href="tel:07045170225"
-            >070-4517-0225</a
-          >
+
+          <div class="flex w-full space-x-2">
+            <Phone class="h-8" />
+            <a class="tel-link tel-link-brown" href="tel:07045170225"
+              >070-4517-0225</a
+            >
+          </div>
         </div>
       </div>
     </div>

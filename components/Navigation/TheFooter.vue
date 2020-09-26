@@ -50,7 +50,10 @@
                 <a href="/contact"
                   ><li class="footer-list-item">문의 양식</li></a
                 >
-                <li class="">
+                <li class="flex items-center space-x-1">
+                  <div>
+                    <Phone class="text-brown h-5" />
+                  </div>
                   <a class="tel-link tel-link-brown" href="tel:07045170225"
                     >070-4517-0225</a
                   >

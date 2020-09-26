@@ -10,13 +10,9 @@
             {{ continent.fields.name }}
           </div>
           <div>
-            <fa-icon
-              :id="continent.fields.name.toLowerCase() + '-icon-up'"
-              icon="caret-up"
-            />
-            <fa-icon
+            <CaretUp :id="continent.fields.name.toLowerCase() + '-icon-up'" />
+            <CaretDown
               :id="continent.fields.name.toLowerCase() + '-icon-down'"
-              icon="caret-down"
               class="hidden"
             />
           </div>

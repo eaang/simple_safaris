@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ChatBubble class="fixed bottom-0 right-0 z-50" />
     <!-- Hero section -->
     <transition name="slideLeft">
       <TheSidenav
@@ -58,35 +59,17 @@ html {
 .section {
   @apply my-8 py-16 mx-auto;
 }
-.btn {
-  @apply border-2 px-4 py-2 rounded-md;
-}
-.btn-big {
-  @apply text-xl px-8 py-4;
-}
-.btn-white-outline {
-  @apply border-white;
-}
-.btn-white-outline:hover {
-  @apply text-brown bg-white;
-}
-.btn-dark-brown {
-  @apply bg-brown-dark text-white;
-}
-.btn-dark-brown:hover {
-  @apply bg-brown;
-}
 .tel-link {
   @apply border-b-2 border-t-2 border-transparent;
-}
-.tel-link:hover {
-  @apply border-b-2 border-dotted;
-}
-.tel-link-brown:hover {
-  @apply border-brown;
-}
-.tel-link-white:hover {
-  @apply border-white;
+  &:hover {
+    @apply border-b-2 border-dotted;
+  }
+  &-brown:hover {
+    @apply border-brown;
+  }
+  &-white:hover {
+    @apply border-white;
+  }
 }
 .title {
   @apply font-bold;
