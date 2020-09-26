@@ -123,7 +123,11 @@
                 <img class="h-8" src="@/assets/images/icons/ic-kakao.svg" /></li
             ></a>
           </ul>
-          <fa-icon icon="phone-alt" /><span>070-4517-0225</span>
+          <fa-icon icon="phone-alt" /><a
+            class="tel-link tel-link-brown"
+            href="tel:07045170225"
+            >070-4517-0225</a
+          >
         </div>
       </div>
     </div>

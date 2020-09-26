@@ -50,7 +50,11 @@
                 <a href="/contact"
                   ><li class="footer-list-item">문의 양식</li></a
                 >
-                <li class="">070-4517-0225</li>
+                <li class="">
+                  <a class="tel-link tel-link-brown" href="tel:07045170225"
+                    >070-4517-0225</a
+                  >
+                </li>
                 <li class="">sales@simplesafaris.com</li>
                 <div class="flex md:hidden space-x-2 mt-2">
                   <li class="footer-list-item">

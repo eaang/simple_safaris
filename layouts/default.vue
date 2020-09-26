@@ -76,6 +76,18 @@ html {
 .btn-dark-brown:hover {
   @apply bg-brown;
 }
+.tel-link {
+  @apply border-b-2 border-t-2 border-transparent;
+}
+.tel-link:hover {
+  @apply border-b-2 border-dotted;
+}
+.tel-link-brown:hover {
+  @apply border-brown;
+}
+.tel-link-white:hover {
+  @apply border-white;
+}
 .title {
   @apply font-bold;
   &-main {

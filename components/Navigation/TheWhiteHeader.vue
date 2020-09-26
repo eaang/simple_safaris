@@ -173,12 +173,20 @@
               </div>
             </div>
             <div class="flex items-center space-x-2">
-              <fa-icon icon="phone-alt" /><span>070-4517-0225</span>
+              <fa-icon icon="phone-alt" /><a
+                class="tel-link tel-link-brown"
+                href="tel:07045170225"
+                >070-4517-0225</a
+              >
             </div>
           </div>
           <div class="space-x-2 hidden xl:flex">
             <div class="flex items-center space-x-2">
-              <fa-icon icon="phone-alt" /><span>070-4517-0225</span>
+              <fa-icon icon="phone-alt" /><a
+                class="tel-link tel-link-brown"
+                href="tel:07045170225"
+                >070-4517-0225</a
+              >
             </div>
             <div class="flex items-center space-x-2 justify-end">
               <a href="#" class="h-6 w-6" target="_blank">
