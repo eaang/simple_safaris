@@ -34,8 +34,30 @@
           />
         </div>
         <transition name="slide" mode="out-in">
-          <div v-if="destinationDropdown" class="nav-dropdown">
-            <div
+          <div v-if="destinationDropdown">
+            <div class="grid grid-cols-2 h-10">
+              <div
+                class="flex-center border-r border-brown border-opacity-25"
+                :class="{
+                  'text-white': selectedContinent === 'africa',
+                  'text-brown': selectedContinent === 'asia',
+                }"
+                @click="selectedContinent = 'africa'"
+              >
+                아프리카
+              </div>
+              <div
+                class="flex-center"
+                :class="{
+                  'text-white': selectedContinent === 'asia',
+                  'text-brown': selectedContinent === 'africa',
+                }"
+                @click="selectedContinent = 'asia'"
+              >
+                아시아
+              </div>
+            </div>
+            <!-- <div
               v-for="continent in continents"
               :key="continent.fields.name"
               class="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-3 grid-flow-row"
@@ -49,7 +71,7 @@
                   {{ destination.fields.koreanName }}
                 </div></a
               >
-            </div>
+            </div> -->
           </div>
         </transition>
 
@@ -137,6 +159,7 @@ export default {
     return {
       destinationDropdown: false,
       tripsDropdown: false,
+      selectedContinent: 'africa',
     }
   },
   methods: {
