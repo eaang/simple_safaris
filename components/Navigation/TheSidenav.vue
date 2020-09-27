@@ -33,7 +33,7 @@
             src="@/assets/images/icons/btn-minus.svg"
           />
         </div>
-        <transition name="slide" mode="in-out">
+        <transition name="slide" mode="out-in">
           <div v-if="destinationDropdown" class="nav-dropdown">
             <div
               v-for="continent in continents"
@@ -67,7 +67,7 @@
             src="@/assets/images/icons/btn-minus.svg"
           />
         </div>
-        <transition name="slide" mode="in-out">
+        <transition name="slide" mode="out-in">
           <div v-if="tripsDropdown" class="nav-dropdown">
             <a
               v-for="tripIdea in tripIdeas"
@@ -168,7 +168,7 @@ export default {
     }
   }
   &-dropdown {
-    @apply bg-brown bg-opacity-25;
+    @apply bg-brown bg-opacity-25 overflow-auto;
     &-item {
       @apply text-white m-4 text-lg;
     }

@@ -142,7 +142,7 @@
       <ThePartnerCarousel class="mx-8" />
     </div>
 
-    <TheFooter />
+    <TheFooter :continents="continents" />
   </div>
 </template>
 

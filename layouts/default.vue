@@ -26,7 +26,7 @@
       class="sticky top-0 w-full z-30"
     />
     <Nuxt class="-mt-24" />
-    <TheFooter />
+    <TheFooter :continents="continents" />
   </div>
 </template>
 
@@ -117,13 +117,12 @@ html {
   }
 }
 // Animations go here
-.slide-enter-active,
-.slide-leave-active {
-  transition: all 0.3s ease;
-  max-height: 100%;
+.slide-leave-active,
+.slide-enter-active {
+  transition: all 0.5s ease;
+  max-height: 200px;
   opacity: 1;
 }
-
 .slide-enter,
 .slide-leave-to {
   opacity: 0;
