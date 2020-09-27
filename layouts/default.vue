@@ -120,13 +120,15 @@ html {
 .slide-leave-active,
 .slide-enter-active {
   transition: all 0.5s ease;
-  max-height: 200px;
+  max-height: 50%;
   opacity: 1;
 }
 .slide-enter,
 .slide-leave-to {
   opacity: 0;
   max-height: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .fade-enter-active,
