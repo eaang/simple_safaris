@@ -5,7 +5,7 @@
     <transition name="slideLeft">
       <TheSidenav
         v-if="sidenavStatus"
-        class="fixed-sidebar z-50 w-2/3"
+        class="fixed-sidebar z-50 w-3/4"
         style="animation-duration: 0.3s"
         :continents="continents"
         :trip-ideas="tripIdeas"
@@ -26,7 +26,7 @@
       class="sticky top-0 w-full z-30"
     />
     <Nuxt class="-mt-24" />
-    <TheFooter />
+    <TheFooter :continents="continents" />
   </div>
 </template>
 
@@ -103,7 +103,7 @@ html {
       @apply bg-black;
     }
     &-list {
-      @apply w-48;
+      @apply w-64 text-base;
     }
     &-item {
       @apply py-2 px-4;
@@ -117,17 +117,18 @@ html {
   }
 }
 // Animations go here
-.slide-enter-active,
-.slide-leave-active {
-  transition: all 0.3s ease;
+.slide-leave-active,
+.slide-enter-active {
+  transition: all 0.5s ease;
   max-height: 100%;
   opacity: 1;
 }
-
 .slide-enter,
 .slide-leave-to {
   opacity: 0;
   max-height: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .fade-enter-active,

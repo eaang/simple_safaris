@@ -13,52 +13,46 @@
             class="grid grid-flow-col grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 w-full"
           >
             <div class="hidden md:block">
-              <div class="footer-title">About</div>
-              <ul class="footer-list">
-                <a href="/about"><li class="footer-list-item">About Us</li></a>
-                <a href="/about/privacy"
-                  ><li class="footer-list-item">개인정보처리방침</li></a
-                >
-                <a href="/about/terms-and-conditions"
-                  ><li class="footer-list-item">해외여행약관</li></a
-                >
-              </ul>
+              <div class="footer-title footer-title-link">
+                <a href="/about">About</a>
+              </div>
+              <div class="footer-title footer-title-link">
+                <a href="/trips">Trip ideas</a>
+              </div>
             </div>
             <div class="hidden xl:block">
               <div class="footer-title">Destinations</div>
-              <ul class="footer-list">
-                <a href="/destinations/botswana"
-                  ><li class="footer-list-item">보츠와나</li></a
-                >
-                <a href="/destinations/kenya"
-                  ><li class="footer-list-item">케냐</li></a
-                >
-                <a href="/destinations/namibia"
-                  ><li class="footer-list-item">나미비아</li></a
-                >
-                <a href="/destinations/south-africa"
-                  ><li class="footer-list-item">남아프리카 공화국</li></a
-                >
-                <a href="/destinations/tanzania"
-                  ><li class="footer-list-item">탄자니아</li></a
-                >
+              <ul class="footer-list flex flex-col-reverse">
+                <div v-for="(continent, i) in continents" :key="i">
+                  <a
+                    v-for="destination in continent.fields.destinations"
+                    :key="destination.fields.name"
+                    :href="'/destinations/' + destination.fields.slug"
+                    ><li class="footer-list-item">
+                      {{ destination.fields.koreanName }}
+                    </li></a
+                  >
+                </div>
               </ul>
             </div>
             <div>
-              <div class="footer-title">Contact us</div>
+              <div class="footer-title footer-title-link">
+                <a href="/contact">Contact us</a>
+              </div>
               <ul class="footer-list">
-                <a href="/contact"
-                  ><li class="footer-list-item">문의 양식</li></a
-                >
                 <li class="flex items-center space-x-1">
                   <div>
                     <Phone class="text-brown h-5" />
                   </div>
-                  <a class="tel-link tel-link-brown" href="tel:07045170225"
+                  <a class="footer-list-item" href="tel:07045170225"
                     >070-4517-0225</a
                   >
                 </li>
-                <li class="">sales@simplesafaris.com</li>
+                <li class="footer-list-item">
+                  <a href="mailto:sales@simplesafaris.com"
+                    >sales@simplesafaris.com</a
+                  >
+                </li>
                 <div class="flex md:hidden space-x-2 mt-2">
                   <!-- Temporarily hiding youtube -->
                   <!-- <li class="footer-list-item">
@@ -163,7 +157,14 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    continents: {
+      type: Array,
+      default: () => [],
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -171,6 +172,9 @@ export default {}
   @apply text-brown;
   &-title {
     @apply font-bold my-2 text-lg;
+    &-link:hover {
+      @apply underline;
+    }
   }
   &-list {
     @apply opacity-75;

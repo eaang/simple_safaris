@@ -115,7 +115,7 @@
                       class="flex items-center space-x-2"
                       @click="clearDate"
                       ><div class="check-box">
-                        <Check v-if="noDate" class="check-mark" />
+                        <Check v-if="noDate" class="text-brown" />
                       </div>
                       <div class="text-gray-light text-lg">
                         여행일자 미정
@@ -169,7 +169,7 @@
                 <div>
                   <label for="botswana" class="check-group"
                     ><div class="check-box">
-                      <Check v-if="countries.botswana" class="check-mark" />
+                      <Check v-if="countries.botswana" />
                     </div>
                     <div class="text-black text-lg">보츠와나</div></label
                   ><input
@@ -184,7 +184,7 @@
                 <div>
                   <label for="kenya" class="check-group"
                     ><div class="check-box">
-                      <Check v-if="countries.kenya" class="check-mark" />
+                      <Check v-if="countries.kenya" />
                     </div>
                     <div class="text-black text-lg">케냐</div></label
                   ><input
@@ -199,7 +199,7 @@
                 <div>
                   <label for="namibia" class="check-group"
                     ><div class="check-box">
-                      <Check v-if="countries.namibia" class="check-mark" />
+                      <Check v-if="countries.namibia" />
                     </div>
                     <div class="text-black text-lg">나미비아</div></label
                   ><input
@@ -214,7 +214,7 @@
                 <div>
                   <label for="southAfrica" class="check-group"
                     ><div class="check-box">
-                      <Check v-if="countries.southAfrica" class="check-mark" />
+                      <Check v-if="countries.southAfrica" />
                     </div>
                     <div class="text-black text-lg">남아공</div></label
                   ><input
@@ -229,7 +229,7 @@
                 <div>
                   <label for="tanzania" class="check-group"
                     ><div class="check-box">
-                      <Check v-if="countries.tanzania" class="check-mark" />
+                      <Check v-if="countries.tanzania" />
                     </div>
                     <div class="text-black text-lg">탄자니아</div></label
                   ><input
@@ -244,7 +244,7 @@
                 <div>
                   <label for="india" class="check-group"
                     ><div class="check-box">
-                      <Check v-if="countries.india" class="check-mark" />
+                      <Check v-if="countries.india" />
                     </div>
                     <div class="text-black text-lg">인도</div></label
                   ><input
@@ -345,10 +345,7 @@ label {
     @apply flex items-center gap-x-2;
   }
   &-box {
-    @apply h-6 w-6 bg-white border border-gray-lighter flex items-center justify-center;
-  }
-  &-mark {
-    @apply text-brown;
+    @apply h-6 w-6 bg-white text-brown border border-gray-lighter flex items-center justify-center;
   }
 }
 input[type='date'],
