@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute nav-dropdown nav-dropdown-dark">
+  <div class="absolute nav-dropdown nav-dropdown-dark w-48">
     <ul class="nav-dropdown-list flex flex-col-reverse cursor-pointer">
       <div v-for="continent in continents" :key="continent.fields.name">
         <li

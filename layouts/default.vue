@@ -103,7 +103,7 @@ html {
       @apply bg-black;
     }
     &-list {
-      @apply w-64 text-base;
+      @apply text-base;
     }
     &-item {
       @apply py-2 px-4;

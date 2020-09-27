@@ -7,13 +7,15 @@
         @after-change="counter = $refs.carousel.getCurrentSlide()"
       >
         <div
-          v-for="image in images"
-          :key="image.pathShort"
-          class="slide block h-screen/75 lg:h-screen w-full z-0 bg-center bg-cover"
+          v-for="(image, index) in images"
+          :key="index"
+          class="slide block h-screen/75 lg:h-screen w-full z-0 bg-cover"
+          :class="'bg-' + image.position"
           :style="{
-            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)), url(${image.pathLong})`,
+            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)), url(${image.src})`,
           }" />
 
+        <!-- Custom buttons -->
         <template slot="prevButton"
           ><div
             class="absolute inset-y-0 left-0 flex items-center justify-around px-12 text-2xl"
@@ -71,7 +73,7 @@ export default {
         infinite: true,
         autoplay: false,
         dots: false,
-        speed: 3000,
+        speed: 4000,
         responsive: [
           {
             breakpoint: 768,
@@ -81,34 +83,38 @@ export default {
           },
         ],
       },
-      images: [],
+      images: [
+        {
+          src: '/landinghero/hotel-samaki-lodge-zanzibar.jpeg',
+          position: 'center',
+        },
+        { src: '/landinghero/kenya-safari.jpeg', position: 'left' },
+        {
+          src: '/landinghero/luxury-safari-holiday.jpeg',
+          position: 'left-bottom',
+        },
+        {
+          src: '/landinghero/national-parks-safari-africa.jpeg',
+          position: 'center',
+        },
+        {
+          src: '/landinghero/ranthambore-national-park.jpeg',
+          position: 'center',
+        },
+        {
+          src: '/landinghero/sri-lanka-safari-leopard.jpg',
+          position: 'center',
+        },
+      ],
     }
-  },
-  created() {
-    this.importImages(
-      require.context('@/assets/images/landing-page/', true, /\.jpeg$/)
-    )
   },
   mounted() {
     setInterval(() => {
       this.$refs.carousel.goToNext()
       this.counter++
-    }, 6000)
+    }, 8000)
   },
-  methods: {
-    importImages(r) {
-      r.keys().forEach((key) =>
-        this.images.push({ pathLong: r(key), pathShort: key })
-      )
-    },
-    isFilled(i) {
-      if (i === this.counter) {
-        return true
-      } else {
-        return false
-      }
-    },
-  },
+  methods: {},
 }
 </script>
 

@@ -2,7 +2,7 @@
   <div
     class="flex flex-col lg:flex-row justify-between items-center lg:items-start lg:justify-center px-4"
   >
-    <div class="text-left w-full px-4 md:px-0 md:w-3/4 lg:w-3/5">
+    <div class="text-left w-full md:w-3/4 lg:w-3/5">
       <div class="flex flex-col lg:flex-row items-start w-full">
         <!-- Continent Picker  -->
         <ul
@@ -109,9 +109,9 @@ export default {
 <style lang="scss" scoped>
 .destination-list {
   &-item {
-    @apply text-brown text-base py-2;
+    @apply text-brown text-base py-1;
     @screen md {
-      @apply text-lg;
+      @apply text-lg py-2;
     }
     @screen xl {
       @apply text-xl;

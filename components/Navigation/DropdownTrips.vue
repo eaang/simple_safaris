@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute nav-dropdown nav-dropdown-dark">
+  <div class="absolute nav-dropdown nav-dropdown-dark w-64">
     <ul class="nav-dropdown-list flex flex-col cursor-pointer">
       <!-- African trips -->
       <div>
