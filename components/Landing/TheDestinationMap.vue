@@ -1,125 +1,91 @@
 <template>
   <div
-    class="flex flex-col md:flex-row items-center md:items-start justify-center px-4"
+    class="flex flex-col lg:flex-row justify-between items-center lg:items-start lg:justify-center px-4"
   >
-    <div class="text-left w-2/3 lg:w-2/5">
-      <div>
-        <!-- Continent Picker (removed for now because no Asia) -->
-        <!-- <ul class="destination-list text-2xl w-56">
-          <li
-            class="destination-list-item"
-            :class="{
-              'destination-list-choice': chosenDestination === 'africa',
-            }"
-            @click="chosenDestination = 'africa'"
-          >
-            아프리카 (Africa)
-            <fa-icon v-if="chosenDestination === 'africa'" icon="angle-right" />
-          </li>
-          <li
-            class="destination-list-item"
-            :class="{
-              'destination-list-choice': chosenDestination === 'asia',
-            }"
-            @click="chosenDestination = 'asia'"
-          >
-            아시아 (Asia)
-            <fa-icon v-if="chosenDestination === 'asia'" icon="angle-right" />
-          </li>
-        </ul> -->
-        <!-- Region Picker -->
+    <div class="text-left w-full px-4 md:px-0 md:w-3/4 lg:w-3/5">
+      <div class="flex flex-col lg:flex-row items-start w-full">
+        <!-- Continent Picker  -->
         <ul
-          v-if="chosenDestination === 'africa'"
-          class="destination-list flex flex-col space-y-2 lg:space-y-4 text-lg lg:text-2xl cursor-pointer"
+          class="destination-list text-2xl w-full lg:w-1/4 xl:w-1/3 flex flex-row-reverse justify-between lg:flex-col-reverse"
         >
-          <a href="/destinations/kenya"
-            ><li
-              class="destination-list-item"
-              @mouseleave="region = null"
-              @mouseover="region = 'kenya'"
-            >
-              케냐 (Kenya)
-            </li></a
+          <div
+            v-for="continent in continents"
+            :key="continent.fields.id"
+            class="w-1/2 lg:w-full"
           >
-          <a href="/destinations/tanzania"
-            ><li
-              class="destination-list-item"
-              @mouseleave="region = null"
-              @mouseover="region = 'tanzania'"
+            <li
+              class="destination-list-item space-x-4"
+              :class="{
+                'destination-list-choice':
+                  chosenDestination === continent.fields.name.toLowerCase(),
+              }"
+              @click="chosenDestination = continent.fields.name.toLowerCase()"
             >
-              탄자니아 (Tanzania)
-            </li></a
-          >
-          <a href="/destinations/botswana"
-            ><li
-              class="destination-list-item"
-              @mouseleave="region = null"
-              @mouseover="region = 'botswana'"
-            >
-              보츠와나 (Botswana)
-            </li></a
-          >
-          <a href="/destinations/namibia"
-            ><li
-              class="destination-list-item"
-              @mouseleave="region = null"
-              @mouseover="region = 'namibia'"
-            >
-              나미비아 (Namibia)
-            </li></a
-          >
-          <a href="/destinations/south-africa"
-            ><li
-              class="destination-list-item"
-              @mouseleave="region = null"
-              @mouseover="region = 'south-africa'"
-            >
-              남아프리카 공화국 (South Africa)
-            </li></a
-          >
+              <div>
+                {{ continent.fields.koreanName }}
+                <br class="hidden lg:block xl:hidden" />
+                ({{ continent.fields.name }})
+              </div>
+              <AngleRight
+                v-if="chosenDestination === continent.fields.name.toLowerCase()"
+                class="text-black h-6 hidden lg:block"
+              />
+              <AngleDown
+                v-if="chosenDestination === continent.fields.name.toLowerCase()"
+                class="text-black h-4 block lg:hidden"
+              />
+            </li>
+          </div>
         </ul>
-        <!-- Removing Asia for now -->
-        <!-- <ul
-          v-if="chosenDestination === 'asia'"
-          class="destination-list ml-2 cursor-pointer"
-        >
-          <a href="/destinations/sri-lanka"
-            ><li
-              class="destination-list-item"
-              @mouseleave="region = null"
-              @mouseover="region = 'sri-lanka'"
+        <!-- Region Picker -->
+        <div class="w-full lg:w-3/4 xl:w-2/3">
+          <ul v-for="continent in continents" :key="continent.fields.name">
+            <div
+              v-if="chosenDestination === continent.fields.name.toLowerCase()"
             >
-              스리랑카 (Sri Lanka)
-            </li></a
-          >
-          <a href="/destinations/rajasthan"
-            ><li
-              class="destination-list-item"
-              @mouseleave="region = null"
-              @mouseover="region = 'rajasthan'"
-            >
-              라자스탄 (Rajasthan)
-            </li></a
-          >
-        </ul> -->
+              <li
+                v-for="destination in continent.fields.destinations"
+                :key="destination.fields.slug"
+                class="destination-list-item"
+                @mouseleave="region = null"
+                @mouseover="region = destination.fields.slug"
+              >
+                <a
+                  :href="'/destinations/' + destination.fields.slug"
+                  class="flex items-center space-x-4"
+                >
+                  <div>
+                    {{ destination.fields.listOrder }}.
+                    {{ destination.fields.koreanName }}
+                    ({{ destination.fields.name }})
+                  </div>
+                  <AngleRight
+                    v-if="region === destination.fields.slug"
+                    class="text-black h-6 hidden lg:block"
+                  />
+                </a>
+              </li>
+            </div>
+          </ul>
+        </div>
       </div>
     </div>
     <!-- Continent Map -->
     <div class="relative my-8 md:my-0 flex justify-center">
-      <img
-        class="absolute w-2/3 lg:w-4/5 xl:w-full object-scale-down"
-        :src="countryImage"
-      />
-      <img
-        class="w-2/3 lg:w-4/5 xl:w-full object-scale-down"
-        src="@/assets/images/landing-map/map-africa.png"
-      />
+      <img class="absolute object-scale-down" :src="countryImage" />
+      <img src="@/assets/images/landing-map/map-africa.png" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    continents: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       region: null,
@@ -143,13 +109,19 @@ export default {
 <style lang="scss" scoped>
 .destination-list {
   &-item {
-    @apply text-brown;
+    @apply text-brown text-base py-2;
+    @screen md {
+      @apply text-lg;
+    }
+    @screen xl {
+      @apply text-xl;
+    }
   }
   &-item:hover {
     @apply text-black font-bold;
   }
   &-choice {
-    @apply text-black font-bold;
+    @apply text-black font-bold flex items-center w-full;
   }
 }
 </style>

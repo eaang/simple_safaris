@@ -6,6 +6,11 @@ export const state = () => ({
 
 export const mutations = {
   setContinents(state, payload) {
+    payload.forEach((continent) => {
+      continent.fields.destinations.sort(
+        (a, b) => a.fields.listOrder - b.fields.listOrder
+      )
+    })
     state.continents = payload
   },
 }

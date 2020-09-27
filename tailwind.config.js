@@ -12,6 +12,13 @@ module.exports = {
         75: '75%',
         full: '100%',
       },
+      minWidth: {
+        0: '0',
+        25: '25%',
+        50: '50%',
+        75: '75%',
+        full: '100%',
+      },
       colors: {
         black: '#1a1915',
         beige: '#e4ddbb',

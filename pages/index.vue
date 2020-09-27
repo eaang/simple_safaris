@@ -89,7 +89,7 @@
     <!-- Destinations -->
     <div class="section container text-center">
       <div class="title title-main text-black">Destinations</div>
-      <TheDestinationMap class="mb-16 mt-8" />
+      <TheDestinationMap :continents="continents" class="mb-16 mt-8" />
     </div>
 
     <!-- Trip Ideas -->

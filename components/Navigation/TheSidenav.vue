@@ -68,7 +68,7 @@
                   v-for="destination in continent.fields.destinations"
                   :key="destination.fields.slug"
                   :href="'/destinations/' + destination.fields.slug"
-                  class="text-white h-12 flex items-center px-8"
+                  class="text-white h-12 flex items-center px-8 min-w-50"
                 >
                   {{ destination.fields.koreanName }}
                 </a>
@@ -131,15 +131,6 @@
                 {{ tripIdea.fields.name }}
               </a>
             </div>
-            <!-- <a
-              v-for="tripIdea in tripIdeas"
-              :key="tripIdea.fields.name"
-              :href="'/trips/' + tripIdea.fields.slug"
-            >
-              <div class="">
-                {{ tripIdea.fields.name }}
-              </div>
-            </a> -->
           </div>
         </transition>
 
