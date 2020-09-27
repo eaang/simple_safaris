@@ -4,7 +4,7 @@
     <transition name="slideLeft">
       <TheSidenav
         v-if="sidenavStatus"
-        class="fixed-sidebar z-50 w-2/3"
+        class="fixed-sidebar z-50 w-3/4"
         style="animation-duration: 0.3s"
         :continents="continents"
         :trip-ideas="tripIdeas"

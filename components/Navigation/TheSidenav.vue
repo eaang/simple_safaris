@@ -35,7 +35,7 @@
         </div>
         <transition name="slide" mode="out-in">
           <div v-if="destinationDropdown">
-            <div class="grid grid-cols-2 h-10">
+            <div class="grid grid-cols-2 h-12">
               <div
                 class="flex-center border-r border-brown border-opacity-25"
                 :class="{
@@ -57,20 +57,36 @@
                 아시아
               </div>
             </div>
-            <!-- <div
-              v-for="continent in continents"
-              :key="continent.fields.name"
-              class="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-3 grid-flow-row"
-            >
-              <a
-                v-for="destination in continent.fields.destinations"
-                :key="destination.fields.name"
-                :href="'/destinations/' + destination.fields.slug"
+            <div v-for="continent in continents" :key="continent.fields.name">
+              <div
+                v-if="selectedContinent === continent.fields.name.toLowerCase()"
+                class="bg-brown bg-opacity-25 flex flex-wrap"
               >
-                <div class="nav-dropdown-item">
+                <a
+                  v-for="destination in continent.fields.destinations"
+                  :key="destination.fields.slug"
+                  :href="'/destinations/' + destination.fields.slug"
+                  class="text-white h-12 flex items-center px-8"
+                >
                   {{ destination.fields.koreanName }}
-                </div></a
+                </a>
+              </div>
+            </div>
+            <!-- <div v-for="continent in continents" :key="continent.fields.name">
+              <div
+                v-if="(selectedContinent = continent.fields.name.toLowercase())"
+                class="nav-dropdown grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-3 grid-flow-row"
               >
+                <a
+                  v-for="destination in continent.fields.destinations"
+                  :key="destination.fields.name"
+                  :href="'/destinations/' + destination.fields.slug"
+                >
+                  <div class="nav-dropdown-item">
+                    {{ destination.fields.koreanName }}
+                  </div></a
+                >
+              </div>
             </div> -->
           </div>
         </transition>
@@ -96,7 +112,7 @@
               :key="tripIdea.fields.name"
               :href="'/trips/' + tripIdea.fields.slug"
             >
-              <div class="nav-dropdown-item">
+              <div class="">
                 {{ tripIdea.fields.name }}
               </div>
             </a>
@@ -191,10 +207,7 @@ export default {
     }
   }
   &-dropdown {
-    @apply bg-brown bg-opacity-25 overflow-auto;
-    &-item {
-      @apply text-white m-4 text-lg;
-    }
+    @apply bg-brown bg-opacity-25;
   }
 }
 </style>

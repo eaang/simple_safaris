@@ -5,7 +5,7 @@
     <transition name="slideLeft">
       <TheSidenav
         v-if="sidenavStatus"
-        class="fixed-sidebar z-50 w-2/3"
+        class="fixed-sidebar z-50 w-3/4"
         style="animation-duration: 0.3s"
         :continents="continents"
         :trip-ideas="tripIdeas"
@@ -120,7 +120,7 @@ html {
 .slide-leave-active,
 .slide-enter-active {
   transition: all 0.5s ease;
-  max-height: 50%;
+  max-height: 100%;
   opacity: 1;
 }
 .slide-enter,
