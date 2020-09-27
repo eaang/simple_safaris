@@ -9,7 +9,7 @@
         <div
           v-for="(image, index) in images"
           :key="index"
-          class="slide block h-screen/75 lg:h-screen w-full z-0 lg:bg-bottom bg-cover"
+          class="slide block h-screen/75 lg:h-screen w-full z-0 bg-cover"
           :class="'bg-' + image.position"
           :style="{
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)), url(${image.src})`,
