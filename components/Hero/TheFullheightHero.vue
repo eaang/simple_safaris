@@ -9,7 +9,7 @@
         <div
           v-for="(image, index) in images"
           :key="index"
-          class="slide block h-screen/75 lg:h-screen w-full z-0 bg-cover"
+          class="slide block h-screen/75 lg:h-screen w-full z-0 lg:bg-bottom bg-cover"
           :class="'bg-' + image.position"
           :style="{
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)), url(${image.src})`,
@@ -88,14 +88,14 @@ export default {
           src: '/landinghero/hotel-samaki-lodge-zanzibar.jpeg',
           position: 'center',
         },
-        { src: '/landinghero/kenya-safari.jpeg', position: 'left' },
+        { src: '/landinghero/kenya-safari.jpeg', position: 'left-bottom' },
         {
           src: '/landinghero/luxury-safari-holiday.jpeg',
           position: 'left-bottom',
         },
         {
           src: '/landinghero/national-parks-safari-africa.jpeg',
-          position: 'center',
+          position: 'bottom',
         },
         {
           src: '/landinghero/ranthambore-national-park.jpeg',
@@ -103,7 +103,7 @@ export default {
         },
         {
           src: '/landinghero/sri-lanka-safari-leopard.jpg',
-          position: 'center',
+          position: 'right',
         },
       ],
     }
