@@ -39,27 +39,29 @@
               <div
                 class="flex-center border-r border-brown border-opacity-25"
                 :class="{
-                  'text-white': selectedContinent === 'africa',
-                  'text-brown': selectedContinent === 'asia',
+                  'text-white': destinationContinent === 'africa',
+                  'text-brown': destinationContinent === 'asia',
                 }"
-                @click="selectedContinent = 'africa'"
+                @click="destinationContinent = 'africa'"
               >
                 아프리카
               </div>
               <div
                 class="flex-center"
                 :class="{
-                  'text-white': selectedContinent === 'asia',
-                  'text-brown': selectedContinent === 'africa',
+                  'text-white': destinationContinent === 'asia',
+                  'text-brown': destinationContinent === 'africa',
                 }"
-                @click="selectedContinent = 'asia'"
+                @click="destinationContinent = 'asia'"
               >
                 아시아
               </div>
             </div>
             <div v-for="continent in continents" :key="continent.fields.name">
               <div
-                v-if="selectedContinent === continent.fields.name.toLowerCase()"
+                v-if="
+                  destinationContinent === continent.fields.name.toLowerCase()
+                "
                 class="bg-brown bg-opacity-25 flex flex-wrap"
               >
                 <a
@@ -72,22 +74,6 @@
                 </a>
               </div>
             </div>
-            <!-- <div v-for="continent in continents" :key="continent.fields.name">
-              <div
-                v-if="(selectedContinent = continent.fields.name.toLowercase())"
-                class="nav-dropdown grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-3 grid-flow-row"
-              >
-                <a
-                  v-for="destination in continent.fields.destinations"
-                  :key="destination.fields.name"
-                  :href="'/destinations/' + destination.fields.slug"
-                >
-                  <div class="nav-dropdown-item">
-                    {{ destination.fields.koreanName }}
-                  </div></a
-                >
-              </div>
-            </div> -->
           </div>
         </transition>
 
@@ -106,8 +92,46 @@
           />
         </div>
         <transition name="slide" mode="out-in">
-          <div v-if="tripsDropdown" class="nav-dropdown">
-            <a
+          <div v-if="tripsDropdown">
+            <div class="grid grid-cols-2 h-12">
+              <div
+                class="flex-center border-r border-brown border-opacity-25"
+                :class="{
+                  'text-white': tripsContinent === 'africa',
+                  'text-brown': tripsContinent === 'asia',
+                }"
+                @click="tripsContinent = 'africa'"
+              >
+                아프리카
+              </div>
+              <div
+                class="flex-center"
+                :class="{
+                  'text-white': tripsContinent === 'asia',
+                  'text-brown': tripsContinent === 'africa',
+                }"
+                @click="tripsContinent = 'asia'"
+              >
+                아시아
+              </div>
+            </div>
+            <div
+              v-for="tripIdea in tripIdeas"
+              :key="tripIdea.fields.id"
+              class="bg-brown bg-opacity-25 flex flex-wrap"
+            >
+              <a
+                v-if="
+                  tripIdea.fields.continent.fields.name.toLowerCase() ===
+                  tripsContinent
+                "
+                :href="'/trips/' + tripIdea.fields.slug"
+                class="text-white h-12 flex items-center px-8"
+              >
+                {{ tripIdea.fields.name }}
+              </a>
+            </div>
+            <!-- <a
               v-for="tripIdea in tripIdeas"
               :key="tripIdea.fields.name"
               :href="'/trips/' + tripIdea.fields.slug"
@@ -115,7 +139,7 @@
               <div class="">
                 {{ tripIdea.fields.name }}
               </div>
-            </a>
+            </a> -->
           </div>
         </transition>
 
@@ -175,7 +199,8 @@ export default {
     return {
       destinationDropdown: false,
       tripsDropdown: false,
-      selectedContinent: 'africa',
+      destinationContinent: 'africa',
+      tripsContinent: 'africa',
     }
   },
   methods: {
