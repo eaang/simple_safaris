@@ -221,6 +221,22 @@
                 </div>
               </div>
             </div>
+
+            <!-- Prev experience -->
+            <div class="input-group">
+              <label>사파리여행에 대한 이해도</label>
+              <div class="grid grid-cols-2 grid-rows-2 gap-y-2">
+                <div v-for="option in experienceOptions" :key="option">
+                  <input
+                    :id="option"
+                    v-model="experience"
+                    :value="option"
+                    type="radio"
+                  />
+                  <label :for="option">{{ option }}</label>
+                </div>
+              </div>
+            </div>
           </form>
 
           name: {{ name }} <br />
@@ -233,7 +249,8 @@
           noDate: {{ noDate }} <br />
           daysDesired: {{ daysDesired }} <br />
           budgetPerPerson: {{ budgetPerPerson }} <br />
-          countries: {{ countries }}
+          countries: {{ countries }} <br />
+          experience: {{ experience }} <br />
         </div>
       </div>
     </div>
@@ -256,6 +273,13 @@ export default {
       daysDesired: '',
       budgetPerPerson: '',
       countries: [],
+      experience: null,
+      experienceOptions: [
+        '해본 적이 있다',
+        '지인 중 해본 사람이 있다',
+        '개인적으로 리서치는 해보았다',
+        '전혀 모른다',
+      ],
       datePickerProps: {
         class:
           'rounded-none w-full h-12 border border-gray-lighter text-lg px-4',
