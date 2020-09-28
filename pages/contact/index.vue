@@ -318,8 +318,9 @@
                   class="cursor-pointer w-40"
                   classes="btn-big btn-dark-brown"
                   text="Send"
-                  @click="submit"
+                  @click.native="submitForm"
                 />
+                {{ submitStatus }}
               </div>
             </form>
 
@@ -343,7 +344,7 @@
               </div>
               <div>
                 <strong>Validations</strong> <br />
-                name: {{ !$v.name.$invalid }}<br />
+                <!-- name: {{ !$v.name.$invalid }}<br />
                 phone: {{ !$v.phone.$invalid }}<br />
                 email: {{ !$v.email.$invalid }}<br />
                 adults: {{ !$v.adults.$invalid }} <br />
@@ -353,7 +354,7 @@
                 noDate: {{ !$v.noDate.$invalid }} <br />
                 daysDesired: {{ !$v.daysDesired.$invalid }} <br />
                 budgetPerPerson: {{ !$v.budgetPerPerson.$invalid }} <br />
-                countries: {{ !$v.countries.$invalid }} <br />
+                countries: {{ !$v.countries.$invalid }} <br /> -->
               </div>
             </div>
           </div>
@@ -377,6 +378,7 @@ export default {
   data() {
     return {
       continents: this.$store.getters['continents/continents'],
+      submitStatus: 'NOT YET',
       name: '',
       phone: '',
       email: '',
@@ -495,6 +497,19 @@ export default {
     clearDate() {
       this.startDate = null
       this.endDate = null
+    },
+    submitForm() {
+      console.log('submit!')
+      this.$v.$touch()
+      if (this.$v.$invalid) {
+        this.submitStatus = 'ERROR'
+      } else {
+        // do your submit logic here
+        this.submitStatus = 'PENDING'
+        setTimeout(() => {
+          this.submitStatus = 'OK'
+        }, 500)
+      }
     },
   },
 }
