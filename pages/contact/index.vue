@@ -206,12 +206,8 @@
               <!-- Desired Countries -->
               <div class="input-group">
                 <label>희망 여행 국가</label>
-                <div class="grid grid-cols-3 grid-rows-2 gap-y-2">
-                  <div
-                    v-for="(destination, i) in destinations"
-                    :key="i"
-                    class=""
-                  >
+                <div class="grid grid-cols-4 grid-rows-2 gap-y-2">
+                  <div v-for="(destination, i) in destinations" :key="i">
                     <label :for="destination.fields.name" class="check-group"
                       ><div class="check-box">
                         <Check
@@ -261,8 +257,53 @@
                   </div>
                 </div>
               </div>
-            </form>
 
+              <!-- Activities -->
+              <div class="input-group">
+                <label>희망 여행 활동 선택</label>
+                <div class="grid grid-cols-4 grid-rows-2 gap-y-2">
+                  <div v-for="activity in acitivtyOptions" :key="activity">
+                    <label :for="activity" class="check-group"
+                      ><div class="check-box">
+                        <Check
+                          v-if="activities.includes(activity)"
+                          class="check-mark"
+                        />
+                      </div>
+                      <div class="text-black text-lg">
+                        {{ activity }}
+                      </div></label
+                    ><input
+                      :id="activity"
+                      v-model="activities"
+                      :value="activity"
+                      type="checkbox"
+                      class="hidden"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Message -->
+              <div class="input-group">
+                <label for="message">사파리여행에서 희망하는 점</label>
+                <textarea
+                  id="message"
+                  v-model="message"
+                  class="h-64 border border-gray-lighter text-lg p-4"
+                  placeholder="최대한 자세하게 서술해주세요"
+                />
+              </div>
+
+              <div class="w-full flex justify-center">
+                <Button
+                  class="cursor-pointer w-32"
+                  classes="btn-big btn-dark-brown"
+                  text="Send"
+                />
+              </div>
+            </form>
+            <!-- 
             name: {{ name }} <br />
             phone: {{ phone }} <br />
             email: {{ email }} <br />
@@ -275,6 +316,8 @@
             budgetPerPerson: {{ budgetPerPerson }} <br />
             countries: {{ countries }} <br />
             experience: {{ experience }} <br />
+            activities: {{ activities }} <br />
+            message: {{ message }} <br /> -->
           </div>
         </div>
       </div>
@@ -299,11 +342,26 @@ export default {
       budgetPerPerson: '',
       countries: [],
       experience: null,
+      activities: [],
+      message: '',
       experienceOptions: [
         '해본 적이 있다',
         '지인 중 해본 사람이 있다',
         '개인적으로 리서치는 해보았다',
         '전혀 모른다',
+      ],
+      acitivtyOptions: [
+        '승마 사파리',
+        '워킹 사파리',
+        '야간 사파리',
+        '열기구 탑승',
+        '현지문화체험',
+        '와인 테이스팅',
+        '리버 크루즈',
+        '카누',
+        '헬리콥터 탑승',
+        '프라이빗 사파리',
+        '추천 요망',
       ],
       datePickerProps: {
         class:
