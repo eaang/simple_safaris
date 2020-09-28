@@ -56,7 +56,7 @@
         </div>
       </div>
       <div
-        class="right-navbar hidden lg:flex w-1/4 xl:w-1/3 justify-end text-white text-lg"
+        class="right-navbar hidden lg:flex w-64 xl:w-1/3 justify-end text-white text-lg"
       >
         <div
           class="space-x-2 hidden lg:flex lg:flex-col justify-center xl:hidden"
@@ -88,8 +88,6 @@
               <Phone class="h-6" />
             </div>
             <a class="tel-link tel-link-white" href="tel:07045170225"
-              >070-4517-0225</a
-            ><a class="tel-link tel-link-white" href="tel:07045170225"
               >070-4517-0225</a
             >
           </div>

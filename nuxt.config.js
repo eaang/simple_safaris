@@ -79,21 +79,14 @@ export default {
     },
   },
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [
-    '@/assets/sass/main.scss',
-    'vue2-animate/dist/vue2-animate.min.css',
-    'vue-select/src/scss/vue-select.scss',
-  ],
+  css: ['@/assets/sass/main.scss', 'vue2-animate/dist/vue2-animate.min.css'],
 
   tailwindcss: {
     configPath: './tailwind.config.js',
     exposeConfig: true,
   },
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [
-    { src: '~/plugins/vcalendar.js', mode: 'client' },
-    { src: '~/plugins/vselect.js', mode: 'client' },
-  ],
+  plugins: [{ src: '~/plugins/vcalendar.js', mode: 'client' }],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
