@@ -137,6 +137,7 @@
                       v-model="startDate"
                       color="gray"
                       :input-props="datePickerProps"
+                      :popover="{ visibility: 'click' }"
                     />
                   </div>
 
@@ -166,6 +167,7 @@
                     v-model="endDate"
                     color="gray"
                     :input-props="datePickerProps"
+                    :popover="{ visibility: 'click' }"
                   />
                 </div>
               </div>
