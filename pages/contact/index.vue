@@ -154,7 +154,7 @@
                         class="flex items-center space-x-2"
                         @click="clearDate"
                         ><div class="check-box">
-                          <Check v-if="noDate" class="text-brown" />
+                          <Check v-if="noDate" class="check-mark" />
                         </div>
                         <div class="text-gray-light text-lg">
                           여행일자 미정
@@ -216,6 +216,7 @@
                       ><div class="check-box">
                         <Check
                           v-if="countries.includes(destination.fields.name)"
+                          class="check-mark"
                         />
                       </div>
                       <div class="text-black text-lg">
@@ -354,6 +355,9 @@ label {
   }
   &-box {
     @apply h-6 w-6 bg-white text-brown border border-gray-lighter flex items-center justify-center;
+  }
+  &-mark {
+    @apply text-brown h-6;
   }
 }
 input[type='date'],
