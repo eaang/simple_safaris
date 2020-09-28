@@ -11,7 +11,7 @@
       <div class="w-5/6 sm:w-3/4 bg-white h-48 lg:h-40">
         <div class="relative w-full h-full flex flex-col justify-center">
           <div
-            class="flex flex-wrap justify-center gap-x-2 text-2xl sm:text-3xl xl:text-4xl italic p-4"
+            class="flex flex-wrap justify-center gap-x-2 text-xl sm:text-2xl md:text-3xl xl:text-4xl italic p-4"
           >
             <div class="text-center">“아침에 일어날때 한번도 불쾌한</div>
             <div class="text-center">마음이 들지 않았던 그곳...</div>
