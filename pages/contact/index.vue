@@ -99,14 +99,17 @@
 
             <!-- Planned Dates -->
             <div class="input-group">
-              <label>희망 인원 수</label>
+              <label>희망 여행 일자</label>
               <div class="grid grid-cols-2 grid-rows-1 gap-4">
                 <div class="flex flex-col space-y-2">
-                  <v-date-picker
-                    v-model="startDate"
-                    color="gray"
-                    :input-props="datePickerProps"
-                  />
+                  <div>
+                    <div class="small-label">출발</div>
+                    <v-date-picker
+                      v-model="startDate"
+                      color="gray"
+                      :input-props="datePickerProps"
+                    />
+                  </div>
 
                   <!-- Single check-group element -->
                   <div>
@@ -128,12 +131,14 @@
                     />
                   </div>
                 </div>
-
-                <v-date-picker
-                  v-model="endDate"
-                  color="gray"
-                  :input-props="datePickerProps"
-                />
+                <div>
+                  <div class="small-label">도착</div>
+                  <v-date-picker
+                    v-model="endDate"
+                    color="gray"
+                    :input-props="datePickerProps"
+                  />
+                </div>
               </div>
             </div>
 
@@ -164,92 +169,21 @@
             <!-- Desired Countries -->
             <div class="input-group">
               <label>희망 여행 국가</label>
-              <div class="grid grid-cols-5 grid-rows-1 gap-x-4 gap-y-2">
-                <!-- Botswana -->
-                <div>
-                  <label for="botswana" class="check-group"
+              <div class="grid grid-cols-3 grid-rows-2">
+                <div v-for="(destination, i) in destinations" :key="i" class="">
+                  <label :for="destination.fields.name" class="check-group"
                     ><div class="check-box">
-                      <Check v-if="countries.botswana" />
+                      <Check
+                        v-if="countries.includes(destination.fields.name)"
+                      />
                     </div>
-                    <div class="text-black text-lg">보츠와나</div></label
+                    <div class="text-black text-lg">
+                      {{ destination.fields.koreanName }}
+                    </div></label
                   ><input
-                    id="botswana"
-                    v-model="countries.botswana"
-                    type="checkbox"
-                    class="invisible"
-                  />
-                </div>
-
-                <!-- Kenya -->
-                <div>
-                  <label for="kenya" class="check-group"
-                    ><div class="check-box">
-                      <Check v-if="countries.kenya" />
-                    </div>
-                    <div class="text-black text-lg">케냐</div></label
-                  ><input
-                    id="kenya"
-                    v-model="countries.kenya"
-                    type="checkbox"
-                    class="invisible"
-                  />
-                </div>
-
-                <!-- Namibia -->
-                <div>
-                  <label for="namibia" class="check-group"
-                    ><div class="check-box">
-                      <Check v-if="countries.namibia" />
-                    </div>
-                    <div class="text-black text-lg">나미비아</div></label
-                  ><input
-                    id="namibia"
-                    v-model="countries.namibia"
-                    type="checkbox"
-                    class="invisible"
-                  />
-                </div>
-
-                <!-- South Africa -->
-                <div>
-                  <label for="southAfrica" class="check-group"
-                    ><div class="check-box">
-                      <Check v-if="countries.southAfrica" />
-                    </div>
-                    <div class="text-black text-lg">남아공</div></label
-                  ><input
-                    id="southAfrica"
-                    v-model="countries.southAfrica"
-                    type="checkbox"
-                    class="invisible"
-                  />
-                </div>
-
-                <!-- Tanzania -->
-                <div>
-                  <label for="tanzania" class="check-group"
-                    ><div class="check-box">
-                      <Check v-if="countries.tanzania" />
-                    </div>
-                    <div class="text-black text-lg">탄자니아</div></label
-                  ><input
-                    id="tanzania"
-                    v-model="countries.tanzania"
-                    type="checkbox"
-                    class="invisible"
-                  />
-                </div>
-
-                <!-- India -->
-                <div>
-                  <label for="india" class="check-group"
-                    ><div class="check-box">
-                      <Check v-if="countries.india" />
-                    </div>
-                    <div class="text-black text-lg">인도</div></label
-                  ><input
-                    id="india"
-                    v-model="countries.india"
+                    :id="destination.fields.name"
+                    v-model="countries"
+                    :value="destination.fields.name"
                     type="checkbox"
                     class="invisible"
                   />
@@ -279,6 +213,7 @@
 export default {
   data() {
     return {
+      continents: this.$store.getters['continents/continents'],
       name: '',
       phone: '',
       email: '',
@@ -289,14 +224,7 @@ export default {
       noDate: null,
       daysDesired: '',
       budgetPerPerson: '',
-      countries: {
-        botswana: null,
-        namibia: null,
-        kenya: null,
-        southAfrica: null,
-        tanzania: null,
-        india: null,
-      },
+      countries: [],
       datePickerProps: {
         class:
           'rounded-none w-full h-12 border border-gray-lighter text-lg px-4',
@@ -306,11 +234,22 @@ export default {
           background-position: right 0.5em top 50%, 0 0;
           background-size: 1em auto, 100%;`,
       },
-      OpenIndicator: {
-        render: (createElement) =>
-          createElement('span', { class: { toggle: true } }),
-      },
     }
+  },
+  computed: {
+    destinations() {
+      const destinations = []
+      const continents = []
+      this.continents.forEach((continent) => {
+        continents.push(continent)
+      })
+      continents.reverse().forEach((continent) => {
+        continent.fields.destinations.forEach((destination) => {
+          destinations.push(destination)
+        })
+      })
+      return destinations
+    },
   },
   watch: {
     startDate(newValue, oldValue) {
@@ -340,6 +279,9 @@ export default {
 label {
   @apply text-xl text-black;
 }
+.small-label {
+  @apply text-base text-black pb-2;
+}
 .check {
   &-group {
     @apply flex items-center gap-x-2;
@@ -349,7 +291,8 @@ label {
   }
 }
 input[type='date'],
-input[type='text'] {
+input[type='text'],
+v-select {
   @apply h-12 border border-gray-lighter text-lg px-4;
 }
 .toggle {
