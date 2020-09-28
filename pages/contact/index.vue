@@ -238,13 +238,26 @@
                 <label>사파리여행에 대한 이해도</label>
                 <div class="grid grid-cols-2 grid-rows-2 gap-y-2">
                   <div v-for="option in experienceOptions" :key="option">
+                    <label :for="option" class="flex items-center gap-x-2">
+                      <div
+                        class="rounded-full h-6 w-6 bg-white border border-gray-lighter flex items-center justify-center"
+                      >
+                        <div
+                          v-if="experience === option"
+                          class="rounded-full h-3 w-3 bg-brown"
+                        ></div>
+                      </div>
+                      <div class="text-black text-lg">
+                        {{ option }}
+                      </div></label
+                    >
                     <input
                       :id="option"
                       v-model="experience"
                       :value="option"
                       type="radio"
+                      class="hidden"
                     />
-                    <label :for="option">{{ option }}</label>
                   </div>
                 </div>
               </div>
@@ -354,7 +367,7 @@ label {
     @apply flex items-center gap-x-2;
   }
   &-box {
-    @apply h-6 w-6 bg-white text-brown border border-gray-lighter flex items-center justify-center;
+    @apply h-6 w-6 bg-white border border-gray-lighter flex items-center justify-center;
   }
   &-mark {
     @apply text-brown h-6;
