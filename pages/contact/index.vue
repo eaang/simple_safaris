@@ -323,40 +323,6 @@
                 {{ submitStatus }}
               </div>
             </form>
-
-            <div class="grid grid-cols-2">
-              <div>
-                <strong>Values</strong> <br />
-                name: {{ name }}<br />
-                phone: {{ phone }}<br />
-                email: {{ email }}<br />
-                adults: {{ adults }} <br />
-                children: {{ children }}<br />
-                startDate: {{ startDate }} <br />
-                endDate: {{ endDate }} | hasDates: {{ hasDates }}<br />
-                noDate: {{ noDate }} <br />
-                daysDesired: {{ daysDesired }} <br />
-                budgetPerPerson: {{ budgetPerPerson }} <br />
-                countries: {{ countries }} <br />
-                experience: {{ experience }} <br />
-                activities: {{ activities }} <br />
-                message: {{ message }} <br />
-              </div>
-              <div>
-                <strong>Validations</strong> <br />
-                <!-- name: {{ !$v.name.$invalid }}<br />
-                phone: {{ !$v.phone.$invalid }}<br />
-                email: {{ !$v.email.$invalid }}<br />
-                adults: {{ !$v.adults.$invalid }} <br />
-                children: {{ !$v.children.$invalid }}<br />
-                startDate: {{ !$v.startDate.$invalid }} <br />
-                endDate: {{ !$v.endDate.$invalid }} <br />
-                noDate: {{ !$v.noDate.$invalid }} <br />
-                daysDesired: {{ !$v.daysDesired.$invalid }} <br />
-                budgetPerPerson: {{ !$v.budgetPerPerson.$invalid }} <br />
-                countries: {{ !$v.countries.$invalid }} <br /> -->
-              </div>
-            </div>
           </div>
         </div>
       </div>
