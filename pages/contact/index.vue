@@ -156,7 +156,7 @@
                       id="no-date"
                       v-model="noDate"
                       type="checkbox"
-                      class="invisible"
+                      class="hidden"
                     />
                   </div>
                 </div>
@@ -198,7 +198,7 @@
             <!-- Desired Countries -->
             <div class="input-group">
               <label>희망 여행 국가</label>
-              <div class="grid grid-cols-3 grid-rows-2">
+              <div class="grid grid-cols-3 grid-rows-2 gap-y-2">
                 <div v-for="(destination, i) in destinations" :key="i" class="">
                   <label :for="destination.fields.name" class="check-group"
                     ><div class="check-box">
@@ -214,7 +214,7 @@
                     v-model="countries"
                     :value="destination.fields.name"
                     type="checkbox"
-                    class="invisible"
+                    class="hidden"
                   />
                 </div>
               </div>
