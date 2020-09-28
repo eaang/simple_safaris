@@ -38,222 +38,233 @@
     </div>
 
     <!-- Contact form here -->
-    <div class="contact-form container mx-auto">
-      <div class="bg-gray-lightest border-t-4 border-b-4 border-brown">
-        <div class="w-1/2 mx-auto py-16">
-          <form name="contact">
-            <!-- Name -->
-            <div class="input-group">
-              <label for="name">성함</label>
-              <input
-                id="name"
-                v-model.lazy="name"
-                type="text"
-                placeholder="홍길동"
-                required
-              />
-            </div>
+    <client-only>
+      <div class="contact-form container mx-auto">
+        <div class="bg-gray-lightest border-t-4 border-b-4 border-brown">
+          <div class="w-1/2 mx-auto py-16">
+            <form name="contact">
+              <!-- Name -->
+              <div class="input-group">
+                <label for="name">성함</label>
+                <input
+                  id="name"
+                  v-model.lazy="name"
+                  type="text"
+                  placeholder="홍길동"
+                  required
+                />
+              </div>
 
-            <!-- Phone -->
-            <div class="input-group">
-              <label for="phone">연락처</label>
-              <input
-                id="phone"
-                v-model="phone"
-                type="text"
-                placeholder="010-1234-5678"
-                required
-              />
-            </div>
+              <!-- Phone -->
+              <div class="input-group">
+                <label for="phone">연락처</label>
+                <input
+                  id="phone"
+                  v-model="phone"
+                  type="text"
+                  placeholder="010-1234-5678"
+                  required
+                />
+              </div>
 
-            <!-- Email -->
-            <div class="input-group">
-              <label for="email">이메일</label>
-              <input
-                id="email"
-                v-model="email"
-                type="text"
-                placeholder="이메일 주소 입력"
-                required
-              />
-            </div>
+              <!-- Email -->
+              <div class="input-group">
+                <label for="email">이메일</label>
+                <input
+                  id="email"
+                  v-model="email"
+                  type="text"
+                  placeholder="이메일 주소 입력"
+                  required
+                />
+              </div>
 
-            <!-- People going -->
-            <div class="input-group">
-              <label for="people">희망 인원 수</label>
-              <div class="grid grid-cols-2 grid-rows-1 gap-4">
-                <div>
-                  <label for="adults"
-                    ><div class="small-label">성인</div></label
-                  >
-                  <select id="adults" v-model="adults" required class="w-full">
-                    <option value="" selected disabled>-</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="4">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="children"
-                    ><div class="small-label">아동(13세 미만)</div></label
-                  >
-                  <select
-                    id="children"
-                    v-model="children"
-                    required
-                    class="w-full"
-                  >
+              <!-- People going -->
+              <div class="input-group">
+                <label for="people">희망 인원 수</label>
+                <div class="grid grid-cols-2 grid-rows-1 gap-4">
+                  <div>
+                    <label for="adults"
+                      ><div class="small-label">성인</div></label
                     >
-                    <option value="" selected disabled>-</option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="4">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                  </select>
+                    <select
+                      id="adults"
+                      v-model="adults"
+                      required
+                      class="w-full"
+                    >
+                      <option value="" selected disabled>-</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="4">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="children"
+                      ><div class="small-label">아동(13세 미만)</div></label
+                    >
+                    <select
+                      id="children"
+                      v-model="children"
+                      required
+                      class="w-full"
+                    >
+                      >
+                      <option value="" selected disabled>-</option>
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="4">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                    </select>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Planned Dates -->
-            <div class="input-group">
-              <label>희망 여행 일자</label>
-              <div class="grid grid-cols-2 grid-rows-1 gap-4">
-                <div class="flex flex-col space-y-2">
+              <!-- Planned Dates -->
+              <div class="input-group">
+                <label>희망 여행 일자</label>
+                <div class="grid grid-cols-2 grid-rows-1 gap-4">
+                  <div class="flex flex-col space-y-2">
+                    <div>
+                      <div class="small-label">출발</div>
+                      <v-date-picker
+                        v-model="startDate"
+                        color="gray"
+                        :input-props="datePickerProps"
+                        :popover="{ visibility: 'click' }"
+                      />
+                    </div>
+
+                    <!-- Single check-group element -->
+                    <div>
+                      <label
+                        for="no-date"
+                        class="flex items-center space-x-2"
+                        @click="clearDate"
+                        ><div class="check-box">
+                          <Check v-if="noDate" class="text-brown" />
+                        </div>
+                        <div class="text-gray-light text-lg">
+                          여행일자 미정
+                        </div></label
+                      ><input
+                        id="no-date"
+                        v-model="noDate"
+                        type="checkbox"
+                        class="hidden"
+                      />
+                    </div>
+                  </div>
                   <div>
-                    <div class="small-label">출발</div>
+                    <div class="small-label">도착</div>
                     <v-date-picker
-                      v-model="startDate"
+                      v-model="endDate"
                       color="gray"
                       :input-props="datePickerProps"
                       :popover="{ visibility: 'click' }"
                     />
                   </div>
+                </div>
+              </div>
 
-                  <!-- Single check-group element -->
-                  <div>
-                    <label
-                      for="no-date"
-                      class="flex items-center space-x-2"
-                      @click="clearDate"
+              <!-- Days and Budget -->
+              <div class="input-group">
+                <div class="grid grid-cols-2 grid-rows-1 gap-4">
+                  <div class="flex flex-col space-y-2">
+                    <label for="days">희망 인원 수</label>
+                    <select id="days" v-model="daysDesired" required>
+                      <option value="" selected disabled>-</option>
+                      <option value="<5">5 일 미만</option>
+                      <option value="6-10">6 ~ 10 일</option>
+                      <option value=">10">10 일 이상</option>
+                    </select>
+                  </div>
+                  <div class="flex flex-col space-y-2">
+                    <label for="budget">1인 여행 예산</label>
+                    <select id="budget" v-model="budgetPerPerson" required>
+                      <option value="" selected disabled>-</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desired Countries -->
+              <div class="input-group">
+                <label>희망 여행 국가</label>
+                <div class="grid grid-cols-3 grid-rows-2 gap-y-2">
+                  <div
+                    v-for="(destination, i) in destinations"
+                    :key="i"
+                    class=""
+                  >
+                    <label :for="destination.fields.name" class="check-group"
                       ><div class="check-box">
-                        <Check v-if="noDate" class="text-brown" />
+                        <Check
+                          v-if="countries.includes(destination.fields.name)"
+                        />
                       </div>
-                      <div class="text-gray-light text-lg">
-                        여행일자 미정
+                      <div class="text-black text-lg">
+                        {{ destination.fields.koreanName }}
                       </div></label
                     ><input
-                      id="no-date"
-                      v-model="noDate"
+                      :id="destination.fields.name"
+                      v-model="countries"
+                      :value="destination.fields.name"
                       type="checkbox"
                       class="hidden"
                     />
                   </div>
                 </div>
-                <div>
-                  <div class="small-label">도착</div>
-                  <v-date-picker
-                    v-model="endDate"
-                    color="gray"
-                    :input-props="datePickerProps"
-                    :popover="{ visibility: 'click' }"
-                  />
+              </div>
+
+              <!-- Prev experience -->
+              <div class="input-group">
+                <label>사파리여행에 대한 이해도</label>
+                <div class="grid grid-cols-2 grid-rows-2 gap-y-2">
+                  <div v-for="option in experienceOptions" :key="option">
+                    <input
+                      :id="option"
+                      v-model="experience"
+                      :value="option"
+                      type="radio"
+                    />
+                    <label :for="option">{{ option }}</label>
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
 
-            <!-- Days and Budget -->
-            <div class="input-group">
-              <div class="grid grid-cols-2 grid-rows-1 gap-4">
-                <div class="flex flex-col space-y-2">
-                  <label for="days">희망 인원 수</label>
-                  <select id="days" v-model="daysDesired" required>
-                    <option value="" selected disabled>-</option>
-                    <option value="<5">5 일 미만</option>
-                    <option value="6-10">6 ~ 10 일</option>
-                    <option value=">10">10 일 이상</option>
-                  </select>
-                </div>
-                <div class="flex flex-col space-y-2">
-                  <label for="budget">1인 여행 예산</label>
-                  <select id="budget" v-model="budgetPerPerson" required>
-                    <option value="" selected disabled>-</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <!-- Desired Countries -->
-            <div class="input-group">
-              <label>희망 여행 국가</label>
-              <div class="grid grid-cols-3 grid-rows-2 gap-y-2">
-                <div v-for="(destination, i) in destinations" :key="i" class="">
-                  <label :for="destination.fields.name" class="check-group"
-                    ><div class="check-box">
-                      <Check
-                        v-if="countries.includes(destination.fields.name)"
-                      />
-                    </div>
-                    <div class="text-black text-lg">
-                      {{ destination.fields.koreanName }}
-                    </div></label
-                  ><input
-                    :id="destination.fields.name"
-                    v-model="countries"
-                    :value="destination.fields.name"
-                    type="checkbox"
-                    class="hidden"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <!-- Prev experience -->
-            <div class="input-group">
-              <label>사파리여행에 대한 이해도</label>
-              <div class="grid grid-cols-2 grid-rows-2 gap-y-2">
-                <div v-for="option in experienceOptions" :key="option">
-                  <input
-                    :id="option"
-                    v-model="experience"
-                    :value="option"
-                    type="radio"
-                  />
-                  <label :for="option">{{ option }}</label>
-                </div>
-              </div>
-            </div>
-          </form>
-
-          name: {{ name }} <br />
-          phone: {{ phone }} <br />
-          email: {{ email }} <br />
-          adults: {{ adults }} <br />
-          children: {{ children }} <br />
-          startDate: {{ startDate }} <br />
-          endDate: {{ endDate }} <br />
-          noDate: {{ noDate }} <br />
-          daysDesired: {{ daysDesired }} <br />
-          budgetPerPerson: {{ budgetPerPerson }} <br />
-          countries: {{ countries }} <br />
-          experience: {{ experience }} <br />
+            name: {{ name }} <br />
+            phone: {{ phone }} <br />
+            email: {{ email }} <br />
+            adults: {{ adults }} <br />
+            children: {{ children }} <br />
+            startDate: {{ startDate }} <br />
+            endDate: {{ endDate }} <br />
+            noDate: {{ noDate }} <br />
+            daysDesired: {{ daysDesired }} <br />
+            budgetPerPerson: {{ budgetPerPerson }} <br />
+            countries: {{ countries }} <br />
+            experience: {{ experience }} <br />
+          </div>
         </div>
       </div>
-    </div>
+    </client-only>
   </div>
 </template>
 
