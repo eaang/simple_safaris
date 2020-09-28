@@ -94,15 +94,15 @@
                       class="w-full"
                     >
                       <option value="" selected disabled>-</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="4">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
+                      <option :value="1">1</option>
+                      <option :value="2">2</option>
+                      <option :value="3">3</option>
+                      <option :value="4">4</option>
+                      <option :value="4">5</option>
+                      <option :value="6">6</option>
+                      <option :value="7">7</option>
+                      <option :value="8">8</option>
+                      <option :value="9">9</option>
                     </select>
                   </div>
                   <div>
@@ -117,16 +117,16 @@
                     >
                       >
                       <option value="" selected disabled>-</option>
-                      <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="4">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
+                      <option :value="0">0</option>
+                      <option :value="1">1</option>
+                      <option :value="2">2</option>
+                      <option :value="3">3</option>
+                      <option :value="4">4</option>
+                      <option :value="4">5</option>
+                      <option :value="6">6</option>
+                      <option :value="7">7</option>
+                      <option :value="8">8</option>
+                      <option :value="9">9</option>
                     </select>
                   </div>
                 </div>
@@ -303,21 +303,43 @@
                 />
               </div>
             </form>
-            <!-- 
-            name: {{ name }} <br />
-            phone: {{ phone }} <br />
-            email: {{ email }} <br />
-            adults: {{ adults }} <br />
-            children: {{ children }} <br />
-            startDate: {{ startDate }} <br />
-            endDate: {{ endDate }} <br />
-            noDate: {{ noDate }} <br />
-            daysDesired: {{ daysDesired }} <br />
-            budgetPerPerson: {{ budgetPerPerson }} <br />
-            countries: {{ countries }} <br />
-            experience: {{ experience }} <br />
-            activities: {{ activities }} <br />
-            message: {{ message }} <br /> -->
+
+            <div class="grid grid-cols-2">
+              <div>
+                <strong>Values</strong> <br />
+                name: {{ name }}<br />
+                phone: {{ phone }}<br />
+                email: {{ email }}<br />
+                adults: {{ adults }} <br />
+                children: {{ children }}<br />
+                startDate: {{ startDate }} <br />
+                endDate: {{ endDate }} <br />
+                noDate: {{ noDate }} <br />
+                daysDesired: {{ daysDesired }} <br />
+                budgetPerPerson: {{ budgetPerPerson }} <br />
+                countries: {{ countries }} <br />
+                experience: {{ experience }} <br />
+                activities: {{ activities }} <br />
+                message: {{ message }} <br />
+              </div>
+              <div>
+                <strong>Validations</strong> <br />
+                name: {{ !$v.name.$invalid }}<br />
+                phone: {{ !$v.phone.$invalid }}<br />
+                email: {{ !$v.email.$invalid }}<br />
+                adults: {{ !$v.adults.$invalid }} <br />
+                children: {{ !$v.children.$invalid }}<br />
+                startDate: {{ startDate }} <br />
+                endDate: {{ endDate }} <br />
+                noDate: {{ noDate }} <br />
+                daysDesired: {{ daysDesired }} <br />
+                budgetPerPerson: {{ budgetPerPerson }} <br />
+                countries: {{ countries }} <br />
+                experience: {{ experience }} <br />
+                activities: {{ activities }} <br />
+                message: {{ message }} <br />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -326,6 +348,14 @@
 </template>
 
 <script>
+import {
+  required,
+  email,
+  minLength,
+  maxLength,
+  integer,
+} from 'vuelidate/lib/validators'
+
 export default {
   data() {
     return {
@@ -337,7 +367,7 @@ export default {
       children: '',
       startDate: null,
       endDate: null,
-      noDate: null,
+      noDate: false,
       daysDesired: '',
       budgetPerPerson: '',
       countries: [],
@@ -374,6 +404,28 @@ export default {
       },
     }
   },
+  validations: {
+    name: {
+      required,
+    },
+    phone: {
+      required,
+      minLength: minLength(6),
+      maxLength: maxLength(15),
+    },
+    email: {
+      required,
+      email,
+    },
+    adults: {
+      required,
+      integer,
+    },
+    children: {
+      required,
+      integer,
+    },
+  },
   computed: {
     destinations() {
       const destinations = []
@@ -392,12 +444,12 @@ export default {
   watch: {
     startDate(newValue, oldValue) {
       if (newValue) {
-        this.noDate = null
+        this.noDate = false
       }
     },
     endDate(newValue, oldValue) {
       if (newValue) {
-        this.noDate = null
+        this.noDate = false
       }
     },
   },
