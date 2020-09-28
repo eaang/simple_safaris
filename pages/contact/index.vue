@@ -297,7 +297,7 @@
 
               <div class="w-full flex justify-center">
                 <Button
-                  class="cursor-pointer w-32"
+                  class="cursor-pointer w-40"
                   classes="btn-big btn-dark-brown"
                   text="Send"
                 />
