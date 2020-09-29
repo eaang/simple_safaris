@@ -88,7 +88,7 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     { src: '~/plugins/vcalendar.js', mode: 'client' },
-    { src: '~/plugins/vuelidate.js', mode: 'client' },
+    '~/plugins/vuelidate.js',
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

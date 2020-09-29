@@ -39,7 +39,7 @@
 
     <!-- Contact form here -->
     <client-only>
-      <div class="contact-form container mx-auto">
+      <div id="formStart" class="contact-form container mx-auto">
         <div class="bg-gray-lightest border-t-4 border-b-4 border-brown">
           <div class="w-1/2 mx-auto py-16">
             <form name="contact">
@@ -50,11 +50,16 @@
                 >
                 <input
                   id="name"
-                  v-model.lazy="name"
+                  v-model.trim="name"
                   type="text"
                   placeholder="홍길동"
-                  required
+                  class="form__input"
                 />
+                <div v-if="$v.name.$dirty">
+                  <div v-if="!$v.name.required" class="error">
+                    This field is required.
+                  </div>
+                </div>
               </div>
 
               <!-- Phone -->
@@ -64,11 +69,15 @@
                 >
                 <input
                   id="phone"
-                  v-model="phone"
+                  v-model.trim="phone"
                   type="text"
                   placeholder="010-1234-5678"
-                  required
                 />
+                <div v-if="$v.phone.$dirty">
+                  <div v-if="!$v.phone.required" class="error">
+                    This field is required.
+                  </div>
+                </div>
               </div>
 
               <!-- Email -->
@@ -78,11 +87,18 @@
                 >
                 <input
                   id="email"
-                  v-model="email"
+                  v-model.trim="email"
                   type="text"
                   placeholder="이메일 주소 입력"
-                  required
                 />
+                <div v-if="$v.email.$dirty">
+                  <div v-if="!$v.email.required" class="error">
+                    This field is required.
+                  </div>
+                  <div v-if="!$v.email.email" class="error">
+                    잘못된 주소입니다. 다시 입력해주세요.
+                  </div>
+                </div>
               </div>
 
               <!-- People going -->
@@ -112,6 +128,11 @@
                       <option :value="8">8</option>
                       <option :value="9">9</option>
                     </select>
+                    <div v-if="$v.adults.$dirty">
+                      <div v-if="!$v.adults.required" class="error">
+                        This field is required.
+                      </div>
+                    </div>
                   </div>
                   <div>
                     <label for="children"
@@ -136,6 +157,11 @@
                       <option :value="8">8</option>
                       <option :value="9">9</option>
                     </select>
+                    <div v-if="$v.children.$dirty">
+                      <div v-if="!$v.children.required" class="error">
+                        This field is required.
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -143,10 +169,11 @@
               <!-- Planned Dates -->
               <div class="input-group">
                 <label
-                  ><span class="asterisk">&lowast;</span>희망 여행 일자</label
-                >
-                <div class="grid grid-cols-2 grid-rows-1 gap-4">
-                  <div class="flex flex-col space-y-2">
+                  ><span class="asterisk">&lowast;</span>희망 여행 일자
+                </label>
+
+                <div class="grid grid-cols-2 grid-rows-1 gap-x-4">
+                  <div class="flex flex-col">
                     <div>
                       <div class="small-label">출발</div>
                       <v-date-picker
@@ -158,10 +185,10 @@
                     </div>
 
                     <!-- Single check-group element -->
-                    <div>
+                    <div class="h-10">
                       <label
                         for="no-date"
-                        class="flex items-center space-x-2"
+                        class="flex items-center mt-2 space-x-2"
                         @click="clearDate"
                         ><div class="check-box">
                           <Check v-if="noDate" class="check-mark" />
@@ -187,12 +214,20 @@
                     />
                   </div>
                 </div>
+                <div v-if="$v.startDate.$dirty">
+                  <div v-if="!noDate && !$v.startDate.required" class="error">
+                    Please choose an option.
+                  </div>
+                  <div v-if="!noDate && !$v.endDate.required" class="error">
+                    Please choose an option.
+                  </div>
+                </div>
               </div>
 
               <!-- Days and Budget -->
               <div class="input-group">
                 <div class="grid grid-cols-2 grid-rows-1 gap-4">
-                  <div class="flex flex-col space-y-2">
+                  <div class="flex flex-col">
                     <label for="days"
                       ><span class="asterisk">&lowast;</span>희망 여행
                       일수</label
@@ -203,8 +238,13 @@
                       <option value="6-10">6 ~ 10 일</option>
                       <option value=">10">10 일 이상</option>
                     </select>
+                    <div v-if="$v.daysDesired.$dirty">
+                      <div v-if="!$v.daysDesired.required" class="error">
+                        This field is required.
+                      </div>
+                    </div>
                   </div>
-                  <div class="flex flex-col space-y-2">
+                  <div class="flex flex-col">
                     <label for="budget"
                       ><span class="asterisk">&lowast;</span>1인 여행
                       예산</label
@@ -215,6 +255,11 @@
                       <option value="2">Option 2</option>
                       <option value="3">Option 3</option>
                     </select>
+                    <div v-if="$v.budgetPerPerson.$dirty">
+                      <div v-if="!$v.budgetPerPerson.required" class="error">
+                        This field is required.
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -243,6 +288,11 @@
                       type="checkbox"
                       class="hidden"
                     />
+                  </div>
+                </div>
+                <div v-if="$v.countries.$dirty">
+                  <div v-if="!$v.countries.required" class="error">
+                    This field is required.
                   </div>
                 </div>
               </div>
@@ -484,11 +534,14 @@ export default {
 .asterisk {
   @apply text-red-500 pr-1;
 }
+.error {
+  @apply text-red-500 text-sm absolute;
+}
 .input-group {
-  @apply gap-y-2 mb-8 flex flex-col;
+  @apply mb-12 flex flex-col;
 }
 label {
-  @apply text-xl text-black;
+  @apply mb-2 text-xl text-black;
 }
 .small-label {
   @apply text-base text-black pb-2;
