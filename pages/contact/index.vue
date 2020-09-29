@@ -175,7 +175,45 @@
                 <div class="grid grid-cols-2 grid-rows-1 gap-x-4">
                   <div class="flex flex-col">
                     <div>
-                      <div class="small-label">출발</div>
+                      <div class="flex">
+                        <div class="small-label">출발</div>
+                        <div
+                          v-if="$v.startDate.$dirty"
+                          class="ml-2"
+                          style="margin-top: 0.2rem"
+                        >
+                          <div
+                            v-if="
+                              !noDate &&
+                              !$v.startDate.required &&
+                              !$v.endDate.required
+                            "
+                            class="error"
+                          >
+                            Please choose an option.
+                          </div>
+                          <div
+                            v-if="
+                              !noDate &&
+                              !$v.startDate.required &&
+                              $v.endDate.required
+                            "
+                            class="error"
+                          >
+                            Please enter a date.
+                          </div>
+                          <div
+                            v-if="
+                              !noDate &&
+                              $v.startDate.required &&
+                              !$v.startDate.afterToday
+                            "
+                            class="error"
+                          >
+                            Please pick a date in the future.
+                          </div>
+                        </div>
+                      </div>
                       <v-date-picker
                         v-model="startDate"
                         color="gray"
@@ -205,21 +243,41 @@
                     </div>
                   </div>
                   <div>
-                    <div class="small-label">도착</div>
+                    <div class="flex">
+                      <div class="small-label">도착</div>
+                      <div
+                        v-if="$v.endDate.$dirty"
+                        class="ml-2"
+                        style="margin-top: 0.2rem"
+                      >
+                        <div
+                          v-if="
+                            !noDate &&
+                            !$v.endDate.required &&
+                            $v.startDate.required
+                          "
+                          class="error"
+                        >
+                          Please enter a date.
+                        </div>
+                        <div
+                          v-if="
+                            !noDate &&
+                            $v.endDate.required &&
+                            !$v.endDate.afterToday
+                          "
+                          class="error"
+                        >
+                          Please pick a date in the future.
+                        </div>
+                      </div>
+                    </div>
                     <v-date-picker
                       v-model="endDate"
                       color="gray"
                       :input-props="datePickerProps"
                       :popover="{ visibility: 'click' }"
                     />
-                  </div>
-                </div>
-                <div v-if="$v.startDate.$dirty">
-                  <div v-if="!noDate && !$v.startDate.required" class="error">
-                    Please choose an option.
-                  </div>
-                  <div v-if="!noDate && !$v.endDate.required" class="error">
-                    Please choose an option.
                   </div>
                 </div>
               </div>
@@ -390,6 +448,14 @@ import {
   integer,
 } from 'vuelidate/lib/validators'
 
+// Custom validators
+const afterToday = (value) => {
+  return value > new Date()
+}
+const afterStart = (value) => {
+  return value > this.startDate
+}
+
 export default {
   data() {
     return {
@@ -462,9 +528,12 @@ export default {
     },
     startDate: {
       required: requiredUnless('noDate'),
+      afterToday,
     },
     endDate: {
       required: requiredUnless('noDate'),
+      afterToday,
+      afterStart,
     },
     noDate: {
       required: requiredUnless('hasDates'),
@@ -517,6 +586,10 @@ export default {
     submitForm() {
       this.$v.$touch()
       if (this.$v.$invalid) {
+        const element = document.getElementById('formStart')
+        element.scrollIntoView({
+          behavior: 'smooth',
+        })
         this.submitStatus = 'ERROR'
       } else {
         // do your submit logic here
