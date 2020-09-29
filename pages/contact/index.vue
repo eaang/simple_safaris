@@ -215,6 +215,7 @@
                         </div>
                       </div>
                       <v-date-picker
+                        id="startDate"
                         v-model="startDate"
                         color="gray"
                         :input-props="datePickerProps"
@@ -452,9 +453,6 @@ import {
 const afterToday = (value) => {
   return value > new Date()
 }
-const afterStart = (value) => {
-  return value > this.startDate
-}
 
 export default {
   data() {
@@ -533,7 +531,6 @@ export default {
     endDate: {
       required: requiredUnless('noDate'),
       afterToday,
-      afterStart,
     },
     noDate: {
       required: requiredUnless('hasDates'),
@@ -583,7 +580,7 @@ export default {
       this.startDate = null
       this.endDate = null
     },
-    submitForm() {
+    async submitForm() {
       this.$v.$touch()
       if (this.$v.$invalid) {
         const element = document.getElementById('formStart')
@@ -593,6 +590,27 @@ export default {
         this.submitStatus = 'ERROR'
       } else {
         // do your submit logic here
+        await this.$axios
+          .$post('https://submit-form.com/W4-mSjCB0qtuHU8GOc9dG', {
+            name: this.name,
+            phone: this.phone,
+            email: this.email,
+            adults: this.adults,
+            children: this.children,
+            startDate: this.startDate,
+            endDate: this.endDate,
+            noDate: this.noDate,
+            daysDesired: this.daysDesired,
+            budgetPerPerson: this.budgetPerPerson,
+            countries: this.countries,
+            experience: this.experience,
+            activities: this.activities,
+            message: this.message,
+          })
+          .then((res) => {
+            console.log('form is submitted!')
+            console.log(res)
+          })
         this.submitStatus = 'PENDING'
         setTimeout(() => {
           this.submitStatus = 'OK'
