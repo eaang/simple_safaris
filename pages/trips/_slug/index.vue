@@ -72,7 +72,7 @@
 
     <!-- Map -->
     <div class="section container mx-auto space-y-8">
-      <Map class="" />
+      <Map :center="tripMapCenter" :places="tripMapPoints" :zoom="6" />
       <div class="w-full flex justify-center">
         <div
           class="text-center text-gray text-sm md:text-base lg:text-lg w-4/5"
@@ -94,14 +94,29 @@ export default {
   async fetch({ store, params }) {
     await store.dispatch('tripIdea/getTripIdeaBySlug', params.slug)
   },
-  async asyncData({ store, params }) {
+  async asyncData({ store, params, $axios }) {
     await store.dispatch('tripIdea/getTripIdeaBySlug', params.slug)
     const thisTrip = store.getters['tripIdea/tripIdea']
+    const thisMap = thisTrip.fields.map
+    const thisMapPoints = thisTrip.fields.mapPoints
+    const mapPoints = []
+    thisMapPoints.forEach((point) => {
+      mapPoints.push({
+        name: point.fields.locationName,
+        longitude: parseFloat(point.fields.longitude),
+        latitude: parseFloat(point.fields.latitude),
+      })
+    })
     return {
       tripIdea: thisTrip,
       tripName: thisTrip.fields.name,
       tripPics: thisTrip.fields.headerImages,
       tripDescription: thisTrip.fields.description.content[0].content[0].value,
+      tripMapCenter: [
+        parseFloat(thisMap.fields.mapCentreLongitude),
+        parseFloat(thisMap.fields.mapCentreLatitude),
+      ],
+      tripMapPoints: mapPoints,
     }
   },
   data() {

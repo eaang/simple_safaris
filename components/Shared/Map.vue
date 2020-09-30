@@ -26,6 +26,10 @@ export default {
         { name: 'South Africa', longitude: 22.937506, latitude: -30.559483 },
       ],
     },
+    zoom: {
+      type: Number,
+      default: 2.5,
+    },
   },
   computed: {
     locationData() {
@@ -59,7 +63,7 @@ export default {
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v10',
         center: this.center,
-        zoom: 2.5,
+        zoom: this.zoom,
       })
 
       locations.features.forEach(function (marker) {
