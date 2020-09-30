@@ -1,14 +1,19 @@
 <template>
   <div class="relative">
     <agile :options="carouselOptions" class="mx-8 px-2 md:px-12">
-      <div
-        v-for="(group, i) in gallery"
-        :key="i"
-        class="slide px-1 space-y-2 md:px-2 md:space-y-4"
-      >
-        <img :src="group[0]" />
-        <img v-if="group[1]" :src="group[1]" />
-        <img v-else src="/transparent-square.png" />
+      <div v-for="(group, i) in gallery" :key="i" class="slide">
+        <div
+          class="grid grid-rows-2 grid-cols-1 gap-y-2 px-1 md:gap-y-4 md:px-2"
+        >
+          <a :href="group[0].link" target="blank">
+            <img :src="group[0].src" />
+          </a>
+
+          <a v-if="group[1]" :href="group[1].link" target="blank">
+            <img :src="group[1].src" />
+          </a>
+          <img v-else src="/transparent-square.png" />
+        </div>
       </div>
       <template slot="prevButton"
         ><div class="absolute inset-y-0 left-0 -ml-6 flex items-center">
@@ -76,4 +81,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.square {
+  @apply h-56 w-56;
+}
+</style>

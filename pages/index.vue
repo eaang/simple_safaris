@@ -157,19 +157,54 @@ export default {
       whiteNavbarStatus: false,
       sidenavStatus: false,
       gallery: [
-        'https://picsum.photos/300/300?random=1',
-        'https://picsum.photos/300/300?random=2',
-        'https://picsum.photos/300/300?random=3',
-        'https://picsum.photos/300/300?random=4',
-        'https://picsum.photos/300/300?random=5',
-        'https://picsum.photos/300/300?random=6',
-        'https://picsum.photos/300/300?random=7',
-        'https://picsum.photos/300/300?random=8',
-        'https://picsum.photos/300/300?random=9',
-        'https://picsum.photos/300/300?random=10',
-        'https://picsum.photos/300/300?random=11',
-        'https://picsum.photos/300/300?random=12',
-        'https://picsum.photos/300/300?random=13',
+        {
+          src: '/instagram/Image 1.jpg',
+          link: 'https://www.instagram.com/p/B8q9_wlJgAk/',
+        },
+        {
+          src: '/instagram/Image 2.jpg',
+          link: 'https://www.instagram.com/p/B8jDOdCJNru/',
+        },
+        {
+          src: '/instagram/Image 3.jpg',
+          link: 'https://www.instagram.com/p/B8gWo_UJMV8/',
+        },
+        {
+          src: '/instagram/Image 4.jpg',
+          link: 'https://www.instagram.com/p/B8a6lECguix/',
+        },
+        {
+          src: '/instagram/Image 5.jpg',
+          link: 'https://www.instagram.com/p/B8Q41BkAKIx/',
+        },
+        {
+          src: '/instagram/Image 6.jpg',
+          link: 'https://www.instagram.com/p/B8JHXMQpLJV/',
+        },
+        {
+          src: '/instagram/Image 7.jpg',
+          link: 'https://www.instagram.com/p/B8BES4xJT_F/',
+        },
+        {
+          src: '/instagram/Image 8.jpg',
+          link: 'https://www.instagram.com/p/B772K3Ypypn/',
+        },
+        {
+          src: '/instagram/Image 9.jpg',
+          link: 'https://www.instagram.com/p/B75lcUIJWBF/',
+        },
+        {
+          src: '/instagram/Image 10.jpg',
+          link: 'https://www.instagram.com/p/B70eg6ap1p6/',
+        },
+        {
+          src: '/instagram/Image 11.jpg',
+          link: 'https://www.instagram.com/p/B7s5ThtpgYY/',
+        },
+        {
+          src: '/instagram/Image 12.jpg',
+          link: 'https://www.instagram.com/p/B7Vex7XAvgJ/',
+        },
       ],
       blogposts: [
         {

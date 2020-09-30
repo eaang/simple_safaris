@@ -39,49 +39,79 @@
 
     <!-- Contact form here -->
     <client-only>
-      <div class="contact-form container mx-auto">
+      <div id="formStart" class="contact-form container mx-auto">
         <div class="bg-gray-lightest border-t-4 border-b-4 border-brown">
-          <div class="w-1/2 mx-auto py-16">
+          <div class="w-4/5 lg:w-3/5 xl:w-1/2 mx-auto py-16">
             <form name="contact">
               <!-- Name -->
               <div class="input-group">
-                <label for="name">성함</label>
+                <label for="name"
+                  ><span class="asterisk">&lowast;</span>성함</label
+                >
                 <input
                   id="name"
-                  v-model.lazy="name"
+                  v-model.trim="name"
                   type="text"
                   placeholder="홍길동"
-                  required
+                  class="form__input"
                 />
+                <div v-if="$v.name.$dirty">
+                  <div v-if="!$v.name.required" class="error">
+                    This field is required.
+                  </div>
+                </div>
               </div>
 
               <!-- Phone -->
               <div class="input-group">
-                <label for="phone">연락처</label>
+                <label for="phone"
+                  ><span class="asterisk">&lowast;</span>연락처</label
+                >
                 <input
                   id="phone"
-                  v-model="phone"
+                  v-model.trim="phone"
                   type="text"
                   placeholder="010-1234-5678"
-                  required
                 />
+                <div v-if="$v.phone.$dirty">
+                  <div v-if="!$v.phone.required" class="error">
+                    This field is required.
+                  </div>
+                  <div v-if="!$v.phone.minLength" class="error">
+                    Your phone number is too short.
+                  </div>
+                  <div v-if="!$v.phone.maxLength" class="error">
+                    Your phone number is too long.
+                  </div>
+                </div>
               </div>
 
               <!-- Email -->
               <div class="input-group">
-                <label for="email">이메일</label>
+                <label for="email"
+                  ><span class="asterisk">&lowast;</span>이메일</label
+                >
                 <input
                   id="email"
-                  v-model="email"
+                  v-model.trim="email"
                   type="text"
                   placeholder="이메일 주소 입력"
-                  required
                 />
+                <div v-if="$v.email.$dirty">
+                  <div v-if="!$v.email.required" class="error">
+                    This field is required.
+                  </div>
+                  <div v-if="!$v.email.email" class="error">
+                    잘못된 주소입니다. 다시 입력해주세요.
+                  </div>
+                </div>
               </div>
 
               <!-- People going -->
               <div class="input-group">
-                <label for="people">희망 인원 수</label>
+                <label for="people"
+                  ><span class="asterisk">&lowast;</span>희망 인원 수</label
+                >
                 <div class="grid grid-cols-2 grid-rows-1 gap-4">
                   <div>
                     <label for="adults"
@@ -94,16 +124,21 @@
                       class="w-full"
                     >
                       <option value="" selected disabled>-</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="4">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
+                      <option :value="1">1</option>
+                      <option :value="2">2</option>
+                      <option :value="3">3</option>
+                      <option :value="4">4</option>
+                      <option :value="4">5</option>
+                      <option :value="6">6</option>
+                      <option :value="7">7</option>
+                      <option :value="8">8</option>
+                      <option :value="9">9</option>
                     </select>
+                    <div v-if="$v.adults.$dirty">
+                      <div v-if="!$v.adults.required" class="error">
+                        This field is required.
+                      </div>
+                    </div>
                   </div>
                   <div>
                     <label for="children"
@@ -117,29 +152,57 @@
                     >
                       >
                       <option value="" selected disabled>-</option>
-                      <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="4">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
+                      <option :value="0">0</option>
+                      <option :value="1">1</option>
+                      <option :value="2">2</option>
+                      <option :value="3">3</option>
+                      <option :value="4">4</option>
+                      <option :value="4">5</option>
+                      <option :value="6">6</option>
+                      <option :value="7">7</option>
+                      <option :value="8">8</option>
+                      <option :value="9">9</option>
                     </select>
+                    <div v-if="$v.children.$dirty">
+                      <div v-if="!$v.children.required" class="error">
+                        This field is required.
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <!-- Planned Dates -->
               <div class="input-group">
-                <label>희망 여행 일자</label>
-                <div class="grid grid-cols-2 grid-rows-1 gap-4">
-                  <div class="flex flex-col space-y-2">
+                <label
+                  ><span class="asterisk">&lowast;</span>희망 여행 일자
+                </label>
+
+                <div class="grid grid-cols-2 grid-rows-1 gap-x-4">
+                  <div class="flex flex-col">
                     <div>
-                      <div class="small-label">출발</div>
+                      <div class="flex">
+                        <div class="small-label">출발</div>
+                        <div
+                          v-if="$v.startDate.$dirty"
+                          class="ml-2"
+                          style="margin-top: 0.2rem"
+                        >
+                          <div v-if="!$v.startDate.required" class="error">
+                            Please enter a date.
+                          </div>
+                          <div
+                            v-if="
+                              $v.startDate.required && !$v.startDate.afterToday
+                            "
+                            class="error"
+                          >
+                            Please enter a future date.
+                          </div>
+                        </div>
+                      </div>
                       <v-date-picker
+                        id="startDate"
                         v-model="startDate"
                         color="gray"
                         :input-props="datePickerProps"
@@ -148,10 +211,10 @@
                     </div>
 
                     <!-- Single check-group element -->
-                    <div>
+                    <div class="h-10">
                       <label
                         for="no-date"
-                        class="flex items-center space-x-2"
+                        class="flex items-center mt-2 space-x-2"
                         @click="clearDate"
                         ><div class="check-box">
                           <Check v-if="noDate" class="check-mark" />
@@ -163,12 +226,29 @@
                         id="no-date"
                         v-model="noDate"
                         type="checkbox"
-                        class="hidden"
+                        class="invisible"
                       />
                     </div>
                   </div>
                   <div>
-                    <div class="small-label">도착</div>
+                    <div class="flex">
+                      <div class="small-label">도착</div>
+                      <div
+                        v-if="$v.endDate.$dirty"
+                        class="ml-2"
+                        style="margin-top: 0.2rem"
+                      >
+                        <div v-if="!$v.endDate.required" class="error">
+                          Please enter a date.
+                        </div>
+                        <div
+                          v-if="$v.endDate.required && !$v.endDate.afterToday"
+                          class="error"
+                        >
+                          Please enter a future date.
+                        </div>
+                      </div>
+                    </div>
                     <v-date-picker
                       v-model="endDate"
                       color="gray"
@@ -182,31 +262,49 @@
               <!-- Days and Budget -->
               <div class="input-group">
                 <div class="grid grid-cols-2 grid-rows-1 gap-4">
-                  <div class="flex flex-col space-y-2">
-                    <label for="days">희망 인원 수</label>
+                  <div class="flex flex-col">
+                    <label for="days"
+                      ><span class="asterisk">&lowast;</span>희망 여행
+                      일수</label
+                    >
                     <select id="days" v-model="daysDesired" required>
                       <option value="" selected disabled>-</option>
                       <option value="<5">5 일 미만</option>
                       <option value="6-10">6 ~ 10 일</option>
                       <option value=">10">10 일 이상</option>
                     </select>
+                    <div v-if="$v.daysDesired.$dirty">
+                      <div v-if="!$v.daysDesired.required" class="error">
+                        This field is required.
+                      </div>
+                    </div>
                   </div>
-                  <div class="flex flex-col space-y-2">
-                    <label for="budget">1인 여행 예산</label>
+                  <div class="flex flex-col">
+                    <label for="budget"
+                      ><span class="asterisk">&lowast;</span>1인 여행
+                      예산</label
+                    >
                     <select id="budget" v-model="budgetPerPerson" required>
                       <option value="" selected disabled>-</option>
                       <option value="1">Option 1</option>
                       <option value="2">Option 2</option>
                       <option value="3">Option 3</option>
                     </select>
+                    <div v-if="$v.budgetPerPerson.$dirty">
+                      <div v-if="!$v.budgetPerPerson.required" class="error">
+                        This field is required.
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <!-- Desired Countries -->
               <div class="input-group">
-                <label>희망 여행 국가</label>
-                <div class="grid grid-cols-4 grid-rows-2 gap-y-2">
+                <label
+                  ><span class="asterisk">&lowast;</span>희망 여행 국가</label
+                >
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-2">
                   <div v-for="(destination, i) in destinations" :key="i">
                     <label :for="destination.fields.name" class="check-group"
                       ><div class="check-box">
@@ -215,7 +313,7 @@
                           class="check-mark"
                         />
                       </div>
-                      <div class="text-black text-lg">
+                      <div class="text-black text-base xl:text-lg">
                         {{ destination.fields.koreanName }}
                       </div></label
                     ><input
@@ -227,12 +325,17 @@
                     />
                   </div>
                 </div>
+                <div v-if="$v.countries.$dirty">
+                  <div v-if="!$v.countries.required" class="error">
+                    This field is required.
+                  </div>
+                </div>
               </div>
 
               <!-- Prev experience -->
               <div class="input-group">
                 <label>사파리여행에 대한 이해도</label>
-                <div class="grid grid-cols-2 grid-rows-2 gap-y-2">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-2">
                   <div v-for="option in experienceOptions" :key="option">
                     <label :for="option" class="flex items-center gap-x-2">
                       <div
@@ -243,7 +346,7 @@
                           class="rounded-full h-3 w-3 bg-brown"
                         ></div>
                       </div>
-                      <div class="text-black text-lg">
+                      <div class="text-black text-base xl:text-lg">
                         {{ option }}
                       </div></label
                     >
@@ -261,7 +364,7 @@
               <!-- Activities -->
               <div class="input-group">
                 <label>희망 여행 활동 선택</label>
-                <div class="grid grid-cols-4 grid-rows-2 gap-y-2">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-2">
                   <div v-for="activity in acitivtyOptions" :key="activity">
                     <label :for="activity" class="check-group"
                       ><div class="check-box">
@@ -270,7 +373,7 @@
                           class="check-mark"
                         />
                       </div>
-                      <div class="text-black text-lg">
+                      <div class="text-black text-base xl:text-lg">
                         {{ activity }}
                       </div></label
                     ><input
@@ -300,24 +403,10 @@
                   class="cursor-pointer w-40"
                   classes="btn-big btn-dark-brown"
                   text="Send"
+                  @click.native="submitForm"
                 />
               </div>
             </form>
-            <!-- 
-            name: {{ name }} <br />
-            phone: {{ phone }} <br />
-            email: {{ email }} <br />
-            adults: {{ adults }} <br />
-            children: {{ children }} <br />
-            startDate: {{ startDate }} <br />
-            endDate: {{ endDate }} <br />
-            noDate: {{ noDate }} <br />
-            daysDesired: {{ daysDesired }} <br />
-            budgetPerPerson: {{ budgetPerPerson }} <br />
-            countries: {{ countries }} <br />
-            experience: {{ experience }} <br />
-            activities: {{ activities }} <br />
-            message: {{ message }} <br /> -->
           </div>
         </div>
       </div>
@@ -326,10 +415,28 @@
 </template>
 
 <script>
+import {
+  required,
+  requiredIf,
+  email,
+  minLength,
+  maxLength,
+  integer,
+} from 'vuelidate/lib/validators'
+
+const afterToday = (value) => {
+  if (value === null) {
+    return true
+  } else {
+    return value > new Date()
+  }
+}
+
 export default {
   data() {
     return {
       continents: this.$store.getters['continents/continents'],
+      submitStatus: 'NOT YET',
       name: '',
       phone: '',
       email: '',
@@ -337,7 +444,7 @@ export default {
       children: '',
       startDate: null,
       endDate: null,
-      noDate: null,
+      noDate: false,
       daysDesired: '',
       budgetPerPerson: '',
       countries: [],
@@ -374,6 +481,49 @@ export default {
       },
     }
   },
+  validations: {
+    name: {
+      required,
+    },
+    phone: {
+      required,
+      minLength: minLength(6),
+      maxLength: maxLength(15),
+    },
+    email: {
+      required,
+      email,
+    },
+    adults: {
+      required,
+      integer,
+    },
+    children: {
+      required,
+      integer,
+    },
+    startDate: {
+      required: requiredIf(function () {
+        return this.noDate === false
+      }),
+      afterToday,
+    },
+    endDate: {
+      required: requiredIf(function () {
+        return this.noDate === false
+      }),
+      afterToday,
+    },
+    daysDesired: {
+      required,
+    },
+    budgetPerPerson: {
+      required,
+    },
+    countries: {
+      required,
+    },
+  },
   computed: {
     destinations() {
       const destinations = []
@@ -388,16 +538,19 @@ export default {
       })
       return destinations
     },
+    hasDates() {
+      return this.startDate !== null || this.endDate !== null
+    },
   },
   watch: {
     startDate(newValue, oldValue) {
       if (newValue) {
-        this.noDate = null
+        this.noDate = false
       }
     },
     endDate(newValue, oldValue) {
       if (newValue) {
-        this.noDate = null
+        this.noDate = false
       }
     },
   },
@@ -406,16 +559,54 @@ export default {
       this.startDate = null
       this.endDate = null
     },
+    async submitForm() {
+      this.$v.$touch()
+      if (this.$v.$invalid) {
+        const element = document.getElementById('formStart')
+        element.scrollIntoView({
+          behavior: 'smooth',
+        })
+        this.submitStatus = 'ERROR'
+      } else {
+        // do your submit logic here
+        await this.$axios
+          .$post('https://submit-form.com/W4-mSjCB0qtuHU8GOc9dG', {
+            Name: this.name,
+            Phone: this.phone,
+            Email: this.email,
+            Adults: this.adults,
+            Children: this.children,
+            Start: this.startDate,
+            End: this.endDate,
+            Unsure: this.noDate,
+            Length: this.daysDesired,
+            Budget: this.budgetPerPerson,
+            Countries: this.countries,
+            Experience: this.experience,
+            Interests: this.activities,
+            Message: this.message,
+          })
+          .then(() => {
+            this.$router.push('/contact/success')
+          })
+      }
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.asterisk {
+  @apply text-red-500 pr-1;
+}
+.error {
+  @apply text-red-500 text-sm absolute;
+}
 .input-group {
-  @apply gap-y-2 mb-8 flex flex-col;
+  @apply mb-12 flex flex-col;
 }
 label {
-  @apply text-xl text-black;
+  @apply mb-2 text-xl text-black;
 }
 .small-label {
   @apply text-base text-black pb-2;

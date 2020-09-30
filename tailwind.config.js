@@ -45,6 +45,16 @@ module.exports = {
         'screen/4': 'calc(100vh / 4)',
         'screen/5': 'calc(100vh / 5)',
       }),
+      width: (theme) => ({
+        forty: '40%',
+        half: '50%',
+        'screen/25': '25vh',
+        'screen/50': '50vh',
+        'screen/75': '75vh',
+        'screen/3': 'calc(100vh / 3)',
+        'screen/4': 'calc(100vh / 4)',
+        'screen/5': 'calc(100vh / 5)',
+      }),
     },
     fontFamily: {
       sans: ['Noto Sans KR', 'sans-serif'],
