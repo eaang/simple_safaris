@@ -399,7 +399,12 @@
               </div>
 
               <!-- Honeypot -->
-              <input type="text" name="_honey" style="display: none" />
+              <input
+                type="text"
+                name="_gotcha"
+                class="invisible"
+                style="height: 0px"
+              />
 
               <div class="w-full flex justify-center">
                 <Button
