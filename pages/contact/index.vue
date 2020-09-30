@@ -41,7 +41,7 @@
     <client-only>
       <div id="formStart" class="contact-form container mx-auto">
         <div class="bg-gray-lightest border-t-4 border-b-4 border-brown">
-          <div class="w-1/2 mx-auto py-16">
+          <div class="w-4/5 lg:w-3/5 xl:w-1/2 mx-auto py-16">
             <form name="contact">
               <!-- Name -->
               <div class="input-group">
@@ -304,7 +304,7 @@
                 <label
                   ><span class="asterisk">&lowast;</span>희망 여행 국가</label
                 >
-                <div class="grid grid-cols-4 grid-rows-2 gap-y-2">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-2">
                   <div v-for="(destination, i) in destinations" :key="i">
                     <label :for="destination.fields.name" class="check-group"
                       ><div class="check-box">
@@ -313,7 +313,7 @@
                           class="check-mark"
                         />
                       </div>
-                      <div class="text-black text-lg">
+                      <div class="text-black text-base xl:text-lg">
                         {{ destination.fields.koreanName }}
                       </div></label
                     ><input
@@ -335,7 +335,7 @@
               <!-- Prev experience -->
               <div class="input-group">
                 <label>사파리여행에 대한 이해도</label>
-                <div class="grid grid-cols-2 grid-rows-2 gap-y-2">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-2">
                   <div v-for="option in experienceOptions" :key="option">
                     <label :for="option" class="flex items-center gap-x-2">
                       <div
@@ -346,7 +346,7 @@
                           class="rounded-full h-3 w-3 bg-brown"
                         ></div>
                       </div>
-                      <div class="text-black text-lg">
+                      <div class="text-black text-base xl:text-lg">
                         {{ option }}
                       </div></label
                     >
@@ -364,7 +364,7 @@
               <!-- Activities -->
               <div class="input-group">
                 <label>희망 여행 활동 선택</label>
-                <div class="grid grid-cols-4 grid-rows-2 gap-y-2">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-2">
                   <div v-for="activity in acitivtyOptions" :key="activity">
                     <label :for="activity" class="check-group"
                       ><div class="check-box">
@@ -373,7 +373,7 @@
                           class="check-mark"
                         />
                       </div>
-                      <div class="text-black text-lg">
+                      <div class="text-black text-base xl:text-lg">
                         {{ activity }}
                       </div></label
                     ><input
@@ -404,12 +404,7 @@
                   classes="btn-big btn-dark-brown"
                   text="Send"
                   @click.native="submitForm"
-                /><br />
-                {{ submitStatus }}
-                <br />
-                {{ $v.$error }}
-                <br />
-                {{ $v.$anyError }}
+                />
               </div>
             </form>
           </div>
