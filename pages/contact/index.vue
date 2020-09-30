@@ -77,6 +77,12 @@
                   <div v-if="!$v.phone.required" class="error">
                     This field is required.
                   </div>
+                  <div v-if="!$v.phone.minLength" class="error">
+                    Your phone number is too short.
+                  </div>
+                  <div v-if="!$v.phone.maxLength" class="error">
+                    Your phone number is too long.
+                  </div>
                 </div>
               </div>
 
@@ -182,35 +188,16 @@
                           class="ml-2"
                           style="margin-top: 0.2rem"
                         >
-                          <div
-                            v-if="
-                              !noDate &&
-                              !$v.startDate.required &&
-                              !$v.endDate.required
-                            "
-                            class="error"
-                          >
-                            Please choose an option.
-                          </div>
-                          <div
-                            v-if="
-                              !noDate &&
-                              !$v.startDate.required &&
-                              $v.endDate.required
-                            "
-                            class="error"
-                          >
+                          <div v-if="!$v.startDate.required" class="error">
                             Please enter a date.
                           </div>
                           <div
                             v-if="
-                              !noDate &&
-                              $v.startDate.required &&
-                              !$v.startDate.afterToday
+                              $v.startDate.required && !$v.startDate.afterToday
                             "
                             class="error"
                           >
-                            Please pick a date in the future.
+                            Please enter a future date.
                           </div>
                         </div>
                       </div>
@@ -239,7 +226,7 @@
                         id="no-date"
                         v-model="noDate"
                         type="checkbox"
-                        class="hidden"
+                        class="invisible"
                       />
                     </div>
                   </div>
@@ -251,25 +238,14 @@
                         class="ml-2"
                         style="margin-top: 0.2rem"
                       >
-                        <div
-                          v-if="
-                            !noDate &&
-                            !$v.endDate.required &&
-                            $v.startDate.required
-                          "
-                          class="error"
-                        >
+                        <div v-if="!$v.endDate.required" class="error">
                           Please enter a date.
                         </div>
                         <div
-                          v-if="
-                            !noDate &&
-                            $v.endDate.required &&
-                            !$v.endDate.afterToday
-                          "
+                          v-if="$v.endDate.required && !$v.endDate.afterToday"
                           class="error"
                         >
-                          Please pick a date in the future.
+                          Please enter a future date.
                         </div>
                       </div>
                     </div>
@@ -428,8 +404,12 @@
                   classes="btn-big btn-dark-brown"
                   text="Send"
                   @click.native="submitForm"
-                />
+                /><br />
                 {{ submitStatus }}
+                <br />
+                {{ $v.$error }}
+                <br />
+                {{ $v.$anyError }}
               </div>
             </form>
           </div>
@@ -442,16 +422,19 @@
 <script>
 import {
   required,
-  requiredUnless,
+  requiredIf,
   email,
   minLength,
   maxLength,
   integer,
 } from 'vuelidate/lib/validators'
 
-// Custom validators
 const afterToday = (value) => {
-  return value > new Date()
+  if (value === null) {
+    return true
+  } else {
+    return value > new Date()
+  }
 }
 
 export default {
@@ -525,15 +508,16 @@ export default {
       integer,
     },
     startDate: {
-      required: requiredUnless('noDate'),
+      required: requiredIf(function () {
+        return this.noDate === false
+      }),
       afterToday,
     },
     endDate: {
-      required: requiredUnless('noDate'),
+      required: requiredIf(function () {
+        return this.noDate === false
+      }),
       afterToday,
-    },
-    noDate: {
-      required: requiredUnless('hasDates'),
     },
     daysDesired: {
       required,
@@ -592,29 +576,24 @@ export default {
         // do your submit logic here
         await this.$axios
           .$post('https://submit-form.com/W4-mSjCB0qtuHU8GOc9dG', {
-            name: this.name,
-            phone: this.phone,
-            email: this.email,
-            adults: this.adults,
-            children: this.children,
-            startDate: this.startDate,
-            endDate: this.endDate,
-            noDate: this.noDate,
-            daysDesired: this.daysDesired,
-            budgetPerPerson: this.budgetPerPerson,
-            countries: this.countries,
-            experience: this.experience,
-            activities: this.activities,
-            message: this.message,
+            Name: this.name,
+            Phone: this.phone,
+            Email: this.email,
+            Adults: this.adults,
+            Children: this.children,
+            Start: this.startDate,
+            End: this.endDate,
+            Unsure: this.noDate,
+            Length: this.daysDesired,
+            Budget: this.budgetPerPerson,
+            Countries: this.countries,
+            Experience: this.experience,
+            Interests: this.activities,
+            Message: this.message,
           })
-          .then((res) => {
-            console.log('form is submitted!')
-            console.log(res)
+          .then(() => {
+            this.$router.push('/contact/success')
           })
-        this.submitStatus = 'PENDING'
-        setTimeout(() => {
-          this.submitStatus = 'OK'
-        }, 500)
       }
     },
   },
