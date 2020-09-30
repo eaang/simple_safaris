@@ -588,7 +588,6 @@ export default {
       } else {
         // do your submit logic here
         await this.$axios
-          // .$post('https://submit-form.com/W4-mSjCB0qtuHU8GOc9dG'
           .$post('https://formspree.io/f/myybznyr', {
             Name: this.name,
             Phone: this.phone,
