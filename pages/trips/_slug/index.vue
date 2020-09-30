@@ -1,11 +1,12 @@
 <template>
-  <div>
-    <div>
-      {{ tripName }}
+  <div class="trip-idea-page">
+    <!-- Hero Section -->
+
+    <div class="relative h-screen/75 w-full bg-blue-700 flex flex-center">
+      <div class="mt-16 title-header">{{ tripName }}</div>
     </div>
-    <div>
-      {{ tripDescription }}
-    </div>
+    {{ tripIdea.fields.name }}
+    {{ tripDescription }}
   </div>
 </template>
 
@@ -14,18 +15,15 @@ export default {
   async fetch({ store, params }) {
     await store.dispatch('tripIdea/getTripIdeaBySlug', params.slug)
   },
+  asyncData({ store }) {
+    return { tripIdea: store.getters['tripIdea/tripIdea'] }
+  },
   computed: {
-    currentTrip() {
-      return this.$store.getters['tripIdea/tripIdea']
-    },
     tripName() {
-      return this.$store.getters['tripIdea/tripName']
+      return this.tripIdea.fields.name
     },
     tripDescription() {
-      return this.$store.getters['tripIdea/tripDescription']
-    },
-    isLoading() {
-      return this.$store.getters['tripIdea/loadingStatus']
+      return this.tripIdea.fields.description.content[0].content[0].value
     },
   },
 }
