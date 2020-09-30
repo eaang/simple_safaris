@@ -202,7 +202,7 @@
                         </div>
                       </div>
                       <v-date-picker
-                        id="startDate"
+                        id="start-datepick"
                         v-model="startDate"
                         color="gray"
                         :input-props="datePickerProps"
