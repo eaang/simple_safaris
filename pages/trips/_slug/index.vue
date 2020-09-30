@@ -19,13 +19,14 @@
                 'background-image': 'url(' + image.fields.file.url + ')',
               }"
             >
-              <div class="title-header">{{ tripName }}</div>
+              <div class="title-header text-center w-full">{{ tripName }}</div>
             </div>
           </div>
 
           <!-- Custom buttons -->
           <template slot="prevButton"
             ><div
+              v-if="tripPics.length > 1"
               class="absolute inset-y-0 left-0 flex items-center justify-around px-12 pt-16 text-2xl"
             >
               <div
@@ -37,6 +38,7 @@
           </template>
           <template slot="nextButton"
             ><div
+              v-if="tripPics.length > 1"
               class="absolute inset-y-0 right-0 flex items-center justify-around px-12 pt-16 text-2xl"
             >
               <div
@@ -48,7 +50,10 @@
           </template>
         </agile>
         <!-- Custom dots -->
-        <ul class="flex justify-around absolute inset-x-0 bottom-0 py-12">
+        <ul
+          v-if="tripPics.length > 1"
+          class="flex justify-around absolute inset-x-0 bottom-0 py-12"
+        >
           <div class="flex">
             <li
               v-for="(image, i) in tripPics"
@@ -66,7 +71,14 @@
     </div>
 
     <!-- Map -->
-    <Map />
+    <div class="section container mx-auto space-y-8">
+      <Map class="" />
+      <div class="w-full flex justify-center">
+        <div class="text-center content w-4/5">
+          {{ tripDescription }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
