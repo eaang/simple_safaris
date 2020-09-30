@@ -398,6 +398,9 @@
                 />
               </div>
 
+              <!-- Honeypot -->
+              <input type="text" name="_honey" style="display: none" />
+
               <div class="w-full flex justify-center">
                 <Button
                   class="cursor-pointer w-40"
@@ -423,6 +426,7 @@ import {
   maxLength,
   integer,
 } from 'vuelidate/lib/validators'
+import { format } from 'date-fns'
 
 const afterToday = (value) => {
   if (value === null) {
@@ -541,6 +545,20 @@ export default {
     hasDates() {
       return this.startDate !== null || this.endDate !== null
     },
+    nicerStart() {
+      if (this.startDate !== null) {
+        return format(this.startDate, 'PP')
+      } else {
+        return null
+      }
+    },
+    nicerEnd() {
+      if (this.endDate !== null) {
+        return format(this.endDate, 'PP')
+      } else {
+        return null
+      }
+    },
   },
   watch: {
     startDate(newValue, oldValue) {
@@ -570,14 +588,15 @@ export default {
       } else {
         // do your submit logic here
         await this.$axios
-          .$post('https://submit-form.com/W4-mSjCB0qtuHU8GOc9dG', {
+          // .$post('https://submit-form.com/W4-mSjCB0qtuHU8GOc9dG'
+          .$post('https://formspree.io/f/myybznyr', {
             Name: this.name,
             Phone: this.phone,
             Email: this.email,
             Adults: this.adults,
             Children: this.children,
-            Start: this.startDate,
-            End: this.endDate,
+            Start: this.nicerStart,
+            End: this.nicerEnd,
             Unsure: this.noDate,
             Length: this.daysDesired,
             Budget: this.budgetPerPerson,
