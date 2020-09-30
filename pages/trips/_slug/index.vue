@@ -74,7 +74,9 @@
     <div class="section container mx-auto space-y-8">
       <Map class="" />
       <div class="w-full flex justify-center">
-        <div class="text-center content w-4/5">
+        <div
+          class="text-center text-gray text-sm md:text-base lg:text-lg w-4/5"
+        >
           {{ tripDescription }}
         </div>
       </div>
