@@ -126,7 +126,7 @@
     <!-- Trip Content -->
     <div class="section container mx-auto flex text-black">
       <!-- Trip Days -->
-      <div class="trip-days-info w-3/5 space-y-16">
+      <div class="trip-days-info w-2/3 space-y-16">
         <div v-for="(day, id) in tripDays" :key="id">
           <!-- Title section -->
           <div
@@ -211,8 +211,29 @@
         </div>
       </div>
       <!-- Trip Navigation -->
-      <div class="trip-days-nav float-right w-1/3 px-8">
-        <div class="px-8">
+      <div class="w-1/3 pl-16">
+        <div class="space-y-2">
+          <div
+            v-for="(day, id) in tripDays"
+            :key="id"
+            class="h-16 bg-brown-lighter flex items-center text-xl bg-opacity-25 pl-4"
+          >
+            {{ day.fields.dayNumbers }}: {{ day.fields.location }}
+          </div>
+          <div
+            class="h-16 bg-brown-lighter flex items-center italic text-xl bg-opacity-25 pl-4"
+          >
+            {{ tripPrice }}
+          </div>
+          <div>
+            <a href="/contact">
+              <Button text="여행 문의하기" classes="btn-big btn-dark-brown" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="trip-days-nav px-16">
+        <div>
           <div v-for="(day, id) in tripDays" :key="id">
             <router-link
               :to="{
@@ -229,7 +250,7 @@
             <Button text="여행 문의하기" classes="btn-big btn-dark-brown" />
           </a>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
