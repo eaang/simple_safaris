@@ -1,9 +1,9 @@
 <template>
   <div class="trip-idea-page">
-    <client-only>
-      <!-- Hero Section -->
-      <div class="relative h-screen/75 w-full">
-        <div class="absolute inset-x-0 top-0 z-0">
+    <!-- Hero Section -->
+    <div class="relative h-screen/75 w-full">
+      <div class="absolute inset-x-0 top-0 z-0">
+        <client-only>
           <agile
             ref="carousel"
             :options="carouselOptions"
@@ -38,6 +38,7 @@
                   <ArrowLeft class="h-6 w-6" />
                 </div>
               </div>
+              <div v-else class="invisible"></div>
             </template>
             <template slot="nextButton"
               ><div
@@ -50,6 +51,7 @@
                   <ArrowRight class="h-6 w-6" />
                 </div>
               </div>
+              <div v-else class="invisible"></div>
             </template>
           </agile>
           <!-- Custom dots -->
@@ -70,141 +72,152 @@
               ></li>
             </div>
           </ul>
+        </client-only>
+      </div>
+    </div>
+
+    <!-- Map & Description -->
+    <div class="section container mx-auto space-y-8">
+      <Map
+        v-if="tripIdea.fields.map !== undefined"
+        :center="tripMapCenter"
+        :places="tripMapPoints"
+        :zoom="5"
+      />
+      <div v-else class="h-16"></div>
+      <div class="w-full flex justify-center">
+        <div
+          class="text-center text-gray text-sm md:text-base lg:text-lg w-4/5"
+        >
+          {{ tripDescription }}
         </div>
       </div>
+    </div>
 
-      <!-- Map & Description -->
-      <div class="section container mx-auto space-y-8">
-        <Map :center="tripMapCenter" :places="tripMapPoints" :zoom="6" />
-        <div class="w-full flex justify-center">
+    <!-- Schedule Highlights -->
+    <div class="section container mx-auto space-y-16 px-16 sm:px-0">
+      <div class="title title-main text-black text-center">
+        Schedule Highlights
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+        <div v-for="(highlight, id) in tripHighlights" :key="id">
           <div
-            class="text-center text-gray text-sm md:text-base lg:text-lg w-4/5"
+            v-if="highlight.fields.icon !== undefined"
+            class="flex justify-center h-40"
           >
-            {{ tripDescription }}
+            <img
+              class="object-scale-down"
+              :src="highlight.fields.icon.fields.file.url"
+              :alt="highlight.fields.icon.fields.file.title"
+            />
           </div>
-        </div>
-      </div>
-
-      <!-- Schedule Highlights -->
-      <div class="section container mx-auto space-y-16 px-16 sm:px-0">
-        <div class="title title-main text-black text-center">
-          Schedule Highlights
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-          <div v-for="(highlight, id) in tripHighlights" :key="id">
-            <div class="flex justify-center h-40">
-              <img
-                class="object-scale-down"
-                :src="highlight.fields.icon.fields.file.url"
-                :alt="highlight.fields.icon.fields.file.title"
-              />
+          <div class="text-gray text-base lg:text-lg text-center">
+            <div class="font-bold text-lg lg:text-xl xl:h-16">
+              {{ highlight.fields.title }}
             </div>
-            <div class="text-gray text-base lg:text-lg text-center">
-              <div class="font-bold text-lg lg:text-xl xl:h-16">
-                {{ highlight.fields.title }}
-              </div>
-              <div class="h-24 text-center">
-                {{ highlight.fields.summary }}
-              </div>
+            <div class="h-24 text-center">
+              {{ highlight.fields.summary }}
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Trip Content -->
-      <div class="section container mx-auto flex">
-        <div class="trip-days-info w-3/5 space-y-16">
-          <div v-for="(day, id) in tripDays" :key="id">
-            <!-- Title section -->
+    <!-- Trip Content -->
+    <div class="section container mx-auto flex text-black">
+      <div class="trip-days-info w-3/5 space-y-16">
+        <div v-for="(day, id) in tripDays" :key="id">
+          <!-- Title section -->
+          <div class="sticky top-0 md:static text-center shadow-2xl">
+            <div class="bg-brown text-white">
+              {{ day.fields.dayNumbers }}
+            </div>
+            <div>{{ day.fields.location }}</div>
+          </div>
+          <!-- Location image & description-->
+          <div>
+            <img
+              class="object-scale-down"
+              :src="day.fields.locationImage.fields.file.url"
+              :alt="day.fields.locationImage.fields.file.fileName"
+            />
             <div>
-              <div>{{ day.fields.dayNumbers }}</div>
               <div>{{ day.fields.location }}</div>
-            </div>
-            <!-- Location image & description-->
-            <div>
-              <img
-                class="object-scale-down"
-                :src="day.fields.locationImage.fields.file.url"
-                :alt="day.fields.locationImage.fields.file.fileName"
-              />
               <div>
-                <div>{{ day.fields.location }}</div>
-                <div>
-                  {{ day.fields.description.content[0].content[0].value }}
-                </div>
+                {{ day.fields.description.content[0].content[0].value }}
               </div>
             </div>
-            <!-- Transportation -->
-            <div>
-              Transportation
-              <div
-                v-for="(step, index) in day.fields.transportationSteps"
-                :key="index"
-                class="flex space-x-2"
-              >
-                <div v-if="step.fields.modeOfTransportation === 'Car'">Car</div>
-                <div v-if="step.fields.modeOfTransportation === 'Plane'">
-                  Plane
-                </div>
-                <div>{{ step.fields.direction }}</div>
+          </div>
+          <!-- Transportation -->
+          <div>
+            Transportation
+            <div
+              v-for="(step, index) in day.fields.transportationSteps"
+              :key="index"
+              class="flex space-x-2"
+            >
+              <div v-if="step.fields.modeOfTransportation === 'Car'">Car</div>
+              <div v-if="step.fields.modeOfTransportation === 'Plane'">
+                Plane
               </div>
+              <div>{{ step.fields.direction }}</div>
             </div>
-            <!-- Hotel -->
-            <div>
-              Stay
-              <div v-for="(hotel, index) in day.fields.hotels" :key="index">
-                <div class="w-1/3 shadow-2xl">
-                  <img
-                    class="object-cover h-48"
-                    :src="hotel.fields.hotelImage.fields.file.url"
-                    :alt="hotel.fields.hotelImage.fields.title"
-                  />
-                  <div class="h-48 flex flex-col flex-center px-4 space-y-8">
-                    <div class="text-gray-dark text-center text-2xl">
-                      {{ hotel.fields.name }}
-                    </div>
-                    <div class="text-brown text-center text-2xl">
-                      {{ '$'.repeat(parseInt(hotel.fields.price)) }}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Activity -->
-            <div v-if="day.fields.activities">
-              <div>
-                <div class="text-center">Activity</div>
-                <div class="flex flex-center space-x-8">
-                  <div v-for="(activity, i) in day.fields.activities" :key="i">
-                    {{ activity.fields.name }}
-                  </div>
-                </div>
-              </div>
-              <div v-for="(activity, i) in day.fields.activities" :key="i">
+          </div>
+          <!-- Hotel -->
+          <div>
+            Stay
+            <div v-for="(hotel, index) in day.fields.hotels" :key="index">
+              <div class="w-1/3 shadow-2xl">
                 <img
-                  :src="activity.fields.activityImage.fields.file.url"
-                  :alt="activity.fields.name"
+                  class="object-cover h-48"
+                  :src="hotel.fields.hotelImage.fields.file.url"
+                  :alt="hotel.fields.hotelImage.fields.title"
                 />
-                <div>
-                  {{ activity.fields.description.content[0].content[0].value }}
+                <div class="h-48 flex flex-col flex-center px-4 space-y-8">
+                  <div class="text-gray-dark text-center text-2xl">
+                    {{ hotel.fields.name }}
+                  </div>
+                  <div class="text-brown text-center text-2xl">
+                    {{ '$'.repeat(parseInt(hotel.fields.price)) }}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="trip-days-nav float-right w-1/3 px-8">
-          <div class="px-8">
-            <div v-for="(day, id) in tripDays" :key="id">
-              {{ day.fields.dayNumbers }}: {{ day.fields.location }}
+          <!-- Activity -->
+          <div v-if="day.fields.activities">
+            <div>
+              <div class="text-center">Activity</div>
+              <div class="flex flex-center space-x-8">
+                <div v-for="(activity, i) in day.fields.activities" :key="i">
+                  {{ activity.fields.name }}
+                </div>
+              </div>
             </div>
-            <div>{{ tripPrice }}</div>
-            <a href="/contact">
-              <Button text="여행 문의하기" classes="btn-big btn-dark-brown" />
-            </a>
+            <div v-for="(activity, i) in day.fields.activities" :key="i">
+              <img
+                :src="activity.fields.activityImage.fields.file.url"
+                :alt="activity.fields.name"
+              />
+              <div>
+                {{ activity.fields.description.content[0].content[0].value }}
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </client-only>
+      <div class="trip-days-nav float-right w-1/3 px-8">
+        <div class="px-8">
+          <div v-for="(day, id) in tripDays" :key="id">
+            {{ day.fields.dayNumbers }}: {{ day.fields.location }}
+          </div>
+          <div>{{ tripPrice }}</div>
+          <a href="/contact">
+            <Button text="여행 문의하기" classes="btn-big btn-dark-brown" />
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -222,25 +235,31 @@ export default {
     await store.dispatch('tripIdea/getTripIdeaBySlug', params.slug)
     const thisTrip = store.getters['tripIdea/tripIdea']
     const thisMap = thisTrip.fields.map
+    let mapCenter = []
+    if (thisMap !== undefined) {
+      mapCenter = [
+        parseFloat(thisMap.fields.mapCentreLongitude),
+        parseFloat(thisMap.fields.mapCentreLatitude),
+      ]
+    }
     const thisMapPoints = thisTrip.fields.mapPoints
     const mapPoints = []
-    thisMapPoints.forEach((point) => {
-      mapPoints.push({
-        name: point.fields.locationName,
-        longitude: parseFloat(point.fields.longitude),
-        latitude: parseFloat(point.fields.latitude),
+    if (thisMapPoints !== undefined) {
+      thisMapPoints.forEach((point) => {
+        mapPoints.push({
+          name: point.fields.locationName,
+          longitude: parseFloat(point.fields.longitude),
+          latitude: parseFloat(point.fields.latitude),
+        })
       })
-    })
+    }
     return {
       tripIdea: thisTrip,
       tripName: thisTrip.fields.name,
       tripPics: thisTrip.fields.headerImages,
       tripPrice: thisTrip.fields.startingPrice,
       tripDescription: thisTrip.fields.description.content[0].content[0].value,
-      tripMapCenter: [
-        parseFloat(thisMap.fields.mapCentreLongitude),
-        parseFloat(thisMap.fields.mapCentreLatitude),
-      ],
+      tripMapCenter: mapCenter,
       tripMapPoints: mapPoints,
       tripHighlights: thisTrip.fields.scheduleHighlight,
       tripDays: thisTrip.fields.tripDays,
