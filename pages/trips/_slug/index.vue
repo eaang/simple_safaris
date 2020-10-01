@@ -3,76 +3,74 @@
     <!-- Hero Section -->
     <div class="relative h-screen/75 w-full">
       <div class="absolute inset-x-0 top-0 z-0">
-        <client-only>
-          <agile
-            ref="carousel"
-            :options="carouselOptions"
-            @after-change="counter = $refs.carousel.getCurrentSlide()"
+        <agile
+          ref="carousel"
+          :options="carouselOptions"
+          @after-change="counter = $refs.carousel.getCurrentSlide()"
+        >
+          <div
+            v-for="image in tripPics"
+            :key="image.id"
+            class="slide h-screen/75 w-full pt-16"
           >
             <div
-              v-for="image in tripPics"
-              :key="image.id"
-              class="slide h-screen/75 w-full pt-16"
+              class="h-full w-full flex flex-center bg-cover bg-center"
+              :style="{
+                'background-image': 'url(' + image.fields.file.url + ')',
+              }"
+            >
+              <div class="title-header text-center w-full">
+                {{ tripName }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom buttons -->
+          <template slot="prevButton"
+            ><div
+              v-if="tripPics.length > 1"
+              class="absolute inset-y-0 left-0 flex items-center justify-around px-12 pt-16 text-2xl"
             >
               <div
-                class="h-full w-full flex flex-center bg-cover bg-center"
-                :style="{
-                  'background-image': 'url(' + image.fields.file.url + ')',
-                }"
+                class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
               >
-                <div class="title-header text-center w-full">
-                  {{ tripName }}
-                </div>
+                <ArrowLeft class="h-6 w-6" />
               </div>
             </div>
-
-            <!-- Custom buttons -->
-            <template slot="prevButton"
-              ><div
-                v-if="tripPics.length > 1"
-                class="absolute inset-y-0 left-0 flex items-center justify-around px-12 pt-16 text-2xl"
+            <div v-else class="invisible"></div>
+          </template>
+          <template slot="nextButton"
+            ><div
+              v-if="tripPics.length > 1"
+              class="absolute inset-y-0 right-0 flex items-center justify-around px-12 pt-16 text-2xl"
+            >
+              <div
+                class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
               >
-                <div
-                  class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
-                >
-                  <ArrowLeft class="h-6 w-6" />
-                </div>
+                <ArrowRight class="h-6 w-6" />
               </div>
-              <div v-else class="invisible"></div>
-            </template>
-            <template slot="nextButton"
-              ><div
-                v-if="tripPics.length > 1"
-                class="absolute inset-y-0 right-0 flex items-center justify-around px-12 pt-16 text-2xl"
-              >
-                <div
-                  class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
-                >
-                  <ArrowRight class="h-6 w-6" />
-                </div>
-              </div>
-              <div v-else class="invisible"></div>
-            </template>
-          </agile>
-          <!-- Custom dots -->
-          <ul
-            v-if="tripPics.length > 1"
-            class="flex justify-around absolute inset-x-0 bottom-0 py-12"
-          >
-            <div class="flex">
-              <li
-                v-for="(image, i) in tripPics"
-                :key="i"
-                class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
-                :class="{ 'bg-white': i === counter }"
-                @click="
-                  counter = i
-                  $refs.carousel.goTo(counter)
-                "
-              ></li>
             </div>
-          </ul>
-        </client-only>
+            <div v-else class="invisible"></div>
+          </template>
+        </agile>
+        <!-- Custom dots -->
+        <ul
+          v-if="tripPics.length > 1"
+          class="flex justify-around absolute inset-x-0 bottom-0 py-12"
+        >
+          <div class="flex">
+            <li
+              v-for="(image, i) in tripPics"
+              :key="i"
+              class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
+              :class="{ 'bg-white': i === counter }"
+              @click="
+                counter = i
+                $refs.carousel.goTo(counter)
+              "
+            ></li>
+          </div>
+        </ul>
       </div>
     </div>
 
@@ -165,17 +163,7 @@
           </div>
           <!-- Transportation -->
           <div>
-            <div class="grid grid-cols-3">
-              <div class="grid grid-rows-2">
-                <div class="border-b-2 border-brown"></div>
-                <div class="border-l border-brown"></div>
-              </div>
-              <div class="text-center font-bold text-3xl">Transportation</div>
-              <div class="grid grid-rows-2">
-                <div class="border-b-2 border-brown"></div>
-                <div class="border-r border-brown"></div>
-              </div>
-            </div>
+            <BorderTitle text="Transportation" />
             <div class="border-l border-r border-b border-brown py-8 space-y-4">
               <div
                 v-for="(step, index) in day.fields.transportationSteps"
@@ -196,20 +184,24 @@
           </div>
           <!-- Hotel -->
           <div>
-            Stay
-            <div v-for="(hotel, index) in day.fields.hotels" :key="index">
-              <div class="w-1/3 shadow-2xl">
-                <img
-                  class="object-cover h-48"
-                  :src="hotel.fields.hotelImage.fields.file.url"
-                  :alt="hotel.fields.hotelImage.fields.title"
-                />
-                <div class="h-48 flex flex-col flex-center px-4 space-y-8">
-                  <div class="text-gray-dark text-center text-2xl">
-                    {{ hotel.fields.name }}
-                  </div>
-                  <div class="text-brown text-center text-2xl">
-                    {{ '$'.repeat(parseInt(hotel.fields.price)) }}
+            <BorderTitle text="Stay" />
+            <div
+              class="border-l border-r border-b border-brown flex flex-center"
+            >
+              <div v-for="(hotel, index) in day.fields.hotels" :key="index">
+                <div class="shadow-2xl w-2/5">
+                  <img
+                    class="object-cover h-half"
+                    :src="hotel.fields.hotelImage.fields.file.url"
+                    :alt="hotel.fields.hotelImage.fields.title"
+                  />
+                  <div class="h-48 flex flex-col flex-center px-4 space-y-8">
+                    <div class="text-gray-dark text-center text-2xl">
+                      {{ hotel.fields.name }}
+                    </div>
+                    <div class="text-brown text-center text-2xl">
+                      {{ '$'.repeat(parseInt(hotel.fields.price)) }}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -217,21 +209,29 @@
           </div>
           <!-- Activity -->
           <div v-if="day.fields.activities">
-            <div>
-              <div class="text-center">Activity</div>
-              <div class="flex flex-center space-x-8">
-                <div v-for="(activity, i) in day.fields.activities" :key="i">
+            <div class="mb-16">
+              <BorderTitle text="Activity" />
+              <div
+                class="border-l border-r border-b border-brown text-center py-8 space-y-4"
+              >
+                <div
+                  v-for="(activity, i) in day.fields.activities"
+                  :key="i"
+                  class="text-xl"
+                >
                   {{ activity.fields.name }}
                 </div>
               </div>
             </div>
-            <div v-for="(activity, i) in day.fields.activities" :key="i">
-              <img
-                :src="activity.fields.activityImage.fields.file.url"
-                :alt="activity.fields.name"
-              />
-              <div>
-                {{ activity.fields.description.content[0].content[0].value }}
+            <div class="space-y-8">
+              <div v-for="(activity, i) in day.fields.activities" :key="i">
+                <img
+                  :src="activity.fields.activityImage.fields.file.url"
+                  :alt="activity.fields.name"
+                />
+                <div class="mt-8 text-lg text-brown">
+                  {{ activity.fields.description.content[0].content[0].value }}
+                </div>
               </div>
             </div>
           </div>
