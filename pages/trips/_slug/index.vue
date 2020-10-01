@@ -124,24 +124,29 @@
     </div>
 
     <!-- Trip Content -->
-    <div class="sticky top-0 mt-24 section container mx-auto flex text-black">
+    <div class="container mx-auto flex text-black">
       <!-- Trip Days -->
-      <div class="sticky top-0 trip-days-info w-2/3 space-y-16">
-        <div v-for="(day, id) in tripDays" :key="id" class="space-y-16">
+      <div class="trip-days-info w-2/3 space-y-16">
+        <div
+          v-for="(day, id) in tripDays"
+          :id="kebabCase(day.fields.location)"
+          :key="id"
+          class="space-y-16"
+        >
           <!-- Title section -->
-          <div
-            :id="kebabCase(day.fields.location)"
-            class="sticky top-0 md:static shadow-2xl"
-          >
-            <div
-              class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
-            >
-              {{ day.fields.dayNumbers }}
-            </div>
-            <div class="h-20 text-xl flex flex-center font-bold">
-              {{ day.fields.location }}
+          <div class="sticky top-0 md:static pt-16">
+            <div class="shadow-2xl">
+              <div
+                class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
+              >
+                {{ day.fields.dayNumbers }}
+              </div>
+              <div class="bg-white h-20 text-xl flex flex-center font-bold">
+                {{ day.fields.location }}
+              </div>
             </div>
           </div>
+
           <!-- Location image & description-->
           <div>
             <img
@@ -216,22 +221,24 @@
       </div>
       <!-- Trip Navigation -->
       <div class="w-1/3 pl-16">
-        <div class="space-y-2">
+        <div class="space-y-2 sticky top-0 pt-16">
           <div v-for="(day, id) in tripDays" :key="id">
-            <a
-              :href="
-                '/trips/' +
-                tripIdea.fields.slug +
-                '#' +
-                kebabCase(day.fields.location)
-              "
+            <nuxt-link
+              :to="{
+                path: '/trips/' + tripIdea.fields.slug,
+                hash: '#' + kebabCase(day.fields.location),
+              }"
             >
               <div
-                class="h-16 bg-brown-lighter flex items-center text-xl bg-opacity-25 pl-4"
+                class="h-16 bg-brown-lighter bg-opacity-25 pl-2 hover:bg-brown"
               >
-                {{ day.fields.dayNumbers }}: {{ day.fields.location }}
-              </div>
-            </a>
+                <div
+                  class="pl-2 w-full h-full flex items-center text-xl hover:bg-brown-dark hover:text-white hover:font-bold"
+                >
+                  {{ day.fields.dayNumbers }}: {{ day.fields.location }}
+                </div>
+              </div></nuxt-link
+            >
           </div>
           <div
             class="h-16 bg-brown-lighter flex items-center italic text-xl bg-opacity-25 pl-4"
