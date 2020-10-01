@@ -186,37 +186,46 @@
           <div>
             <BorderTitle text="Stay" />
             <div
-              class="border-l border-r border-b border-brown flex flex-center"
+              class="relative border-l border-r border-b border-brown flex flex-center"
             >
-              <agile class="w-full">
+              <agile
+                ref="stayCarousel"
+                :options="stayCarouselOptions"
+                class="w-full"
+              >
                 <div
                   v-for="(hotel, index) in day.fields.hotels"
                   :key="index"
-                  class="slide flex flex-center py-16"
+                  class="slide"
                 >
-                  <HotelCard
-                    :src="hotel.fields.hotelImage.fields.file.url"
-                    :alt="hotel.fields.hotelImage.fields.title"
-                    :name="hotel.fields.name"
-                    :price="hotel.fields.price"
-                    class="w-2/5"
-                  />
-                  <!-- <div class="shadow-2xl w-2/5">
-                    <img
-                      class="object-cover w-full h-56"
+                  <div class="w-full py-16 flex flex-center">
+                    <HotelCard
                       :src="hotel.fields.hotelImage.fields.file.url"
                       :alt="hotel.fields.hotelImage.fields.title"
+                      :name="hotel.fields.name"
+                      :price="hotel.fields.price"
+                      class="w-2/5"
                     />
-                    <div class="h-48 flex flex-col flex-center px-4 space-y-8">
-                      <div class="text-gray-dark text-center text-2xl">
-                        {{ hotel.fields.name }}
-                      </div>
-                      <div class="text-brown text-center text-2xl">
-                        {{ '$'.repeat(parseInt(hotel.fields.price)) }}
-                      </div>
-                    </div>
-                  </div> -->
+                  </div>
                 </div>
+                <template slot="prevButton">
+                  <div class="absolute inset-y-0 left-0 flex items-center">
+                    <div
+                      class="w-16 h-24 border-t border-r border-b border-brown flex flex-center"
+                    >
+                      <AngleLeft class="text-brown h-16" />
+                    </div>
+                  </div>
+                </template>
+                <template slot="nextButton">
+                  <div class="absolute inset-y-0 right-0 flex items-center">
+                    <div
+                      class="w-16 h-24 border-t border-l border-b border-brown flex flex-center"
+                    >
+                      <AngleRight class="text-brown h-16" />
+                    </div>
+                  </div>
+                </template>
               </agile>
             </div>
           </div>
@@ -341,6 +350,22 @@ export default {
         autoplay: false,
         dots: false,
         speed: 4000,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              navButtons: true,
+            },
+          },
+        ],
+      },
+      stayCarouselOptions: {
+        navButtons: false,
+        fade: false,
+        infinite: true,
+        autoplay: false,
+        dots: false,
+        speed: 2000,
         responsive: [
           {
             breakpoint: 768,

@@ -6,7 +6,7 @@
         {{ name }}
       </div>
       <div class="text-brown text-center text-2xl">
-        {{ '$'.repeat(parseInt(price)) }}
+        {{ '$'.repeat(price) }}
       </div>
     </div>
   </div>
@@ -28,8 +28,8 @@ export default {
       default: 'Hotel Name',
     },
     price: {
-      type: String,
-      default: '1',
+      type: Number,
+      default: 1,
     },
   },
 }
