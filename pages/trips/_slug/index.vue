@@ -124,7 +124,7 @@
     <!-- Trip Content -->
     <div class="container mx-auto flex text-black">
       <!-- Trip Days -->
-      <div class="trip-days-info w-2/3 space-y-24">
+      <div class="trip-days-info w-full xl:w-2/3 space-y-24">
         <div
           v-for="(day, id) in tripDays"
           :id="kebabCase(day.fields.location)"
@@ -132,7 +132,7 @@
           class="space-y-16"
         >
           <!-- Title section -->
-          <div class="sticky top-0 md:static pt-16">
+          <div class="sticky top-0 z-10 xl:static pt-16">
             <div class="shadow-2xl">
               <div
                 class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
@@ -146,23 +146,23 @@
           </div>
 
           <!-- Location image & description-->
-          <div>
+          <div class="px-8">
             <img
               class="object-scale-down"
               :src="day.fields.locationImage.fields.file.url"
               :alt="day.fields.locationImage.fields.file.fileName"
             />
             <div class="space-y-4 pt-4">
-              <div class="text-3xl text-gray-dark">
+              <div class="text-2xl md:text-3xl text-gray-dark">
                 {{ day.fields.location }}
               </div>
-              <div class="text-lg text-brown">
+              <div class="text-base md:text-lg text-brown">
                 {{ day.fields.description.content[0].content[0].value }}
               </div>
             </div>
           </div>
           <!-- Transportation -->
-          <div>
+          <div class="px-8">
             <BorderTitle text="Transportation" />
             <div class="border-l border-r border-b border-brown py-8 space-y-4">
               <div
@@ -170,20 +170,22 @@
                 :key="index"
                 class="flex flex-col flex-center"
               >
-                <div class="flex flex-center space-x-2">
+                <div class="flex flex-center space-x-2 px-8">
                   <div v-if="step.fields.modeOfTransportation === 'Car'">
                     <img src="/transport/ic-car.svg" />
                   </div>
                   <div v-if="step.fields.modeOfTransportation === 'Plane'">
                     <img src="/transport/ic-plane.svg" />
                   </div>
-                  <div class="text-xl">{{ step.fields.direction }}</div>
+                  <div class="text-base md:text-xl lg:text-xl">
+                    {{ step.fields.direction }}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <!-- Hotel -->
-          <div>
+          <div class="px-8">
             <BorderTitle text="Stay" />
             <div
               class="relative border-l border-r border-b border-brown flex flex-center"
@@ -192,7 +194,7 @@
                 v-if="day.fields.hotels.length > 1"
                 ref="stayCarousel"
                 :options="stayCarouselOptions"
-                class="w-full"
+                class="w-full z-0"
               >
                 <div
                   v-for="(hotel, index) in day.fields.hotels"
@@ -205,7 +207,7 @@
                       :alt="hotel.fields.hotelImage.fields.title"
                       :name="hotel.fields.name"
                       :price="hotel.fields.price"
-                      class="w-2/5"
+                      class="w-4/5 lg:w-2/5"
                     />
                   </div>
                 </div>
@@ -240,13 +242,13 @@
                   :alt="hotel.fields.hotelImage.fields.title"
                   :name="hotel.fields.name"
                   :price="hotel.fields.price"
-                  class="w-2/5"
+                  class="w-4/5 w-2/5"
                 />
               </div>
             </div>
           </div>
           <!-- Activity -->
-          <div v-if="day.fields.activities">
+          <div v-if="day.fields.activities" class="px-8">
             <div class="mb-16">
               <BorderTitle text="Activity" />
               <div
@@ -267,7 +269,7 @@
                   :src="activity.fields.activityImage.fields.file.url"
                   :alt="activity.fields.name"
                 />
-                <div class="mt-8 text-lg text-brown">
+                <div class="mt-8 text-base md:text-lg text-brown">
                   {{ activity.fields.description.content[0].content[0].value }}
                 </div>
               </div>
@@ -276,7 +278,7 @@
         </div>
       </div>
       <!-- Trip Navigation -->
-      <div class="w-1/3 pl-16">
+      <div class="hidden xl:w-1/3 pl-16">
         <div class="space-y-2 sticky top-0 pt-16">
           <div v-for="(day, id) in tripDays" :key="id">
             <nuxt-link
