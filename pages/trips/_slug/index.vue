@@ -125,10 +125,14 @@
 
     <!-- Trip Content -->
     <div class="section container mx-auto flex text-black">
+      <!-- Trip Days -->
       <div class="trip-days-info w-3/5 space-y-16">
         <div v-for="(day, id) in tripDays" :key="id">
           <!-- Title section -->
-          <div class="sticky top-0 md:static text-center shadow-2xl">
+          <div
+            :id="kebabCase(day.fields.location)"
+            class="sticky top-0 md:static text-center shadow-2xl"
+          >
             <div class="bg-brown text-white">
               {{ day.fields.dayNumbers }}
             </div>
@@ -206,10 +210,19 @@
           </div>
         </div>
       </div>
+      <!-- Trip Navigation -->
       <div class="trip-days-nav float-right w-1/3 px-8">
         <div class="px-8">
           <div v-for="(day, id) in tripDays" :key="id">
-            {{ day.fields.dayNumbers }}: {{ day.fields.location }}
+            <router-link
+              :to="{
+                path: '/trips/' + tripIdea.fields.slug,
+                hash: '#' + kebabCase(day.fields.location),
+              }"
+              ><div>
+                {{ day.fields.dayNumbers }}: {{ day.fields.location }}
+              </div></router-link
+            >
           </div>
           <div>{{ tripPrice }}</div>
           <a href="/contact">
@@ -297,7 +310,15 @@ export default {
       this.counter++
     }, 8000)
   },
-  methods: {},
+  methods: {
+    kebabCase(str) {
+      return str
+        .replace(/([A-Z])([A-Z])/g, '$1-$2')
+        .replace(/([a-z])([A-Z])/g, '$1-$2')
+        .replace(/[\s_]+/g, '-')
+        .toLowerCase()
+    },
+  },
 }
 </script>
 
