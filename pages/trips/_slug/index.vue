@@ -146,7 +146,7 @@
           </div>
 
           <!-- Location image & description-->
-          <div class="px-8 lg:px-0">
+          <div class="px-8 xl:px-0">
             <img
               class="object-scale-down"
               :src="day.fields.locationImage.fields.file.url"
@@ -162,13 +162,13 @@
             </div>
           </div>
           <!-- Transportation -->
-          <div class="px-8 lg:px-0">
+          <div class="px-8 xl:px-0">
             <BorderTitle text="Transportation" />
             <div class="border-l border-r border-b border-brown py-8 space-y-4">
               <div
                 v-for="(step, index) in day.fields.transportationSteps"
                 :key="index"
-                class="flex flex-col justify-center px-8 xl:px-24"
+                class="flex flex-col justify-center px-8 items-start lg:items-center"
               >
                 <div class="flex items-center justify-start space-x-2">
                   <div v-if="step.fields.modeOfTransportation === 'Car'">
@@ -185,7 +185,7 @@
             </div>
           </div>
           <!-- Hotel -->
-          <div class="px-8 lg:px-0">
+          <div class="px-8 xl:px-0">
             <BorderTitle text="Stay" />
             <div
               class="relative border-l border-r border-b border-brown flex flex-center"
@@ -248,7 +248,7 @@
             </div>
           </div>
           <!-- Activity -->
-          <div v-if="day.fields.activities" class="px-8 lg:px-0">
+          <div v-if="day.fields.activities" class="px-8 xl:px-0">
             <div class="mb-16">
               <BorderTitle text="Activity" />
               <div
