@@ -146,7 +146,7 @@
           </div>
 
           <!-- Location image & description-->
-          <div class="px-8">
+          <div class="px-8 lg:px-0">
             <img
               class="object-scale-down"
               :src="day.fields.locationImage.fields.file.url"
@@ -162,15 +162,15 @@
             </div>
           </div>
           <!-- Transportation -->
-          <div class="px-8">
+          <div class="px-8 lg:px-0">
             <BorderTitle text="Transportation" />
             <div class="border-l border-r border-b border-brown py-8 space-y-4">
               <div
                 v-for="(step, index) in day.fields.transportationSteps"
                 :key="index"
-                class="flex flex-col flex-center"
+                class="flex flex-col justify-center px-8 xl:px-24"
               >
-                <div class="flex flex-center space-x-2 px-8">
+                <div class="flex items-center justify-start space-x-2">
                   <div v-if="step.fields.modeOfTransportation === 'Car'">
                     <img src="/transport/ic-car.svg" />
                   </div>
@@ -185,7 +185,7 @@
             </div>
           </div>
           <!-- Hotel -->
-          <div class="px-8">
+          <div class="px-8 lg:px-0">
             <BorderTitle text="Stay" />
             <div
               class="relative border-l border-r border-b border-brown flex flex-center"
@@ -242,13 +242,13 @@
                   :alt="hotel.fields.hotelImage.fields.title"
                   :name="hotel.fields.name"
                   :price="hotel.fields.price"
-                  class="w-4/5 w-2/5"
+                  class="w-4/5 lg:w-2/5"
                 />
               </div>
             </div>
           </div>
           <!-- Activity -->
-          <div v-if="day.fields.activities" class="px-8">
+          <div v-if="day.fields.activities" class="px-8 lg:px-0">
             <div class="mb-16">
               <BorderTitle text="Activity" />
               <div
@@ -278,7 +278,7 @@
         </div>
       </div>
       <!-- Trip Navigation -->
-      <div class="hidden xl:w-1/3 pl-16">
+      <div class="hidden xl:block xl:w-1/3 pl-16">
         <div class="space-y-2 sticky top-0 pt-16">
           <div v-for="(day, id) in tripDays" :key="id">
             <nuxt-link
