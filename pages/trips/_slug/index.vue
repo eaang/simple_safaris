@@ -124,7 +124,7 @@
     <!-- Trip Content -->
     <div class="container mx-auto flex text-black">
       <!-- Trip Days -->
-      <div class="trip-days-info w-2/3 space-y-16">
+      <div class="trip-days-info w-2/3 space-y-24">
         <div
           v-for="(day, id) in tripDays"
           :id="kebabCase(day.fields.location)"
