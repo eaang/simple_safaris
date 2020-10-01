@@ -189,6 +189,7 @@
               class="relative border-l border-r border-b border-brown flex flex-center"
             >
               <agile
+                v-if="day.fields.hotels.length > 1"
                 ref="stayCarousel"
                 :options="stayCarouselOptions"
                 class="w-full"
@@ -227,6 +228,21 @@
                   </div>
                 </template>
               </agile>
+
+              <div
+                v-for="(hotel, index) in day.fields.hotels"
+                v-else
+                :key="index"
+                class="w-full py-16 flex flex-center"
+              >
+                <HotelCard
+                  :src="hotel.fields.hotelImage.fields.file.url"
+                  :alt="hotel.fields.hotelImage.fields.title"
+                  :name="hotel.fields.name"
+                  :price="hotel.fields.price"
+                  class="w-2/5"
+                />
+              </div>
             </div>
           </div>
           <!-- Activity -->
