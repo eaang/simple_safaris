@@ -18,6 +18,7 @@ export const actions = {
   async getTripIdeaBySlug({ commit }, slug) {
     commit('setLoading', true)
     const response = await client.getEntries({
+      include: 3,
       content_type: 'tripIdea',
       'fields.slug': slug,
     })
@@ -29,7 +30,4 @@ export const actions = {
 export const getters = {
   tripIdea: (state) => state.currentTripIdea,
   loadingStatus: (state) => state.isLoading,
-  tripName: (state) => state.currentTripIdea.fields.name,
-  tripDescription: (state) =>
-    state.currentTripIdea.fields.description.content[0].content[0].value,
 }
