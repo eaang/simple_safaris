@@ -70,7 +70,7 @@
       </div>
     </div>
 
-    <!-- Map -->
+    <!-- Map & Description -->
     <div class="section container mx-auto space-y-8">
       <Map :center="tripMapCenter" :places="tripMapPoints" :zoom="6" />
       <div class="w-full flex justify-center">
@@ -78,6 +78,32 @@
           class="text-center text-gray text-sm md:text-base lg:text-lg w-4/5"
         >
           {{ tripDescription }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Schedule Highlights -->
+    <div class="section container mx-auto space-y-16 px-16 sm:px-0">
+      <div class="title title-main text-black text-center">
+        Schedule Highlights
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+        <div v-for="(highlight, id) in tripHighlights" :key="id">
+          <div class="flex justify-center h-40">
+            <img
+              class="object-scale-down"
+              :src="highlight.fields.icon.fields.file.url"
+              :alt="highlight.fields.icon.fields.file.title"
+            />
+          </div>
+          <div class="text-gray text-base lg:text-lg text-center">
+            <div class="font-bold text-lg lg:text-xl xl:h-16">
+              {{ highlight.fields.title }}
+            </div>
+            <div class="h-24 text-center">
+              {{ highlight.fields.summary }}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -117,6 +143,7 @@ export default {
         parseFloat(thisMap.fields.mapCentreLatitude),
       ],
       tripMapPoints: mapPoints,
+      tripHighlights: thisTrip.fields.scheduleHighlight,
     }
   },
   data() {
