@@ -188,20 +188,22 @@
             <div
               class="border-l border-r border-b border-brown flex flex-center"
             >
-              <div v-for="(hotel, index) in day.fields.hotels" :key="index">
-                <div class="shadow-2xl w-2/5">
-                  <img
-                    class="object-cover h-half"
-                    :src="hotel.fields.hotelImage.fields.file.url"
-                    :alt="hotel.fields.hotelImage.fields.title"
-                  />
-                  <div class="h-48 flex flex-col flex-center px-4 space-y-8">
-                    <div class="text-gray-dark text-center text-2xl">
-                      {{ hotel.fields.name }}
-                    </div>
-                    <div class="text-brown text-center text-2xl">
-                      {{ '$'.repeat(parseInt(hotel.fields.price)) }}
-                    </div>
+              <div
+                v-for="(hotel, index) in day.fields.hotels"
+                :key="index"
+                class="shadow-2xl w-2/5"
+              >
+                <img
+                  class="object-cover w-full h-56"
+                  :src="hotel.fields.hotelImage.fields.file.url"
+                  :alt="hotel.fields.hotelImage.fields.title"
+                />
+                <div class="h-48 flex flex-col flex-center px-4 space-y-8">
+                  <div class="text-gray-dark text-center text-2xl">
+                    {{ hotel.fields.name }}
+                  </div>
+                  <div class="text-brown text-center text-2xl">
+                    {{ '$'.repeat(parseInt(hotel.fields.price)) }}
                   </div>
                 </div>
               </div>
