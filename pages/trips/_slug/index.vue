@@ -1,112 +1,119 @@
 <template>
   <div class="trip-idea-page">
-    <!-- Hero Section -->
-    <div class="relative h-screen/75 w-full">
-      <div class="absolute inset-x-0 top-0 z-0">
-        <agile
-          ref="carousel"
-          :options="carouselOptions"
-          @after-change="counter = $refs.carousel.getCurrentSlide()"
-        >
-          <div
-            v-for="image in tripPics"
-            :key="image.id"
-            class="slide h-screen/75 w-full pt-16"
+    <client-only>
+      <!-- Hero Section -->
+      <div class="relative h-screen/75 w-full">
+        <div class="absolute inset-x-0 top-0 z-0">
+          <agile
+            ref="carousel"
+            :options="carouselOptions"
+            @after-change="counter = $refs.carousel.getCurrentSlide()"
           >
             <div
-              class="h-full w-full flex flex-center bg-cover bg-center"
-              :style="{
-                'background-image': 'url(' + image.fields.file.url + ')',
-              }"
-            >
-              <div class="title-header text-center w-full">{{ tripName }}</div>
-            </div>
-          </div>
-
-          <!-- Custom buttons -->
-          <template slot="prevButton"
-            ><div
-              v-if="tripPics.length > 1"
-              class="absolute inset-y-0 left-0 flex items-center justify-around px-12 pt-16 text-2xl"
+              v-for="image in tripPics"
+              :key="image.id"
+              class="slide h-screen/75 w-full pt-16"
             >
               <div
-                class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
+                class="h-full w-full flex flex-center bg-cover bg-center"
+                :style="{
+                  'background-image': 'url(' + image.fields.file.url + ')',
+                }"
               >
-                <ArrowLeft class="h-6 w-6" />
+                <div class="title-header text-center w-full">
+                  {{ tripName }}
+                </div>
               </div>
             </div>
-          </template>
-          <template slot="nextButton"
-            ><div
-              v-if="tripPics.length > 1"
-              class="absolute inset-y-0 right-0 flex items-center justify-around px-12 pt-16 text-2xl"
-            >
-              <div
-                class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
-              >
-                <ArrowRight class="h-6 w-6" />
-              </div>
-            </div>
-          </template>
-        </agile>
-        <!-- Custom dots -->
-        <ul
-          v-if="tripPics.length > 1"
-          class="flex justify-around absolute inset-x-0 bottom-0 py-12"
-        >
-          <div class="flex">
-            <li
-              v-for="(image, i) in tripPics"
-              :key="i"
-              class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
-              :class="{ 'bg-white': i === counter }"
-              @click="
-                counter = i
-                $refs.carousel.goTo(counter)
-              "
-            ></li>
-          </div>
-        </ul>
-      </div>
-    </div>
 
-    <!-- Map & Description -->
-    <div class="section container mx-auto space-y-8">
-      <Map :center="tripMapCenter" :places="tripMapPoints" :zoom="6" />
-      <div class="w-full flex justify-center">
-        <div
-          class="text-center text-gray text-sm md:text-base lg:text-lg w-4/5"
-        >
-          {{ tripDescription }}
+            <!-- Custom buttons -->
+            <template slot="prevButton"
+              ><div
+                v-if="tripPics.length > 1"
+                class="absolute inset-y-0 left-0 flex items-center justify-around px-12 pt-16 text-2xl"
+              >
+                <div
+                  class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
+                >
+                  <ArrowLeft class="h-6 w-6" />
+                </div>
+              </div>
+            </template>
+            <template slot="nextButton"
+              ><div
+                v-if="tripPics.length > 1"
+                class="absolute inset-y-0 right-0 flex items-center justify-around px-12 pt-16 text-2xl"
+              >
+                <div
+                  class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
+                >
+                  <ArrowRight class="h-6 w-6" />
+                </div>
+              </div>
+            </template>
+          </agile>
+          <!-- Custom dots -->
+          <ul
+            v-if="tripPics.length > 1"
+            class="flex justify-around absolute inset-x-0 bottom-0 py-12"
+          >
+            <div class="flex">
+              <li
+                v-for="(image, i) in tripPics"
+                :key="i"
+                class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
+                :class="{ 'bg-white': i === counter }"
+                @click="
+                  counter = i
+                  $refs.carousel.goTo(counter)
+                "
+              ></li>
+            </div>
+          </ul>
         </div>
       </div>
-    </div>
 
-    <!-- Schedule Highlights -->
-    <div class="section container mx-auto space-y-16 px-16 sm:px-0">
-      <div class="title title-main text-black text-center">
-        Schedule Highlights
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-        <div v-for="(highlight, id) in tripHighlights" :key="id">
-          <div class="flex justify-center h-40">
-            <img
-              class="object-scale-down"
-              :src="highlight.fields.icon.fields.file.url"
-              :alt="highlight.fields.icon.fields.file.title"
-            />
-          </div>
-          <div class="text-gray text-base lg:text-lg text-center">
-            <div class="font-bold text-lg lg:text-xl xl:h-16">
-              {{ highlight.fields.title }}
-            </div>
-            <div class="h-24 text-center">
-              {{ highlight.fields.summary }}
-            </div>
+      <!-- Map & Description -->
+      <div class="section container mx-auto space-y-8">
+        <Map :center="tripMapCenter" :places="tripMapPoints" :zoom="6" />
+        <div class="w-full flex justify-center">
+          <div
+            class="text-center text-gray text-sm md:text-base lg:text-lg w-4/5"
+          >
+            {{ tripDescription }}
           </div>
         </div>
       </div>
-    </div>
+
+      <!-- Schedule Highlights -->
+      <div class="section container mx-auto space-y-16 px-16 sm:px-0">
+        <div class="title title-main text-black text-center">
+          Schedule Highlights
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+          <div v-for="(highlight, id) in tripHighlights" :key="id">
+            <div class="flex justify-center h-40">
+              <img
+                class="object-scale-down"
+                :src="highlight.fields.icon.fields.file.url"
+                :alt="highlight.fields.icon.fields.file.title"
+              />
+            </div>
+            <div class="text-gray text-base lg:text-lg text-center">
+              <div class="font-bold text-lg lg:text-xl xl:h-16">
+                {{ highlight.fields.title }}
+              </div>
+              <div class="h-24 text-center">
+                {{ highlight.fields.summary }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trip Content -->
+      {{ tripDays }}
+    </client-only>
   </div>
 </template>
 
@@ -125,6 +132,21 @@ export default {
     const thisTrip = store.getters['tripIdea/tripIdea']
     const thisMap = thisTrip.fields.map
     const thisMapPoints = thisTrip.fields.mapPoints
+    const thisTripDays = thisTrip.fields.tripDays
+    const thisDaysIds = []
+    thisTripDays.forEach((day) => {
+      thisDaysIds.push(day.sys.id)
+    })
+    const thisDaysContent = []
+    await thisDaysIds.forEach((day) => {
+      $axios
+        .get(
+          `https://cdn.contentful.com/spaces/7jrebygxgm3y/environments/master/entries/${day}?access_token=CkUOaYq5I8jhprtC4I4jSOQVyELnaaRMn9FKsMlDFm4`
+        )
+        .then((res) => {
+          thisDaysContent.push(res)
+        })
+    })
     const mapPoints = []
     thisMapPoints.forEach((point) => {
       mapPoints.push({
@@ -144,6 +166,7 @@ export default {
       ],
       tripMapPoints: mapPoints,
       tripHighlights: thisTrip.fields.scheduleHighlight,
+      tripDays: thisDaysContent,
     }
   },
   data() {
@@ -178,6 +201,7 @@ export default {
       this.counter++
     }, 8000)
   },
+  methods: {},
 }
 </script>
 
