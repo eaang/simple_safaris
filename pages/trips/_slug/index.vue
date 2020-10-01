@@ -194,7 +194,14 @@
                   :key="index"
                   class="slide flex flex-center py-16"
                 >
-                  <div class="shadow-2xl w-2/5">
+                  <HotelCard
+                    :src="hotel.fields.hotelImage.fields.file.url"
+                    :alt="hotel.fields.hotelImage.fields.title"
+                    :name="hotel.fields.name"
+                    :price="hotel.fields.price"
+                    class="w-2/5"
+                  />
+                  <!-- <div class="shadow-2xl w-2/5">
                     <img
                       class="object-cover w-full h-56"
                       :src="hotel.fields.hotelImage.fields.file.url"
@@ -208,7 +215,7 @@
                         {{ '$'.repeat(parseInt(hotel.fields.price)) }}
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </agile>
             </div>
