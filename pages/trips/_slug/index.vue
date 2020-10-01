@@ -113,30 +113,96 @@
 
       <!-- Trip Content -->
       <div class="section container mx-auto flex">
-        <div class="trip-days-info w-2/3">
+        <div class="trip-days-info w-3/5 space-y-16">
           <div v-for="(day, id) in tripDays" :key="id">
+            <!-- Title section -->
             <div>
               <div>{{ day.fields.dayNumbers }}</div>
               <div>{{ day.fields.location }}</div>
             </div>
+            <!-- Location image & description-->
             <div>
               <img
                 class="object-scale-down"
                 :src="day.fields.locationImage.fields.file.url"
                 :alt="day.fields.locationImage.fields.file.fileName"
               />
+              <div>
+                <div>{{ day.fields.location }}</div>
+                <div>
+                  {{ day.fields.description.content[0].content[0].value }}
+                </div>
+              </div>
+            </div>
+            <!-- Transportation -->
+            <div>
+              Transportation
+              <div
+                v-for="(step, index) in day.fields.transportationSteps"
+                :key="index"
+                class="flex space-x-2"
+              >
+                <div v-if="step.fields.modeOfTransportation === 'Car'">Car</div>
+                <div v-if="step.fields.modeOfTransportation === 'Plane'">
+                  Plane
+                </div>
+                <div>{{ step.fields.direction }}</div>
+              </div>
+            </div>
+            <!-- Hotel -->
+            <div>
+              Stay
+              <div v-for="(hotel, index) in day.fields.hotels" :key="index">
+                <div class="w-1/3 shadow-2xl">
+                  <img
+                    class="object-cover h-48"
+                    :src="hotel.fields.hotelImage.fields.file.url"
+                    :alt="hotel.fields.hotelImage.fields.title"
+                  />
+                  <div class="h-48 flex flex-col flex-center px-4 space-y-8">
+                    <div class="text-gray-dark text-center text-2xl">
+                      {{ hotel.fields.name }}
+                    </div>
+                    <div class="text-brown text-center text-2xl">
+                      {{ '$'.repeat(parseInt(hotel.fields.price)) }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Activity -->
+            <div v-if="day.fields.activities">
+              <div>
+                <div class="text-center">Activity</div>
+                <div class="flex flex-center space-x-8">
+                  <div v-for="(activity, i) in day.fields.activities" :key="i">
+                    {{ activity.fields.name }}
+                  </div>
+                </div>
+              </div>
+              <div v-for="(activity, i) in day.fields.activities" :key="i">
+                <img
+                  :src="activity.fields.activityImage.fields.file.url"
+                  :alt="activity.fields.name"
+                />
+                <div>
+                  {{ activity.fields.description.content[0].content[0].value }}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="trip-days-nav float-right">
-          <div v-for="(day, id) in tripDays" :key="id">
-            {{ day.fields.dayNumbers }}: {{ day.fields.location }}
+        <div class="trip-days-nav float-right w-1/3 px-8">
+          <div class="px-8">
+            <div v-for="(day, id) in tripDays" :key="id">
+              {{ day.fields.dayNumbers }}: {{ day.fields.location }}
+            </div>
+            <div>{{ tripPrice }}</div>
+            <a href="/contact">
+              <Button text="여행 문의하기" classes="btn-big btn-dark-brown" />
+            </a>
           </div>
-          <div>{{ tripPrice }}</div>
         </div>
-      </div>
-      <div v-for="(day, id) in tripDays" :key="id">
-        {{ day.fields }}
       </div>
     </client-only>
   </div>
