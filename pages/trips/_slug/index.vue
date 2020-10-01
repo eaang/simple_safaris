@@ -124,19 +124,23 @@
     </div>
 
     <!-- Trip Content -->
-    <div class="section container mx-auto flex text-black">
+    <div class="sticky top-0 mt-24 section container mx-auto flex text-black">
       <!-- Trip Days -->
-      <div class="trip-days-info w-2/3 space-y-16">
-        <div v-for="(day, id) in tripDays" :key="id">
+      <div class="sticky top-0 trip-days-info w-2/3 space-y-16">
+        <div v-for="(day, id) in tripDays" :key="id" class="space-y-16">
           <!-- Title section -->
           <div
             :id="kebabCase(day.fields.location)"
-            class="sticky top-0 md:static text-center shadow-2xl"
+            class="sticky top-0 md:static shadow-2xl"
           >
-            <div class="bg-brown text-white">
+            <div
+              class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
+            >
               {{ day.fields.dayNumbers }}
             </div>
-            <div>{{ day.fields.location }}</div>
+            <div class="h-20 text-xl flex flex-center font-bold">
+              {{ day.fields.location }}
+            </div>
           </div>
           <!-- Location image & description-->
           <div>
@@ -213,12 +217,21 @@
       <!-- Trip Navigation -->
       <div class="w-1/3 pl-16">
         <div class="space-y-2">
-          <div
-            v-for="(day, id) in tripDays"
-            :key="id"
-            class="h-16 bg-brown-lighter flex items-center text-xl bg-opacity-25 pl-4"
-          >
-            {{ day.fields.dayNumbers }}: {{ day.fields.location }}
+          <div v-for="(day, id) in tripDays" :key="id">
+            <a
+              :href="
+                '/trips/' +
+                tripIdea.fields.slug +
+                '#' +
+                kebabCase(day.fields.location)
+              "
+            >
+              <div
+                class="h-16 bg-brown-lighter flex items-center text-xl bg-opacity-25 pl-4"
+              >
+                {{ day.fields.dayNumbers }}: {{ day.fields.location }}
+              </div>
+            </a>
           </div>
           <div
             class="h-16 bg-brown-lighter flex items-center italic text-xl bg-opacity-25 pl-4"
@@ -232,25 +245,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="trip-days-nav px-16">
-        <div>
-          <div v-for="(day, id) in tripDays" :key="id">
-            <router-link
-              :to="{
-                path: '/trips/' + tripIdea.fields.slug,
-                hash: '#' + kebabCase(day.fields.location),
-              }"
-              ><div>
-                {{ day.fields.dayNumbers }}: {{ day.fields.location }}
-              </div></router-link
-            >
-          </div>
-          <div>{{ tripPrice }}</div>
-          <a href="/contact">
-            <Button text="여행 문의하기" classes="btn-big btn-dark-brown" />
-          </a>
-        </div>
-      </div> -->
     </div>
   </div>
 </template>
