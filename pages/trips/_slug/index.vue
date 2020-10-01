@@ -154,26 +154,44 @@
               :src="day.fields.locationImage.fields.file.url"
               :alt="day.fields.locationImage.fields.file.fileName"
             />
-            <div>
-              <div>{{ day.fields.location }}</div>
-              <div>
+            <div class="space-y-4 pt-4">
+              <div class="text-3xl text-gray-dark">
+                {{ day.fields.location }}
+              </div>
+              <div class="text-lg text-brown">
                 {{ day.fields.description.content[0].content[0].value }}
               </div>
             </div>
           </div>
           <!-- Transportation -->
           <div>
-            Transportation
-            <div
-              v-for="(step, index) in day.fields.transportationSteps"
-              :key="index"
-              class="flex space-x-2"
-            >
-              <div v-if="step.fields.modeOfTransportation === 'Car'">Car</div>
-              <div v-if="step.fields.modeOfTransportation === 'Plane'">
-                Plane
+            <div class="grid grid-cols-3">
+              <div class="grid grid-rows-2">
+                <div class="border-b-2 border-brown"></div>
+                <div class="border-l border-brown"></div>
               </div>
-              <div>{{ step.fields.direction }}</div>
+              <div class="text-center font-bold text-3xl">Transportation</div>
+              <div class="grid grid-rows-2">
+                <div class="border-b-2 border-brown"></div>
+                <div class="border-r border-brown"></div>
+              </div>
+            </div>
+            <div class="border-l border-r border-b border-brown py-8 space-y-4">
+              <div
+                v-for="(step, index) in day.fields.transportationSteps"
+                :key="index"
+                class="flex flex-col flex-center"
+              >
+                <div class="flex flex-center space-x-2">
+                  <div v-if="step.fields.modeOfTransportation === 'Car'">
+                    <img src="/transport/ic-car.svg" />
+                  </div>
+                  <div v-if="step.fields.modeOfTransportation === 'Plane'">
+                    <img src="/transport/ic-plane.svg" />
+                  </div>
+                  <div class="text-xl">{{ step.fields.direction }}</div>
+                </div>
+              </div>
             </div>
           </div>
           <!-- Hotel -->
