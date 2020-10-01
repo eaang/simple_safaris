@@ -18,6 +18,7 @@ export const actions = {
   async getTripIdeaBySlug({ commit }, slug) {
     commit('setLoading', true)
     const response = await client.getEntries({
+      include: 3,
       content_type: 'tripIdea',
       'fields.slug': slug,
     })

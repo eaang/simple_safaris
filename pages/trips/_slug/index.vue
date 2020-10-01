@@ -112,7 +112,32 @@
       </div>
 
       <!-- Trip Content -->
-      {{ tripDays }}
+      <div class="section container mx-auto flex">
+        <div class="trip-days-info w-2/3">
+          <div v-for="(day, id) in tripDays" :key="id">
+            <div>
+              <div>{{ day.fields.dayNumbers }}</div>
+              <div>{{ day.fields.location }}</div>
+            </div>
+            <div>
+              <img
+                class="object-scale-down"
+                :src="day.fields.locationImage.fields.file.url"
+                :alt="day.fields.locationImage.fields.file.fileName"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="trip-days-nav float-right">
+          <div v-for="(day, id) in tripDays" :key="id">
+            {{ day.fields.dayNumbers }}: {{ day.fields.location }}
+          </div>
+          <div>{{ tripPrice }}</div>
+        </div>
+      </div>
+      <div v-for="(day, id) in tripDays" :key="id">
+        {{ day.fields }}
+      </div>
     </client-only>
   </div>
 </template>
@@ -132,21 +157,6 @@ export default {
     const thisTrip = store.getters['tripIdea/tripIdea']
     const thisMap = thisTrip.fields.map
     const thisMapPoints = thisTrip.fields.mapPoints
-    const thisTripDays = thisTrip.fields.tripDays
-    const thisDaysIds = []
-    thisTripDays.forEach((day) => {
-      thisDaysIds.push(day.sys.id)
-    })
-    const thisDaysContent = []
-    await thisDaysIds.forEach((day) => {
-      $axios
-        .get(
-          `https://cdn.contentful.com/spaces/7jrebygxgm3y/environments/master/entries/${day}?access_token=CkUOaYq5I8jhprtC4I4jSOQVyELnaaRMn9FKsMlDFm4`
-        )
-        .then((res) => {
-          thisDaysContent.push(res)
-        })
-    })
     const mapPoints = []
     thisMapPoints.forEach((point) => {
       mapPoints.push({
@@ -159,6 +169,7 @@ export default {
       tripIdea: thisTrip,
       tripName: thisTrip.fields.name,
       tripPics: thisTrip.fields.headerImages,
+      tripPrice: thisTrip.fields.startingPrice,
       tripDescription: thisTrip.fields.description.content[0].content[0].value,
       tripMapCenter: [
         parseFloat(thisMap.fields.mapCentreLongitude),
@@ -166,7 +177,7 @@ export default {
       ],
       tripMapPoints: mapPoints,
       tripHighlights: thisTrip.fields.scheduleHighlight,
-      tripDays: thisDaysContent,
+      tripDays: thisTrip.fields.tripDays,
     }
   },
   data() {
