@@ -1,11 +1,12 @@
 <template>
   <div class="trip-idea-page">
     <!-- Bubble to scroll up -->
-    <TopBubble
-      class="fixed bottom-0 right-0 z-50 mb-20"
-      :class="{ invisible: !scrolled }"
-      @click="window.scrollTo(0, 0)"
-    />
+    <div @click="backToTop">
+      <TopBubble
+        class="fixed bottom-0 right-0 z-50 mb-20"
+        :class="{ invisible: !scrolled }"
+      />
+    </div>
 
     <!-- Hero Section -->
     <div class="relative h-screen/75 w-full">
@@ -428,6 +429,9 @@ export default {
     },
     handleScroll() {
       this.scrolled = window.scrollY > window.innerHeight
+    },
+    backToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     },
   },
   head() {
