@@ -1,78 +1,84 @@
 <template>
   <div class="trip-idea-page">
+    <!-- Bubble to scroll up -->
+    <div @click="backToTop">
+      <TopBubble
+        class="fixed bottom-0 right-0 z-50 mb-20"
+        :class="{ invisible: !scrolled }"
+      />
+    </div>
+
     <!-- Hero Section -->
     <div class="relative h-screen/75 w-full">
       <div class="absolute inset-x-0 top-0 z-0">
-        <client-only>
-          <agile
-            ref="carousel"
-            :options="carouselOptions"
-            @after-change="counter = $refs.carousel.getCurrentSlide()"
+        <agile
+          ref="carousel"
+          :options="carouselOptions"
+          @after-change="counter = $refs.carousel.getCurrentSlide()"
+        >
+          <div
+            v-for="image in tripPics"
+            :key="image.id"
+            class="slide h-screen/75 w-full pt-16"
           >
             <div
-              v-for="image in tripPics"
-              :key="image.id"
-              class="slide h-screen/75 w-full pt-16"
+              class="h-full w-full flex flex-center bg-cover bg-center"
+              :style="{
+                'background-image': 'url(' + image.fields.file.url + ')',
+              }"
+            >
+              <div class="title-header text-center w-full">
+                {{ tripName }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom buttons -->
+          <template slot="prevButton"
+            ><div
+              v-if="tripPics.length > 1"
+              class="absolute inset-y-0 left-0 flex items-center justify-around px-12 pt-16 text-2xl"
             >
               <div
-                class="h-full w-full flex flex-center bg-cover bg-center"
-                :style="{
-                  'background-image': 'url(' + image.fields.file.url + ')',
-                }"
+                class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
               >
-                <div class="title-header text-center w-full">
-                  {{ tripName }}
-                </div>
+                <ArrowLeft class="h-6 w-6" />
               </div>
             </div>
-
-            <!-- Custom buttons -->
-            <template slot="prevButton"
-              ><div
-                v-if="tripPics.length > 1"
-                class="absolute inset-y-0 left-0 flex items-center justify-around px-12 pt-16 text-2xl"
+            <div v-else class="invisible"></div>
+          </template>
+          <template slot="nextButton"
+            ><div
+              v-if="tripPics.length > 1"
+              class="absolute inset-y-0 right-0 flex items-center justify-around px-12 pt-16 text-2xl"
+            >
+              <div
+                class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
               >
-                <div
-                  class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
-                >
-                  <ArrowLeft class="h-6 w-6" />
-                </div>
+                <ArrowRight class="h-6 w-6" />
               </div>
-              <div v-else class="invisible"></div>
-            </template>
-            <template slot="nextButton"
-              ><div
-                v-if="tripPics.length > 1"
-                class="absolute inset-y-0 right-0 flex items-center justify-around px-12 pt-16 text-2xl"
-              >
-                <div
-                  class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
-                >
-                  <ArrowRight class="h-6 w-6" />
-                </div>
-              </div>
-              <div v-else class="invisible"></div>
-            </template>
-          </agile>
-          <!-- Custom dots -->
-          <ul
-            v-if="tripPics.length > 1"
-            class="flex justify-around absolute inset-x-0 bottom-0 py-12"
-          >
-            <div class="flex">
-              <li
-                v-for="(image, i) in tripPics"
-                :key="i"
-                class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
-                :class="{ 'bg-white': i === counter }"
-                @click="
-                  counter = i
-                  $refs.carousel.goTo(counter)
-                "
-              ></li>
             </div>
-          </ul>
-        </client-only>
+            <div v-else class="invisible"></div>
+          </template>
+        </agile>
+        <!-- Custom dots -->
+        <ul
+          v-if="tripPics.length > 1"
+          class="flex justify-around absolute inset-x-0 bottom-0 py-12"
+        >
+          <div class="flex">
+            <li
+              v-for="(image, i) in tripPics"
+              :key="i"
+              class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
+              :class="{ 'bg-white': i === counter }"
+              @click="
+                counter = i
+                $refs.carousel.goTo(counter)
+              "
+            ></li>
+          </div>
+        </ul>
       </div>
     </div>
 
@@ -124,97 +130,192 @@
     </div>
 
     <!-- Trip Content -->
-    <div class="section container mx-auto flex text-black">
-      <div class="trip-days-info w-3/5 space-y-16">
-        <div v-for="(day, id) in tripDays" :key="id">
+    <div class="container mx-auto flex text-black">
+      <!-- Trip Days -->
+      <div class="trip-days-info w-full xl:w-2/3 space-y-24">
+        <div
+          v-for="(day, id) in tripDays"
+          :id="kebabCase(day.fields.location)"
+          :key="id"
+          class="space-y-16"
+        >
           <!-- Title section -->
-          <div class="sticky top-0 md:static text-center shadow-2xl">
-            <div class="bg-brown text-white">
-              {{ day.fields.dayNumbers }}
+          <div class="sticky top-0 z-10 xl:static pt-16">
+            <div class="shadow-2xl">
+              <div
+                class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
+              >
+                {{ day.fields.dayNumbers }}
+              </div>
+              <div class="bg-white h-20 text-xl flex flex-center font-bold">
+                {{ day.fields.location }}
+              </div>
             </div>
-            <div>{{ day.fields.location }}</div>
           </div>
+
           <!-- Location image & description-->
-          <div>
+          <div class="px-8 xl:px-0">
             <img
               class="object-scale-down"
               :src="day.fields.locationImage.fields.file.url"
               :alt="day.fields.locationImage.fields.file.fileName"
             />
-            <div>
-              <div>{{ day.fields.location }}</div>
-              <div>
+            <div class="space-y-4 pt-4">
+              <div class="text-2xl md:text-3xl text-gray-dark">
+                {{ day.fields.location }}
+              </div>
+              <div class="text-base md:text-lg text-brown">
                 {{ day.fields.description.content[0].content[0].value }}
               </div>
             </div>
           </div>
           <!-- Transportation -->
-          <div>
-            Transportation
-            <div
-              v-for="(step, index) in day.fields.transportationSteps"
-              :key="index"
-              class="flex space-x-2"
-            >
-              <div v-if="step.fields.modeOfTransportation === 'Car'">Car</div>
-              <div v-if="step.fields.modeOfTransportation === 'Plane'">
-                Plane
+          <div class="px-8 xl:px-0">
+            <BorderTitle text="Transportation" />
+            <div class="border-l border-r border-b border-brown py-8 space-y-4">
+              <div
+                v-for="(step, index) in day.fields.transportationSteps"
+                :key="index"
+                class="flex flex-col justify-center px-8 items-start lg:items-center"
+              >
+                <div class="flex items-center justify-start space-x-2">
+                  <div v-if="step.fields.modeOfTransportation === 'Car'">
+                    <img src="/transport/ic-car.svg" />
+                  </div>
+                  <div v-if="step.fields.modeOfTransportation === 'Plane'">
+                    <img src="/transport/ic-plane.svg" />
+                  </div>
+                  <div class="text-base md:text-xl lg:text-xl">
+                    {{ step.fields.direction }}
+                  </div>
+                </div>
               </div>
-              <div>{{ step.fields.direction }}</div>
             </div>
           </div>
           <!-- Hotel -->
-          <div>
-            Stay
-            <div v-for="(hotel, index) in day.fields.hotels" :key="index">
-              <div class="w-1/3 shadow-2xl">
-                <img
-                  class="object-cover h-48"
-                  :src="hotel.fields.hotelImage.fields.file.url"
-                  :alt="hotel.fields.hotelImage.fields.title"
-                />
-                <div class="h-48 flex flex-col flex-center px-4 space-y-8">
-                  <div class="text-gray-dark text-center text-2xl">
-                    {{ hotel.fields.name }}
-                  </div>
-                  <div class="text-brown text-center text-2xl">
-                    {{ '$'.repeat(parseInt(hotel.fields.price)) }}
+          <div class="px-8 xl:px-0">
+            <BorderTitle text="Stay" />
+            <div
+              class="relative border-l border-r border-b border-brown flex flex-center"
+            >
+              <agile
+                v-if="day.fields.hotels.length > 1"
+                ref="stayCarousel"
+                :options="stayCarouselOptions"
+                class="w-full z-0"
+              >
+                <div
+                  v-for="(hotel, index) in day.fields.hotels"
+                  :key="index"
+                  class="slide"
+                >
+                  <div class="w-full py-16 flex flex-center">
+                    <HotelCard
+                      :src="hotel.fields.hotelImage.fields.file.url"
+                      :alt="hotel.fields.hotelImage.fields.title"
+                      :name="hotel.fields.name"
+                      :price="hotel.fields.price"
+                      class="w-4/5 lg:w-2/5"
+                    />
                   </div>
                 </div>
+                <template slot="prevButton">
+                  <div class="absolute inset-y-0 left-0 flex items-center">
+                    <div
+                      class="w-16 h-24 border-t border-r border-b border-brown flex flex-center"
+                    >
+                      <AngleLeft class="text-brown h-16" />
+                    </div>
+                  </div>
+                </template>
+                <template slot="nextButton">
+                  <div class="absolute inset-y-0 right-0 flex items-center">
+                    <div
+                      class="w-16 h-24 border-t border-l border-b border-brown flex flex-center"
+                    >
+                      <AngleRight class="text-brown h-16" />
+                    </div>
+                  </div>
+                </template>
+              </agile>
+
+              <div
+                v-for="(hotel, index) in day.fields.hotels"
+                v-else
+                :key="index"
+                class="w-full py-16 flex flex-center"
+              >
+                <HotelCard
+                  :src="hotel.fields.hotelImage.fields.file.url"
+                  :alt="hotel.fields.hotelImage.fields.title"
+                  :name="hotel.fields.name"
+                  :price="hotel.fields.price"
+                  class="w-4/5 lg:w-2/5"
+                />
               </div>
             </div>
           </div>
           <!-- Activity -->
-          <div v-if="day.fields.activities">
-            <div>
-              <div class="text-center">Activity</div>
-              <div class="flex flex-center space-x-8">
-                <div v-for="(activity, i) in day.fields.activities" :key="i">
+          <div v-if="day.fields.activities" class="px-8 xl:px-0">
+            <div class="mb-16">
+              <BorderTitle text="Activity" />
+              <div
+                class="border-l border-r border-b border-brown text-center py-8 space-y-4"
+              >
+                <div
+                  v-for="(activity, i) in day.fields.activities"
+                  :key="i"
+                  class="text-xl"
+                >
                   {{ activity.fields.name }}
                 </div>
               </div>
             </div>
-            <div v-for="(activity, i) in day.fields.activities" :key="i">
-              <img
-                :src="activity.fields.activityImage.fields.file.url"
-                :alt="activity.fields.name"
-              />
-              <div>
-                {{ activity.fields.description.content[0].content[0].value }}
+            <div class="space-y-8">
+              <div v-for="(activity, i) in day.fields.activities" :key="i">
+                <img
+                  :src="activity.fields.activityImage.fields.file.url"
+                  :alt="activity.fields.name"
+                />
+                <div class="mt-8 text-base md:text-lg text-brown">
+                  {{ activity.fields.description.content[0].content[0].value }}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="trip-days-nav float-right w-1/3 px-8">
-        <div class="px-8">
+      <!-- Trip Navigation -->
+      <div class="hidden xl:block xl:w-1/3 pl-16">
+        <div class="space-y-2 sticky top-0 pt-16">
           <div v-for="(day, id) in tripDays" :key="id">
-            {{ day.fields.dayNumbers }}: {{ day.fields.location }}
+            <nuxt-link
+              :to="{
+                path: '/trips/' + tripIdea.fields.slug,
+                hash: '#' + kebabCase(day.fields.location),
+              }"
+            >
+              <div
+                class="h-16 bg-brown-lighter bg-opacity-25 pl-2 hover:bg-brown"
+              >
+                <div
+                  class="pl-2 w-full h-full flex items-center text-xl hover:bg-brown-dark hover:text-white hover:font-bold"
+                >
+                  {{ day.fields.dayNumbers }}: {{ day.fields.location }}
+                </div>
+              </div></nuxt-link
+            >
           </div>
-          <div>{{ tripPrice }}</div>
-          <a href="/contact">
-            <Button text="여행 문의하기" classes="btn-big btn-dark-brown" />
-          </a>
+          <div
+            class="h-16 bg-brown-lighter flex items-center italic text-xl bg-opacity-25 pl-4"
+          >
+            {{ tripPrice }}
+          </div>
+          <div>
+            <a href="/contact">
+              <Button text="여행 문의하기" classes="btn-big btn-dark-brown" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -268,6 +369,7 @@ export default {
   data() {
     return {
       counter: 0,
+      scrolled: false,
       carouselOptions: {
         navButtons: false,
         fade: true,
@@ -275,6 +377,22 @@ export default {
         autoplay: false,
         dots: false,
         speed: 4000,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              navButtons: true,
+            },
+          },
+        ],
+      },
+      stayCarouselOptions: {
+        navButtons: false,
+        fade: false,
+        infinite: true,
+        autoplay: false,
+        dots: false,
+        speed: 2000,
         responsive: [
           {
             breakpoint: 768,
@@ -296,9 +414,36 @@ export default {
       this.$refs.carousel.goToNext()
       this.counter++
     }, 8000)
+    window.addEventListener('scroll', this.handleScroll)
   },
-  methods: {},
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll)
+  },
+  methods: {
+    kebabCase(str) {
+      return str
+        .replace(/([A-Z])([A-Z])/g, '$1-$2')
+        .replace(/([a-z])([A-Z])/g, '$1-$2')
+        .replace(/[\s_]+/g, '-')
+        .toLowerCase()
+    },
+    handleScroll() {
+      this.scrolled = window.scrollY > window.innerHeight
+    },
+    backToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    },
+  },
+  head() {
+    return {
+      title: '- ' + this.tripName,
+    }
+  },
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+html {
+  scroll-behavior: smooth;
+}
+</style>

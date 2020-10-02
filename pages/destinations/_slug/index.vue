@@ -49,6 +49,11 @@ export default {
       return this.$store.getters['destination/loadingStatus']
     },
   },
+  head() {
+    return {
+      title: '- ' + this.destinationName,
+    }
+  },
 }
 </script>
 

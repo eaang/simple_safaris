@@ -55,6 +55,7 @@ html {
   line-break: strict;
   word-break: keep-all;
   cursor: default;
+  scroll-behavior: smooth;
 }
 .section {
   @apply my-8 py-16 mx-auto;
