@@ -1,5 +1,12 @@
 <template>
   <div class="trip-idea-page">
+    <!-- Bubble to scroll up -->
+    <TopBubble
+      class="fixed bottom-0 right-0 z-50 mb-20"
+      :class="{ invisible: !scrolled }"
+      @click="window.scrollTo(0, 0)"
+    />
+
     <!-- Hero Section -->
     <div class="relative h-screen/75 w-full">
       <div class="absolute inset-x-0 top-0 z-0">
@@ -361,6 +368,7 @@ export default {
   data() {
     return {
       counter: 0,
+      scrolled: false,
       carouselOptions: {
         navButtons: false,
         fade: true,
@@ -405,6 +413,10 @@ export default {
       this.$refs.carousel.goToNext()
       this.counter++
     }, 8000)
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
     kebabCase(str) {
@@ -414,8 +426,20 @@ export default {
         .replace(/[\s_]+/g, '-')
         .toLowerCase()
     },
+    handleScroll() {
+      this.scrolled = window.scrollY > window.innerHeight
+    },
+  },
+  head() {
+    return {
+      title: '- ' + this.tripName,
+    }
   },
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+html {
+  scroll-behavior: smooth;
+}
+</style>

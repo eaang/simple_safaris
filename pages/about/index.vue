@@ -122,7 +122,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  head() {
+    return {
+      title: '- About us',
+    }
+  },
+}
 </script>
 
 <style lang="scss" scoped>

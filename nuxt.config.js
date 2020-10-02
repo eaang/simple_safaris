@@ -17,11 +17,15 @@ export default {
   },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'simple_safaris',
+    titleTemplate: 'Simple Safaris %s',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: `사파리(Safari)라는 말은 동물을 구경하거나 사냥하는 여행을 의미합니다. 심플사파리는 고객님들이 대자연에서의 모험을 쉽고 편안하게 즐길 수 있도록 도와드리고 있습니다.`,
+      },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
