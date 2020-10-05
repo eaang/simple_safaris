@@ -12,7 +12,7 @@
           :class="image.position"
           class="slide block h-screen/75 lg:h-screen lg:bg-bottom w-full z-0 bg-cover"
           :style="{
-            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)), url(${image.src})`,
+            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)), url(${image.src})`
           }" />
 
         <!-- Custom buttons -->
@@ -62,7 +62,7 @@ import { VueAgile } from 'vue-agile'
 
 export default {
   components: {
-    agile: VueAgile,
+    agile: VueAgile
   },
   data() {
     return {
@@ -78,34 +78,34 @@ export default {
           {
             breakpoint: 768,
             settings: {
-              navButtons: true,
-            },
-          },
-        ],
+              navButtons: true
+            }
+          }
+        ]
       },
       images: [
         {
           src: '/landinghero/hotel-samaki-lodge-zanzibar.jpeg',
-          position: 'bg-center',
+          position: 'bg-center'
         },
         { src: '/landinghero/kenya-safari.jpeg', position: 'bg-left-bottom' },
         {
           src: '/landinghero/luxury-safari-holiday.jpeg',
-          position: 'bg-left-bottom',
+          position: 'bg-left-bottom'
         },
         {
           src: '/landinghero/national-parks-safari-africa.jpeg',
-          position: 'bg-bottom',
+          position: 'bg-bottom'
         },
         {
           src: '/landinghero/ranthambore-national-park.jpeg',
-          position: 'bg-center',
+          position: 'bg-center'
         },
         {
           src: '/landinghero/sri-lanka-safari-leopard.jpeg',
-          position: 'bg-right',
-        },
-      ],
+          position: 'bg-right'
+        }
+      ]
     }
   },
   mounted() {
@@ -114,7 +114,7 @@ export default {
       this.counter++
     }, 8000)
   },
-  methods: {},
+  methods: {}
 }
 </script>
 

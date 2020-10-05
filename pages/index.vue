@@ -159,52 +159,52 @@ export default {
       gallery: [
         {
           src: '/instagram/Image 1.jpg',
-          link: 'https://www.instagram.com/p/B8q9_wlJgAk/',
+          link: 'https://www.instagram.com/p/B8q9_wlJgAk/'
         },
         {
           src: '/instagram/Image 2.jpg',
-          link: 'https://www.instagram.com/p/B8jDOdCJNru/',
+          link: 'https://www.instagram.com/p/B8jDOdCJNru/'
         },
         {
           src: '/instagram/Image 3.jpg',
-          link: 'https://www.instagram.com/p/B8gWo_UJMV8/',
+          link: 'https://www.instagram.com/p/B8gWo_UJMV8/'
         },
         {
           src: '/instagram/Image 4.jpg',
-          link: 'https://www.instagram.com/p/B8a6lECguix/',
+          link: 'https://www.instagram.com/p/B8a6lECguix/'
         },
         {
           src: '/instagram/Image 5.jpg',
-          link: 'https://www.instagram.com/p/B8Q41BkAKIx/',
+          link: 'https://www.instagram.com/p/B8Q41BkAKIx/'
         },
         {
           src: '/instagram/Image 6.jpg',
-          link: 'https://www.instagram.com/p/B8JHXMQpLJV/',
+          link: 'https://www.instagram.com/p/B8JHXMQpLJV/'
         },
         {
           src: '/instagram/Image 7.jpg',
-          link: 'https://www.instagram.com/p/B8BES4xJT_F/',
+          link: 'https://www.instagram.com/p/B8BES4xJT_F/'
         },
         {
           src: '/instagram/Image 8.jpg',
-          link: 'https://www.instagram.com/p/B772K3Ypypn/',
+          link: 'https://www.instagram.com/p/B772K3Ypypn/'
         },
         {
           src: '/instagram/Image 9.jpg',
-          link: 'https://www.instagram.com/p/B75lcUIJWBF/',
+          link: 'https://www.instagram.com/p/B75lcUIJWBF/'
         },
         {
           src: '/instagram/Image 10.jpg',
-          link: 'https://www.instagram.com/p/B70eg6ap1p6/',
+          link: 'https://www.instagram.com/p/B70eg6ap1p6/'
         },
         {
           src: '/instagram/Image 11.jpg',
-          link: 'https://www.instagram.com/p/B7s5ThtpgYY/',
+          link: 'https://www.instagram.com/p/B7s5ThtpgYY/'
         },
         {
           src: '/instagram/Image 12.jpg',
-          link: 'https://www.instagram.com/p/B7Vex7XAvgJ/',
-        },
+          link: 'https://www.instagram.com/p/B7Vex7XAvgJ/'
+        }
       ],
       blogposts: [
         {
@@ -214,7 +214,7 @@ export default {
 케냐 기린 호텔의 모든 것!`,
           content: `기린과의 키스와 함께하는 티타임
 나이보비의 천상 정원, 기린호텔!`,
-          link: `/`,
+          link: `/`
         },
         {
           url: require('@/assets/images/blogposts/manta_hotel.jpg'),
@@ -223,7 +223,7 @@ export default {
 탄자니아 수중 호텔`,
           content: `바닷속 한가운데 위치한 마법 같은 숙소
 환상적인 수중정원 ‘만타 리조트’`,
-          link: `/`,
+          link: `/`
         },
         {
           url: require('@/assets/images/blogposts/singita_sasakwa_lodge.jpg'),
@@ -232,7 +232,7 @@ export default {
 럭셔리 싱키타는 왜 특별한가?`,
           content: `VVIP, 그들만을 위한 럭셔리 롯지
 완벽한 서비스와 프라이빗 게임리저브`,
-          link: `/`,
+          link: `/`
         },
         {
           url: require('@/assets/images/blogposts/travel_planning.jpg'),
@@ -241,9 +241,9 @@ export default {
 체크 리스트 5가지!`,
           content: `아프리카 여행 시 반드시 체크할 것
 비자, 예방접종, 주의사항까지 모든 것`,
-          link: `/`,
-        },
-      ],
+          link: `/`
+        }
+      ]
     }
   },
   created() {
@@ -273,13 +273,13 @@ export default {
         this.transNavbarStatus = false
         this.whiteNavbarStatus = true
       }
-    },
+    }
   },
   head() {
     return {
-      title: '- Home',
+      title: '- Home'
     }
-  },
+  }
 }
 </script>
 

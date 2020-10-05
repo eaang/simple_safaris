@@ -429,7 +429,7 @@ import {
   email,
   minLength,
   maxLength,
-  integer,
+  integer
 } from 'vuelidate/lib/validators'
 import { format } from 'date-fns'
 
@@ -464,7 +464,7 @@ export default {
         '해본 적이 있다',
         '지인 중 해본 사람이 있다',
         '개인적으로 리서치는 해보았다',
-        '전혀 모른다',
+        '전혀 모른다'
       ],
       acitivtyOptions: [
         '승마 사파리',
@@ -477,7 +477,7 @@ export default {
         '카누',
         '헬리콥터 탑승',
         '프라이빗 사파리',
-        '추천 요망',
+        '추천 요망'
       ],
       datePickerProps: {
         class:
@@ -486,52 +486,52 @@ export default {
         style: `background-image: url('/calendar.svg');
           background-repeat: no-repeat;
           background-position: right 0.5em top 50%, 0 0;
-          background-size: 1em auto, 100%;`,
-      },
+          background-size: 1em auto, 100%;`
+      }
     }
   },
   validations: {
     name: {
-      required,
+      required
     },
     phone: {
       required,
       minLength: minLength(6),
-      maxLength: maxLength(15),
+      maxLength: maxLength(15)
     },
     email: {
       required,
-      email,
+      email
     },
     adults: {
       required,
-      integer,
+      integer
     },
     children: {
       required,
-      integer,
+      integer
     },
     startDate: {
       required: requiredIf(function () {
         return this.noDate === false
       }),
-      afterToday,
+      afterToday
     },
     endDate: {
       required: requiredIf(function () {
         return this.noDate === false
       }),
-      afterToday,
+      afterToday
     },
     daysDesired: {
-      required,
+      required
     },
     budgetPerPerson: {
-      required,
+      required
     },
     countries: {
-      required,
-    },
+      required
+    }
   },
   computed: {
     destinations() {
@@ -563,19 +563,19 @@ export default {
       } else {
         return null
       }
-    },
+    }
   },
   watch: {
-    startDate(newValue, oldValue) {
+    startDate(newValue) {
       if (newValue) {
         this.noDate = false
       }
     },
-    endDate(newValue, oldValue) {
+    endDate(newValue) {
       if (newValue) {
         this.noDate = false
       }
-    },
+    }
   },
   methods: {
     clearDate() {
@@ -587,7 +587,7 @@ export default {
       if (this.$v.$invalid) {
         const element = document.getElementById('formStart')
         element.scrollIntoView({
-          behavior: 'smooth',
+          behavior: 'smooth'
         })
         this.submitStatus = 'ERROR'
       } else {
@@ -607,19 +607,19 @@ export default {
             Countries: this.countries,
             Experience: this.experience,
             Interests: this.activities,
-            Message: this.message,
+            Message: this.message
           })
           .then(() => {
             this.$router.push('/contact/success')
           })
       }
-    },
+    }
   },
   head() {
     return {
-      title: '- Contact us',
+      title: '- Contact us'
     }
-  },
+  }
 }
 </script>
 

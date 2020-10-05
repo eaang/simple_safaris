@@ -10,10 +10,10 @@ export default {
   publicRuntimeConfig: {
     mapboxToken: process.env.MAPBOX_TOKEN,
     ctfSpace: process.env.CTF_SPACE_ID,
-    ctfAccess: process.env.CTF_CD_ACCESS_TOKEN,
+    ctfAccess: process.env.CTF_CD_ACCESS_TOKEN
   },
   purgeCSS: {
-    enabled: false,
+    enabled: false
   },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -24,22 +24,22 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: `사파리(Safari)라는 말은 동물을 구경하거나 사냥하는 여행을 의미합니다. 심플사파리는 고객님들이 대자연에서의 모험을 쉽고 편안하게 즐길 수 있도록 도와드리고 있습니다.`,
-      },
+        content: `사파리(Safari)라는 말은 동물을 구경하거나 사냥하는 여행을 의미합니다. 심플사파리는 고객님들이 대자연에서의 모험을 쉽고 편안하게 즐길 수 있도록 도와드리고 있습니다.`
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap',
+          'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap'
       },
       { rel: 'stylesheet', href: 'https://use.typekit.net/oqp4bki.css' },
       {
         rel: 'stylesheet',
-        href: 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css',
-      },
-    ],
+        href: 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css'
+      }
+    ]
   },
   router: {
     base: '/',
@@ -72,37 +72,37 @@ export default {
       }
 
       return { x: 0, y: 0 }
-    },
+    }
   },
   generate: {
     routes: () => {
       const client = contentful.createClient({
         space: process.env.CTF_SPACE_ID,
-        accessToken: process.env.CTF_CD_ACCESS_TOKEN,
+        accessToken: process.env.CTF_CD_ACCESS_TOKEN
       })
 
       const destinations = client
         .getEntries({
-          content_type: 'destination',
+          content_type: 'destination'
         })
         .then((response) => {
           return response.items.map((entry) => {
             return {
               route: '/destinations/' + entry.fields.slug,
-              payload: entry,
+              payload: entry
             }
           })
         })
 
       const tripIdeas = client
         .getEntries({
-          content_type: 'tripIdea',
+          content_type: 'tripIdea'
         })
         .then((response) => {
           return response.items.map((entry) => {
             return {
               route: '/trips/' + entry.fields.slug,
-              payload: entry,
+              payload: entry
             }
           })
         })
@@ -110,19 +110,19 @@ export default {
       return Promise.all([destinations, tripIdeas]).then((values) => {
         return [...values[0], ...values[1]]
       })
-    },
+    }
   },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ['@/assets/sass/main.scss', 'vue2-animate/dist/vue2-animate.min.css'],
 
   tailwindcss: {
     configPath: './tailwind.config.js',
-    exposeConfig: true,
+    exposeConfig: true
   },
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     { src: '~/plugins/vcalendar.js', mode: 'client' },
-    '~/plugins/vuelidate.js',
+    '~/plugins/vuelidate.js'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -134,14 +134,14 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
+    '@nuxtjs/tailwindcss'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/dotenv',
+    '@nuxtjs/dotenv'
   ],
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
@@ -151,8 +151,8 @@ export default {
     transpile: ['vue-agile'],
     extend(config) {
       config.node = {
-        fs: 'empty',
+        fs: 'empty'
       }
-    },
-  },
+    }
+  }
 }

@@ -24,7 +24,7 @@
             <div
               class="h-full w-full flex flex-center bg-cover bg-center"
               :style="{
-                'background-image': 'url(' + image.fields.file.url + ')',
+                'background-image': 'url(' + image.fields.file.url + ')'
               }"
             >
               <div class="title-header text-center w-full">
@@ -292,7 +292,7 @@
             <nuxt-link
               :to="{
                 path: '/trips/' + tripIdea.fields.slug,
-                hash: '#' + kebabCase(day.fields.location),
+                hash: '#' + kebabCase(day.fields.location)
               }"
             >
               <div
@@ -327,12 +327,12 @@ import { VueAgile } from 'vue-agile'
 
 export default {
   components: {
-    agile: VueAgile,
+    agile: VueAgile
   },
   async fetch({ store, params }) {
     await store.dispatch('tripIdea/getTripIdeaBySlug', params.slug)
   },
-  async asyncData({ store, params, $axios }) {
+  async asyncData({ store, params }) {
     await store.dispatch('tripIdea/getTripIdeaBySlug', params.slug)
     const thisTrip = store.getters['tripIdea/tripIdea']
     const thisMap = thisTrip.fields.map
@@ -340,7 +340,7 @@ export default {
     if (thisMap !== undefined) {
       mapCenter = [
         parseFloat(thisMap.fields.mapCentreLongitude),
-        parseFloat(thisMap.fields.mapCentreLatitude),
+        parseFloat(thisMap.fields.mapCentreLatitude)
       ]
     }
     const thisMapPoints = thisTrip.fields.mapPoints
@@ -350,7 +350,7 @@ export default {
         mapPoints.push({
           name: point.fields.locationName,
           longitude: parseFloat(point.fields.longitude),
-          latitude: parseFloat(point.fields.latitude),
+          latitude: parseFloat(point.fields.latitude)
         })
       })
     }
@@ -363,7 +363,7 @@ export default {
       tripMapCenter: mapCenter,
       tripMapPoints: mapPoints,
       tripHighlights: thisTrip.fields.scheduleHighlight,
-      tripDays: thisTrip.fields.tripDays,
+      tripDays: thisTrip.fields.tripDays
     }
   },
   data() {
@@ -381,10 +381,10 @@ export default {
           {
             breakpoint: 768,
             settings: {
-              navButtons: true,
-            },
-          },
-        ],
+              navButtons: true
+            }
+          }
+        ]
       },
       stayCarouselOptions: {
         navButtons: false,
@@ -397,17 +397,17 @@ export default {
           {
             breakpoint: 768,
             settings: {
-              navButtons: true,
-            },
-          },
-        ],
-      },
+              navButtons: true
+            }
+          }
+        ]
+      }
     }
   },
   computed: {
     isLoading() {
       return this.$store.getters['tripIdea/loadingStatus']
-    },
+    }
   },
   mounted() {
     setInterval(() => {
@@ -433,13 +433,13 @@ export default {
     },
     backToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' })
-    },
+    }
   },
   head() {
     return {
-      title: '- ' + this.tripName,
+      title: '- ' + this.tripName
     }
-  },
+  }
 }
 </script>
 

@@ -17,21 +17,21 @@ export default {
   props: {
     src: {
       type: String,
-      default: '',
+      default: ''
     },
     alt: {
       type: String,
-      default: '',
+      default: ''
     },
     name: {
       type: String,
-      default: 'Hotel Name',
+      default: 'Hotel Name'
     },
     price: {
       type: Number,
-      default: 1,
-    },
-  },
+      default: 1
+    }
+  }
 }
 </script>
 

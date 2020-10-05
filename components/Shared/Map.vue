@@ -14,7 +14,7 @@ export default {
   props: {
     center: {
       type: Array,
-      default: () => [27, -15],
+      default: () => [27, -15]
     },
     places: {
       type: Array,
@@ -23,34 +23,34 @@ export default {
         { name: 'Tanzania', longitude: 34.888821, latitude: -6.369028 },
         { name: 'Botswana', longitude: 24.684866, latitude: -22.328474 },
         { name: 'Namibia', longitude: 18.49041, latitude: -22.95764 },
-        { name: 'South Africa', longitude: 22.937506, latitude: -30.559483 },
-      ],
+        { name: 'South Africa', longitude: 22.937506, latitude: -30.559483 }
+      ]
     },
     zoom: {
       type: Number,
-      default: 2.5,
-    },
+      default: 2.5
+    }
   },
   computed: {
     locationData() {
       const locations = {
         type: 'FeatureCollection',
-        features: [],
+        features: []
       }
       this.places.forEach((place) => {
         locations.features.push({
           type: 'Feature',
           properties: {
-            description: place.name,
+            description: place.name
           },
           geometry: {
             type: 'Point',
-            coordinates: [place.longitude, place.latitude],
-          },
+            coordinates: [place.longitude, place.latitude]
+          }
         })
       })
       return locations
-    },
+    }
   },
   mounted() {
     this.createMap()
@@ -63,7 +63,7 @@ export default {
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v10',
         center: this.center,
-        zoom: this.zoom,
+        zoom: this.zoom
       })
 
       locations.features.forEach(function (marker) {
@@ -80,8 +80,8 @@ export default {
           )
           .addTo(map)
       })
-    },
-  },
+    }
+  }
 }
 </script>
 

@@ -34,13 +34,13 @@ import { VueAgile } from 'vue-agile'
 
 export default {
   components: {
-    agile: VueAgile,
+    agile: VueAgile
   },
   props: {
     imageLinks: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
   data() {
     return {
@@ -51,23 +51,23 @@ export default {
           {
             breakpoint: 768,
             settings: {
-              slidesToShow: 3,
-            },
+              slidesToShow: 3
+            }
           },
           {
             breakpoint: 1024,
             settings: {
-              slidesToShow: 4,
-            },
+              slidesToShow: 4
+            }
           },
           {
             breakpoint: 1280,
             settings: {
-              slidesToShow: 5,
-            },
-          },
-        ],
-      },
+              slidesToShow: 5
+            }
+          }
+        ]
+      }
     }
   },
   computed: {
@@ -76,8 +76,8 @@ export default {
         if (index % 2 === 0) result.push(array.slice(index, index + 2))
         return result
       }, [])
-    },
-  },
+    }
+  }
 }
 </script>
 

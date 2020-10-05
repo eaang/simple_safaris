@@ -41,32 +41,32 @@ export default {
   props: {
     url: {
       type: String,
-      default: 'https://picsum.photos/640/480',
+      default: 'https://picsum.photos/640/480'
     },
     topic: {
       type: String,
-      default: '케냐 숙소 정보',
+      default: '케냐 숙소 정보'
     },
     title: {
       type: String,
       default: `위치부터 역사까지!
-케냐 기린 호텔의 모든 것!`,
+케냐 기린 호텔의 모든 것!`
     },
     content: {
       type: String,
       default: `기린과의 키스와 함께하는 티타임
-나이보비의 천상 정원, 기린호텔!`,
+나이보비의 천상 정원, 기린호텔!`
     },
     link: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   data() {
     return {
-      mouseover: false,
+      mouseover: false
     }
-  },
+  }
 }
 </script>
 

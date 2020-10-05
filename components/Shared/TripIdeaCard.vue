@@ -48,31 +48,31 @@ export default {
   props: {
     url: {
       type: String,
-      default: 'https://picsum.photos/640/480',
+      default: 'https://picsum.photos/640/480'
     },
     title: {
       type: String,
-      default: 'Lorem ipsum dolor sit amet',
+      default: 'Lorem ipsum dolor sit amet'
     },
     content: {
       type: String,
       default:
-        '이 경우 그 명령에 의하여 개정 또는 폐지되었던 법률은 그 명령이 승인을 얻지 못한 때부터 당연히 효력을 회복한다.',
+        '이 경우 그 명령에 의하여 개정 또는 폐지되었던 법률은 그 명령이 승인을 얻지 못한 때부터 당연히 효력을 회복한다.'
     },
     price: {
       type: String,
-      default: '$300만원 부터 시작',
+      default: '$300만원 부터 시작'
     },
     slug: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
   data() {
     return {
-      mouseover: false,
+      mouseover: false
     }
-  },
+  }
 }
 </script>
 

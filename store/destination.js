@@ -2,7 +2,7 @@ import client from '../plugins/contentful'
 
 export const state = () => ({
   currentDestination: {},
-  isLoading: true,
+  isLoading: true
 })
 
 export const mutations = {
@@ -11,7 +11,7 @@ export const mutations = {
   },
   setLoading(state, payload) {
     state.isLoading = payload
-  },
+  }
 }
 
 export const actions = {
@@ -19,11 +19,11 @@ export const actions = {
     commit('setLoading', true)
     const response = await client.getEntries({
       content_type: 'destination',
-      'fields.slug': slug,
+      'fields.slug': slug
     })
     commit('setCurrentDestination', response.items[0])
     commit('setLoading', false)
-  },
+  }
 }
 
 export const getters = {
@@ -36,5 +36,5 @@ export const getters = {
     }
     return ''
   },
-  loadingStatus: (state) => state.isLoading,
+  loadingStatus: (state) => state.isLoading
 }
