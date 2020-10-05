@@ -41,19 +41,19 @@ export default {
       destinationName: store.getters['destination/destinationName'],
       destinationDescription:
         store.getters['destination/destinationDescription'],
-      destinationTrips,
+      destinationTrips
+    }
+  },
+  head() {
+    return {
+      title: '- ' + this.destinationName
     }
   },
   computed: {
     isLoading() {
       return this.$store.getters['destination/loadingStatus']
-    },
-  },
-  head() {
-    return {
-      title: '- ' + this.destinationName,
     }
-  },
+  }
 }
 </script>
 

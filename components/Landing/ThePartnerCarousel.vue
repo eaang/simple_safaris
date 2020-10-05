@@ -23,7 +23,7 @@ import { VueAgile } from 'vue-agile'
 
 export default {
   components: {
-    agile: VueAgile,
+    agile: VueAgile
   },
   data() {
     return {
@@ -34,16 +34,16 @@ export default {
           {
             breakpoint: 768,
             settings: {
-              slidesToShow: 4,
-            },
+              slidesToShow: 4
+            }
           },
           {
             breakpoint: 1024,
             settings: {
-              slidesToShow: 6,
-            },
-          },
-        ],
+              slidesToShow: 6
+            }
+          }
+        ]
       },
       partners: [
         '/partners/partner-01.jpg',
@@ -51,10 +51,10 @@ export default {
         '/partners/partner-03.jpg',
         '/partners/partner-04.jpg',
         '/partners/partner-05.jpg',
-        '/partners/partner-06.jpg',
-      ],
+        '/partners/partner-06.jpg'
+      ]
     }
-  },
+  }
 }
 </script>
 

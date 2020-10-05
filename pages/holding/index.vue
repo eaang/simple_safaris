@@ -33,14 +33,14 @@ export default {
     return {
       continents: store.getters['continents/continents'],
       tripIdeas: store.getters['tripIdeas/tripIdeas'],
-      counter: 0,
+      counter: 0
     }
   },
   methods: {
     clicked() {
       this.counter++
-    },
-  },
+    }
+  }
 }
 </script>
 

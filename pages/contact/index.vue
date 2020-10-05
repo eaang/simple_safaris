@@ -45,9 +45,9 @@
             <form name="contact">
               <!-- Name -->
               <div class="input-group">
-                <label for="name"
-                  ><span class="asterisk">&lowast;</span>성함</label
-                >
+                <label for="name">
+                  <span class="asterisk">&lowast;</span>성함
+                </label>
                 <input
                   id="name"
                   v-model.trim="name"
@@ -64,9 +64,9 @@
 
               <!-- Phone -->
               <div class="input-group">
-                <label for="phone"
-                  ><span class="asterisk">&lowast;</span>연락처</label
-                >
+                <label for="phone">
+                  <span class="asterisk">&lowast;</span>연락처
+                </label>
                 <input
                   id="phone"
                   v-model.trim="phone"
@@ -88,9 +88,9 @@
 
               <!-- Email -->
               <div class="input-group">
-                <label for="email"
-                  ><span class="asterisk">&lowast;</span>이메일</label
-                >
+                <label for="email">
+                  <span class="asterisk">&lowast;</span>이메일
+                </label>
                 <input
                   id="email"
                   v-model.trim="email"
@@ -109,21 +109,21 @@
 
               <!-- People going -->
               <div class="input-group">
-                <label for="people"
-                  ><span class="asterisk">&lowast;</span>희망 인원 수</label
-                >
+                <label for="people">
+                  <span class="asterisk">&lowast;</span>희망 인원 수
+                </label>
                 <div class="grid grid-cols-2 grid-rows-1 gap-4">
                   <div>
-                    <label for="adults"
-                      ><div class="small-label">성인</div></label
-                    >
+                    <label for="adults">
+                      <div class="small-label">성인</div>
+                    </label>
                     <select
                       id="adults"
                       v-model="adults"
                       required
                       class="w-full"
                     >
-                      <option value="" selected disabled>-</option>
+                      <option value selected disabled>-</option>
                       <option :value="1">1</option>
                       <option :value="2">2</option>
                       <option :value="3">3</option>
@@ -141,9 +141,9 @@
                     </div>
                   </div>
                   <div>
-                    <label for="children"
-                      ><div class="small-label">아동(13세 미만)</div></label
-                    >
+                    <label for="children">
+                      <div class="small-label">아동(13세 미만)</div>
+                    </label>
                     <select
                       id="children"
                       v-model="children"
@@ -151,7 +151,7 @@
                       class="w-full"
                     >
                       >
-                      <option value="" selected disabled>-</option>
+                      <option value selected disabled>-</option>
                       <option :value="0">0</option>
                       <option :value="1">1</option>
                       <option :value="2">2</option>
@@ -174,8 +174,8 @@
 
               <!-- Planned Dates -->
               <div class="input-group">
-                <label
-                  ><span class="asterisk">&lowast;</span>희망 여행 일자
+                <label>
+                  <span class="asterisk">&lowast;</span>희망 여행 일자
                 </label>
 
                 <div class="grid grid-cols-2 grid-rows-1 gap-x-4">
@@ -216,13 +216,13 @@
                         for="no-date"
                         class="flex items-center mt-2 space-x-2"
                         @click="clearDate"
-                        ><div class="check-box">
+                      >
+                        <div class="check-box">
                           <Check v-if="noDate" class="check-mark" />
                         </div>
-                        <div class="text-gray-light text-lg">
-                          여행일자 미정
-                        </div></label
-                      ><input
+                        <div class="text-gray-light text-lg">여행일자 미정</div>
+                      </label>
+                      <input
                         id="no-date"
                         v-model="noDate"
                         type="checkbox"
@@ -263,12 +263,11 @@
               <div class="input-group">
                 <div class="grid grid-cols-2 grid-rows-1 gap-4">
                   <div class="flex flex-col">
-                    <label for="days"
-                      ><span class="asterisk">&lowast;</span>희망 여행
-                      일수</label
-                    >
+                    <label for="days">
+                      <span class="asterisk">&lowast;</span>희망 여행 일수
+                    </label>
                     <select id="days" v-model="daysDesired" required>
-                      <option value="" selected disabled>-</option>
+                      <option value selected disabled>-</option>
                       <option value="<5">5 일 미만</option>
                       <option value="6-10">6 ~ 10 일</option>
                       <option value=">10">10 일 이상</option>
@@ -280,12 +279,11 @@
                     </div>
                   </div>
                   <div class="flex flex-col">
-                    <label for="budget"
-                      ><span class="asterisk">&lowast;</span>1인 여행
-                      예산</label
-                    >
+                    <label for="budget">
+                      <span class="asterisk">&lowast;</span>1인 여행 예산
+                    </label>
                     <select id="budget" v-model="budgetPerPerson" required>
-                      <option value="" selected disabled>-</option>
+                      <option value selected disabled>-</option>
                       <option value="1">Option 1</option>
                       <option value="2">Option 2</option>
                       <option value="3">Option 3</option>
@@ -301,13 +299,13 @@
 
               <!-- Desired Countries -->
               <div class="input-group">
-                <label
-                  ><span class="asterisk">&lowast;</span>희망 여행 국가</label
-                >
+                <label>
+                  <span class="asterisk">&lowast;</span>희망 여행 국가
+                </label>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-2">
                   <div v-for="(destination, i) in destinations" :key="i">
-                    <label :for="destination.fields.name" class="check-group"
-                      ><div class="check-box">
+                    <label :for="destination.fields.name" class="check-group">
+                      <div class="check-box">
                         <Check
                           v-if="countries.includes(destination.fields.name)"
                           class="check-mark"
@@ -315,8 +313,9 @@
                       </div>
                       <div class="text-black text-base xl:text-lg">
                         {{ destination.fields.koreanName }}
-                      </div></label
-                    ><input
+                      </div>
+                    </label>
+                    <input
                       :id="destination.fields.name"
                       v-model="countries"
                       :value="destination.fields.name"
@@ -348,8 +347,8 @@
                       </div>
                       <div class="text-black text-base xl:text-lg">
                         {{ option }}
-                      </div></label
-                    >
+                      </div>
+                    </label>
                     <input
                       :id="option"
                       v-model="experience"
@@ -366,8 +365,8 @@
                 <label>희망 여행 활동 선택</label>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-2">
                   <div v-for="activity in acitivtyOptions" :key="activity">
-                    <label :for="activity" class="check-group"
-                      ><div class="check-box">
+                    <label :for="activity" class="check-group">
+                      <div class="check-box">
                         <Check
                           v-if="activities.includes(activity)"
                           class="check-mark"
@@ -375,8 +374,9 @@
                       </div>
                       <div class="text-black text-base xl:text-lg">
                         {{ activity }}
-                      </div></label
-                    ><input
+                      </div>
+                    </label>
+                    <input
                       :id="activity"
                       v-model="activities"
                       :value="activity"
@@ -533,6 +533,11 @@ export default {
       required
     }
   },
+  head() {
+    return {
+      title: '- Contact us'
+    }
+  },
   computed: {
     destinations() {
       const destinations = []
@@ -613,11 +618,6 @@ export default {
             this.$router.push('/contact/success')
           })
       }
-    }
-  },
-  head() {
-    return {
-      title: '- Contact us'
     }
   }
 }

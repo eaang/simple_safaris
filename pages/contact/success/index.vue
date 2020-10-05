@@ -50,9 +50,9 @@
 export default {
   head() {
     return {
-      title: '- Contact us',
+      title: '- Contact us'
     }
-  },
+  }
 }
 </script>
 

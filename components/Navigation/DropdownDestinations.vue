@@ -38,8 +38,8 @@ export default {
   props: {
     continents: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
   methods: {
     toggleRegions(country) {
@@ -52,8 +52,8 @@ export default {
       document
         .querySelector('#' + country.toLowerCase() + '-icon-down')
         .classList.toggle('hidden')
-    },
-  },
+    }
+  }
 }
 </script>
 

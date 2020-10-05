@@ -329,9 +329,6 @@ export default {
   components: {
     agile: VueAgile
   },
-  async fetch({ store, params }) {
-    await store.dispatch('tripIdea/getTripIdeaBySlug', params.slug)
-  },
   async asyncData({ store, params }) {
     await store.dispatch('tripIdea/getTripIdeaBySlug', params.slug)
     const thisTrip = store.getters['tripIdea/tripIdea']
@@ -404,6 +401,14 @@ export default {
       }
     }
   },
+  async fetch({ store, params }) {
+    await store.dispatch('tripIdea/getTripIdeaBySlug', params.slug)
+  },
+  head() {
+    return {
+      title: '- ' + this.tripName
+    }
+  },
   computed: {
     isLoading() {
       return this.$store.getters['tripIdea/loadingStatus']
@@ -433,11 +438,6 @@ export default {
     },
     backToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-  },
-  head() {
-    return {
-      title: '- ' + this.tripName
     }
   }
 }

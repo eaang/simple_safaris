@@ -17,7 +17,7 @@
               class="destination-list-item space-x-4"
               :class="{
                 'destination-list-choice':
-                  chosenDestination === continent.fields.name.toLowerCase(),
+                  chosenDestination === continent.fields.name.toLowerCase()
               }"
               @click="chosenDestination = continent.fields.name.toLowerCase()"
             >
@@ -83,13 +83,13 @@ export default {
   props: {
     continents: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
   data() {
     return {
       region: null,
-      chosenDestination: 'africa',
+      chosenDestination: 'africa'
     }
   },
   computed: {
@@ -101,8 +101,8 @@ export default {
           this.region +
           '.png')
       }
-    },
-  },
+    }
+  }
 }
 </script>
 

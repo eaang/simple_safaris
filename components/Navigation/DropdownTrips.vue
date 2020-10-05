@@ -58,8 +58,8 @@ export default {
   props: {
     tripIdeas: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
   computed: {
     asiaTrips() {
@@ -71,7 +71,7 @@ export default {
       return this.tripIdeas.filter(
         (trip) => trip.fields.continent.fields.name === 'Africa'
       )
-    },
+    }
   },
   methods: {
     toggleTrips(country) {
@@ -84,8 +84,8 @@ export default {
       document
         .querySelector('#' + country.toLowerCase() + '-trip-icon-down')
         .classList.toggle('hidden')
-    },
-  },
+    }
+  }
 }
 </script>
 

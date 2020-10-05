@@ -132,19 +132,19 @@ export default {
   props: {
     continents: {
       type: Array,
-      required: true,
+      required: true
     },
     tripIdeas: {
       type: Array,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
       dropdownTwoShow: false,
-      dropdownThreeShow: false,
+      dropdownThreeShow: false
     }
-  },
+  }
 }
 </script>
 

@@ -10,21 +10,21 @@ export default {
   props: {
     classes: {
       type: String,
-      default: '',
+      default: ''
     },
     text: {
       type: String,
-      default: 'Button',
+      default: 'Button'
     },
     arrow: {
       type: Boolean,
-      default: false,
+      default: false
     },
     arrowSize: {
       type: String,
-      default: 'h-5',
-    },
-  },
+      default: 'h-5'
+    }
+  }
 }
 </script>
 

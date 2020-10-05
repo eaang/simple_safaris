@@ -36,7 +36,7 @@ export default {
     return {
       sidenavStatus: false,
       continents: this.$store.getters['continents/continents'],
-      tripIdeas: this.$store.getters['tripIdeas/tripIdeas'],
+      tripIdeas: this.$store.getters['tripIdeas/tripIdeas']
     }
   },
   created() {
@@ -46,7 +46,7 @@ export default {
     this.$nuxt.$on('openSidenav', () => {
       this.sidenavStatus = true
     })
-  },
+  }
 }
 </script>
 

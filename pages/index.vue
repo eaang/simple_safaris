@@ -246,6 +246,11 @@ export default {
       ]
     }
   },
+  head() {
+    return {
+      title: '- Home'
+    }
+  },
   created() {
     this.$nuxt.$on('closeSidenav', () => {
       this.sidenavStatus = false
@@ -273,11 +278,6 @@ export default {
         this.transNavbarStatus = false
         this.whiteNavbarStatus = true
       }
-    }
-  },
-  head() {
-    return {
-      title: '- Home'
     }
   }
 }

@@ -21,9 +21,9 @@ export default {
   props: {
     text: {
       type: String,
-      default: 'title',
-    },
-  },
+      default: 'title'
+    }
+  }
 }
 </script>
 

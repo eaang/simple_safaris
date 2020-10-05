@@ -40,7 +40,7 @@
                 class="flex-center border-r border-brown border-opacity-25"
                 :class="{
                   'text-white': destinationContinent === 'africa',
-                  'text-brown': destinationContinent === 'asia',
+                  'text-brown': destinationContinent === 'asia'
                 }"
                 @click="destinationContinent = 'africa'"
               >
@@ -50,7 +50,7 @@
                 class="flex-center"
                 :class="{
                   'text-white': destinationContinent === 'asia',
-                  'text-brown': destinationContinent === 'africa',
+                  'text-brown': destinationContinent === 'africa'
                 }"
                 @click="destinationContinent = 'asia'"
               >
@@ -98,7 +98,7 @@
                 class="flex-center border-r border-brown border-opacity-25"
                 :class="{
                   'text-white': tripsContinent === 'africa',
-                  'text-brown': tripsContinent === 'asia',
+                  'text-brown': tripsContinent === 'asia'
                 }"
                 @click="tripsContinent = 'africa'"
               >
@@ -108,7 +108,7 @@
                 class="flex-center"
                 :class="{
                   'text-white': tripsContinent === 'asia',
-                  'text-brown': tripsContinent === 'africa',
+                  'text-brown': tripsContinent === 'africa'
                 }"
                 @click="tripsContinent = 'asia'"
               >
@@ -179,19 +179,19 @@ export default {
   props: {
     continents: {
       type: Array,
-      required: true,
+      required: true
     },
     tripIdeas: {
       type: Array,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
       destinationDropdown: false,
       tripsDropdown: false,
       destinationContinent: 'africa',
-      tripsContinent: 'africa',
+      tripsContinent: 'africa'
     }
   },
   methods: {
@@ -202,8 +202,8 @@ export default {
     tripsClick() {
       this.tripsDropdown = !this.tripsDropdown
       this.destinationDropdown = false
-    },
-  },
+    }
+  }
 }
 </script>
 

@@ -161,9 +161,9 @@ export default {
   props: {
     continents: {
       type: Array,
-      default: () => [],
-    },
-  },
+      default: () => []
+    }
+  }
 }
 </script>
 

@@ -9,9 +9,9 @@ export default {
   props: {
     iconPath: {
       type: String,
-      default: require('@/assets/images/landing-page/icon-01.svg'),
-    },
-  },
+      default: require('@/assets/images/landing-page/icon-01.svg')
+    }
+  }
 }
 </script>
 
