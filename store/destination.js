@@ -29,12 +29,5 @@ export const actions = {
 export const getters = {
   destination: (state) => state.currentDestination,
   destinationName: (state) => state.currentDestination.fields.name,
-  destinationDescription: (state) => {
-    if (state.currentDestination.fields.description) {
-      return state.currentDestination.fields.description.content[0].content[0]
-        .value
-    }
-    return ''
-  },
   loadingStatus: (state) => state.isLoading
 }

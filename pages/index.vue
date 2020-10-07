@@ -125,7 +125,7 @@
     <!-- Travel Knowhow -->
     <div class="section container mx-auto text-center">
       <div class="title title-main text-brown mb-8 mx-8">Travel Knowhow</div>
-      <TheBlogCarousel :blogposts="blogposts" />
+      <TheBlogCarousel :blogposts="blogPosts" />
     </div>
 
     <!-- Safari Gallery -->
@@ -149,6 +149,28 @@
 <script>
 export default {
   layout: 'landing',
+  async asyncData({ $axios }) {
+    const baseUrl = 'https://cdn.contentful.com'
+    const content = []
+    const blogPosts = await $axios.$get(
+      baseUrl +
+        '/spaces/7jrebygxgm3y/environments/master/entries?access_token=CkUOaYq5I8jhprtC4I4jSOQVyELnaaRMn9FKsMlDFm4&content_type=blogPost'
+    )
+    blogPosts.items.forEach((post) => {
+      const pic = blogPosts.includes.Asset.filter(
+        (pic) => pic.sys.id === post.fields.thumbnail.sys.id
+      )
+      post.pic = pic
+      content.push({
+        url: post.pic[0].fields.file.url,
+        topic: post.fields.category,
+        title: post.fields.title,
+        content: post.fields.summary,
+        link: post.fields.link
+      })
+    })
+    return { blogPosts: content }
+  },
   data() {
     return {
       continents: this.$store.getters['continents/continents'],
@@ -204,44 +226,6 @@ export default {
         {
           src: '/instagram/Image 12.jpg',
           link: 'https://www.instagram.com/p/B7Vex7XAvgJ/'
-        }
-      ],
-      blogposts: [
-        {
-          url: require('@/assets/images/blogposts/giraffe_manor.jpg'),
-          topic: '케냐 숙소 정보',
-          title: `위치부터 역사까지!
-케냐 기린 호텔의 모든 것!`,
-          content: `기린과의 키스와 함께하는 티타임
-나이보비의 천상 정원, 기린호텔!`,
-          link: `/`
-        },
-        {
-          url: require('@/assets/images/blogposts/manta_hotel.jpg'),
-          topic: '탄자니아 숙소',
-          title: `돌고래와 하룻밤 어떠세요?
-탄자니아 수중 호텔`,
-          content: `바닷속 한가운데 위치한 마법 같은 숙소
-환상적인 수중정원 ‘만타 리조트’`,
-          link: `/`
-        },
-        {
-          url: require('@/assets/images/blogposts/singita_sasakwa_lodge.jpg'),
-          topic: '탄자니아 숙소',
-          title: `1박 숙박비 250만원!!
-럭셔리 싱키타는 왜 특별한가?`,
-          content: `VVIP, 그들만을 위한 럭셔리 롯지
-완벽한 서비스와 프라이빗 게임리저브`,
-          link: `/`
-        },
-        {
-          url: require('@/assets/images/blogposts/travel_planning.jpg'),
-          topic: '케냐 숙소 정보',
-          title: `여행 전 꼭 챙겨야 하는
-체크 리스트 5가지!`,
-          content: `아프리카 여행 시 반드시 체크할 것
-비자, 예방접종, 주의사항까지 모든 것`,
-          link: `/`
         }
       ]
     }

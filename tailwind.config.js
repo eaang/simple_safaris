@@ -35,6 +35,7 @@ module.exports = {
           dark: '#575446'
         }
       },
+      // eslint-disable-next-line no-unused-vars
       height: (theme) => ({
         forty: '40%',
         half: '50%',
@@ -45,6 +46,7 @@ module.exports = {
         'screen/4': 'calc(100vh / 4)',
         'screen/5': 'calc(100vh / 5)'
       }),
+      // eslint-disable-next-line no-unused-vars
       width: (theme) => ({
         forty: '40%',
         half: '50%',

@@ -2,9 +2,6 @@
   <div class="container mx-auto">
     This is the page for a single destination.
     <div>Place: {{ destinationName }}</div>
-    <div>
-      {{ destinationDescription }}
-    </div>
     <div v-for="trip in destinationTrips" :key="trip.fields.id">
       -
       <a
@@ -39,8 +36,6 @@ export default {
     return {
       currentDestination: store.getters['destination/destination'],
       destinationName: store.getters['destination/destinationName'],
-      destinationDescription:
-        store.getters['destination/destinationDescription'],
       destinationTrips
     }
   },
