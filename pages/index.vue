@@ -104,7 +104,7 @@
 
     <!-- Reviews -->
     <div class="pt-8">
-      <TheReviewCarousel />
+      <TheReviewCarousel :reviews="reviews" />
     </div>
 
     <!-- Design Your Safari -->
@@ -152,9 +152,14 @@ export default {
   async asyncData({ $axios }) {
     const baseUrl = 'https://cdn.contentful.com'
     const content = []
+    const reviews = []
     const blogPosts = await $axios.$get(
       baseUrl +
-        '/spaces/7jrebygxgm3y/environments/master/entries?access_token=CkUOaYq5I8jhprtC4I4jSOQVyELnaaRMn9FKsMlDFm4&content_type=blogPost'
+        `/spaces/` +
+        process.env.CTF_SPACE_ID +
+        `/environments/master/entries?access_token=` +
+        process.env.CTF_CD_ACCESS_TOKEN +
+        `&content_type=blogPost`
     )
     blogPosts.items.forEach((post) => {
       const pic = blogPosts.includes.Asset.filter(
@@ -169,7 +174,22 @@ export default {
         link: post.fields.link
       })
     })
-    return { blogPosts: content }
+    const data = await $axios.$get(
+      baseUrl +
+        `/spaces/` +
+        process.env.CTF_SPACE_ID +
+        `/environments/master/entries?access_token=` +
+        process.env.CTF_CD_ACCESS_TOKEN +
+        `&content_type=review`
+    )
+    data.items.forEach((review) => {
+      reviews.push({
+        name: review.fields.name,
+        rating: review.fields.score,
+        text: review.fields.review
+      })
+    })
+    return { blogPosts: content, reviews: reviews }
   },
   data() {
     return {
