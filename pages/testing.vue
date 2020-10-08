@@ -1,7 +1,9 @@
 <template>
   <div>
     <StandardHero />
-    <div class="h-screen"></div>
+    <div class="h-screen">
+      <HotelCarousel />
+    </div>
 
     <TopBubble />
   </div>

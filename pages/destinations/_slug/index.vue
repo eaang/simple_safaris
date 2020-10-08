@@ -7,7 +7,7 @@
     <div class="container mx-auto flex">
       <!-- Content -->
       <div class="w-2/3">
-        <!-- Intro Section -->
+        <!-- Destination Introduction -->
         <div id="introduction" class="py-16">
           <div>Intro to {{ destinationName }}</div>
           <!-- Map -->
@@ -39,7 +39,14 @@
             <div>여행적기: ({{ destination.fields.bestTime }})</div>
           </div>
         </div>
-        <div v-for="place in destinationPlaces" :key="place.id" class="py-16">
+
+        <!-- Places of Interest -->
+        <div
+          v-for="place in destinationPlaces"
+          :id="kebabCase(place.fields.englishName) + '-intro'"
+          :key="place.id"
+          class="py-16"
+        >
           <!-- Title -->
           <div>{{ place.fields.name }}</div>
           <!-- Image Carousel -->
@@ -60,6 +67,13 @@
             <div>여행적기: ({{ place.fields.bestTime }})</div>
           </div>
         </div>
+
+        <!-- Hotels -->
+        <div
+          v-for="place in destinationPlaces"
+          :key="place.id"
+          class="py-16"
+        ></div>
       </div>
       <!-- Navigation -->
       <div class="hidden xl:block xl:w-1/3 pl-16">
@@ -73,7 +87,13 @@
           >
           <div>Places to Visit</div>
           <div v-for="place in destinationPlaces" :key="place.id">
-            {{ place.fields.name }}
+            <nuxt-link
+              :to="{
+                path: '/destinations/' + destination.fields.slug,
+                hash: '#' + kebabCase(place.fields.englishName) + '-intro'
+              }"
+              ><div>{{ place.fields.name }}</div></nuxt-link
+            >
           </div>
           <div>Hotels</div>
           <div v-for="place in destinationPlaces" :key="place.id">
@@ -134,6 +154,26 @@ export default {
       destinationTrips
     }
   },
+  data() {
+    return {
+      hotelCarouselOptions: {
+        navButtons: false,
+        fade: false,
+        infinite: true,
+        autoplay: false,
+        dots: false,
+        speed: 2000,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              navButtons: true
+            }
+          }
+        ]
+      }
+    }
+  },
   head() {
     return {
       title: '- ' + this.destinationName
@@ -142,6 +182,16 @@ export default {
   computed: {
     isLoading() {
       return this.$store.getters['destination/loadingStatus']
+    }
+  },
+  methods: {
+    kebabCase(str) {
+      return str
+        .replace(/[^a-zA-Z0-9 ]/g, '')
+        .replace(/([A-Z])([A-Z])/g, '$1-$2')
+        .replace(/([a-z])([A-Z])/g, '$1-$2')
+        .replace(/[\s_]+/g, '-')
+        .toLowerCase()
     }
   }
 }
