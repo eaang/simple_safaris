@@ -2,7 +2,6 @@
   <div class="w-full">
     <agile
       v-if="hotels.length > 1"
-      ref="stayCarousel"
       :options="stayCarouselOptions"
       class="w-full z-0"
     >

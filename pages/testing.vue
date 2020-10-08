@@ -1,8 +1,8 @@
 <template>
   <div>
-    <StandardHero />
-    <div class="h-screen">
-      <HotelCarousel />
+    <div class="mt-16"></div>
+    <div class="container mx-auto">
+      <ImageCarousel />
     </div>
 
     <TopBubble />

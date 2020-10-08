@@ -1,8 +1,6 @@
 <template>
   <!-- Pros & Cons -->
   <div class="w-full">
-    <div>장단점</div>
-
     <!-- Table Headers -->
     <div class="flex w-full">
       <div class="flex flex-center w-1/2">장점</div>

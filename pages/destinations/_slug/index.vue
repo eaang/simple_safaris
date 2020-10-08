@@ -8,8 +8,21 @@
       <!-- Content -->
       <div class="w-full xl:w-2/3 space-y-24">
         <!-- Destination Introduction -->
-        <div id="introduction">
-          <div>Intro to {{ destinationName }}</div>
+        <div id="introduction" class="space-y-16">
+          <!-- Title section -->
+          <div class="sticky top-0 z-10 xl:static pt-16">
+            <div class="shadow-2xl">
+              <div
+                class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
+              >
+                Introduction
+              </div>
+              <div class="bg-white h-20 text-xl flex flex-center font-bold">
+                {{ destinationName }}
+              </div>
+            </div>
+          </div>
+
           <!-- Map -->
           <div class="w-full h-screen/50">
             <Map
@@ -19,24 +32,38 @@
               :zoom="5"
             />
           </div>
+
           <!-- Highlights -->
           <div>
-            <div>하이라이트</div>
-            <div
-              v-for="(highlight, id) in destination.fields.highlights"
-              :key="id"
-            >
-              {{ highlight.fields.highlight }}
+            <BorderTitle text="하이라이트" />
+            <div class="border-box">
+              <div
+                v-for="(highlight, id) in destination.fields.highlights"
+                :key="id"
+              >
+                {{ highlight.fields.highlight }}
+              </div>
             </div>
           </div>
+
           <!-- Pros & Cons -->
-          <ProsConsTable
-            :pros="destination.fields.pros"
-            :cons="destination.fields.cons"
-          />
-          <!-- Best Time -->
           <div>
-            <div>여행적기: ({{ destination.fields.bestTime }})</div>
+            <BorderTitle text="장단점" />
+            <div class="border-box">
+              <ProsConsTable
+                :pros="destination.fields.pros"
+                :cons="destination.fields.cons"
+              />
+            </div>
+          </div>
+
+          <!-- Best Time -->
+
+          <div>
+            <BorderTitle text="여행적기" />
+            <div class="border-box flex flex-center">
+              {{ destination.fields.bestTime }}
+            </div>
           </div>
         </div>
 
@@ -45,24 +72,38 @@
           v-for="place in destinationPlaces"
           :id="kebabCase(place.fields.englishName) + '-intro'"
           :key="place.id"
+          class="space-y-16"
         >
-          <!-- Title -->
-          <div>
-            {{ place.fields.name }}
-          </div>
-          <!-- Image Carousel -->
-          <div v-for="image in place.fields.images" :key="image.id">
-            <img :src="image.fields.file.url" :alt="image.fields.title" />
-          </div>
-          <!-- Highlights -->
-          <div>
-            <div>하이라이트</div>
-            <div v-for="(highlight, i) in place.fields.highlights" :key="i">
-              {{ highlight.fields.highlight }}
+          <!-- Title section -->
+          <div class="sticky top-0 z-10 xl:static pt-16">
+            <div class="shadow-2xl">
+              <div
+                class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
+              >
+                Places
+              </div>
+              <div class="bg-white h-20 text-xl flex flex-center font-bold">
+                {{ place.fields.name }}
+              </div>
             </div>
           </div>
+
+          <!-- Image Carousel -->
+          <ImageCarousel :images="place.fields.images" />
+
+          <!-- Highlights -->
+          <div>
+            <BorderTitle text="하이라이트" />
+            <div class="border-box">
+              <div v-for="(highlight, i) in place.fields.highlights" :key="i">
+                {{ highlight.fields.highlight }}
+              </div>
+            </div>
+          </div>
+
           <!-- Pros & Cons -->
           <ProsConsTable :pros="place.fields.pros" :cons="place.fields.cons" />
+
           <!-- Best Time -->
           <div>
             <div>여행적기: ({{ place.fields.bestTime }})</div>
@@ -78,8 +119,7 @@
         </div>
 
         <!-- Trip Ideas -->
-        {{ destination.sys.id }}
-        <div v-if="destinationTrips.length > 0">
+        <div v-if="destinationTrips.length > 0" id="trip-ideas">
           <div v-for="idea in destinationTrips" :key="idea.id">
             <TripIdeaCard
               :slug="idea.fields.slug"
@@ -96,6 +136,7 @@
           </div>
         </div>
       </div>
+
       <!-- Navigation -->
       <div class="hidden xl:block xl:w-1/3 pl-16">
         <div class="sticky top-0 pt-16">
@@ -116,7 +157,15 @@
               ><div>{{ place.fields.name }}</div></nuxt-link
             >
           </div>
-          <div v-if="destinationTrips.length > 0">Trip Ideas</div>
+          <div v-if="destinationTrips.length > 0">
+            <nuxt-link
+              :to="{
+                path: '/destinations/' + destination.fields.slug,
+                hash: '#trip-ideas'
+              }"
+              ><div>Trip Ideas</div></nuxt-link
+            >
+          </div>
         </div>
       </div>
     </div>
@@ -206,4 +255,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.border-box {
+  @apply border-l border-r border-b border-brown py-8;
+}
+</style>
