@@ -7,125 +7,93 @@
     <div class="container mx-auto flex">
       <!-- Content -->
       <div class="w-2/3">
-        <div>Intro to {{ destinationName }}</div>
-        <!-- Map -->
-        <div class="w-full h-screen/50">
-          <Map
-            class="w-full h-full"
-            :center="mapCenter"
-            :places="mapPoints"
-            :zoom="5"
-          />
-        </div>
-        <!-- Highlights -->
-        <div>
-          <div>하이라이트</div>
-          <div
-            v-for="highlight in destination.fields.highlights"
-            :key="highlight"
-          >
-            {{ highlight.fields.highlight }}
+        <div class="py-16">
+          <div>Intro to {{ destinationName }}</div>
+          <!-- Map -->
+          <div class="w-full h-screen/50">
+            <Map
+              class="w-full h-full"
+              :center="mapCenter"
+              :places="mapPoints"
+              :zoom="5"
+            />
           </div>
-        </div>
-        <!-- Pros & Cons -->
-        <div class="w-full h-screen/50">
-          <div>장단점</div>
-
-          <!-- Table Headers -->
-          <div class="flex w-full">
-            <div class="flex flex-center w-1/2">장점</div>
-            <div class="flex flex-center w-1/2">단점</div>
-          </div>
-
-          <!-- Table Content -->
-          <div class="flex w-full">
-            <div class="w-1/2 text-black">
-              <div
-                v-for="pro in destination.fields.pros"
-                :key="pro"
-                class="flex"
-              >
-                <div><Check class="h-8 text-brown" /></div>
-                <div>{{ pro }}</div>
-              </div>
-            </div>
-            <div class="w-1/2 text-black">
-              <div
-                v-for="con in destination.fields.cons"
-                :key="con"
-                class="flex"
-              >
-                <div><Cross class="h-8 text-gray" /></div>
-                <div>{{ con }}</div>
-              </div>
+          <!-- Highlights -->
+          <div>
+            <div>하이라이트</div>
+            <div
+              v-for="highlight in destination.fields.highlights"
+              :key="highlight"
+            >
+              {{ highlight.fields.highlight }}
             </div>
           </div>
+          <!-- Pros & Cons -->
+          <div class="w-full">
+            <div>장단점</div>
+
+            <!-- Table Headers -->
+            <div class="flex w-full">
+              <div class="flex flex-center w-1/2">장점</div>
+              <div class="flex flex-center w-1/2">단점</div>
+            </div>
+
+            <!-- Table Content -->
+            <div class="flex w-full">
+              <div class="w-1/2 text-black">
+                <div
+                  v-for="pro in destination.fields.pros"
+                  :key="pro"
+                  class="flex"
+                >
+                  <div><Check class="h-8 text-brown" /></div>
+                  <div>{{ pro }}</div>
+                </div>
+              </div>
+              <div class="w-1/2 text-black">
+                <div
+                  v-for="con in destination.fields.cons"
+                  :key="con"
+                  class="flex"
+                >
+                  <div><Cross class="h-8 text-gray" /></div>
+                  <div>{{ con }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div v-for="place in destinationPlaces" :key="place.id" class="py-16">
+          <!-- Title -->
+          <div>{{ place.fields.name }}</div>
+          <!-- Image Carousel -->
+          <div v-for="image in place.fields.images" :key="image.id">
+            <img :src="image.fields.file.url" :alt="image.fields.title" />
+          </div>
+          <!-- Highlights -->
+          <div>
+            <div>하이라이트</div>
+            <div v-for="highlight in place.fields.highlights" :key="highlight">
+              {{ highlight.fields.highlight }}
+            </div>
+          </div>
+
+          {{ place.fields }}
         </div>
       </div>
       <!-- Navigation -->
-      <div>
-        <div>Intro</div>
-        <div>Places to Visit</div>
-        <div v-for="place in destinationPlaces" :key="place.id">
-          {{ place.fields.name }}
-        </div>
-        <div>Hotels</div>
-        <div v-for="place in destinationPlaces" :key="place.id">
-          {{ place.fields.name }}
-        </div>
-        <div>Trip Ideas</div>
-      </div>
-    </div>
-
-    <!-- Map & Pros / Cons -->
-    <div class="section container mx-auto">
-      <div class="grid grid-cols-2 gap-4 py-16">
-        <!-- Map -->
-        <div class="w-full h-screen/50">
-          <Map
-            class="w-full h-full"
-            :center="mapCenter"
-            :places="mapPoints"
-            :zoom="5"
-          />
-        </div>
-        <!-- Pros & Cons -->
-        <div class="w-full h-screen/50">
-          <div class="title title-main text-black text-center">장단점</div>
-
-          <!-- Table Headers -->
-          <div class="flex w-full mt-4">
-            <div class="flex flex-center w-1/2 py-2 text-black text-2xl">
-              장점
-            </div>
-            <div class="flex flex-center w-1/2 py-2 text-black text-2xl">
-              단점
-            </div>
+      <div class="hidden xl:block xl:w-1/3 pl-16">
+        <div class="sticky top-0 pt-16">
+          <div>Intro</div>
+          <div>Places to Visit</div>
+          <div v-for="place in destinationPlaces" :key="place.id">
+            {{ place.fields.name }}
           </div>
-
-          <!-- Table Content -->
-          <div class="flex w-full">
-            <div class="w-1/2 text-black text-xl space-y-4">
-              <div
-                v-for="pro in destination.fields.pros"
-                :key="pro"
-                class="flex"
-              >
-                <div><Check class="h-8 text-brown" /></div>
-                <div>{{ pro }}</div>
-              </div>
-            </div>
-            <div class="w-1/2 text-black text-xl space-y-4">
-              <div
-                v-for="con in destination.fields.cons"
-                :key="con"
-                class="flex"
-              >
-                <div><Cross class="h-8 text-gray" /></div>
-                <div>{{ con }}</div>
-              </div>
-            </div>
+          <div>Hotels</div>
+          <div v-for="place in destinationPlaces" :key="place.id">
+            {{ place.fields.name }}
           </div>
+          <div>Trip Ideas</div>
         </div>
       </div>
     </div>
