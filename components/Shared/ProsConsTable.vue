@@ -1,24 +1,32 @@
 <template>
   <!-- Pros & Cons -->
   <div class="w-full">
-    <!-- Table Headers -->
-    <div class="flex w-full">
-      <div class="flex flex-center w-1/2">장점</div>
-      <div class="flex flex-center w-1/2">단점</div>
-    </div>
-
     <!-- Table Content -->
-    <div class="flex w-full">
-      <div class="w-1/2 text-black">
-        <div v-for="pro in pros" :key="pro" class="flex">
-          <div><Check class="h-8 text-brown" /></div>
-          <div>{{ pro }}</div>
+    <div class="flex flex-col md:flex-row w-full space-y-8 md:space-y-0">
+      <div class="w-full md:w-1/2">
+        <div
+          class="flex flex-center w-full text-lg sm:text-xl md:text-2xl py-2"
+        >
+          장점
+        </div>
+        <div class="w-full text-black space-y-2 px-4">
+          <div v-for="pro in pros" :key="pro" class="flex">
+            <div><Check class="h-6 md:h-8 text-brown" /></div>
+            <div class="text-base md:text-lg">{{ pro }}</div>
+          </div>
         </div>
       </div>
-      <div class="w-1/2 text-black">
-        <div v-for="con in cons" :key="con" class="flex">
-          <div><Cross class="h-8 text-gray" /></div>
-          <div>{{ con }}</div>
+      <div class="w-full md:w-1/2">
+        <div
+          class="flex flex-center w-full text-lg sm:text-xl md:text-2xl py-2"
+        >
+          단점
+        </div>
+        <div class="w-full text-black space-y-2 px-4">
+          <div v-for="con in cons" :key="con" class="flex">
+            <div><Cross class="h-6 md:h-8 text-gray" /></div>
+            <div class="text-base md:text-lg">{{ con }}</div>
+          </div>
         </div>
       </div>
     </div>

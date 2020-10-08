@@ -34,12 +34,13 @@
           </div>
 
           <!-- Highlights -->
-          <div>
+          <div class="px-8 xl:px-0">
             <BorderTitle text="하이라이트" />
-            <div class="border-box">
+            <div class="border-box space-y-4 px-4">
               <div
                 v-for="(highlight, id) in destination.fields.highlights"
                 :key="id"
+                class="text-base sm:text-lg md:text-2xl text-center"
               >
                 {{ highlight.fields.highlight }}
               </div>
@@ -47,7 +48,7 @@
           </div>
 
           <!-- Pros & Cons -->
-          <div>
+          <div class="px-8 xl:px-0">
             <BorderTitle text="장단점" />
             <div class="border-box">
               <ProsConsTable
@@ -58,9 +59,11 @@
           </div>
 
           <!-- Best Time -->
-          <div>
+          <div class="px-8 xl:px-0">
             <BorderTitle text="여행적기" />
-            <div class="border-box flex flex-center">
+            <div
+              class="border-box flex flex-center text-base sm:text-lg md:text-2xl"
+            >
               {{ destination.fields.bestTime }}
             </div>
           </div>
@@ -91,17 +94,21 @@
           <ImageCarousel :images="place.fields.images" />
 
           <!-- Highlights -->
-          <div>
+          <div class="px-8 xl:px-0">
             <BorderTitle text="하이라이트" />
             <div class="border-box">
-              <div v-for="(highlight, i) in place.fields.highlights" :key="i">
+              <div
+                v-for="(highlight, i) in place.fields.highlights"
+                :key="i"
+                class="text-base sm:text-lg md:text-2xl text-center"
+              >
                 {{ highlight.fields.highlight }}
               </div>
             </div>
           </div>
 
           <!-- Pros & Cons -->
-          <div>
+          <div class="px-8 xl:px-0">
             <BorderTitle text="장단점" />
             <div class="border-box">
               <ProsConsTable
@@ -112,9 +119,11 @@
           </div>
 
           <!-- Best Time -->
-          <div>
+          <div class="px-8 xl:px-0">
             <BorderTitle text="여행적기" />
-            <div class="border-box flex flex-center">
+            <div
+              class="border-box flex flex-center text-base sm:text-lg md:text-2xl"
+            >
               {{ place.fields.bestTime }}
             </div>
           </div>
@@ -155,22 +164,32 @@
 
       <!-- Navigation -->
       <div class="hidden xl:block xl:w-1/3 pl-16">
-        <div class="sticky top-0 pt-16">
+        <div class="space-y-2 sticky top-0 pt-16">
           <nuxt-link
             :to="{
               path: '/destinations/' + destination.fields.slug,
               hash: '#introduction'
             }"
-            ><div>Intro</div></nuxt-link
+            ><div>
+              <div class="main-button">About {{ destination.fields.name }}</div>
+            </div></nuxt-link
           >
-          <div>Places to Visit</div>
+          <div class="main-button cursor-pointer">Places to Visit</div>
           <div v-for="place in destinationPlaces" :key="place.id">
             <nuxt-link
               :to="{
                 path: '/destinations/' + destination.fields.slug,
                 hash: '#' + kebabCase(place.fields.englishName) + '-intro'
               }"
-              ><div>{{ place.fields.name }}</div></nuxt-link
+              ><div
+                class="h-16 bg-brown-lighter bg-opacity-25 pl-2 hover:bg-brown"
+              >
+                <div
+                  class="pl-2 w-full h-full flex items-center text-xl hover:bg-brown-dark hover:text-white hover:font-bold"
+                >
+                  {{ place.fields.name }}
+                </div>
+              </div></nuxt-link
             >
           </div>
           <div v-if="destinationTrips.length > 0">
@@ -179,7 +198,7 @@
                 path: '/destinations/' + destination.fields.slug,
                 hash: '#trip-ideas'
               }"
-              ><div>Trip Ideas</div></nuxt-link
+              ><div class="main-button">Trip Ideas</div></nuxt-link
             >
           </div>
         </div>
@@ -274,5 +293,11 @@ export default {
 <style lang="scss" scoped>
 .border-box {
   @apply border-l border-r border-b border-brown py-8;
+}
+.main-button {
+  @apply bg-brown-dark flex items-center pl-4 text-white text-xl h-16;
+}
+.main-button:hover {
+  @apply bg-brown font-bold;
 }
 </style>
