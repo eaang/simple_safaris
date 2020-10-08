@@ -35,8 +35,10 @@
 
           <!-- Highlights -->
           <div class="px-8 xl:px-0">
-            <BorderTitle text="하이라이트" />
-            <div class="border-box space-y-4 px-4">
+            <div class="text-center font-bold text-xl md:text-2xl xl:text-3xl">
+              하이라이트
+            </div>
+            <div class="space-y-4 px-4 py-8">
               <div
                 v-for="(highlight, id) in destination.fields.highlights"
                 :key="id"
@@ -95,8 +97,10 @@
 
           <!-- Highlights -->
           <div class="px-8 xl:px-0">
-            <BorderTitle text="하이라이트" />
-            <div class="border-box">
+            <div class="text-center font-bold text-xl md:text-2xl xl:text-3xl">
+              하이라이트
+            </div>
+            <div class="space-y-4 px-4 py-8">
               <div
                 v-for="(highlight, i) in place.fields.highlights"
                 :key="i"
@@ -127,10 +131,32 @@
               {{ place.fields.bestTime }}
             </div>
           </div>
+        </div>
+
+        <!-- Hotels -->
+        <div
+          v-for="(place, num) in destinationPlaces"
+          :id="kebabCase(place.fields.englishName) + '-hotel'"
+          :key="num"
+          class="space-y-16"
+        >
+          <!-- Title section -->
+          <div class="sticky top-0 z-10 xl:static pt-16">
+            <div class="shadow-2xl">
+              <div
+                class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
+              >
+                Hotels
+              </div>
+              <div class="bg-white h-20 text-xl flex flex-center font-bold">
+                {{ place.fields.name }}
+              </div>
+            </div>
+          </div>
 
           <!-- Hotels -->
           <div class="px-8 xl:px-0">
-            <BorderTitle :text="place.fields.name + '의 호텔'" />
+            <BorderTitle text="Accomodation Options" />
             <div
               class="relative border-l border-r border-b border-brown flex flex-center"
             >
@@ -174,24 +200,57 @@
               <div class="main-button">About {{ destination.fields.name }}</div>
             </div></nuxt-link
           >
-          <div class="main-button cursor-pointer">Places to Visit</div>
-          <div v-for="place in destinationPlaces" :key="place.id">
-            <nuxt-link
-              :to="{
-                path: '/destinations/' + destination.fields.slug,
-                hash: '#' + kebabCase(place.fields.englishName) + '-intro'
-              }"
-              ><div
-                class="h-16 bg-brown-lighter bg-opacity-25 pl-2 hover:bg-brown"
-              >
-                <div
-                  class="pl-2 w-full h-full flex items-center text-xl hover:bg-brown-dark hover:text-white hover:font-bold"
-                >
-                  {{ place.fields.name }}
-                </div>
-              </div></nuxt-link
-            >
+          <div class="main-button cursor-pointer" @click="places = true">
+            Places to Visit
           </div>
+
+          <CollapseTransition>
+            <div v-show="places" class="space-y-2">
+              <div v-for="place in destinationPlaces" :key="place.id">
+                <nuxt-link
+                  :to="{
+                    path: '/destinations/' + destination.fields.slug,
+                    hash: '#' + kebabCase(place.fields.englishName) + '-intro'
+                  }"
+                  ><div
+                    class="h-16 bg-brown-lighter bg-opacity-25 pl-2 hover:bg-brown"
+                  >
+                    <div
+                      class="pl-2 w-full h-full flex items-center text-xl hover:bg-brown-dark hover:text-white hover:font-bold"
+                    >
+                      {{ place.fields.name }}
+                    </div>
+                  </div></nuxt-link
+                >
+              </div>
+            </div>
+          </CollapseTransition>
+
+          <div class="main-button cursor-pointer" @click="places = false">
+            Hotels
+          </div>
+
+          <CollapseTransition>
+            <div v-show="places === false" class="space-y-2">
+              <div v-for="(place, x) in destinationPlaces" :key="x">
+                <nuxt-link
+                  :to="{
+                    path: '/destinations/' + destination.fields.slug,
+                    hash: '#' + kebabCase(place.fields.englishName) + '-hotel'
+                  }"
+                  ><div
+                    class="h-16 bg-brown-lighter bg-opacity-25 pl-2 hover:bg-brown"
+                  >
+                    <div
+                      class="pl-2 w-full h-full flex items-center text-xl hover:bg-brown-dark hover:text-white hover:font-bold"
+                    >
+                      {{ place.fields.name }}
+                    </div>
+                  </div></nuxt-link
+                >
+              </div>
+            </div>
+          </CollapseTransition>
           <div v-if="destinationTrips.length > 0">
             <nuxt-link
               :to="{
@@ -209,8 +268,12 @@
 
 <script>
 import client from '~/plugins/contentful.js'
+import CollapseTransition from '@ivanv/vue-collapse-transition/src/CollapseTransition.vue'
 
 export default {
+  components: {
+    CollapseTransition
+  },
   async asyncData({ store, params }) {
     await store.dispatch('destination/getDestinationBySlug', params.slug)
     await store.dispatch('tripIdeas/getTripIdeas')
@@ -249,6 +312,7 @@ export default {
   },
   data() {
     return {
+      places: true,
       hotelCarouselOptions: {
         navButtons: false,
         fade: false,
