@@ -1,6 +1,37 @@
 <template>
   <div class="destination-page">
+    <!-- Hero images -->
     <StandardHero :pictures="destinationPics" :title="destinationName" />
+
+    <!-- Highlights -->
+    <div class="section container mx-auto space-y-16 px-16">
+      <div class="title title-main text-black text-center">
+        Intro to {{ destinationName }}
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+        <div
+          v-for="highlight in destination.fields.highlights"
+          :key="highlight.id"
+        >
+          <div
+            v-if="highlight.fields.icon !== undefined"
+            class="flex justify-center h-40"
+          >
+            <img
+              class="object-scale-down"
+              :src="highlight.fields.icon.fields.file.url"
+              :alt="highlight.fields.icon.fields.file.title"
+            />
+          </div>
+          <div class="text-gray text-base lg:text-lg text-center">
+            <div class="font-bold text-lg lg:text-xl xl:h-16">
+              {{ highlight.fields.highlight }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container mx-auto">
       This is the page for a single destination.
       <div>Place: {{ destinationName }}</div>
@@ -16,7 +47,9 @@
         </div>
       </div>
       <div v-else>No trips!</div>
-      {{ destinationPics }}
+      <div v-for="(highlight, id) in destination.fields.highlights" :key="id">
+        {{ highlight.fields }}
+      </div>
     </div>
   </div>
 </template>
