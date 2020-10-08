@@ -7,7 +7,8 @@
     <div class="container mx-auto flex">
       <!-- Content -->
       <div class="w-2/3">
-        <div class="py-16">
+        <!-- Intro Section -->
+        <div id="introduction" class="py-16">
           <div>Intro to {{ destinationName }}</div>
           <!-- Map -->
           <div class="w-full h-screen/50">
@@ -29,38 +30,13 @@
             </div>
           </div>
           <!-- Pros & Cons -->
-          <div class="w-full">
-            <div>장단점</div>
-
-            <!-- Table Headers -->
-            <div class="flex w-full">
-              <div class="flex flex-center w-1/2">장점</div>
-              <div class="flex flex-center w-1/2">단점</div>
-            </div>
-
-            <!-- Table Content -->
-            <div class="flex w-full">
-              <div class="w-1/2 text-black">
-                <div
-                  v-for="pro in destination.fields.pros"
-                  :key="pro"
-                  class="flex"
-                >
-                  <div><Check class="h-8 text-brown" /></div>
-                  <div>{{ pro }}</div>
-                </div>
-              </div>
-              <div class="w-1/2 text-black">
-                <div
-                  v-for="con in destination.fields.cons"
-                  :key="con"
-                  class="flex"
-                >
-                  <div><Cross class="h-8 text-gray" /></div>
-                  <div>{{ con }}</div>
-                </div>
-              </div>
-            </div>
+          <ProsConsTable
+            :pros="destination.fields.pros"
+            :cons="destination.fields.cons"
+          />
+          <!-- Best Time -->
+          <div>
+            <div>여행적기: ({{ destination.fields.bestTime }})</div>
           </div>
         </div>
         <div v-for="place in destinationPlaces" :key="place.id" class="py-16">
@@ -77,14 +53,24 @@
               {{ highlight.fields.highlight }}
             </div>
           </div>
-
-          {{ place.fields }}
+          <!-- Pros & Cons -->
+          <ProsConsTable :pros="place.fields.pros" :cons="place.fields.cons" />
+          <!-- Best Time -->
+          <div>
+            <div>여행적기: ({{ place.fields.bestTime }})</div>
+          </div>
         </div>
       </div>
       <!-- Navigation -->
       <div class="hidden xl:block xl:w-1/3 pl-16">
         <div class="sticky top-0 pt-16">
-          <div>Intro</div>
+          <nuxt-link
+            :to="{
+              path: '/destinations/' + destination.fields.slug,
+              hash: '#introduction'
+            }"
+            ><div>Intro</div></nuxt-link
+          >
           <div>Places to Visit</div>
           <div v-for="place in destinationPlaces" :key="place.id">
             {{ place.fields.name }}
@@ -96,10 +82,6 @@
           <div>Trip Ideas</div>
         </div>
       </div>
-    </div>
-
-    <div class="container mx-auto">
-      {{ destination.fields }}
     </div>
   </div>
 </template>

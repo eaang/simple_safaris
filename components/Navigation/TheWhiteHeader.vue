@@ -1,6 +1,6 @@
 <template>
-  <div class="h-24 select-none">
-    <div class="h-16 bg-white shadow-lg">
+  <div class="h-24 select-none pointer-events-none">
+    <div class="h-16 bg-white shadow-lg pointer-events-auto">
       <div class="relative container px-4 mx-auto flex justify-between h-full">
         <div
           class="lg:hidden flex items-center absolute h-full cursor-pointer"
