@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div
-      id="map"
-      class="w-full h-screen/50 lg:h-screen/75 border border-white content-box"
-    ></div>
+    <div id="map" class="w-full h-full border border-white content-box"></div>
   </div>
 </template>
 

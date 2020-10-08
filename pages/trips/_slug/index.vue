@@ -10,9 +10,10 @@
     <div class="section container mx-auto space-y-8">
       <Map
         v-if="tripIdea.fields.map !== undefined"
+        class="w-full h-screen/50 lg:h-screen/75"
         :center="tripMapCenter"
         :places="tripMapPoints"
-        :zoom="5"
+        :zoom="6"
       />
       <div v-else class="h-16"></div>
       <div class="w-full flex justify-center">
@@ -36,7 +37,7 @@
             class="flex justify-center h-40"
           >
             <img
-              class="object-scale-down"
+              class="object-scale-down max-h-90"
               :src="highlight.fields.icon.fields.file.url"
               :alt="highlight.fields.icon.fields.file.title"
             />
@@ -122,61 +123,7 @@
             <div
               class="relative border-l border-r border-b border-brown flex flex-center"
             >
-              <agile
-                v-if="day.fields.hotels.length > 1"
-                ref="stayCarousel"
-                :options="stayCarouselOptions"
-                class="w-full z-0"
-              >
-                <div
-                  v-for="(hotel, index) in day.fields.hotels"
-                  :key="index"
-                  class="slide"
-                >
-                  <div class="w-full py-16 flex flex-center">
-                    <HotelCard
-                      :src="hotel.fields.hotelImage.fields.file.url"
-                      :alt="hotel.fields.hotelImage.fields.title"
-                      :name="hotel.fields.name"
-                      :price="hotel.fields.price"
-                      class="w-4/5 lg:w-2/5"
-                    />
-                  </div>
-                </div>
-                <template slot="prevButton">
-                  <div class="absolute inset-y-0 left-0 flex items-center">
-                    <div
-                      class="w-16 h-24 border-t border-r border-b border-brown flex flex-center"
-                    >
-                      <AngleLeft class="text-brown h-16" />
-                    </div>
-                  </div>
-                </template>
-                <template slot="nextButton">
-                  <div class="absolute inset-y-0 right-0 flex items-center">
-                    <div
-                      class="w-16 h-24 border-t border-l border-b border-brown flex flex-center"
-                    >
-                      <AngleRight class="text-brown h-16" />
-                    </div>
-                  </div>
-                </template>
-              </agile>
-
-              <div
-                v-for="(hotel, index) in day.fields.hotels"
-                v-else
-                :key="index"
-                class="w-full py-16 flex flex-center"
-              >
-                <HotelCard
-                  :src="hotel.fields.hotelImage.fields.file.url"
-                  :alt="hotel.fields.hotelImage.fields.title"
-                  :name="hotel.fields.name"
-                  :price="hotel.fields.price"
-                  class="w-4/5 lg:w-2/5"
-                />
-              </div>
+              <HotelCarousel :hotels="day.fields.hotels" />
             </div>
           </div>
           <!-- Activity -->
@@ -247,12 +194,7 @@
 </template>
 
 <script>
-import { VueAgile } from 'vue-agile'
-
 export default {
-  components: {
-    agile: VueAgile
-  },
   async asyncData({ store, params }) {
     await store.dispatch('tripIdea/getTripIdeaBySlug', params.slug)
     const thisTrip = store.getters['tripIdea/tripIdea']
@@ -303,22 +245,6 @@ export default {
         autoplay: false,
         dots: false,
         speed: 4000,
-        responsive: [
-          {
-            breakpoint: 768,
-            settings: {
-              navButtons: true
-            }
-          }
-        ]
-      },
-      stayCarouselOptions: {
-        navButtons: false,
-        fade: false,
-        infinite: true,
-        autoplay: false,
-        dots: false,
-        speed: 2000,
         responsive: [
           {
             breakpoint: 768,
