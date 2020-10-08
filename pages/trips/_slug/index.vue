@@ -1,12 +1,7 @@
 <template>
   <div class="trip-idea-page">
     <!-- Bubble to scroll up -->
-    <div @click="backToTop">
-      <TopBubble
-        class="fixed bottom-0 right-0 z-50 mb-20"
-        :class="{ invisible: !scrolled }"
-      />
-    </div>
+    <TopBubble />
 
     <!-- Hero Section -->
     <StandardHero :pictures="tripPics" :title="tripName" />
@@ -353,10 +348,6 @@ export default {
       this.$refs.carousel.goToNext()
       this.counter++
     }, 8000)
-    window.addEventListener('scroll', this.handleScroll)
-  },
-  destroyed() {
-    window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
     kebabCase(str) {
@@ -366,12 +357,6 @@ export default {
         .replace(/([a-z])([A-Z])/g, '$1-$2')
         .replace(/[\s_]+/g, '-')
         .toLowerCase()
-    },
-    handleScroll() {
-      this.scrolled = window.scrollY > window.innerHeight
-    },
-    backToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 }

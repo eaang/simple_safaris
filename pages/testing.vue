@@ -1,6 +1,8 @@
 <template>
   <div>
     <StandardHero />
+    <div class="h-screen"></div>
+    <TopBubble />
   </div>
 </template>
 
