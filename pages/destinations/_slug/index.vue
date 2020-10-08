@@ -15,7 +15,7 @@
               <div
                 class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
               >
-                Introduction
+                Destination
               </div>
               <div class="bg-white h-20 text-xl flex flex-center font-bold">
                 {{ destinationName }}
@@ -58,7 +58,6 @@
           </div>
 
           <!-- Best Time -->
-
           <div>
             <BorderTitle text="여행적기" />
             <div class="border-box flex flex-center">
@@ -80,7 +79,7 @@
               <div
                 class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
               >
-                Places
+                Places to Visit
               </div>
               <div class="bg-white h-20 text-xl flex flex-center font-bold">
                 {{ place.fields.name }}
@@ -102,12 +101,25 @@
           </div>
 
           <!-- Pros & Cons -->
-          <ProsConsTable :pros="place.fields.pros" :cons="place.fields.cons" />
+          <div>
+            <BorderTitle text="장단점" />
+            <div class="border-box">
+              <ProsConsTable
+                :pros="place.fields.pros"
+                :cons="place.fields.cons"
+              />
+            </div>
+          </div>
 
           <!-- Best Time -->
           <div>
-            <div>여행적기: ({{ place.fields.bestTime }})</div>
+            <BorderTitle text="여행적기" />
+            <div class="border-box flex flex-center">
+              {{ place.fields.bestTime }}
+            </div>
           </div>
+
+          <!-- Hotels -->
           <div class="px-8 xl:px-0">
             <BorderTitle :text="place.fields.name + '의 호텔'" />
             <div
@@ -119,21 +131,25 @@
         </div>
 
         <!-- Trip Ideas -->
-        <div v-if="destinationTrips.length > 0" id="trip-ideas">
-          <div v-for="idea in destinationTrips" :key="idea.id">
-            <TripIdeaCard
-              :slug="idea.fields.slug"
-              :url="idea.fields.headerImages[0].fields.file.url"
-              :alt="idea.fields.headerImages[0].fields.file.title"
-              :title="idea.fields.name"
-              :content="
-                idea.fields.description.content[0].content[0].value.match(
-                  /^([^.]+.)/
-                )[0]
-              "
-              :price="idea.fields.startingPrice"
-            />
+        <div
+          v-if="destinationTrips.length > 0"
+          id="trip-ideas"
+          class="space-y-16"
+        >
+          <!-- Title section -->
+          <div class="sticky top-0 z-10 xl:static pt-16">
+            <div class="shadow-2xl">
+              <div
+                class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
+              >
+                Trip Ideas
+              </div>
+              <div class="bg-white h-20 text-xl flex flex-center font-bold">
+                {{ destination.fields.name }}
+              </div>
+            </div>
           </div>
+          <TripIdeaCarouselSmall :trip-ideas="destinationTrips" />
         </div>
       </div>
 

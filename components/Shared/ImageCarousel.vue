@@ -5,6 +5,7 @@
       ref="carousel"
       :options="carouselOptions"
       class="w-full z-0"
+      @after-change="counter = $refs.carousel.getCurrentSlide()"
     >
       <div
         v-for="(image, index) in images"
