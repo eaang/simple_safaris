@@ -1,15 +1,21 @@
 <template>
-  <div class="container mx-auto">
-    This is the page for a single destination.
-    <div>Place: {{ destinationName }}</div>
-    <div v-for="trip in destinationTrips" :key="trip.fields.id">
-      -
-      <a
-        class="text-brown hover:opacity-75"
-        :href="'/trips/' + trip.fields.slug"
-      >
-        {{ trip.fields.name }}
-      </a>
+  <div class="destination-page">
+    <div class="mt-16"></div>
+    <div class="container mx-auto">
+      This is the page for a single destination.
+      <div>Place: {{ destinationName }}</div>
+      <div v-if="destinationTrips.length > 0">
+        <div v-for="trip in destinationTrips" :key="trip.fields.id">
+          -
+          <a
+            class="text-brown hover:opacity-75"
+            :href="'/trips/' + trip.fields.slug"
+          >
+            {{ trip.fields.name }}
+          </a>
+        </div>
+      </div>
+      <div v-else>No trips!</div>
     </div>
   </div>
 </template>
