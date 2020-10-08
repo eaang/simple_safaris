@@ -1,6 +1,6 @@
 <template>
   <div class="destination-page">
-    <div class="mt-16"></div>
+    <StandardHero :pictures="destinationPics" :title="destinationName" />
     <div class="container mx-auto">
       This is the page for a single destination.
       <div>Place: {{ destinationName }}</div>
@@ -16,6 +16,7 @@
         </div>
       </div>
       <div v-else>No trips!</div>
+      {{ destinationPics }}
     </div>
   </div>
 </template>
@@ -39,9 +40,16 @@ export default {
       .then((res) => {
         return res.items
       })
+    const destination = store.getters['destination/destination']
+    const pics = destination.fields.headerImages
+    const destinationPics = []
+    pics.forEach((pic) => {
+      destinationPics.push({ url: pic.fields.file.url })
+    })
     return {
-      currentDestination: store.getters['destination/destination'],
+      destination: destination,
       destinationName: store.getters['destination/destinationName'],
+      destinationPics: destinationPics,
       destinationTrips
     }
   },
