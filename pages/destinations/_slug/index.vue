@@ -3,29 +3,127 @@
     <!-- Hero images -->
     <StandardHero :pictures="destinationPics" :title="destinationName" />
 
-    <!-- Highlights -->
-    <div class="section container mx-auto space-y-16 px-16">
-      <div class="title title-main text-black text-center">
-        Intro to {{ destinationName }}
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-        <div
-          v-for="highlight in destination.fields.highlights"
-          :key="highlight.id"
-        >
+    <!-- Information -->
+    <div class="container mx-auto flex">
+      <!-- Content -->
+      <div class="w-2/3">
+        <div>Intro to {{ destinationName }}</div>
+        <!-- Map -->
+        <div class="w-full h-screen/50">
+          <Map
+            class="w-full h-full"
+            :center="mapCenter"
+            :places="mapPoints"
+            :zoom="5"
+          />
+        </div>
+        <!-- Highlights -->
+        <div>
+          <div>하이라이트</div>
           <div
-            v-if="highlight.fields.icon !== undefined"
-            class="flex justify-center h-40"
+            v-for="highlight in destination.fields.highlights"
+            :key="highlight"
           >
-            <img
-              class="object-scale-down"
-              :src="highlight.fields.icon.fields.file.url"
-              :alt="highlight.fields.icon.fields.file.title"
-            />
+            {{ highlight.fields.highlight }}
           </div>
-          <div class="text-gray text-base lg:text-lg text-center">
-            <div class="font-bold text-lg lg:text-xl xl:h-16">
-              {{ highlight.fields.highlight }}
+        </div>
+        <!-- Pros & Cons -->
+        <div class="w-full h-screen/50">
+          <div>장단점</div>
+
+          <!-- Table Headers -->
+          <div class="flex w-full">
+            <div class="flex flex-center w-1/2">장점</div>
+            <div class="flex flex-center w-1/2">단점</div>
+          </div>
+
+          <!-- Table Content -->
+          <div class="flex w-full">
+            <div class="w-1/2 text-black">
+              <div
+                v-for="pro in destination.fields.pros"
+                :key="pro"
+                class="flex"
+              >
+                <div><Check class="h-8 text-brown" /></div>
+                <div>{{ pro }}</div>
+              </div>
+            </div>
+            <div class="w-1/2 text-black">
+              <div
+                v-for="con in destination.fields.cons"
+                :key="con"
+                class="flex"
+              >
+                <div><Cross class="h-8 text-gray" /></div>
+                <div>{{ con }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Navigation -->
+      <div>
+        <div>Intro</div>
+        <div>Places to Visit</div>
+        <div v-for="place in destinationPlaces" :key="place.id">
+          {{ place.fields.name }}
+        </div>
+        <div>Hotels</div>
+        <div v-for="place in destinationPlaces" :key="place.id">
+          {{ place.fields.name }}
+        </div>
+        <div>Trip Ideas</div>
+      </div>
+    </div>
+
+    <!-- Map & Pros / Cons -->
+    <div class="section container mx-auto">
+      <div class="grid grid-cols-2 gap-4 py-16">
+        <!-- Map -->
+        <div class="w-full h-screen/50">
+          <Map
+            class="w-full h-full"
+            :center="mapCenter"
+            :places="mapPoints"
+            :zoom="5"
+          />
+        </div>
+        <!-- Pros & Cons -->
+        <div class="w-full h-screen/50">
+          <div class="title title-main text-black text-center">장단점</div>
+
+          <!-- Table Headers -->
+          <div class="flex w-full mt-4">
+            <div class="flex flex-center w-1/2 py-2 text-black text-2xl">
+              장점
+            </div>
+            <div class="flex flex-center w-1/2 py-2 text-black text-2xl">
+              단점
+            </div>
+          </div>
+
+          <!-- Table Content -->
+          <div class="flex w-full">
+            <div class="w-1/2 text-black text-xl space-y-4">
+              <div
+                v-for="pro in destination.fields.pros"
+                :key="pro"
+                class="flex"
+              >
+                <div><Check class="h-8 text-brown" /></div>
+                <div>{{ pro }}</div>
+              </div>
+            </div>
+            <div class="w-1/2 text-black text-xl space-y-4">
+              <div
+                v-for="con in destination.fields.cons"
+                :key="con"
+                class="flex"
+              >
+                <div><Cross class="h-8 text-gray" /></div>
+                <div>{{ con }}</div>
+              </div>
             </div>
           </div>
         </div>
@@ -33,23 +131,7 @@
     </div>
 
     <div class="container mx-auto">
-      This is the page for a single destination.
-      <div>Place: {{ destinationName }}</div>
-      <div v-if="destinationTrips.length > 0">
-        <div v-for="trip in destinationTrips" :key="trip.fields.id">
-          -
-          <a
-            class="text-brown hover:opacity-75"
-            :href="'/trips/' + trip.fields.slug"
-          >
-            {{ trip.fields.name }}
-          </a>
-        </div>
-      </div>
-      <div v-else>No trips!</div>
-      <div v-for="(highlight, id) in destination.fields.highlights" :key="id">
-        {{ highlight.fields }}
-      </div>
+      {{ destination.fields }}
     </div>
   </div>
 </template>
@@ -79,10 +161,26 @@ export default {
     pics.forEach((pic) => {
       destinationPics.push({ url: pic.fields.file.url })
     })
+    const thisMapPoints = destination.fields.mapPoints
+    const mapPoints = []
+    thisMapPoints.forEach((point) => {
+      mapPoints.push({
+        name: point.fields.locationName,
+        longitude: parseFloat(point.fields.longitude),
+        latitude: parseFloat(point.fields.latitude)
+      })
+    })
     return {
       destination: destination,
       destinationName: store.getters['destination/destinationName'],
       destinationPics: destinationPics,
+      destinationPlaces: destination.fields.places,
+      destinationHotels: destination.fields.hotels,
+      mapCenter: [
+        parseFloat(destination.fields.mapCenter.fields.mapCentreLongitude),
+        parseFloat(destination.fields.mapCenter.fields.mapCentreLatitude)
+      ],
+      mapPoints: mapPoints,
       destinationTrips
     }
   },

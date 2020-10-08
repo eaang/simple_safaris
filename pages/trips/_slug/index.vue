@@ -10,9 +10,10 @@
     <div class="section container mx-auto space-y-8">
       <Map
         v-if="tripIdea.fields.map !== undefined"
+        class="w-full h-screen/50 lg:h-screen/75"
         :center="tripMapCenter"
         :places="tripMapPoints"
-        :zoom="5"
+        :zoom="6"
       />
       <div v-else class="h-16"></div>
       <div class="w-full flex justify-center">
@@ -36,7 +37,7 @@
             class="flex justify-center h-40"
           >
             <img
-              class="object-scale-down"
+              class="object-scale-down max-h-90"
               :src="highlight.fields.icon.fields.file.url"
               :alt="highlight.fields.icon.fields.file.title"
             />
