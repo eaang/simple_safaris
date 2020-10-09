@@ -3,7 +3,7 @@
     <agile
       v-if="hotels.length > 1"
       :options="stayCarouselOptions"
-      class="w-full z-0"
+      class="w-full z-0 pointer-events-none"
     >
       <div v-for="(hotel, index) in hotels" :key="index" class="slide">
         <div class="w-full py-16 flex flex-center">
@@ -12,7 +12,7 @@
             :alt="hotel.fields.hotelImage.fields.title"
             :name="hotel.fields.name"
             :price="hotel.fields.price"
-            class="w-4/5 lg:w-2/5"
+            class="w-4/5 lg:w-2/5 pointer-events-auto"
           />
         </div>
       </div>
@@ -21,7 +21,7 @@
           <div
             class="w-16 h-24 border-t border-r border-b border-brown flex flex-center"
           >
-            <AngleLeft class="text-brown h-16" />
+            <AngleLeft class="text-brown h-16 pointer-events-auto" />
           </div>
         </div>
       </template>
@@ -30,7 +30,7 @@
           <div
             class="w-16 h-24 border-t border-l border-b border-brown flex flex-center"
           >
-            <AngleRight class="text-brown h-16" />
+            <AngleRight class="text-brown h-16 pointer-events-auto" />
           </div>
         </div>
       </template>
