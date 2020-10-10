@@ -87,8 +87,8 @@
     </div>
 
     <!-- Destinations -->
-    <div class="section container text-center">
-      <div class="title title-main text-black">Destinations</div>
+    <div class="section container">
+      <div class="title title-main text-black text-center">Destinations</div>
       <TheDestinationMap :continents="continents" class="mb-16 mt-8" />
     </div>
 
