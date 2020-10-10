@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
-  <div class="w-full h-screen/75">
+  <div class="w-full">
     <div class="mt-16"></div>
     <!-- Card Carousel -->
     <span
@@ -8,7 +8,7 @@
       v-touch:swipe.left="counterUp"
       v-touch:swipe.right="counterDown"
     >
-      <div class="relative h-screen/75">
+      <div class="relative">
         <div v-for="(hotel, index) in hotels" :key="index">
           <transition name="fade" mode="out-in">
             <div
@@ -25,7 +25,12 @@
             </div>
           </transition>
         </div>
-        <div class="absolute inset-y-0 left-0 flex items-center cursor-pointer">
+        <HotelCard class="invisible" />
+
+        <!-- Navigation Buttons -->
+        <div
+          class="invisible md:visible absolute inset-y-0 left-0 flex items-center cursor-pointer"
+        >
           <div
             class="w-16 h-24 border-t border-r border-b border-brown flex flex-center"
             @click="counter--"
@@ -34,7 +39,7 @@
           </div>
         </div>
         <div
-          class="absolute inset-y-0 right-0 flex items-center cursor-pointer"
+          class="invisible md:visible absolute inset-y-0 right-0 flex items-center cursor-pointer"
         >
           <div
             class="w-16 h-24 border-t border-l border-b border-brown flex flex-center"
@@ -44,7 +49,7 @@
           </div>
         </div>
         <!-- Custom dots -->
-        <ul class="flex justify-around absolute inset-x-0 bottom-0 py-12">
+        <ul class="flex justify-around absolute inset-x-0 bottom-0 -mb-16">
           <div class="flex">
             <li
               v-for="(hotel, i) in hotels"
@@ -71,8 +76,6 @@
         class="w-4/5 lg:w-2/5"
       />
     </div>
-    {{ counter }}
-    {{ trueCounter }}
   </div>
 </template>
 
