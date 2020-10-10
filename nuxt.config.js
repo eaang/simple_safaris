@@ -127,6 +127,7 @@ export default {
   plugins: [
     { src: '~/plugins/vcalendar.js', mode: 'client' },
     { src: '~/plugins/vue-lazyload.js', mode: 'client' },
+    { src: '~/plugins/vue2touch.js', mode: 'client' },
     '~/plugins/vuelidate.js'
   ],
 

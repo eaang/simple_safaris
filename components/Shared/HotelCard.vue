@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <client-only placeholder="Loading...">
+    <client-only>
       <vgs :images="images" :index="index" @close="index = null" />
     </client-only>
   </div>
