@@ -4,6 +4,7 @@
     <TopBubble />
 
     <!-- Hero Section -->
+
     <StandardHero :pictures="tripPics" :title="tripName" />
 
     <!-- Map & Description -->

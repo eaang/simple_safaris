@@ -113,7 +113,11 @@ export default {
     }
   },
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['@/assets/sass/main.scss', 'vue2-animate/dist/vue2-animate.min.css'],
+  css: [
+    '@/assets/sass/main.scss',
+    'vue2-animate/dist/vue2-animate.min.css',
+    'vue-image-lightbox/dist/vue-image-lightbox.min.css'
+  ],
 
   tailwindcss: {
     configPath: './tailwind.config.js',
@@ -122,6 +126,8 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     { src: '~/plugins/vcalendar.js', mode: 'client' },
+    { src: '~/plugins/vue-lazyload.js', mode: 'client' },
+    { src: '~/plugins/vue2touch.js', mode: 'client' },
     '~/plugins/vuelidate.js'
   ],
 

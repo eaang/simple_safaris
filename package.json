@@ -29,7 +29,12 @@
     "sass-loader": "^10.0.2",
     "v-calendar": "^1.0.8",
     "vue-agile": "^1.1.3",
+    "vue-gallery-slideshow": "^1.5.2",
+    "vue-image-lightbox": "^7.2.0",
+    "vue-lazyload": "^1.3.3",
+    "vue-silentbox": "^2.2.0",
     "vue2-animate": "^2.1.4",
+    "vue2-touch-events": "^2.3.2",
     "vuelidate": "^0.7.5"
   },
   "devDependencies": {

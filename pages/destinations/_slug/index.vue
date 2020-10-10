@@ -318,7 +318,6 @@ export default {
       destinationName: store.getters['destination/destinationName'],
       destinationPics: destinationPics,
       destinationPlaces: destination.fields.places,
-      destinationHotels: destination.fields.hotels,
       mapCenter: [
         parseFloat(destination.fields.mapCenter.fields.mapCentreLongitude),
         parseFloat(destination.fields.mapCenter.fields.mapCentreLatitude)
