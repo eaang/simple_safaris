@@ -10,28 +10,28 @@
         >
           <div
             v-for="continent in continents"
-            :key="continent.fields.id"
+            :key="continent.name"
             class="w-1/2 lg:w-full"
           >
             <li
               class="destination-list-item space-x-4"
               :class="{
                 'destination-list-choice':
-                  chosenDestination === continent.fields.name.toLowerCase()
+                  chosenDestination === continent.name.toLowerCase()
               }"
-              @click="chosenDestination = continent.fields.name.toLowerCase()"
+              @click="chosenDestination = continent.name.toLowerCase()"
             >
               <div>
-                {{ continent.fields.koreanName }}
+                {{ continent.koreanName }}
                 <br class="hidden lg:block xl:hidden" />
-                ({{ continent.fields.name }})
+                ({{ continent.name }})
               </div>
               <AngleRight
-                v-if="chosenDestination === continent.fields.name.toLowerCase()"
+                v-if="chosenDestination === continent.name.toLowerCase()"
                 class="text-black h-6 hidden lg:block"
               />
               <AngleDown
-                v-if="chosenDestination === continent.fields.name.toLowerCase()"
+                v-if="chosenDestination === continent.name.toLowerCase()"
                 class="text-black h-4 block lg:hidden"
               />
             </li>
@@ -39,28 +39,26 @@
         </ul>
         <!-- Region Picker -->
         <div class="w-full lg:w-3/4 xl:w-2/3">
-          <ul v-for="continent in continents" :key="continent.fields.name">
-            <div
-              v-if="chosenDestination === continent.fields.name.toLowerCase()"
-            >
+          <ul v-for="continent in continents" :key="continent.name">
+            <div v-if="chosenDestination === continent.name.toLowerCase()">
               <li
-                v-for="destination in continent.fields.destinations"
-                :key="destination.fields.slug"
+                v-for="(destination, i) in continent.destinations"
+                :key="i"
                 class="destination-list-item"
                 @mouseleave="region = null"
-                @mouseover="region = destination.fields.slug"
+                @mouseover="region = kebabCase(destination.name)"
               >
                 <a
-                  :href="'/destinations/' + destination.fields.slug"
+                  :href="'/destinations/' + kebabCase(destination.name)"
                   class="flex items-center space-x-4"
                 >
                   <div>
-                    {{ destination.fields.listOrder }}.
-                    {{ destination.fields.koreanName }}
-                    ({{ destination.fields.name }})
+                    {{ i + 1 }}.
+                    {{ destination.koreanName }}
+                    ({{ destination.name }})
                   </div>
                   <AngleRight
-                    v-if="region === destination.fields.slug"
+                    v-if="region === kebabCase(destination.name)"
                     class="text-black h-6 hidden lg:block"
                   />
                 </a>
@@ -82,7 +80,24 @@
 export default {
   data() {
     return {
-      continents: this.$store.getters['continents/continents'],
+      continents: {
+        Asia: {
+          name: 'Asia',
+          koreanName: '아시아',
+          destinations: [{ name: 'India', koreanName: '인도' }]
+        },
+        Africa: {
+          name: 'Africa',
+          koreanName: '아프리카',
+          destinations: [
+            { name: 'Kenya', koreanName: '케냐' },
+            { name: 'Tanzania', koreanName: '탄자니아' },
+            { name: 'Botswana', koreanName: '보츠와나' },
+            { name: 'Namibia', koreanName: '나미비아' },
+            { name: 'South Africa', koreanName: '남아프리카' }
+          ]
+        }
+      },
       region: null,
       chosenDestination: 'africa'
     }
@@ -96,6 +111,16 @@ export default {
           this.region +
           '.png')
       }
+    }
+  },
+  methods: {
+    kebabCase(str) {
+      return str
+        .replace(/[^a-zA-Z0-9 ]/g, '')
+        .replace(/([A-Z])([A-Z])/g, '$1-$2')
+        .replace(/([a-z])([A-Z])/g, '$1-$2')
+        .replace(/[\s_]+/g, '-')
+        .toLowerCase()
     }
   }
 }
