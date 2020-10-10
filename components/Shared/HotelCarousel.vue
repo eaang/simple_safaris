@@ -2,15 +2,20 @@
   <div class="w-full">
     <span
       v-if="hotels.length > 1"
-      v-touch:swipe.left="counterUp"
-      v-touch:swipe.right="counterDown"
+      v-touch:swipe.left="clickRight"
+      v-touch:swipe.right="clickLeft"
     >
-      <div class="relative mt-16 mb-32">
+      <div class="relative overflow-hidden -mt-8 pb-48">
         <div v-for="(hotel, index) in hotels" :key="index">
-          <transition name="fade" mode="out-in">
+          <transition
+            :enter-active-class="enterActive"
+            :leave-active-class="leaveActive"
+            mode="in-out"
+          >
             <div
               v-show="index === trueCounter"
               class="slide w-full h-full py-16 flex flex-center absolute"
+              style="animation-duration: 0.3s"
             >
               <HotelCard
                 :src="hotel.fields.hotelImage.fields.file.url"
@@ -31,7 +36,7 @@
         >
           <div
             class="w-16 h-24 border-t border-r border-b border-brown flex flex-center"
-            @click="counter--"
+            @click="clickLeft"
           >
             <AngleLeft class="text-brown h-16 pointer-events-auto" />
           </div>
@@ -41,13 +46,13 @@
         >
           <div
             class="w-16 h-24 border-t border-l border-b border-brown flex flex-center"
-            @click="counter++"
+            @click="clickRight"
           >
             <AngleRight class="text-brown h-16 pointer-events-auto" />
           </div>
         </div>
         <!-- Custom dots -->
-        <ul class="flex justify-around absolute inset-x-0 bottom-0 -mb-16">
+        <ul class="flex justify-around absolute inset-x-0 bottom-0 mb-12">
           <div class="flex">
             <li
               v-for="(hotel, i) in hotels"
@@ -146,7 +151,8 @@ export default {
   },
   data() {
     return {
-      counter: 0
+      counter: 0,
+      lastClicked: null
     }
   },
   computed: {
@@ -162,14 +168,26 @@ export default {
       } else {
         return this.counter % this.hotels.length
       }
+    },
+    enterActive() {
+      if (this.lastClicked === 'right') {
+        return 'animated slideInRight'
+      } else return 'animated slideInLeft'
+    },
+    leaveActive() {
+      if (this.lastClicked === 'right') {
+        return 'animated slideOutLeft'
+      } else return 'animated slideOutRight'
     }
   },
   methods: {
-    counterUp() {
-      this.counter++
-    },
-    counterDown() {
+    clickLeft() {
       this.counter--
+      this.lastClicked = 'left'
+    },
+    clickRight() {
+      this.counter++
+      this.lastClicked = 'right'
     }
   }
 }
