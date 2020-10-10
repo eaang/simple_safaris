@@ -109,10 +109,13 @@ export default {
     }
   },
   mounted() {
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.$refs.carousel.goToNext()
       this.counter++
     }, 8000)
+  },
+  destroyed() {
+    clearInterval(this.interval)
   },
   methods: {}
 }

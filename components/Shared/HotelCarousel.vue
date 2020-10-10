@@ -17,6 +17,7 @@
                 :alt="hotel.fields.hotelImage.fields.title"
                 :name="hotel.fields.name"
                 :price="hotel.fields.price"
+                :images="hotel.fields.otherImages"
                 class="w-4/5 lg:w-2/5"
               />
             </div>
@@ -70,6 +71,8 @@
         :alt="hotel.fields.hotelImage.fields.title"
         :name="hotel.fields.name"
         :price="hotel.fields.price"
+        :images="hotel.fields.otherImages"
+        :hotel="hotel"
         class="w-4/5 lg:w-2/5"
       />
     </div>

@@ -99,6 +99,9 @@ export default {
     title: {
       type: String,
       default: 'Title Here'
+    },
+    isLoading: {
+      type: Boolean
     }
   },
   data() {
@@ -123,10 +126,13 @@ export default {
     }
   },
   mounted() {
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.$refs.carousel.goToNext()
       this.counter++
     }, 8000)
+  },
+  destroyed() {
+    clearInterval(this.interval)
   }
 }
 </script>
