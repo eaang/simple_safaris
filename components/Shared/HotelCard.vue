@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     photos() {
-      const album = []
+      const album = [this.src]
       this.images.forEach((image) => {
         album.push(image.fields.file.url)
       })
