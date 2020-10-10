@@ -1,180 +1,122 @@
-<!-- eslint-disable vue/no-parsing-error -->
 <template>
-  <div class="w-full">
-    <div class="mt-16"></div>
-    <!-- Card Carousel -->
-    <div>
-      <span
-        v-if="hotels.length > 1"
-        v-touch:swipe.left="counterUp"
-        v-touch:swipe.right="counterDown"
-      >
-        <div class="relative">
-          <div v-for="(hotel, index) in hotels" :key="index">
-            <transition name="fade" mode="out-in">
-              <div
-                v-show="index === trueCounter"
-                class="slide w-full h-full py-16 flex flex-center absolute"
-              >
-                <HotelCard
-                  :src="hotel.fields.hotelImage.fields.file.url"
-                  :alt="hotel.fields.hotelImage.fields.title"
-                  :name="hotel.fields.name"
-                  :price="hotel.fields.price"
-                  class="w-4/5 lg:w-2/5"
-                />
+  <div
+    class="flex flex-col lg:flex-row justify-between items-center lg:items-start lg:justify-center px-4 pt-32"
+  >
+    <div class="text-left w-full md:w-3/4 lg:w-3/5">
+      <div class="flex flex-col lg:flex-row items-start w-full">
+        <!-- Continent Picker  -->
+        <ul
+          class="destination-list text-2xl w-full lg:w-1/4 xl:w-1/3 flex flex-row-reverse justify-between lg:flex-col-reverse"
+        >
+          <div
+            v-for="continent in continents"
+            :key="continent.fields.id"
+            class="w-1/2 lg:w-full"
+          >
+            <li
+              class="destination-list-item space-x-4"
+              :class="{
+                'destination-list-choice':
+                  chosenDestination === continent.fields.name.toLowerCase()
+              }"
+              @click="chosenDestination = continent.fields.name.toLowerCase()"
+            >
+              <div>
+                {{ continent.fields.koreanName }}
+                <br class="hidden lg:block xl:hidden" />
+                ({{ continent.fields.name }})
               </div>
-            </transition>
+              <AngleRight
+                v-if="chosenDestination === continent.fields.name.toLowerCase()"
+                class="text-black h-6 hidden lg:block"
+              />
+              <AngleDown
+                v-if="chosenDestination === continent.fields.name.toLowerCase()"
+                class="text-black h-4 block lg:hidden"
+              />
+            </li>
           </div>
-          <HotelCard class="invisible" />
-
-          <!-- Navigation Buttons -->
-          <div
-            class="invisible md:visible absolute inset-y-0 left-0 flex items-center cursor-pointer"
-          >
+        </ul>
+        <!-- Region Picker -->
+        <div class="w-full lg:w-3/4 xl:w-2/3">
+          <ul v-for="continent in continents" :key="continent.fields.name">
             <div
-              class="w-16 h-24 border-t border-r border-b border-brown flex flex-center"
-              @click="counter--"
+              v-if="chosenDestination === continent.fields.name.toLowerCase()"
             >
-              <AngleLeft class="text-brown h-16 pointer-events-auto" />
-            </div>
-          </div>
-          <div
-            class="invisible md:visible absolute inset-y-0 right-0 flex items-center cursor-pointer"
-          >
-            <div
-              class="w-16 h-24 border-t border-l border-b border-brown flex flex-center"
-              @click="counter++"
-            >
-              <AngleRight class="text-brown h-16 pointer-events-auto" />
-            </div>
-          </div>
-          <!-- Custom dots -->
-          <ul class="flex justify-around absolute inset-x-0 bottom-0 -mb-16">
-            <div class="flex">
               <li
-                v-for="(hotel, i) in hotels"
-                :key="i"
-                class="border-2 border-brown rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-brown"
-                :class="{ 'bg-brown': i === trueCounter }"
-                @click="counter = i"
-              ></li>
+                v-for="destination in continent.fields.destinations"
+                :key="destination.fields.slug"
+                class="destination-list-item"
+                @mouseleave="region = null"
+                @mouseover="region = destination.fields.slug"
+              >
+                <a
+                  :href="'/destinations/' + destination.fields.slug"
+                  class="flex items-center space-x-4"
+                >
+                  <div>
+                    {{ destination.fields.listOrder }}.
+                    {{ destination.fields.koreanName }}
+                    ({{ destination.fields.name }})
+                  </div>
+                  <AngleRight
+                    v-if="region === destination.fields.slug"
+                    class="text-black h-6 hidden lg:block"
+                  />
+                </a>
+              </li>
             </div>
           </ul>
         </div>
-      </span>
-      <div
-        v-for="(hotel, index) in hotels"
-        v-else
-        :key="index"
-        class="w-full h-full py-16 flex flex-center"
-      >
-        <HotelCard
-          :src="hotel.fields.hotelImage.fields.file.url"
-          :alt="hotel.fields.hotelImage.fields.title"
-          :name="hotel.fields.name"
-          :price="hotel.fields.price"
-          class="w-4/5 lg:w-2/5"
-        />
       </div>
+    </div>
+    <!-- Continent Map -->
+    <div class="relative my-8 md:my-0 flex justify-center">
+      <img class="absolute object-scale-down" :src="countryImage" />
+      <img src="@/assets/images/landing-map/map-africa.png" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    hotels: {
-      type: Array,
-      default: () => [
-        {
-          fields: {
-            hotelImage: {
-              fields: {
-                file: {
-                  url: 'https://picsum.photos/600/400?random=1'
-                },
-                title: 'Placeholder Photo 1'
-              }
-            },
-            name: 'Hotel 1',
-            price: 2
-          }
-        },
-        {
-          fields: {
-            hotelImage: {
-              fields: {
-                file: {
-                  url: 'https://picsum.photos/600/400?random=2'
-                },
-                title: 'Placeholder Photo 2'
-              }
-            },
-            name: 'Hotel 2',
-            price: 3
-          }
-        },
-        {
-          fields: {
-            hotelImage: {
-              fields: {
-                file: {
-                  url: 'https://picsum.photos/600/400?random=3'
-                },
-                title: 'Placeholder Photo 3'
-              }
-            },
-            name: 'Hotel 3',
-            price: 3
-          }
-        },
-        {
-          fields: {
-            hotelImage: {
-              fields: {
-                file: {
-                  url: 'https://picsum.photos/600/400?random=4'
-                },
-                title: 'Placeholder Photo 4'
-              }
-            },
-            name: 'Hotel 4',
-            price: 3
-          }
-        }
-      ]
-    }
-  },
   data() {
     return {
-      counter: 0
+      continents: this.$store.getters['continents/continents'],
+      region: null,
+      chosenDestination: 'africa'
     }
   },
   computed: {
-    trueCounter() {
-      if (this.counter < 0) {
-        if ((this.counter * -1) % this.hotels.length === 0) {
-          return 0
-        } else {
-          return this.hotels.length - ((this.counter * -1) % this.hotels.length)
-        }
-      } else if (this.counter < this.hotels.length) {
-        return this.counter
+    countryImage() {
+      if (this.region === null) {
+        return ''
       } else {
-        return this.counter % this.hotels.length
+        return require('@/assets/images/landing-map/map-africa-' +
+          this.region +
+          '.png')
       }
-    }
-  },
-  methods: {
-    counterUp() {
-      this.counter++
-    },
-    counterDown() {
-      this.counter--
     }
   }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.destination-list {
+  &-item {
+    @apply text-brown text-base py-1;
+    @screen md {
+      @apply text-lg py-2;
+    }
+    @screen xl {
+      @apply text-xl;
+    }
+  }
+  &-item:hover {
+    @apply text-black font-bold;
+  }
+  &-choice {
+    @apply text-black font-bold flex items-center w-full;
+  }
+}
+</style>
