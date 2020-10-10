@@ -9,8 +9,12 @@
         <div class="text-brown text-center text-2xl">
           {{ '$'.repeat(price) }}
         </div>
-        <div class="text-brown text-sm cursor-pointer" @click="index = 0">
-          more
+        <div
+          class="text-brown text-sm cursor-pointer flex items-end"
+          @click="index = 0"
+        >
+          <div>more</div>
+          <ArrowRightSmall class="ml-2 h-5" />
         </div>
       </div>
     </div>
