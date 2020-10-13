@@ -9,7 +9,7 @@
 
     <!-- Map & Description -->
     <div class="section container mx-auto space-y-8">
-      <Map
+      <MapWithNumbers
         v-if="tripIdea.fields.map !== undefined"
         class="w-full h-screen/50 lg:h-screen/75"
         :center="tripMapCenter"

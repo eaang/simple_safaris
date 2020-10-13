@@ -116,7 +116,7 @@
     <!-- Map box -->
     <div class="section container mx-auto">
       <div class="title title-main text-center mb-8">Places we've visited</div>
-      <Map class="w-full h-screen/50 lg:h-screen/75" />
+      <MapNoText class="w-full h-screen/50 lg:h-screen/75" />
     </div>
   </div>
 </template>

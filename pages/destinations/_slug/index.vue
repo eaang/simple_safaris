@@ -25,7 +25,7 @@
 
           <!-- Map -->
           <div class="w-full h-screen/50">
-            <Map
+            <MapNoNumbers
               class="w-full h-full"
               :center="mapCenter"
               :places="mapPoints"
