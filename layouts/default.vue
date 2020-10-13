@@ -154,6 +154,10 @@ html {
 }
 
 .mapboxgl-popup-content {
-  @apply text-brown shadow-lg rounded h-8 flex items-end justify-center text-lg font-bold pb-1;
+  @apply text-brown bg-transparent shadow-none border-0 h-8 flex items-end justify-center text-base font-bold pb-1;
+}
+
+.mapboxgl-popup-tip {
+  border: none !important;
 }
 </style>

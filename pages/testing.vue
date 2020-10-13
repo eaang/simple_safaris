@@ -1,12 +1,14 @@
 <template>
   <div>
     <div class="h-16"></div>
-    <Map
-      class="w-full h-screen/50 lg:h-screen/75"
-      :center="center"
-      :places="places"
-      :zoom="zoom"
-    />
+    <div class="section container mx-auto">
+      <Map
+        class="w-full h-screen/50 lg:h-screen/75"
+        :center="center"
+        :places="places"
+        :zoom="zoom"
+      />
+    </div>
   </div>
 </template>
 
@@ -22,7 +24,7 @@ export default {
         { name: 'Namibia', longitude: 18.49041, latitude: -22.95764 },
         { name: 'South Africa', longitude: 22.937506, latitude: -30.559483 }
       ],
-      zoom: 0
+      zoom: 1.32
     }
   }
 }

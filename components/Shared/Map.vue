@@ -11,7 +11,7 @@ export default {
   props: {
     center: {
       type: Array,
-      default: () => [27, -15]
+      default: () => [0, 0]
     },
     places: {
       type: Array,
@@ -25,7 +25,7 @@ export default {
     },
     zoom: {
       type: Number,
-      default: 2.5
+      default: 1.32
     }
   },
   computed: {
@@ -62,8 +62,7 @@ export default {
         center: this.center,
         zoom: this.zoom
       })
-
-      locations.features.forEach(function (marker) {
+      locations.features.forEach(function (marker, index) {
         // create a HTML element for each feature
         const el = document.createElement('div')
         el.className = 'marker'
@@ -72,10 +71,14 @@ export default {
         new mapboxgl.Marker(el)
           .setLngLat(marker.geometry.coordinates)
           .setPopup(
-            new mapboxgl.Popup({ offset: 15, closeButton: false }) // add popups
-              .setHTML(marker.properties.description)
+            new mapboxgl.Popup({
+              offset: 15,
+              closeButton: false
+            }) // add popups
+              .setHTML(`${index + 1}. ${marker.properties.description}`)
           )
           .addTo(map)
+          .togglePopup()
       })
     }
   }
