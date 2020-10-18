@@ -104,7 +104,7 @@
                     필수 정보입니다.
                   </div>
                   <div v-if="!$v.email.email" class="error">
-                    잘못된 주소입니다. 다시 입력해주세요.
+                    잘못된 이메일 주소입니다.
                   </div>
                 </div>
               </div>
@@ -207,7 +207,7 @@
                             "
                             class="error"
                           >
-                            희망 여행 일자는 현재보다 이후로만 선택 가능합니다.
+                            금일 이후 일자만 가능합니다.
                           </div>
                         </div>
                       </div>
@@ -252,7 +252,7 @@
                           v-if="$v.endDate.required && !$v.endDate.afterToday"
                           class="error"
                         >
-                          희망 여행 일자는 현재보다 이후로만 선택 가능합니다.
+                          금일 이후 일자만 가능합니다.
                         </div>
                       </div>
                     </div>
