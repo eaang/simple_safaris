@@ -13,12 +13,14 @@
         <div
           class="text-2xl md:text-4xl font-display text-white flex items-center"
         >
-          <a href="/">SIMPLE SAFARIS</a>
+          <nuxt-link to="/">SIMPLE SAFARIS</nuxt-link>
         </div>
         <div class="hidden lg:flex items-stretch text-white text-lg space-x-8">
           <!-- About Link -->
-          <a class="nav-link nav-link-dropdown cursor-pointer" href="/about"
-            >About</a
+          <nuxt-link
+            class="nav-link nav-link-dropdown cursor-pointer"
+            to="/about"
+            >About</nuxt-link
           >
 
           <!-- Destinations Dropdown -->
@@ -50,8 +52,8 @@
           </div>
 
           <!-- Contact Us Button -->
-          <a href="/contact" class="flex items-center"
-            ><div class="btn btn-white-outline">Contact us</div></a
+          <nuxt-link to="/contact" class="flex items-center"
+            ><div class="btn btn-white-outline">Contact us</div></nuxt-link
           >
         </div>
       </div>
@@ -70,17 +72,17 @@
                   src="@/assets/images/icons/ic-youtube.svg"
                 />
               </a> -->
-              <a href="#" class="h-6 w-6" target="_blank">
+              <nuxt-link to="#" class="h-6 w-6" target="_blank">
                 <img
                   class="object-scale-down"
                   src="@/assets/images/icons/ic-instagram.svg"
                 />
-              </a>
-              <a href="#" class="h-6 w-6" target="_blank"
+              </nuxt-link>
+              <nuxt-link to="#" class="h-6 w-6" target="_blank"
                 ><img
                   class="object-scale-down"
                   src="@/assets/images/icons/ic-blog.svg"
-              /></a>
+              /></nuxt-link>
             </div>
           </div>
           <div class="flex items-center space-x-2">
@@ -109,17 +111,17 @@
                 src="@/assets/images/icons/ic-youtube.svg"
               />
             </a> -->
-            <a href="#" class="h-6 w-6" target="_blank">
+            <nuxt-link to="#" class="h-6 w-6" target="_blank">
               <img
                 class="object-scale-down"
                 src="@/assets/images/icons/ic-instagram.svg"
               />
-            </a>
-            <a href="#" class="h-6 w-6" target="_blank"
+            </nuxt-link>
+            <nuxt-link to="#" class="h-6 w-6" target="_blank"
               ><img
                 class="object-scale-down"
                 src="@/assets/images/icons/ic-blog.svg"
-            /></a>
+            /></nuxt-link>
           </div>
         </div>
       </div>

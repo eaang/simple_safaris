@@ -14,14 +14,14 @@
           </div>
         </li>
         <div id="africa-trip-dropdown">
-          <a
+          <nuxt-link
             v-for="tripIdea in africaTrips"
             :key="tripIdea.fields.name"
-            :href="'/trips/' + tripIdea.fields.slug"
+            :to="'/trips/' + tripIdea.fields.slug"
           >
             <li class="nav-dropdown-item nav-dropdown-item-dark">
               {{ tripIdea.fields.name }}
-            </li></a
+            </li></nuxt-link
           >
         </div>
       </div>
@@ -38,14 +38,14 @@
           </div>
         </li>
         <div id="asia-trip-dropdown">
-          <a
+          <nuxt-link
             v-for="tripIdea in asiaTrips"
             :key="tripIdea.fields.name"
-            :href="'/trips/' + tripIdea.fields.slug"
+            :to="'/trips/' + tripIdea.fields.slug"
           >
             <li class="nav-dropdown-item nav-dropdown-item-dark">
               {{ tripIdea.fields.name }}
-            </li></a
+            </li></nuxt-link
           >
         </div>
       </div>
@@ -88,5 +88,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped></style>

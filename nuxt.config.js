@@ -1,9 +1,11 @@
 const env = require('dotenv').config()
-
-// eslint-disable-next-line nuxt/no-cjs-in-config
 const contentful = require('contentful')
 
 export default {
+  loading: {
+    color: '#9c9780',
+    height: '5px'
+  },
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
   env: env.parsed,
@@ -51,7 +53,7 @@ export default {
       const findEl = async (hash, x) => {
         return (
           document.querySelector(hash) ||
-          new Promise((resolve, reject) => {
+          new Promise((resolve) => {
             if (x > 50) {
               return resolve()
             }

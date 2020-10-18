@@ -18,14 +18,14 @@
           </div>
         </li>
         <div :id="continent.fields.name.toLowerCase() + '-dropdown'">
-          <a
+          <nuxt-link
             v-for="destination in continent.fields.destinations"
             :key="destination.fields.name"
-            :href="'/destinations/' + destination.fields.slug"
+            :to="'/destinations/' + destination.fields.slug"
           >
             <li class="nav-dropdown-item nav-dropdown-item-dark">
               {{ destination.fields.name }}
-            </li></a
+            </li></nuxt-link
           >
         </div>
       </div>
@@ -56,5 +56,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped></style>
