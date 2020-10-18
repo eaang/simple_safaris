@@ -40,7 +40,9 @@
     <!-- Contact form here -->
     <client-only>
       <div id="formStart" class="contact-form container mx-auto">
-        <div class="bg-gray-lightest border-t-4 border-b-4 border-brown">
+        <div
+          class="bg-gray-light bg-opacity-50 border-t-4 border-b-4 border-brown"
+        >
           <div class="w-4/5 lg:w-3/5 xl:w-1/2 mx-auto py-16">
             <form name="contact">
               <!-- Name -->
@@ -57,7 +59,7 @@
                 />
                 <div v-if="$v.name.$dirty">
                   <div v-if="!$v.name.required" class="error">
-                    This field is required.
+                    필수 정보입니다.
                   </div>
                 </div>
               </div>
@@ -75,13 +77,13 @@
                 />
                 <div v-if="$v.phone.$dirty">
                   <div v-if="!$v.phone.required" class="error">
-                    This field is required.
+                    필수 정보입니다.
                   </div>
                   <div v-if="!$v.phone.minLength" class="error">
-                    Your phone number is too short.
+                    연락처는 010-1234-5678 형식으로만 입력 가능합니다.
                   </div>
                   <div v-if="!$v.phone.maxLength" class="error">
-                    Your phone number is too long.
+                    연락처는 010-1234-5678 형식으로만 입력 가능합니다.
                   </div>
                 </div>
               </div>
@@ -99,7 +101,7 @@
                 />
                 <div v-if="$v.email.$dirty">
                   <div v-if="!$v.email.required" class="error">
-                    This field is required.
+                    필수 정보입니다.
                   </div>
                   <div v-if="!$v.email.email" class="error">
                     잘못된 주소입니다. 다시 입력해주세요.
@@ -136,7 +138,7 @@
                     </select>
                     <div v-if="$v.adults.$dirty">
                       <div v-if="!$v.adults.required" class="error">
-                        This field is required.
+                        필수 정보입니다.
                       </div>
                     </div>
                   </div>
@@ -165,7 +167,7 @@
                     </select>
                     <div v-if="$v.children.$dirty">
                       <div v-if="!$v.children.required" class="error">
-                        This field is required.
+                        필수 정보입니다.
                       </div>
                     </div>
                   </div>
@@ -174,8 +176,19 @@
 
               <!-- Planned Dates -->
               <div class="input-group">
-                <label>
+                <label class="">
                   <span class="asterisk">&lowast;</span>희망 여행 일자
+                  <span
+                    v-if="$v.startDate.$dirty"
+                    class="ml-2 inline-flex items-center"
+                  >
+                    <div
+                      v-if="!$v.startDate.required || !$v.endDate.required"
+                      class="error pb-3"
+                    >
+                      필수 정보입니다.
+                    </div>
+                  </span>
                 </label>
 
                 <div class="grid grid-cols-2 grid-rows-1 gap-x-4">
@@ -188,16 +201,13 @@
                           class="ml-2"
                           style="margin-top: 0.2rem"
                         >
-                          <div v-if="!$v.startDate.required" class="error">
-                            Please enter a date.
-                          </div>
                           <div
                             v-if="
                               $v.startDate.required && !$v.startDate.afterToday
                             "
                             class="error"
                           >
-                            Please enter a future date.
+                            희망 여행 일자는 현재보다 이후로만 선택 가능합니다.
                           </div>
                         </div>
                       </div>
@@ -238,14 +248,11 @@
                         class="ml-2"
                         style="margin-top: 0.2rem"
                       >
-                        <div v-if="!$v.endDate.required" class="error">
-                          Please enter a date.
-                        </div>
                         <div
                           v-if="$v.endDate.required && !$v.endDate.afterToday"
                           class="error"
                         >
-                          Please enter a future date.
+                          희망 여행 일자는 현재보다 이후로만 선택 가능합니다.
                         </div>
                       </div>
                     </div>
@@ -268,13 +275,14 @@
                     </label>
                     <select id="days" v-model="daysDesired" required>
                       <option value selected disabled>-</option>
-                      <option value="<5">5 일 미만</option>
-                      <option value="6-10">6 ~ 10 일</option>
-                      <option value=">10">10 일 이상</option>
+                      <option value="<5">5일 ~ 7일</option>
+                      <option value="<5">8일 ~ 10일</option>
+                      <option value="<5">11일 ~ 13일</option>
+                      <option value="<5">13일 이상</option>
                     </select>
                     <div v-if="$v.daysDesired.$dirty">
                       <div v-if="!$v.daysDesired.required" class="error">
-                        This field is required.
+                        필수 정보입니다.
                       </div>
                     </div>
                   </div>
@@ -284,13 +292,14 @@
                     </label>
                     <select id="budget" v-model="budgetPerPerson" required>
                       <option value selected disabled>-</option>
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
-                      <option value="3">Option 3</option>
+                      <option value="1">300만원 ~ 500만원</option>
+                      <option value="2">500만원 ~ 700만원</option>
+                      <option value="2">700만원 ~ 900만원</option>
+                      <option value="3">900만원 이상</option>
                     </select>
                     <div v-if="$v.budgetPerPerson.$dirty">
                       <div v-if="!$v.budgetPerPerson.required" class="error">
-                        This field is required.
+                        필수 정보입니다.
                       </div>
                     </div>
                   </div>
@@ -304,21 +313,21 @@
                 </label>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-2">
                   <div v-for="(destination, i) in destinations" :key="i">
-                    <label :for="destination.fields.name" class="check-group">
+                    <label :for="destination.name" class="check-group">
                       <div class="check-box">
                         <Check
-                          v-if="countries.includes(destination.fields.name)"
+                          v-if="countries.includes(destination.name)"
                           class="check-mark"
                         />
                       </div>
                       <div class="text-black text-base xl:text-lg">
-                        {{ destination.fields.koreanName }}
+                        {{ destination.koreanName }}
                       </div>
                     </label>
                     <input
-                      :id="destination.fields.name"
+                      :id="destination.name"
                       v-model="countries"
-                      :value="destination.fields.name"
+                      :value="destination.name"
                       type="checkbox"
                       class="hidden"
                     />
@@ -326,7 +335,7 @@
                 </div>
                 <div v-if="$v.countries.$dirty">
                   <div v-if="!$v.countries.required" class="error">
-                    This field is required.
+                    필수 정보입니다.
                   </div>
                 </div>
               </div>
@@ -445,6 +454,16 @@ export default {
   data() {
     return {
       continents: this.$store.getters['continents/continents'],
+      destinations: [
+        { name: 'Kenya', koreanName: '케냐' },
+        { name: 'Tanzania', koreanName: '탄자니아' },
+        { name: 'Botswana', koreanName: '보츠와나' },
+        { name: 'Namibia', koreanName: '나미비아' },
+        { name: 'South Africa', koreanName: '남아프리카' },
+        { name: 'Zambia', koreanName: '잠비아' },
+        { name: 'Zimbabwe', koreanName: '짐바브웨' },
+        { name: 'India', koreanName: '인도' }
+      ],
       submitStatus: 'NOT YET',
       name: '',
       phone: '',
@@ -539,19 +558,19 @@ export default {
     }
   },
   computed: {
-    destinations() {
-      const destinations = []
-      const continents = []
-      this.continents.forEach((continent) => {
-        continents.push(continent)
-      })
-      continents.reverse().forEach((continent) => {
-        continent.fields.destinations.forEach((destination) => {
-          destinations.push(destination)
-        })
-      })
-      return destinations
-    },
+    // destinations() {
+    //   const destinations = []
+    //   const continents = []
+    //   this.continents.forEach((continent) => {
+    //     continents.push(continent)
+    //   })
+    //   continents.reverse().forEach((continent) => {
+    //     continent.fields.destinations.forEach((destination) => {
+    //       destinations.push(destination)
+    //     })
+    //   })
+    //   return destinations
+    // },
     hasDates() {
       return this.startDate !== null || this.endDate !== null
     },
@@ -664,8 +683,6 @@ select {
   background-repeat: no-repeat;
   background-position: right 0.5em top 50%, 0 0;
   background-size: 0.7em auto, 100%;
-}
-select {
   // The select element is set to required
   // as long as the selected options value
   // is empty the element is not valid.
