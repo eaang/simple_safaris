@@ -9,7 +9,7 @@
         >
           장점
         </div>
-        <div class="w-full text-black space-y-2 px-4">
+        <div class="w-full text-black space-y-2 px-8">
           <div v-for="pro in pros" :key="pro" class="flex">
             <div><Check class="h-6 md:h-8 text-brown" /></div>
             <div class="text-base md:text-lg">{{ pro }}</div>
@@ -22,7 +22,7 @@
         >
           단점
         </div>
-        <div class="w-full text-black space-y-2 px-4">
+        <div class="w-full text-black space-y-2 px-8">
           <div v-for="con in cons" :key="con" class="flex">
             <div><Cross class="h-6 md:h-8 text-gray" /></div>
             <div class="text-base md:text-lg">{{ con }}</div>

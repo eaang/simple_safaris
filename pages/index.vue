@@ -34,7 +34,7 @@
       />
     </transition>
 
-    <TheFullheightHero class="w-full z-20 -mt-24 mb-24" />
+    <TheFullheightHero v-cloak class="w-full z-20 -mt-24 mb-24" />
 
     <!-- Introduction -->
     <div class="section container px-4 text-center">
