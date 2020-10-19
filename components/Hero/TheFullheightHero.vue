@@ -14,7 +14,11 @@
             class="slide block h-screen/75 lg:h-screen lg:bg-bottom w-full z-0 bg-cover"
             :style="{
               backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)), url(${image.src})`
-            }" />
+            }"
+          >
+            <div v-if="mobile">It's mobile</div>
+            <div v-else>it's not mobile</div>
+          </div>
 
           <!-- Custom buttons -->
           <template slot="prevButton"
@@ -61,6 +65,7 @@
 
 <script>
 import { VueAgile } from 'vue-agile'
+import { isMobile } from 'mobile-device-detect'
 
 export default {
   components: {
@@ -68,6 +73,7 @@ export default {
   },
   data() {
     return {
+      mobile: isMobile,
       counter: 0,
       carouselOptions: {
         navButtons: false,
@@ -118,7 +124,6 @@ export default {
   },
   destroyed() {
     clearInterval(this.interval)
-  },
-  methods: {}
+  }
 }
 </script>
