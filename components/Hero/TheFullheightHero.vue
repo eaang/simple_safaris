@@ -14,11 +14,7 @@
             class="slide block h-screen/75 lg:h-screen lg:bg-bottom w-full z-0 bg-cover"
             :style="{
               backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)), url(${image.src})`
-            }"
-          >
-            <div v-if="mobile">It's mobile</div>
-            <div v-else>it's not mobile</div>
-          </div>
+            }" />
 
           <!-- Custom buttons -->
           <template slot="prevButton"
@@ -73,7 +69,6 @@ export default {
   },
   data() {
     return {
-      mobile: isMobile,
       counter: 0,
       carouselOptions: {
         navButtons: false,
@@ -91,29 +86,59 @@ export default {
           }
         ]
       },
-      images: [
-        {
-          src: '/landinghero/hotel-samaki-lodge-zanzibar.jpeg',
-          position: 'bg-center'
-        },
-        { src: '/landinghero/kenya-safari.jpeg', position: 'bg-left-bottom' },
-        {
-          src: '/landinghero/luxury-safari-holiday.jpeg',
-          position: 'bg-left-bottom'
-        },
-        {
-          src: '/landinghero/national-parks-safari-africa.jpeg',
-          position: 'bg-bottom'
-        },
-        {
-          src: '/landinghero/ranthambore-national-park.jpeg',
-          position: 'bg-center'
-        },
-        {
-          src: '/landinghero/sri-lanka-safari-leopard.jpeg',
-          position: 'bg-right'
-        }
-      ]
+      images: !isMobile
+        ? [
+            {
+              src: '/landinghero/hotel-samaki-lodge-zanzibar.jpeg',
+              position: 'bg-center'
+            },
+            {
+              src: '/landinghero/kenya-safari.jpeg',
+              position: 'bg-left-bottom'
+            },
+            {
+              src: '/landinghero/luxury-safari-holiday.jpeg',
+              position: 'bg-left-bottom'
+            },
+            {
+              src: '/landinghero/national-parks-safari-africa.jpeg',
+              position: 'bg-bottom'
+            },
+            {
+              src: '/landinghero/ranthambore-national-park.jpeg',
+              position: 'bg-center'
+            },
+            {
+              src: '/landinghero/sri-lanka-safari-leopard.jpeg',
+              position: 'bg-right'
+            }
+          ]
+        : [
+            {
+              src: '/landinghero/mobile-beach.jpeg',
+              position: 'bg-center'
+            },
+            {
+              src: '/landinghero/mobile-giraffe.jpeg',
+              position: 'bg-center'
+            },
+            {
+              src: '/landinghero/mobile-pool.jpeg',
+              position: 'bg-center'
+            },
+            {
+              src: '/landinghero/mobile-safari.jpeg',
+              position: 'bg-center'
+            },
+            {
+              src: '/landinghero/mobile-4wd.jpeg',
+              position: 'bg-center'
+            },
+            {
+              src: '/landinghero/ranthambore-national-park.jpeg',
+              position: 'bg-center'
+            }
+          ]
     }
   },
   mounted() {
