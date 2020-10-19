@@ -92,19 +92,25 @@
                     />
                   </li> -->
                   <li class="footer-list-item">
-                    <img
-                      class="h-5"
-                      src="@/assets/images/icons/ic-instagram-ft.svg"
-                    />
+                    <a :href="instagram"
+                      ><img
+                        class="h-5"
+                        src="@/assets/images/icons/ic-instagram-ft.svg"
+                    /></a>
                   </li>
                   <li class="footer-list-item">
-                    <img
-                      class="h-5"
-                      src="@/assets/images/icons/ic-blog-ft.svg"
-                    />
+                    <a :href="blog"
+                      ><img
+                        class="h-5"
+                        src="@/assets/images/icons/ic-blog-ft.svg"
+                    /></a>
                   </li>
                   <li class="footer-list-item">
-                    <img class="h-5" src="@/assets/images/icons/ic-kakao.svg" />
+                    <a :href="kakao"
+                      ><img
+                        class="h-5"
+                        src="@/assets/images/icons/ic-kakao.svg"
+                    /></a>
                   </li>
                 </div>
               </ul>
@@ -164,6 +170,13 @@ export default {
     continents: {
       type: Array,
       default: () => []
+    }
+  },
+  data() {
+    return {
+      instagram: 'https://www.instagram.com/simplesafaris/',
+      kakao: 'https://pf.kakao.com/_xcxkGdT',
+      blog: 'https://blog.naver.com/simplesafaris'
     }
   }
 }

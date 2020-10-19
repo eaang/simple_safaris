@@ -33,6 +33,7 @@
     "vue-gallery-slideshow": "^1.5.2",
     "vue-image-lightbox": "^7.2.0",
     "vue-lazyload": "^1.3.3",
+    "vue-onload": "^0.7.0",
     "vue-silentbox": "^2.2.0",
     "vue2-animate": "^2.1.4",
     "vue2-touch-events": "^2.3.2",

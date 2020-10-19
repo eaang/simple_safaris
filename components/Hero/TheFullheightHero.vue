@@ -1,60 +1,59 @@
 <template>
   <div>
     <div class="relative h-screen/75 lg:h-screen w-full">
-      <client-only>
-        <agile
-          ref="carousel"
-          :options="carouselOptions"
-          @after-change="counter = $refs.carousel.getCurrentSlide()"
-        >
-          <div
-            v-for="(image, index) in images"
-            :key="index"
-            :class="image.position"
-            class="slide block h-screen/75 lg:h-screen lg:bg-bottom w-full z-0 bg-cover"
-            :style="{
-              backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)), url(${image.src})`
-            }" />
+      <agile
+        v-if="preload"
+        ref="carousel"
+        :options="carouselOptions"
+        @after-change="counter = $refs.carousel.getCurrentSlide()"
+      >
+        <div
+          v-for="(image, index) in images"
+          :key="index"
+          :class="image.position"
+          class="slide block h-screen/75 lg:h-screen lg:bg-bottom w-full z-0 bg-cover"
+          :style="{
+            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)), url(${image.src})`
+          }" />
 
-          <!-- Custom buttons -->
-          <template slot="prevButton"
-            ><div
-              class="absolute inset-y-0 left-0 flex items-center justify-around px-12 text-2xl"
+        <!-- Custom buttons -->
+        <template slot="prevButton"
+          ><div
+            class="absolute inset-y-0 left-0 flex items-center justify-around px-12 text-2xl"
+          >
+            <div
+              class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
             >
-              <div
-                class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
-              >
-                <ArrowLeft class="h-6 w-6" />
-              </div>
+              <ArrowLeft class="h-6 w-6" />
             </div>
-          </template>
-          <template slot="nextButton"
-            ><div
-              class="absolute inset-y-0 right-0 flex items-center justify-around px-12 text-2xl"
-            >
-              <div
-                class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
-              >
-                <ArrowRight class="h-6 w-6" />
-              </div>
-            </div> </template
-        ></agile>
-        <!-- Custom dots -->
-        <ul class="flex justify-around absolute inset-x-0 bottom-0 py-12">
-          <div class="flex">
-            <li
-              v-for="(image, i) in images"
-              :key="i"
-              class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
-              :class="{ 'bg-white': i === counter }"
-              @click="
-                counter = i
-                $refs.carousel.goTo(counter)
-              "
-            ></li>
           </div>
-        </ul>
-      </client-only>
+        </template>
+        <template slot="nextButton"
+          ><div
+            class="absolute inset-y-0 right-0 flex items-center justify-around px-12 text-2xl"
+          >
+            <div
+              class="rounded-full border-2 border-white p-6 text-white hover:bg-white hover:text-brown"
+            >
+              <ArrowRight class="h-6 w-6" />
+            </div>
+          </div> </template
+      ></agile>
+      <!-- Custom dots -->
+      <ul class="flex justify-around absolute inset-x-0 bottom-0 py-12">
+        <div class="flex">
+          <li
+            v-for="(image, i) in images"
+            :key="i"
+            class="border-2 border-white rounded-full w-4 h-4 mx-2 cursor-pointer hover:bg-white"
+            :class="{ 'bg-white': i === counter }"
+            @click="
+              counter = i
+              $refs.carousel.goTo(counter)
+            "
+          ></li>
+        </div>
+      </ul>
     </div>
   </div>
 </template>
@@ -69,6 +68,7 @@ export default {
   },
   data() {
     return {
+      preload: false,
       counter: 0,
       carouselOptions: {
         navButtons: false,
@@ -142,6 +142,31 @@ export default {
     }
   },
   mounted() {
+    this.$nextTick(function () {
+      this.$images.preload(
+        [
+          '/landinghero/hotel-samaki-lodge-zanzibar.jpeg',
+          '/landinghero/kenya-safari.jpeg',
+          '/landinghero/luxury-safari-holiday.jpeg',
+          '/landinghero/national-parks-safari-africa.jpeg',
+          '/landinghero/ranthambore-national-park.jpeg',
+          '/landinghero/sri-lanka-safari-leopard.jpeg',
+          '/landinghero/mobile-beach.jpeg',
+          '/landinghero/mobile-giraffe.jpeg',
+          '/landinghero/mobile-pool.jpeg',
+          '/landinghero/mobile-safari.jpeg',
+          '/landinghero/mobile-4wd.jpeg'
+        ],
+        (completed, progress) => {
+          // progress indicator from 0 (no image loaded yet) to 1 (all images loaded)
+          console.log(Math.round(progress * 100))
+          // completed = true when all images are loaded
+          if (completed) {
+            this.preload = true
+          }
+        }
+      )
+    })
     this.interval = setInterval(() => {
       this.$refs.carousel.goToNext()
       this.counter++

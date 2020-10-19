@@ -76,17 +76,17 @@
                     src="@/assets/images/icons/ic-youtube-ft.svg"
                   />
                 </a> -->
-                <nuxt-link to="#" class="h-6 w-6" target="_blank">
+                <a :href="instagram" class="h-6 w-6" target="_blank">
                   <img
                     class="object-scale-down"
                     src="@/assets/images/icons/ic-instagram-ft.svg"
                   />
-                </nuxt-link>
-                <nuxt-link to="#" class="h-6 w-6" target="_blank"
+                </a>
+                <a :to="blog" class="h-6 w-6" target="_blank"
                   ><img
                     class="object-scale-down"
                     src="@/assets/images/icons/ic-blog-ft.svg"
-                /></nuxt-link>
+                /></a>
               </div>
             </div>
             <div class="flex items-center space-x-2">
@@ -115,17 +115,17 @@
                   src="@/assets/images/icons/ic-youtube-ft.svg"
                 />
               </a> -->
-              <nuxt-link to="#" class="h-6 w-6" target="_blank">
+              <a :href="instagram" class="h-6 w-6" target="_blank">
                 <img
                   class="object-scale-down"
                   src="@/assets/images/icons/ic-instagram-ft.svg"
                 />
-              </nuxt-link>
-              <nuxt-link to="#" class="h-6 w-6" target="_blank"
+              </a>
+              <a :href="blog" class="h-6 w-6" target="_blank"
                 ><img
                   class="object-scale-down"
                   src="@/assets/images/icons/ic-blog-ft.svg"
-              /></nuxt-link>
+              /></a>
             </div>
           </div>
         </div>
@@ -150,7 +150,10 @@ export default {
     return {
       dropdownOneShow: false,
       dropdownTwoShow: false,
-      dropdownThreeShow: false
+      dropdownThreeShow: false,
+      instagram: 'https://www.instagram.com/simplesafaris/',
+      kakao: 'https://pf.kakao.com/_xcxkGdT',
+      blog: 'https://blog.naver.com/simplesafaris'
     }
   }
 }

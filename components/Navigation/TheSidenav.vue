@@ -142,21 +142,21 @@
       <div class="flex items-end text-brown">
         <div class="mb-8 pt-8 ml-4 font-bold space-y-4 text-lg">
           <ul class="flex space-x-4">
-            <a href="/"
+            <a :href="instagram"
               ><li class="">
                 <img
                   class="h-8"
                   src="@/assets/images/icons/ic-instagram-ft.svg"
                 /></li
             ></a>
-            <a href="/"
+            <a :href="blog"
               ><li class="">
                 <img
                   class="h-8"
                   src="@/assets/images/icons/ic-blog-ft.svg"
                 /></li
             ></a>
-            <a href="/"
+            <a :href="kakao"
               ><li class="">
                 <img class="h-8" src="@/assets/images/icons/ic-kakao.svg" /></li
             ></a>
@@ -191,7 +191,10 @@ export default {
       destinationDropdown: false,
       tripsDropdown: false,
       destinationContinent: 'africa',
-      tripsContinent: 'africa'
+      tripsContinent: 'africa',
+      instagram: 'https://www.instagram.com/simplesafaris/',
+      kakao: 'https://pf.kakao.com/_xcxkGdT',
+      blog: 'https://blog.naver.com/simplesafaris'
     }
   },
   methods: {
