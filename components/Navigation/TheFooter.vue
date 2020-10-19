@@ -118,10 +118,11 @@
             <div>관광사업등록번호</div>
             <div class="flex space-x-4">
               <div class="font-bold">제 2019-000026호</div>
-              <img
-                class="object-scale-down"
-                src="@/assets/images/icons/window.svg"
-              />
+              <a href="/certs/관광사업자등록증_수정.jpg"
+                ><img
+                  class="object-scale-down"
+                  src="@/assets/images/icons/window.svg"
+              /></a>
             </div>
           </div>
           <div>
@@ -129,10 +130,11 @@
               <div>인허가보증보험증권</div>
               <div class="flex space-x-4">
                 <div class="font-bold">제 100-000-2020 0098 3703호</div>
-                <img
-                  class="object-scale-down"
-                  src="@/assets/images/icons/window.svg"
-                />
+                <a href="/certs/보험가입증서_수정.jpg"
+                  ><img
+                    class="object-scale-down"
+                    src="@/assets/images/icons/window.svg"
+                /></a>
               </div>
             </div>
           </div>
