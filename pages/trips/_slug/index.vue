@@ -224,7 +224,7 @@ export default {
       tripPics.push({ url: picture.fields.file.url })
     })
     return {
-      firstPic: tripPics[0],
+      firstPic: tripPics[0].url,
       tripIdea: thisTrip,
       tripName: thisTrip.fields.name,
       tripPics: tripPics,
