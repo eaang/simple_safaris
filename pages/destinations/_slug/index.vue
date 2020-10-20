@@ -314,6 +314,7 @@ export default {
       })
     })
     return {
+      firstPic: destinationPics[0].url,
       destination: destination,
       destinationName: store.getters['destination/destinationName'],
       destinationPics: destinationPics,
@@ -348,8 +349,22 @@ export default {
     }
   },
   head() {
+    const title = 'Simple Safaris - ' + this.destinationName
     return {
-      title: '- ' + this.destinationName
+      title: '- ' + this.destinationName,
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: title
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: title
+        },
+        { hid: 'og:image', name: 'og:image', content: this.firstPic }
+      ]
     }
   },
   computed: {
