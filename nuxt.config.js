@@ -1,5 +1,7 @@
 const env = require('dotenv').config()
 const contentful = require('contentful')
+const description =
+  '아프리카 사파리 여행 언제까지 미루실건가요? 심플사파리가 힘들게 느껴질 수도 있는 아프리카 여행을 계획부터 다녀오는 것까지 쉽게 풀어드립니다!'
 
 export default {
   loading: {
@@ -26,8 +28,32 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content:
-          '아프리카 사파리 여행 언제까지 미루실건가요? 심플사파리가 힘들게 느껴질 수도 있는 아프리카 여행을 계획부터 다녀오는 것까지 쉽게 풀어드립니다!'
+        content: description
+      },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'Simple Safaris'
+      },
+      {
+        hid: 'og-image',
+        property: 'og-image',
+        content: '/landinghero/kenya-safari.jpeg'
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: description
+      },
+      {
+        hid: 'twitter:title',
+        name: 'twitter:title',
+        content: 'Simple Safaris'
+      },
+      {
+        hid: 'twitter:description',
+        name: 'twitter:description',
+        content: description
       }
     ],
     link: [
