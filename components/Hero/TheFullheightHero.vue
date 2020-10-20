@@ -157,9 +157,7 @@ export default {
           '/landinghero/mobile-safari.jpeg',
           '/landinghero/mobile-4wd.jpeg'
         ],
-        (completed, progress) => {
-          // progress indicator from 0 (no image loaded yet) to 1 (all images loaded)
-          console.log(Math.round(progress * 100))
+        (completed) => {
           // completed = true when all images are loaded
           if (completed) {
             this.preload = true

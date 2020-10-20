@@ -31,11 +31,6 @@ export default {
         content: description
       },
       {
-        hid: 'og:title',
-        name: 'og:title',
-        content: 'Simple Safaris'
-      },
-      {
         hid: 'og:image',
         name: 'og:image',
         content: '/landinghero/kenya-safari.jpeg'
@@ -44,11 +39,6 @@ export default {
         hid: 'og:description',
         name: 'og:description',
         content: description
-      },
-      {
-        hid: 'twitter:title',
-        name: 'twitter:title',
-        content: 'Simple Safaris'
       },
       {
         hid: 'twitter:description',

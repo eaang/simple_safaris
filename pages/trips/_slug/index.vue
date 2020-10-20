@@ -262,9 +262,22 @@ export default {
     await store.dispatch('tripIdea/getTripIdeaBySlug', params.slug)
   },
   head() {
+    const title = 'Simple Safaris - ' + this.tripName
     return {
       title: '- ' + this.tripName,
-      meta: [{ property: 'og:image', content: this.firstPic }]
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: title
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: title
+        },
+        { hid: 'og:image', name: 'og:image', content: this.firstPic }
+      ]
     }
   },
   computed: {
