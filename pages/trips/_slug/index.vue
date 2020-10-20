@@ -224,6 +224,7 @@ export default {
       tripPics.push({ url: picture.fields.file.url })
     })
     return {
+      firstPic: tripPics[0],
       tripIdea: thisTrip,
       tripName: thisTrip.fields.name,
       tripPics: tripPics,
@@ -262,7 +263,8 @@ export default {
   },
   head() {
     return {
-      title: '- ' + this.tripName
+      title: '- ' + this.tripName,
+      meta: [{ property: 'og:image', content: this.firstPic }]
     }
   },
   computed: {

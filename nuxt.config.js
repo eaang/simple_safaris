@@ -32,17 +32,17 @@ export default {
       },
       {
         hid: 'og:title',
-        property: 'og:title',
+        name: 'og:title',
         content: 'Simple Safaris'
       },
       {
         hid: 'og:image',
-        property: 'og:image',
+        name: 'og:image',
         content: '/landinghero/kenya-safari.jpeg'
       },
       {
         hid: 'og:description',
-        property: 'og:description',
+        name: 'og:description',
         content: description
       },
       {
