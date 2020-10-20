@@ -553,8 +553,26 @@ export default {
     }
   },
   head() {
+    const title = 'Simple Safaris - Contact us'
     return {
-      title: '- Contact us'
+      title: '- Contact us',
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: title
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: title
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: '/landinghero/kenya-safari.jpeg'
+        }
+      ]
     }
   },
   computed: {

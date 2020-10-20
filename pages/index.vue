@@ -251,8 +251,26 @@ export default {
     }
   },
   head() {
+    const title = 'Simple Safaris'
     return {
-      title: ''
+      title: '',
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: title
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: title
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: '/landinghero/kenya-safari.jpeg'
+        }
+      ]
     }
   },
   created() {

@@ -124,8 +124,26 @@
 <script>
 export default {
   head() {
+    const title = 'Simple Safaris - About us'
     return {
-      title: '- About us'
+      title: '- About us',
+      meta: [
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: title
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: title
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: '/landinghero/kenya-safari.jpeg'
+        }
+      ]
     }
   }
 }
