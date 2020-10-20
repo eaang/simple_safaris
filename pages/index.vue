@@ -252,8 +252,10 @@ export default {
   },
   head() {
     const title = 'Simple Safaris'
+    const description = this.$config.metaDescription
     return {
       title: '',
+      description: description,
       meta: [
         {
           hid: 'og:title',
@@ -266,9 +268,24 @@ export default {
           content: title
         },
         {
+          hid: 'og:description',
+          name: 'og:description',
+          content: description
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content: description
+        },
+        {
           hid: 'og:image',
           name: 'og:image',
-          content: '/landinghero/kenya-safari.jpeg'
+          content: 'https://simple-safaris.netlify.app/metaimage.jpg'
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          content: 'https://simple-safaris.netlify.app/metaimage.jpg'
         }
       ]
     }

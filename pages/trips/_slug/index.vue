@@ -263,8 +263,11 @@ export default {
   },
   head() {
     const title = 'Simple Safaris - ' + this.tripName
+    const description = this.$config.metaDescription
+
     return {
       title: '- ' + this.tripName,
+      description: description,
       meta: [
         {
           hid: 'og:title',
@@ -276,7 +279,26 @@ export default {
           name: 'twitter:title',
           content: title
         },
-        { hid: 'og:image', name: 'og:image', content: this.firstPic }
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: description
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content: description
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: this.firstPic
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          content: this.firstPic
+        }
       ]
     }
   },

@@ -14,7 +14,8 @@ export default {
   publicRuntimeConfig: {
     mapboxToken: process.env.MAPBOX_TOKEN,
     ctfSpace: process.env.CTF_SPACE_ID,
-    ctfAccess: process.env.CTF_CD_ACCESS_TOKEN
+    ctfAccess: process.env.CTF_CD_ACCESS_TOKEN,
+    metaDescription: description
   },
   purgeCSS: {
     enabled: false
@@ -33,12 +34,17 @@ export default {
       {
         hid: 'og:image',
         name: 'og:image',
-        content: '/landinghero/kenya-safari.jpeg'
+        content: 'https://simple-safaris.netlify.app/metaimage.jpg'
       },
       {
         hid: 'og:description',
         name: 'og:description',
         content: description
+      },
+      {
+        hid: 'twitter:image',
+        name: 'twitter:image',
+        content: 'https://simple-safaris.netlify.app/metaimage.jpg'
       },
       {
         hid: 'twitter:description',
