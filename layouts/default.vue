@@ -39,6 +39,17 @@ export default {
       tripIdeas: this.$store.getters['tripIdeas/tripIdeas']
     }
   },
+  head() {
+    return {
+      meta: [
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: '/landinghero/kenya-safari.jpeg'
+        }
+      ]
+    }
+  },
   created() {
     this.$nuxt.$on('closeSidenav', () => {
       this.sidenavStatus = false
