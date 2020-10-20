@@ -36,6 +36,11 @@ export default {
         content: 'Simple Safaris'
       },
       {
+        hid: 'og:image',
+        property: 'og:image',
+        content: '/landinghero/kenya-safari.jpeg'
+      },
+      {
         hid: 'og:description',
         property: 'og:description',
         content: description
