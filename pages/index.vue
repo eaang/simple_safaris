@@ -250,6 +250,11 @@ export default {
       ]
     }
   },
+  head() {
+    return {
+      title: ''
+    }
+  },
   created() {
     this.$nuxt.$on('closeSidenav', () => {
       this.sidenavStatus = false
