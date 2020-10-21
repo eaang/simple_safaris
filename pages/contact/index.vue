@@ -398,13 +398,21 @@
 
               <!-- Message -->
               <div class="input-group">
-                <label for="message">사파리여행에서 희망하는 점</label>
+                <label for="message"
+                  ><span class="asterisk">&lowast;</span>사파리여행에서 희망하는
+                  점</label
+                >
                 <textarea
                   id="message"
-                  v-model="message"
+                  v-model.lazy="message"
                   class="h-64 border border-gray-lighter text-lg p-4"
                   placeholder="최대한 자세하게 서술해주세요"
                 />
+                <div v-if="$v.message.$dirty">
+                  <div v-if="!$v.message.required" class="error">
+                    필수 정보입니다.
+                  </div>
+                </div>
               </div>
 
               <!-- Honeypot -->
@@ -549,6 +557,9 @@ export default {
       required
     },
     countries: {
+      required
+    },
+    message: {
       required
     }
   },
