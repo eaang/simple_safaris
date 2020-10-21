@@ -307,12 +307,7 @@ export default {
       return this.$store.getters['tripIdea/loadingStatus']
     }
   },
-  mounted() {
-    setInterval(() => {
-      this.$refs.carousel.goToNext()
-      this.counter++
-    }, 8000)
-  },
+  mounted() {},
   methods: {
     kebabCase(str) {
       return str

@@ -168,6 +168,9 @@ export default {
       )
     })
   },
+  destroyed() {
+    this.carouselInterval = null
+  },
   methods: {
     startInterval() {
       this.carouselInterval = setInterval(() => {
