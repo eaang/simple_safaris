@@ -68,6 +68,7 @@ export default {
   },
   data() {
     return {
+      carouselInterval: null,
       preload: false,
       counter: 0,
       carouselOptions: {
@@ -161,17 +162,19 @@ export default {
           // completed = true when all images are loaded
           if (completed) {
             this.preload = true
+            this.startInterval()
           }
         }
       )
     })
-    this.interval = setInterval(() => {
-      this.$refs.carousel.goToNext()
-      this.counter++
-    }, 8000)
   },
-  destroyed() {
-    clearInterval(this.interval)
+  methods: {
+    startInterval() {
+      this.carouselInterval = setInterval(() => {
+        this.$refs.carousel.goToNext()
+        this.counter++
+      }, 8000)
+    }
   }
 }
 </script>
