@@ -116,13 +116,50 @@
     <!-- Map box -->
     <div class="section container mx-auto">
       <div class="title title-main text-center mb-8">Places we've visited</div>
-      <MapNoText class="w-full h-screen/50 lg:h-screen/75" />
+      <MapNoText :places="places" class="w-full h-screen/50 lg:h-screen/75" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      places: [
+        { name: 'Australia', longitude: 134.755, latitude: -24.7761086 },
+        { name: 'Bahrain', longitude: 50.5344606, latitude: 26.1551249 },
+        { name: 'Botswana', longitude: 24.5928742, latitude: -23.1681782 },
+        { name: 'Cambodia', longitude: 104.869423, latitude: 13.5066394 },
+        { name: 'Canada', longitude: -107.9917071, latitude: 61.0666922 },
+        { name: 'China', longitude: 104.999927, latitude: 35.000074 },
+        { name: 'Ethiopia', longitude: 38.6521203, latitude: 10.2116702 },
+        { name: 'France', longitude: 1.8883335, latitude: 46.603354 },
+        { name: 'India', longitude: 78.6677428, latitude: 22.3511148 },
+        { name: 'Indonesia', longitude: 117.8902853, latitude: -2.4833826 },
+        { name: 'Italy', longitude: 12.674297, latitude: 42.6384261 },
+        { name: 'Japan', longitude: 139.2394179, latitude: 36.5748441 },
+        { name: 'Kenya', longitude: 38.4313975, latitude: 1.4419683 },
+        { name: 'Malaysia', longitude: 102.2656823, latitude: 4.5693754 },
+        { name: 'Namibia', longitude: 17.3231107, latitude: -23.2335499 },
+        { name: 'The Netherlands', longitude: 5.7480821, latitude: 52.5001698 },
+        { name: 'Korea', longitude: 127.6961188, latitude: 36.638392 },
+        { name: 'Singapore', longitude: 103.83039182, latitude: 1.340863 },
+        {
+          name: 'South Africa',
+          longitude: 22.937506,
+          latitude: -30.559483
+        },
+        { name: 'Spain', longitude: -4.8380649, latitude: 39.3262345 },
+        { name: 'Thailand', longitude: 100.83273, latitude: 14.8971921 },
+        { name: 'The UAE', longitude: 53.9994829, latitude: 24.0002488 },
+        { name: 'The UK', longitude: -3.2765753, latitude: 54.7023545 },
+        { name: 'Tanzania', longitude: 35.7878438, latitude: -6.5247123 },
+        { name: 'The USA', longitude: -100.4458825, latitude: 39.7837304 },
+        { name: 'Zambia', longitude: 27.5599164, latitude: -14.5186239 },
+        { name: 'Zimbabwe', longitude: 29.7468414, latitude: -18.4554963 }
+      ]
+    }
+  },
   head() {
     const title = 'Simple Safaris - About us'
     const description = this.$config.metaDescription
