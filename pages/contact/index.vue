@@ -663,7 +663,7 @@ export default {
       } else {
         // do your submit logic here
         await this.$axios
-          .$post('https://formspree.io/f/myybznyr', {
+          .$post('https://formspree.io/f/moqpdzaj', {
             Name: this.name,
             Phone: this.phone,
             Email: this.email,
