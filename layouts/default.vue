@@ -24,6 +24,7 @@
       :continents="continents"
       :trip-ideas="tripIdeas"
       class="sticky top-0 w-full z-30"
+      :class="{ invisible: !showNavbar && mobile }"
     />
     <Nuxt class="-mt-24" />
     <TheFooter :continents="continents" />
@@ -31,9 +32,13 @@
 </template>
 
 <script>
+import { isMobile } from 'mobile-device-detect'
 export default {
   data() {
     return {
+      mobile: isMobile,
+      showNavbar: true,
+      lastScrollPosition: 0,
       sidenavStatus: false,
       continents: this.$store.getters['continents/continents'],
       tripIdeas: this.$store.getters['tripIdeas/tripIdeas']
@@ -46,6 +51,27 @@ export default {
     this.$nuxt.$on('openSidenav', () => {
       this.sidenavStatus = true
     })
+  },
+  mounted() {
+    window.addEventListener('scroll', this.onScroll)
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.onScroll)
+  },
+  methods: {
+    onScroll() {
+      const currentScrollPosition =
+        window.pageYOffset || document.documentElement.scrollTop
+      if (currentScrollPosition < 0) {
+        return
+      } // Stop executing this function if the difference between
+      // current scroll position and last scroll position is less than some offset
+      if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 96) {
+        return
+      }
+      this.showNavbar = currentScrollPosition < this.lastScrollPosition
+      this.lastScrollPosition = currentScrollPosition
+    }
   }
 }
 </script>

@@ -14,7 +14,7 @@
         class="w-full h-screen/50 lg:h-screen/75"
         :center="tripMapCenter"
         :places="tripMapPoints"
-        :zoom="6"
+        :zoom="mobile ? 5 : 6"
       />
       <div v-else class="h-16"></div>
       <div class="w-full flex justify-center">
@@ -66,7 +66,7 @@
           class="space-y-16"
         >
           <!-- Title section -->
-          <div class="sticky top-0 z-10 xl:static pt-16">
+          <div class="sticky top-0 z-10 xl:static mt-16">
             <div class="shadow-2xl">
               <div
                 class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
@@ -159,7 +159,7 @@
       </div>
       <!-- Trip Navigation -->
       <div class="hidden xl:block xl:w-1/3 pl-16">
-        <div class="space-y-2 sticky top-0 pt-16">
+        <div class="space-y-2 sticky top-0 mt-16">
           <div v-for="(day, id) in tripDays" :key="id">
             <nuxt-link
               :to="{
@@ -195,6 +195,7 @@
 </template>
 
 <script>
+import { isMobile } from 'mobile-device-detect'
 export default {
   async asyncData({ store, params }) {
     await store.dispatch('tripIdea/getTripIdeaBySlug', params.slug)
@@ -238,6 +239,7 @@ export default {
   },
   data() {
     return {
+      mobile: isMobile,
       counter: 0,
       scrolled: false,
       carouselOptions: {

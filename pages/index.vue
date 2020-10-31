@@ -25,6 +25,7 @@
         :continents="continents"
         :trip-ideas="tripIdeas"
         class="sticky top-0 w-full z-30"
+        :class="{ invisible: !showNavbar && mobile }"
       />
       <TheTransparentHeader
         v-if="transNavbarStatus"
@@ -147,6 +148,7 @@
 </template>
 
 <script>
+import { isMobile } from 'mobile-device-detect'
 export default {
   layout: 'landing',
   async asyncData({ $axios }) {
@@ -193,6 +195,7 @@ export default {
   },
   data() {
     return {
+      mobile: isMobile,
       continents: this.$store.getters['continents/continents'],
       tripIdeas: this.$store.getters['tripIdeas/tripIdeas'],
       transNavbarStatus: true,

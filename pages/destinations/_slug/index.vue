@@ -12,7 +12,7 @@
         <!-- Destination Introduction -->
         <div id="introduction" class="space-y-16">
           <!-- Title section -->
-          <div class="sticky top-0 z-10 xl:static pt-16">
+          <div class="sticky top-0 z-10 xl:static mt-16">
             <div class="shadow-2xl">
               <div
                 class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
@@ -81,7 +81,7 @@
           class="space-y-16"
         >
           <!-- Title section -->
-          <div class="sticky top-0 z-10 xl:static pt-16">
+          <div class="sticky top-0 z-10 xl:static mt-16">
             <div class="shadow-2xl">
               <div
                 class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
@@ -143,7 +143,7 @@
           class="space-y-16"
         >
           <!-- Title section -->
-          <div class="sticky top-0 z-10 xl:static pt-16">
+          <div class="sticky top-0 z-10 xl:static mt-16">
             <div class="shadow-2xl">
               <div
                 class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
@@ -174,7 +174,7 @@
           class="space-y-16"
         >
           <!-- Title section -->
-          <div class="sticky top-0 z-10 xl:static pt-16">
+          <div class="sticky top-0 z-10 xl:static mt-16">
             <div class="shadow-2xl">
               <div
                 class="bg-brown flex flex-center text-white text-xl h-16 font-bold"
