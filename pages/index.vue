@@ -196,6 +196,8 @@ export default {
   data() {
     return {
       mobile: isMobile,
+      showNavbar: true,
+      lastScrollPosition: 0,
       continents: this.$store.getters['continents/continents'],
       tripIdeas: this.$store.getters['tripIdeas/tripIdeas'],
       transNavbarStatus: true,
@@ -320,6 +322,11 @@ export default {
         this.transNavbarStatus = false
         this.whiteNavbarStatus = true
       }
+      if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 96) {
+        return
+      }
+      this.showNavbar = currentScrollPosition < this.lastScrollPosition
+      this.lastScrollPosition = currentScrollPosition
     }
   }
 }

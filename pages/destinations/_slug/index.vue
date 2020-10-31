@@ -31,7 +31,7 @@
               class="w-full h-full"
               :center="mapCenter"
               :places="mapPoints"
-              :zoom="5"
+              :zoom="mobile ? 4 : 5"
             />
           </div>
 
@@ -298,6 +298,7 @@
 <script>
 import client from '~/plugins/contentful.js'
 import CollapseTransition from '@ivanv/vue-collapse-transition/src/CollapseTransition.vue'
+import { isMobile } from 'mobile-device-detect'
 
 export default {
   components: {
@@ -341,6 +342,7 @@ export default {
   },
   data() {
     return {
+      mobile: isMobile,
       places: true,
       hotelCarouselOptions: {
         navButtons: false,
