@@ -20,15 +20,15 @@
     </transition>
 
     <transition name="fade" mode="out-in">
-      <TheWhiteHeader
-        v-if="whiteNavbarStatus"
+      <TheTransparentHeader
+        v-if="transNavbarStatus"
         :continents="continents"
         :trip-ideas="tripIdeas"
         class="sticky top-0 w-full z-30"
-        :class="{ invisible: !showNavbar && mobile }"
       />
-      <TheTransparentHeader
-        v-if="transNavbarStatus"
+      <TheWhiteHeader
+        v-else
+        v-show="showNavbar"
         :continents="continents"
         :trip-ideas="tripIdeas"
         class="sticky top-0 w-full z-30"
@@ -317,12 +317,16 @@ export default {
       // Because of momentum scrolling on mobiles, we shouldn't continue if it is less than zero
       if (currentScrollPosition === 0) {
         this.transNavbarStatus = true
-        this.whiteNavbarStatus = false
       } else {
         this.transNavbarStatus = false
-        this.whiteNavbarStatus = true
       }
-      if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 96) {
+      if (!this.mobile) {
+        return
+      }
+      if (currentScrollPosition < 0) {
+        return
+      }
+      if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 100) {
         return
       }
       this.showNavbar = currentScrollPosition < this.lastScrollPosition

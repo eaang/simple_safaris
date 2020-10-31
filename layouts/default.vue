@@ -20,12 +20,14 @@
       ></div>
     </transition>
 
-    <TheWhiteHeader
-      :continents="continents"
-      :trip-ideas="tripIdeas"
-      class="sticky top-0 w-full z-30"
-      :class="{ invisible: !showNavbar && mobile }"
-    />
+    <transition name="fade" mode="out-in">
+      <TheWhiteHeader
+        v-show="showNavbar"
+        :continents="continents"
+        :trip-ideas="tripIdeas"
+        class="sticky top-0 w-full z-30"
+      />
+    </transition>
     <Nuxt class="-mt-24" />
     <TheFooter :continents="continents" />
   </div>
@@ -62,11 +64,13 @@ export default {
     onScroll() {
       const currentScrollPosition =
         window.pageYOffset || document.documentElement.scrollTop
+      if (!this.mobile) {
+        return
+      }
       if (currentScrollPosition < 0) {
         return
-      } // Stop executing this function if the difference between
-      // current scroll position and last scroll position is less than some offset
-      if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 96) {
+      }
+      if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 100) {
         return
       }
       this.showNavbar = currentScrollPosition < this.lastScrollPosition
