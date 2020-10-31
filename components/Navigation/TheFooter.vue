@@ -13,14 +13,17 @@
             class="grid grid-flow-col grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 w-full"
           >
             <div class="hidden md:block">
+              <!-- About Link -->
               <div class="footer-title footer-title-link">
                 <a href="/about">About</a>
               </div>
+              <!-- Trip Idea Link -->
               <div class="footer-title footer-title-link">
                 <a href="/trips">Trip ideas</a>
               </div>
             </div>
             <div class="hidden xl:block">
+              <!-- Destination Links -->
               <div class="footer-title">Destinations</div>
               <ul class="footer-list flex flex-col-reverse">
                 <div v-for="(continent, i) in continents" :key="i">
@@ -34,8 +37,10 @@
                   >
                 </div>
               </ul>
+              <!-- End of Destination Links -->
             </div>
             <div>
+              <!-- Contact Us Link -->
               <div class="footer-title footer-title-link">
                 <a href="/contact">Contact us</a>
               </div>

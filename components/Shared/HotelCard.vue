@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="shadow-2xl">
+    <div class="shadow-xl">
       <img class="object-cover w-full h-56" :src="src" :alt="alt" />
       <div class="h-56 flex flex-col flex-center px-4 space-y-8">
         <div class="text-gray-dark text-center text-2xl">

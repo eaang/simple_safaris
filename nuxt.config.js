@@ -1,7 +1,7 @@
 const env = require('dotenv').config()
 const contentful = require('contentful')
 const description =
-  '아프리카 사파리 여행 언제까지 미루실건가요? 심플사파리가 힘들게 느껴질 수도 있는 아프리카 여행을 계획부터 다녀오는 것까지 쉽게 풀어드립니다!'
+  '럭셔리 사파리 여행 언제까지 미루실건가요? 심플사파리가 힘들게 느껴질 수도 있는 아프리카 여행을 계획부터 다녀오는 것까지 쉽게 풀어드립니다!'
 
 export default {
   loading: {

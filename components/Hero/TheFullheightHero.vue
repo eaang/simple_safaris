@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="relative h-screen/75 lg:h-screen w-full">
+    <div class="relative h-screen w-full">
       <agile
         v-if="preload"
         ref="carousel"
@@ -11,7 +11,7 @@
           v-for="(image, index) in images"
           :key="index"
           :class="image.position"
-          class="slide block h-screen/75 lg:h-screen lg:bg-bottom w-full z-0 bg-cover"
+          class="slide block h-screen lg:bg-bottom w-full z-0 bg-cover"
           :style="{
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)), url(${image.src})`
           }" />

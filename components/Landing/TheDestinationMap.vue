@@ -5,35 +5,51 @@
     <!-- Continent Picker -->
     <div class="flex flex-row items-start w-full">
       <!-- Continent Picker  -->
-      <ul class="destination-list text-2xl w-full flex flex-col-reverse">
-        <div
-          v-for="continent in continents"
-          :key="continent.name"
-          class="w-full"
+      <ul class="destination-list text-2xl w-full flex flex-col">
+        <!-- Africa Picker -->
+        <li
+          class="destination-list-item space-x-4"
+          :class="{
+            'destination-list-choice': chosenDestination === 'africa'
+          }"
+          @click="chosenDestination = 'africa'"
         >
-          <li
-            class="destination-list-item space-x-4"
-            :class="{
-              'destination-list-choice':
-                chosenDestination === continent.name.toLowerCase()
-            }"
-            @click="chosenDestination = continent.name.toLowerCase()"
-          >
-            <div>
-              {{ continent.koreanName }}
-              <br class="hidden lg:block xl:hidden" />
-              ({{ continent.name }})
-            </div>
-            <AngleRight
-              v-if="chosenDestination === continent.name.toLowerCase()"
-              class="text-black h-6 hidden lg:block"
-            />
-            <AngleDown
-              v-if="chosenDestination === continent.name.toLowerCase()"
-              class="text-black h-4 block lg:hidden"
-            />
-          </li>
-        </div>
+          <div>
+            아프리카
+            <br class="hidden lg:block xl:hidden" />
+            (Africa)
+          </div>
+          <AngleRight
+            v-if="chosenDestination === 'africa'"
+            class="text-black h-6 hidden lg:block"
+          />
+          <AngleDown
+            v-if="chosenDestination === 'africa'"
+            class="text-black h-4 block lg:hidden"
+          />
+        </li>
+        <!-- Asia Picker -->
+        <li
+          class="destination-list-item space-x-4"
+          :class="{
+            'destination-list-choice': chosenDestination === 'asia'
+          }"
+          @click="chosenDestination = 'asia'"
+        >
+          <div>
+            아시아
+            <br class="hidden lg:block xl:hidden" />
+            (Asia)
+          </div>
+          <AngleRight
+            v-if="chosenDestination === 'asia'"
+            class="text-black h-6 hidden lg:block"
+          />
+          <AngleDown
+            v-if="chosenDestination === 'asia'"
+            class="text-black h-4 block lg:hidden"
+          />
+        </li>
       </ul>
       <!-- Region Picker -->
       <div class="w-full">

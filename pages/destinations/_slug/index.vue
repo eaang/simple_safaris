@@ -1,5 +1,7 @@
 <template>
   <div class="destination-page">
+    <!-- Bubble to scroll up -->
+    <TopBubble />
     <!-- Hero images -->
     <StandardHero :pictures="destinationPics" :title="destinationName" />
 
@@ -18,7 +20,7 @@
                 Destination
               </div>
               <div class="bg-white h-20 text-xl flex flex-center font-bold">
-                {{ destinationName }}
+                {{ destination.fields.koreanName }}
               </div>
             </div>
           </div>
@@ -180,11 +182,21 @@
                 Trip Ideas
               </div>
               <div class="bg-white h-20 text-xl flex flex-center font-bold">
-                {{ destination.fields.name }}
+                {{ destination.fields.koreanName }}
               </div>
             </div>
           </div>
-          <TripIdeaCarouselSmall :trip-ideas="destinationTrips" />
+
+          <!-- Trip Ideas Box -->
+
+          <div class="px-8 xl:px-0">
+            <BorderTitle text="Where to Explore" />
+            <div
+              class="relative border-l border-r border-b border-brown flex flex-center"
+            >
+              <TripIdeaCarouselSmall :trip-ideas="destinationTrips" />
+            </div>
+          </div>
         </div>
 
         <!-- Design Your Safari -->

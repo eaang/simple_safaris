@@ -1,10 +1,6 @@
 <template>
   <div class="">
-    <div
-      class="trip-idea-box shadow cursor-pointer"
-      @mouseover="mouseover = true"
-      @mouseleave="mouseover = false"
-    >
+    <div class="trip-idea-box shadow-xl cursor-pointer">
       <a :href="'/trips/' + slug">
         <div class="relative h-56 trip-idea-image">
           <div
@@ -14,7 +10,6 @@
               background-size: cover;
               background-position: center;
             "
-            :class="{ 'background-filter': mouseover }"
             :style="{ 'background-image': 'url(' + url + ')' }"
           ></div>
         </div>
@@ -67,26 +62,6 @@ export default {
       type: String,
       default: null
     }
-  },
-  data() {
-    return {
-      mouseover: false
-    }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.trip-idea {
-  &-box {
-    margin: 4px;
-  }
-  &-box:hover {
-    margin: 0px;
-    @apply border-4 border-beige;
-  }
-}
-.background-filter {
-  filter: brightness(80%);
-}
-</style>
