@@ -207,7 +207,7 @@
                             "
                             class="error"
                           >
-                            금일 이후 일자만 가능합니다.
+                            금일 이후에 일자만 선택 가능합니다.
                           </div>
                         </div>
                       </div>
@@ -252,7 +252,7 @@
                           v-if="$v.endDate.required && !$v.endDate.afterToday"
                           class="error"
                         >
-                          금일 이후 일자만 가능합니다.
+                          금일 이후에 일자만 선택 가능합니다.
                         </div>
                       </div>
                     </div>
