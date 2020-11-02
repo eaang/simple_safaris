@@ -27,8 +27,7 @@
         class="sticky top-0 w-full z-30"
       />
       <TheWhiteHeader
-        v-else
-        v-show="showNavbar"
+        v-if="!transNavbarStatus"
         :continents="continents"
         :trip-ideas="tripIdeas"
         class="sticky top-0 w-full z-30"
@@ -196,7 +195,6 @@ export default {
   data() {
     return {
       mobile: isMobile,
-      showNavbar: true,
       lastScrollPosition: 0,
       continents: this.$store.getters['continents/continents'],
       tripIdeas: this.$store.getters['tripIdeas/tripIdeas'],
@@ -315,22 +313,22 @@ export default {
       const currentScrollPosition =
         window.pageYOffset || document.documentElement.scrollTop
       // Because of momentum scrolling on mobiles, we shouldn't continue if it is less than zero
-      if (currentScrollPosition === 0) {
+      if (currentScrollPosition < 96) {
         this.transNavbarStatus = true
       } else {
         this.transNavbarStatus = false
       }
-      if (!this.mobile) {
-        return
-      }
-      if (currentScrollPosition < 0) {
-        return
-      }
-      if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 100) {
-        return
-      }
-      this.showNavbar = currentScrollPosition < this.lastScrollPosition
-      this.lastScrollPosition = currentScrollPosition
+      // if (!this.mobile) {
+      //   return
+      // }
+      // if (currentScrollPosition < 0) {
+      //   return
+      // }
+      // if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 100) {
+      //   return
+      // }
+      // this.showNavbar = currentScrollPosition < this.lastScrollPosition
+      // this.lastScrollPosition = currentScrollPosition
     }
   }
 }

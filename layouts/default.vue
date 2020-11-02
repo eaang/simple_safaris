@@ -34,11 +34,11 @@
 </template>
 
 <script>
-import { isMobile } from 'mobile-device-detect'
+// import { isMobile } from 'mobile-device-detect'
 export default {
   data() {
     return {
-      mobile: isMobile,
+      // mobile: isMobile,
       showNavbar: true,
       lastScrollPosition: 0,
       sidenavStatus: false,
@@ -54,28 +54,28 @@ export default {
       this.sidenavStatus = true
     })
   },
-  mounted() {
-    window.addEventListener('scroll', this.onScroll)
-  },
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.onScroll)
-  },
+  // mounted() {
+  //   window.addEventListener('scroll', this.onScroll)
+  // },
+  // beforeDestroy() {
+  //   window.removeEventListener('scroll', this.onScroll)
+  // },
   methods: {
-    onScroll() {
-      const currentScrollPosition =
-        window.pageYOffset || document.documentElement.scrollTop
-      if (!this.mobile) {
-        return
-      }
-      if (currentScrollPosition < 0) {
-        return
-      }
-      if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 100) {
-        return
-      }
-      this.showNavbar = currentScrollPosition < this.lastScrollPosition
-      this.lastScrollPosition = currentScrollPosition
-    }
+    // onScroll() {
+    //   const currentScrollPosition =
+    //     window.pageYOffset || document.documentElement.scrollTop
+    //   if (!this.mobile) {
+    //     return
+    //   }
+    //   if (currentScrollPosition < 0) {
+    //     return
+    //   }
+    //   if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 100) {
+    //     return
+    //   }
+    //   this.showNavbar = currentScrollPosition < this.lastScrollPosition
+    //   this.lastScrollPosition = currentScrollPosition
+    // }
   }
 }
 </script>

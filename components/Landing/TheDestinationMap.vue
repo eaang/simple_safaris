@@ -29,7 +29,7 @@
           />
         </li>
         <!-- Asia Picker -->
-        <li
+        <!-- <li
           class="destination-list-item space-x-4"
           :class="{
             'destination-list-choice': chosenDestination === 'asia'
@@ -49,7 +49,7 @@
             v-if="chosenDestination === 'asia'"
             class="text-black h-4 block lg:hidden"
           />
-        </li>
+        </li> -->
       </ul>
       <!-- Region Picker -->
       <div class="w-full">

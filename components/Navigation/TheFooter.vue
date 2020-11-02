@@ -18,9 +18,9 @@
                 <a href="/about">About</a>
               </div>
               <!-- Trip Idea Link -->
-              <div class="footer-title footer-title-link">
+              <!-- <div class="footer-title footer-title-link">
                 <a href="/trips">Trip ideas</a>
-              </div>
+              </div> -->
             </div>
             <div class="hidden xl:block">
               <!-- Destination Links -->

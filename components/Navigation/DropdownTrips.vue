@@ -26,7 +26,7 @@
         </div>
       </div>
       <!-- Asian trips -->
-      <div>
+      <!-- <div>
         <li
           class="nav-dropdown-item flex items-center justify-between cursor-pointer text-white"
           @click="toggleTrips('asia')"
@@ -48,7 +48,7 @@
             </li></a
           >
         </div>
-      </div>
+      </div> -->
     </ul>
   </div>
 </template>
