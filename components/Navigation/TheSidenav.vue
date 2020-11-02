@@ -35,7 +35,8 @@
         </div>
         <transition name="slide" mode="out-in">
           <div v-if="destinationDropdown">
-            <div class="grid grid-cols-2 h-12">
+            <!-- Double title if Asia is included -->
+            <!-- <div class="grid grid-cols-2 h-12">
               <div
                 class="flex-center border-r border-brown border-opacity-25"
                 :class="{
@@ -55,6 +56,14 @@
                 @click="destinationContinent = 'asia'"
               >
                 아시아
+              </div>
+            </div> -->
+            <!-- Single grid for just Africa -->
+            <div class="grid grid-cols-1 h-12">
+              <div
+                class="flex-center border-r border-brown border-opacity-25 text-white"
+              >
+                아프리카
               </div>
             </div>
             <div v-for="continent in continents" :key="continent.fields.name">

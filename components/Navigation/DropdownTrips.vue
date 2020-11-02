@@ -4,14 +4,14 @@
       <!-- African trips -->
       <div>
         <li
-          class="nav-dropdown-item flex items-center justify-between cursor-pointer text-white"
-          @click="toggleTrips('africa')"
+          class="nav-dropdown-item flex items-center justify-between text-white"
         >
+          <!-- To add back in the toggling, use @click="toggleTrips('africa')" in the above <li> -->
           <div>Africa</div>
-          <div>
+          <!-- <div>
             <CaretUp id="africa-trip-icon-up" />
             <CaretDown id="africa-trip-icon-down" class="hidden" />
-          </div>
+          </div> -->
         </li>
         <div id="africa-trip-dropdown">
           <a

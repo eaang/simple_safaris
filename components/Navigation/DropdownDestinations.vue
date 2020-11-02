@@ -3,19 +3,19 @@
     <ul class="nav-dropdown-list flex flex-col-reverse cursor-pointer">
       <div v-for="continent in continents" :key="continent.fields.name">
         <li
-          class="nav-dropdown-item flex items-center justify-between cursor-pointer text-white"
-          @click="toggleRegions(continent.fields.name)"
+          class="nav-dropdown-item flex items-center justify-between text-white"
         >
+          <!-- To add back the toggling, use @click="toggleRegions(continent.fields.name)" in the above <li> -->
           <div>
             {{ continent.fields.name }}
           </div>
-          <div>
+          <!-- <div>
             <CaretUp :id="continent.fields.name.toLowerCase() + '-icon-up'" />
             <CaretDown
               :id="continent.fields.name.toLowerCase() + '-icon-down'"
               class="hidden"
             />
-          </div>
+          </div> -->
         </li>
         <div :id="continent.fields.name.toLowerCase() + '-dropdown'">
           <a
